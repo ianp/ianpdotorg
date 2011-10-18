@@ -1,0 +1,19 @@
+---
+author: admin
+date: '2005-06-30 09:44:04'
+layout: post
+slug: typical
+status: publish
+title: Typical!
+wordpress_id: '51'
+categories:
+- Trivia
+tags:
+- Life
+---
+
+And, just as I sign up for a 15-week course the project I'm working on
+loses it's funding! So, I'm now in need of a new job, and this probably
+means that I'll be moving away from London. Oh well, let's see what's
+out there... \*Update:\* I ended up moving to Bulgaria and am still
+there just over a year later.

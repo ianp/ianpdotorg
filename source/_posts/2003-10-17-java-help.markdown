@@ -1,0 +1,27 @@
+---
+author: admin
+date: '2003-10-17 08:10:18'
+layout: post
+slug: java-help
+status: publish
+title: Java Help
+wordpress_id: '15'
+categories:
+- Java
+- Technology
+tags:
+- Java
+---
+
+I had a look at the [Java Help
+API](http://java.sun.com/products/javahelp) today, hoping to use it in
+an application that I'm writing, alas no. Despite claiming to be
+interface based, and coming with a reference implementation from Sun,
+what we now call the \_service provider\_ pattern, it's irrevocably tied
+to Swing. This means that you couldn't use it to say, provide a help
+system on an interactive web based system, or an
+[SWT](http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/platform-swt-home/main.html
+"Standard Widget Toolkit") based client side app, which is what I'm
+interested in. Sun seem to be more interested in pushing their own ideas
+onto others than in producing a solid solution. Here's hoping version 3
+of the API solves this, but don't hold your breath.

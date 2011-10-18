@@ -1,0 +1,18 @@
+---
+author: admin
+date: '2004-03-23 20:03:17'
+layout: post
+slug: moron
+status: publish
+title: Moron
+wordpress_id: '36'
+categories:
+- Politics
+- Trivia
+tags:
+- News
+---
+
+[New York Post](http://www.nypost.com/news/nationalnews/21043.htm). All
+I can say is: what... a... fucking... idiot. Next! \*Update:\* The NY
+Post page has been moved so the link above no longer works. Sorry.

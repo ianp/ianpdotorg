@@ -1,0 +1,24 @@
+---
+author: admin
+date: '2004-02-17 14:02:22'
+layout: post
+slug: vodafone-3g
+status: publish
+title: Vodafone 3G
+wordpress_id: '31'
+categories:
+- Technology
+tags:
+- Business
+- Telecoms
+---
+
+Well, I mentioned this many a time whilst I was consulting at
+[Three](http://www.three.com) as being something that they should
+definitely offer, but it seems like [Vodafone](http://www.vodafone.com)
+have beaten them to it. They
+[announced](http://www.vodafone.com/article\_with\_thumbnail/0,3038,CATEGORY\_ID%253D102%2526LANGUAGE\_ID%253D0%2526CONTENT\_ID%253D214962,00.html)
+a few days ago that they'd soon be offering 3G data services throughout
+pretty much most of Europe. Looks like 3 could soon be a thing of the
+past, I really don't fancy their chances in the marketplace now the big
+V is moving in.

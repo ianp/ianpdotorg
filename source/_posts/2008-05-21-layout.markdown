@@ -1,0 +1,16 @@
+---
+author: admin
+date: '2008-05-21 19:09:02'
+layout: post
+slug: layout
+status: publish
+title: Layout
+wordpress_id: '90'
+categories:
+- Trivia
+tags:
+- Meta
+---
+
+Hmmm, I need to something about the site layout if I'm going to include
+images like that.

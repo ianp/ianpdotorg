@@ -1,0 +1,21 @@
+---
+author: admin
+date: '2006-09-11 20:50:01'
+layout: post
+slug: genius
+status: publish
+title: Genius!
+wordpress_id: '65'
+categories:
+- Trivia
+tags:
+- Art
+- Funny
+---
+
+Via the [BBC][BBC]: \> A life-size replica of a Guantanamo Bay detainee
+has been placed \> in Disneyland by "guerrilla artist" Banksy. \> \> The
+hooded figure was placed inside the Big Thunder Mountain \> Railroad
+ride at the California theme park last weekend. I mean, just how do you
+sneak in a life sized model in broad daylight? The mind boggles. [BBC]:
+http://news.bbc.co.uk/1/hi/entertainment/5335400.stm

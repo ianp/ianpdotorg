@@ -1,0 +1,16 @@
+---
+author: admin
+date: '2007-10-21 20:08:11'
+layout: post
+slug: rebooted
+status: publish
+title: Rebooted
+wordpress_id: '84'
+categories:
+- Trivia
+tags:
+- Life
+---
+
+I've been away for a while, and now I'm back. In other news, I've moved
+back to the UK, to London again. More to follow...

@@ -1,0 +1,23 @@
+---
+author: admin
+date: '2003-09-17 12:09:14'
+layout: post
+slug: dot-net
+status: publish
+title: Dot Net
+wordpress_id: '7'
+categories:
+- Java
+- Technology
+tags:
+- C#
+- Java
+- Lisp
+---
+
+I've just written my first \_.net\_ program! (Using
+[mono](http://www.go-mono.com)) It seems \_very\_ similar to Java, I'm
+going to grab a book and have a play with it some more over the next few
+days. Of source, I'm really trying to learn Lisp, but since the books I
+bought have been stranded in Vienna it seems like I may have to wait a
+few weeks for that.

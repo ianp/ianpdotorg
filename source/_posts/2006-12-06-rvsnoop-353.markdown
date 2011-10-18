@@ -1,0 +1,28 @@
+---
+author: admin
+date: '2006-12-06 00:42:35'
+layout: post
+slug: rvsnoop-353
+status: publish
+title: RvSnoop 353
+wordpress_id: '76'
+categories:
+- Java
+- RvSnoop
+- Technology
+tags:
+- RvSnoop
+- TIBCO
+---
+
+A new development version of [RvSnoop][RVS] is now available for
+[download][DL]. This version adds: \* Saving and restoring messages
+between sessions. \* Remove Connection as a context sensitive menu
+option. \* Improved drag and drop support. And also fixes some bugs
+involving the screen menu on Mac OS X. The save and restore messages
+option writes the selected records from the ledger to a ZIP based binary
+file format (it's the same format that is used internally by the copy
+and paste mechanism). The format has also been enhanced to include
+subject information for the messages, as this is stripped out by the raw
+Rendezvous library calls. [RVS]: http://rvsnoop.org/ [DL]:
+http://downloads.sourceforge.net/rvsn00p/rvsnoop-353-bin.tgz

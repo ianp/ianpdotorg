@@ -1,0 +1,27 @@
+---
+author: admin
+date: '2006-11-04 21:08:26'
+layout: post
+slug: 30000000-lines-of-code-wtf
+status: publish
+title: 30,000,000 Lines Of Code? WTF?
+wordpress_id: '75'
+categories:
+- Java
+- Technology
+tags:
+- Apple
+- Mac
+- RvSnoop
+---
+
+Apparently (according to [this][MACO]) Mac Office is 30,000,000 lines of
+code, that's a lot of code to try to keep bug free! Out of curiosity, I
+downloaded [a utility to count lines of code][NCSS] and found that
+[RvSnoop][RVSN] is only \~7,000 lines of code. That's only counting
+non-comment lines, I don't know how well commented the MS codebase is.
+Not that there's any real comparison in functionality between the two of
+course! [MACO]:
+http://blogs.msdn.com/macmojo/archive/2006/11/03/it-s-all-in-the-numbers.aspx
+[NCSS]: http://www.kclee.de/clemens/java/javancss/ [RVSN]:
+http://rvsnoop.org/

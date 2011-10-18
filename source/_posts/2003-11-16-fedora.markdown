@@ -1,0 +1,24 @@
+---
+author: admin
+date: '2003-11-16 11:11:07'
+layout: post
+slug: fedora
+status: publish
+title: Fedora
+wordpress_id: '20'
+categories:
+- Technology
+tags:
+- Business
+- Linux
+---
+
+By coincidence I just finished reading up on the [Fedora
+Project](http://fedora.redhat.com) before I read
+[this](http://www.dynamicobjects.com/d2r "d2r: diego's weblog") post
+from Diego. As I see it Redhat are going to push the Fedora project as
+their replacement for the Professional edition (i.e. Red Hat 9). This
+probably makes sense since they can free up a lot of resources whilst
+hopefullty maintaining market visibility. If they can increase the speed
+of the release cycle for this it may even help them gain some more
+converts (and it sure does look pretty!).

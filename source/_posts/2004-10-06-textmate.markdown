@@ -1,0 +1,27 @@
+---
+author: admin
+date: '2004-10-06 16:10:45'
+layout: post
+slug: textmate
+status: publish
+title: TextMate
+wordpress_id: '47'
+categories:
+- Technology
+tags:
+- TextMate
+---
+
+I've been looking for a good text editor for the Mac for a few weeks
+now, since I just can't seem to get the hang of
+[BBEdit](http://www.barebones.com/products/bbedit/index.shtml), and $180
+seems a bit steep for a text editor (or maybe I'm just a tightwad). Just
+released though is [TextMate](http://www.macromates.com), which seems to
+fit the bill so far, and is reasonably customisable. One of the neat
+features is the ability to group files together into projects, which I
+expect to be a big time saver. Another win is the fact that it's easy to
+set up custom syntax highlighting and add additional commands to the
+editor. After a couple of hours of use I had a custom syntax mode for
+C\# defined, and commands to compile and run the current file using
+[Mono](http://www.go-mono.org). I'll post them here once they're a bit
+more polished.

@@ -1,0 +1,16 @@
+---
+author: admin
+date: '2004-02-23 18:02:42'
+layout: post
+slug: adsl
+status: publish
+title: ADSL
+wordpress_id: '33'
+categories:
+- Trivia
+tags:
+- Life
+---
+
+Welcome to the 21st century! Got my 1 meg. ADSL connection up and
+running today. Sweet!

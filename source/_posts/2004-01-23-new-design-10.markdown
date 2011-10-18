@@ -1,0 +1,21 @@
+---
+author: admin
+date: '2004-01-23 18:03:42'
+layout: post
+slug: new-design-10
+status: publish
+title: New Design 1.0
+wordpress_id: '28'
+categories:
+- Trivia
+tags:
+- Meta
+---
+
+I've spent a bit of time trying to come up with a new design for this
+site, all using nice, clean, XHTML and CSS, and as part of this I've
+been trying to make the site look less blocky and have more rounded
+edges and stuff in the design. I've come to the conclusion that this
+really sucks. The suppport for CSS, especially layer 3, is still way too
+weak for this to work. So, back to the drawing board, but at least I
+produced a couple of reasonable icons that I can reause, ho hum.

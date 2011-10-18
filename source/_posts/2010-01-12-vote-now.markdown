@@ -1,0 +1,19 @@
+---
+author: admin
+date: '2010-01-12 19:00:22'
+layout: post
+slug: vote-now
+status: publish
+title: Vote Now!
+wordpress_id: '493'
+categories:
+- Trivia
+tags:
+- Barbie
+- Vote
+---
+
+Fed up with all of the pre-election coverage in the (UK) media right now? Instead of listening to call-me-Dave drone on and on, or hearing how the one-eyed Gobblin’ King has once again saved the world, go cast your [vote][01] for Computer Engineer Barbie!
+
+[01]: http://www.barbie.com/vote/
+

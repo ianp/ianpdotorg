@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-04-11 07:04:14'
 layout: post
 slug: swt-look-feel

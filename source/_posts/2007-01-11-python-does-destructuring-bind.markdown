@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2007-01-11 13:51:49'
 layout: post
 slug: python-does-destructuring-bind

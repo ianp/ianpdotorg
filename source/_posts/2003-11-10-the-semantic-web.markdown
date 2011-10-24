@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-11-10 13:11:12'
 layout: post
 slug: the-semantic-web

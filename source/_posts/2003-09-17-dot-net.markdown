@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-09-17 12:09:14'
 layout: post
 slug: dot-net

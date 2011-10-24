@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-03-23 20:03:17'
 layout: post
 slug: moron

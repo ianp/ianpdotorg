@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-09-24 07:09:45'
 layout: post
 slug: interactive-programming

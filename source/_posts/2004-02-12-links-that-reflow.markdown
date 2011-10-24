@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-02-12 10:02:32'
 layout: post
 slug: links-that-reflow

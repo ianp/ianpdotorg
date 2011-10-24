@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-11-13 19:11:51'
 layout: post
 slug: appropriate-technology

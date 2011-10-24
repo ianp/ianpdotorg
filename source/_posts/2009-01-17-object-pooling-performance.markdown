@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-01-17 16:21:13'
 layout: post
 slug: object-pooling-performance

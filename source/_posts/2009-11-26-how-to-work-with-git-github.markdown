@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-11-26 15:33:36'
 layout: post
 slug: how-to-work-with-git-github

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2008-05-25 20:28:23'
 layout: post
 slug: sourceforge-annoyances

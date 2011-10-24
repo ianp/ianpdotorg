@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-12-08 00:07:33'
 layout: post
 slug: factory-methods-vs-factory-classes-in-java

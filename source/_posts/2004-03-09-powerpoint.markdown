@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-03-09 16:03:44'
 layout: post
 slug: powerpoint

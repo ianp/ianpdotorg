@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-03-23 19:03:16'
 layout: post
 slug: travelling-power

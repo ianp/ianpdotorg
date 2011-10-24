@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-09-28 14:45:33'
 layout: post
 slug: netbeans-annoyances

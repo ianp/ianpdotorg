@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2008-12-19 14:25:40'
 layout: post
 slug: two-articles-about-online-games

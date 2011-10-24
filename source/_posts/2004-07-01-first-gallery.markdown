@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-07-01 18:07:02'
 layout: post
 slug: first-gallery

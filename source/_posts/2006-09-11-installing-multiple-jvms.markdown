@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-09-11 23:19:25'
 layout: post
 slug: installing-multiple-jvms

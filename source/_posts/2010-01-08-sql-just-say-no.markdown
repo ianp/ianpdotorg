@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2010-01-08 16:29:30'
 layout: post
 slug: sql-just-say-no

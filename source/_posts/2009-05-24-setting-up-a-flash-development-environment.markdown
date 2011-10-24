@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-05-24 22:04:57'
 layout: post
 slug: setting-up-a-flash-development-environment

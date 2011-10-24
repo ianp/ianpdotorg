@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-03-28 08:03:14'
 layout: post
 slug: eclipse-3-milestone-8

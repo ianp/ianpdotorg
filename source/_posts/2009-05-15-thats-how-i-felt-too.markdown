@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-05-15 13:47:00'
 layout: post
 slug: thats-how-i-felt-too

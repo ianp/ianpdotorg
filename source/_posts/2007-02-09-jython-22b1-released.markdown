@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2007-02-09 15:44:35'
 layout: post
 slug: jython-22b1-released

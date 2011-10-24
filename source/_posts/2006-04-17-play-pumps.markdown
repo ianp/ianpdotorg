@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-04-17 21:47:51'
 layout: post
 slug: play-pumps

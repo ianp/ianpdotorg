@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-10-17 09:58:15'
 layout: post
 slug: adding-namespace-support-to-rvsnoop

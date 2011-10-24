@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-12-17 14:39:25'
 layout: post
 slug: clojure-purists

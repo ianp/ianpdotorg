@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-05-02 19:34:56'
 layout: post
 slug: configuration-via-xml-or-code

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-11-18 21:11:11'
 layout: post
 slug: mac-annoyances

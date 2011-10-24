@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-06-23 18:06:06'
 layout: post
 slug: word-press

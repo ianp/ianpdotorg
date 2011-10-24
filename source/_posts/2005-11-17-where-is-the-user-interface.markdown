@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-11-17 15:56:55'
 layout: post
 slug: where-is-the-user-interface

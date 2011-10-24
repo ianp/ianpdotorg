@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-08-09 09:26:21'
 layout: post
 slug: some-thoughts-on-the-ideal-feature-set

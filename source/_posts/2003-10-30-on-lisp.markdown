@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-10-30 07:00:35'
 layout: post
 slug: on-lisp

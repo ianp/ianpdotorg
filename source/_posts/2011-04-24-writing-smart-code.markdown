@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2011-04-24 12:37:37'
 layout: post
 slug: writing-smart-code

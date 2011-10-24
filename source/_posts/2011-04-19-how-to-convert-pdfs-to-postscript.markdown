@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2011-04-19 09:43:14'
 layout: post
 slug: how-to-convert-pdfs-to-postscript

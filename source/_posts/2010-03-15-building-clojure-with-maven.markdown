@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2010-03-15 18:48:51'
 layout: post
 slug: building-clojure-with-maven

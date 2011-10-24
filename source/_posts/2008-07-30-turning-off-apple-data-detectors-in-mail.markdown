@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2008-07-30 03:48:51'
 layout: post
 slug: turning-off-apple-data-detectors-in-mail

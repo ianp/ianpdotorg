@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-10-19 20:30:58'
 layout: post
 slug: 1060-comes-of-age

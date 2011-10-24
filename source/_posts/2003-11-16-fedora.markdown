@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-11-16 11:11:07'
 layout: post
 slug: fedora

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-04-10 11:04:20'
 layout: post
 slug: computer-language-evolution

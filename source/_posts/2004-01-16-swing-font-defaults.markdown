@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-01-16 08:01:12'
 layout: post
 slug: swing-font-defaults

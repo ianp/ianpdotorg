@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-04-10 12:07:27'
 layout: post
 slug: cool-glass

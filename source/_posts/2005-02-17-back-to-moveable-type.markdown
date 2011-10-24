@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-02-17 16:31:23'
 layout: post
 slug: back-to-moveable-type

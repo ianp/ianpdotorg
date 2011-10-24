@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-09-24 06:09:17'
 layout: post
 slug: auto-boxing

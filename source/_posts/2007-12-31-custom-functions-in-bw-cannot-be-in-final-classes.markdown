@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2007-12-31 16:45:29'
 layout: post
 slug: custom-functions-in-bw-cannot-be-in-final-classes

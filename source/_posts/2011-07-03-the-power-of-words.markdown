@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2011-07-03 15:19:15'
 layout: post
 slug: the-power-of-words

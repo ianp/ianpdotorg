@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-12-18 13:12:50'
 layout: post
 slug: eclipse-netbeans

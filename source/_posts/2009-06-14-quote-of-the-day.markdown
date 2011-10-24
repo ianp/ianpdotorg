@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-06-14 20:37:09'
 layout: post
 slug: quote-of-the-day

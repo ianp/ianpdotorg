@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-04-28 08:20:08'
 layout: post
 slug: embedding-clojure-part-2

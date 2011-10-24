@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-09-24 14:07:27'
 layout: post
 slug: tabblo-sofia-speed-fest-2006

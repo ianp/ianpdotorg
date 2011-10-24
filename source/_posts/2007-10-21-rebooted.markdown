@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2007-10-21 20:08:11'
 layout: post
 slug: rebooted

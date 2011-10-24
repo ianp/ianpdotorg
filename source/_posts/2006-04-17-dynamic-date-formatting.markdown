@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-04-17 17:12:49'
 layout: post
 slug: dynamic-date-formatting

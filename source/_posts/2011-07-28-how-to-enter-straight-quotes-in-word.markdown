@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2011-07-28 15:35:43'
 layout: post
 slug: how-to-enter-straight-quotes-in-word
@@ -13,4 +13,4 @@ tags:
 - trivia
 ---
 
-When I'm writing technical docs in MS Word (an unfortunate day-job-related requirement) one of the things that can be annoying it the fact that it 'helpfully' converts straight quotes into curly quotes, even in code samples and other places that it shouldn't. The easy way to get rid of this is to hit undo (⌘-z) immediately after typing the quote, this will undo the auto-correction but leave the actual quota character in place.
+When I'm writing technical docs in MS Word (an unfortunate day-job-related requirement) one of the things that can be annoying it the fact that it 'helpfully' converts straight quotes into curly quotes, even in code samples and other places that it shouldn't. The easy way to get rid of this is to hit undo (⌘-z) immediately after typing the quote, this will undo the auto-correction but leave the actual quote character in place.

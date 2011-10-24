@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-10-13 06:10:58'
 layout: post
 slug: a-modest-proposal

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-09-20 16:09:15'
 layout: post
 slug: working-at-the-weekend

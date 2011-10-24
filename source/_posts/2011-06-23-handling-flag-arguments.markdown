@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2011-06-23 14:42:28'
 layout: post
 slug: handling-flag-arguments

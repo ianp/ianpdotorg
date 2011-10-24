@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-06-13 23:09:02'
 layout: post
 slug: vibration-function

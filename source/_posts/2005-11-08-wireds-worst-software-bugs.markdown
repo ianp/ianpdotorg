@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-11-08 16:36:58'
 layout: post
 slug: wireds-worst-software-bugs

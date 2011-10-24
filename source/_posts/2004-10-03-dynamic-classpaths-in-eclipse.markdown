@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-10-03 05:10:58'
 layout: post
 slug: dynamic-classpaths-in-eclipse

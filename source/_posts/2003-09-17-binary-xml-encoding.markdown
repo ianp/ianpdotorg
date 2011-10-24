@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-09-17 13:09:23'
 layout: post
 slug: binary-xml-encoding

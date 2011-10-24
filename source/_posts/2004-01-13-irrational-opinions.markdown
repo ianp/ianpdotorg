@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-01-13 08:01:11'
 layout: post
 slug: irrational-opinions

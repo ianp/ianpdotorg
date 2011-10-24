@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-10-04 17:29:23'
 layout: post
 slug: another-java-logging-api

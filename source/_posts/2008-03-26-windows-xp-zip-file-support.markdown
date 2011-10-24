@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2008-03-26 19:47:48'
 layout: post
 slug: windows-xp-zip-file-support

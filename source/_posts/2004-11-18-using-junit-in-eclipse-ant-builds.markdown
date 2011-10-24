@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-11-18 18:11:41'
 layout: post
 slug: using-junit-in-eclipse-ant-builds

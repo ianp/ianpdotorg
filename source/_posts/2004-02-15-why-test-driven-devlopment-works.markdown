@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-02-15 07:02:10'
 layout: post
 slug: why-test-driven-devlopment-works

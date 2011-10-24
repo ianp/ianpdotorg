@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2010-01-07 13:23:33'
 layout: post
 slug: prevalent-synchronicity

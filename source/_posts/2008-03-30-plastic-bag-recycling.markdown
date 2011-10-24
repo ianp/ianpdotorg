@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2008-03-30 00:05:28'
 layout: post
 slug: plastic-bag-recycling

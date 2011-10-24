@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-06-14 02:30:06'
 layout: post
 slug: ripping-open-ruby-packages

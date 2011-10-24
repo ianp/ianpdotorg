@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2008-05-21 19:03:47'
 layout: post
 slug: has-amazon-gone-crazy

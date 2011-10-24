@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2011-07-08 17:52:17'
 layout: post
 slug: how-to-end-the-deficit

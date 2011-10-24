@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-12-07 17:44:50'
 layout: post
 slug: clojure-evaluation

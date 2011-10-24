@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-02-23 18:02:42'
 layout: post
 slug: adsl

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-11-09 12:11:09'
 layout: post
 slug: strawman-arguments-and-coding-styles

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2011-06-20 18:39:56'
 layout: post
 slug: new-york-post-blocks-ipad-users

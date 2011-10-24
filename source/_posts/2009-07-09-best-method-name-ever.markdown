@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-07-09 18:01:27'
 layout: post
 slug: best-method-name-ever

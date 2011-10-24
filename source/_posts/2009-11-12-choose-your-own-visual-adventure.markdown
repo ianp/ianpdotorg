@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-11-12 10:20:19'
 layout: post
 slug: choose-your-own-visual-adventure

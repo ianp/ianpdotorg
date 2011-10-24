@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-12-20 14:19:10'
 layout: post
 slug: christmas-gift-pmd-39

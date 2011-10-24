@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-10-06 22:10:48'
 layout: post
 slug: textmate-revisited

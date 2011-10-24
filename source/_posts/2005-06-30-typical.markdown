@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-06-30 09:44:04'
 layout: post
 slug: typical

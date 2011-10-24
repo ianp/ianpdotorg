@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-12-25 20:21:47'
 layout: post
 slug: paredit-el-comes-to-intellij

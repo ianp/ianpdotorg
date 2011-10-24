@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-04-23 17:51:24'
 layout: post
 slug: guice-development-stages

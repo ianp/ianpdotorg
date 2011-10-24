@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-05-27 17:46:07'
 layout: post
 slug: disabling-airport-agent-on-mac-os-x

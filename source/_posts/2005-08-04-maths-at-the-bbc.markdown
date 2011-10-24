@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-08-04 16:36:21'
 layout: post
 slug: maths-at-the-bbc

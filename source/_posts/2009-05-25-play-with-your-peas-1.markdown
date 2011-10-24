@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-05-25 00:32:05'
 layout: post
 slug: play-with-your-peas-1

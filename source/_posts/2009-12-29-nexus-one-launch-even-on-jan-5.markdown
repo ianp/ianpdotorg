@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-12-29 19:13:26'
 layout: post
 slug: nexus-one-launch-even-on-jan-5

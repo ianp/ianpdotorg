@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-11-17 19:45:16'
 layout: post
 slug: a-fuckall-value

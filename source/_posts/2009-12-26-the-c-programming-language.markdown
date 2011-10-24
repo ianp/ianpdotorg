@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-12-26 19:07:09'
 layout: post
 slug: the-c-programming-language

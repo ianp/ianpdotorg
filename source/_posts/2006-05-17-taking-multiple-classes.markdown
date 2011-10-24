@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-05-17 19:06:44'
 layout: post
 slug: taking-multiple-classes

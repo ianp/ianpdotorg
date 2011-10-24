@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-01-23 18:03:42'
 layout: post
 slug: new-design-10

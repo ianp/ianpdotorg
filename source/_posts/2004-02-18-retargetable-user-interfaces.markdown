@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-02-18 17:02:20'
 layout: post
 slug: retargetable-user-interfaces

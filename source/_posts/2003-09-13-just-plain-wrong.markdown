@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-09-13 06:09:29'
 layout: post
 slug: just-plain-wrong

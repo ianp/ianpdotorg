@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-10-12 10:20:29'
 layout: post
 slug: why-i-do-not-like-skype

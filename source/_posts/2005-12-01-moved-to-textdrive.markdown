@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-12-01 22:24:59'
 layout: post
 slug: moved-to-textdrive

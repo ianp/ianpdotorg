@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-09-14 22:57:55'
 layout: post
 slug: word-of-the-day

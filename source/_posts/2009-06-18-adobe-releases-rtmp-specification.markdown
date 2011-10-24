@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-06-18 06:56:52'
 layout: post
 slug: adobe-releases-rtmp-specification

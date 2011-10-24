@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-12-28 17:54:29'
 layout: post
 slug: why-everything-is-a-file

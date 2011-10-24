@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-04-21 14:07:50'
 layout: post
 slug: understanding-event-propagation-in-ardor3d

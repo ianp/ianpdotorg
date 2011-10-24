@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-05-25 17:48:55'
 layout: post
 slug: neat-historical-game

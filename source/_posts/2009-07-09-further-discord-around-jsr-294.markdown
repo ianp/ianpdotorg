@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-07-09 23:54:21'
 layout: post
 slug: further-discord-around-jsr-294

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2008-07-31 08:19:56'
 layout: post
 slug: infoq-presentations

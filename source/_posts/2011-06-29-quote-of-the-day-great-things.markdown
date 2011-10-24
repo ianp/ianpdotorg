@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2011-06-29 09:22:12'
 layout: post
 slug: quote-of-the-day-great-things

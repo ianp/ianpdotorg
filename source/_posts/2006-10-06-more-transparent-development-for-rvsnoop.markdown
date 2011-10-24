@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-10-06 14:59:13'
 layout: post
 slug: more-transparent-development-for-rvsnoop

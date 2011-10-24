@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2009-04-27 10:57:37'
 layout: post
 slug: embedding-clojure-in-an-existing-application

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2008-03-26 19:16:57'
 layout: post
 slug: go-antigua

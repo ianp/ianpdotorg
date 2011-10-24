@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2010-01-02 14:23:44'
 layout: post
 slug: working-with-java-arrays

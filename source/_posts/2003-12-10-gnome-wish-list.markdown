@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-12-10 15:12:33'
 layout: post
 slug: gnome-wish-list

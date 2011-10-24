@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-07-25 17:07:18'
 layout: post
 slug: markup-cleanup

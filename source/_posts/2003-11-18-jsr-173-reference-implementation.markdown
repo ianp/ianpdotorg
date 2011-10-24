@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-11-18 19:11:04'
 layout: post
 slug: jsr-173-reference-implementation

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2005-11-10 12:13:38'
 layout: post
 slug: a-not-so-class-y-action-against-sony-bmg

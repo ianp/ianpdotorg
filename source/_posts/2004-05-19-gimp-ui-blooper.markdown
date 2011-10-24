@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2004-05-19 23:05:57'
 layout: post
 slug: gimp-ui-blooper

@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2006-11-01 17:21:17'
 layout: post
 slug: killing-capitals-in-itunes

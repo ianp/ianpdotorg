@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-10-16 08:10:01'
 layout: post
 slug: objects-have-failed

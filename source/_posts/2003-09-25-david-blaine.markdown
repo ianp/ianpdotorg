@@ -1,5 +1,5 @@
 ---
-author: admin
+author: ianp
 date: '2003-09-25 11:09:46'
 layout: post
 slug: david-blaine

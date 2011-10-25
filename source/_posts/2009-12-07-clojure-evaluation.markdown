@@ -9,9 +9,7 @@ wordpress_id: '459'
 categories:
 - Java
 - Lisp
-tags:
 - Clojure
-- Java
 - Macros
 ---
 

@@ -8,7 +8,6 @@ title: A Modest Proposal
 wordpress_id: '12'
 categories:
 - Technology
-tags:
 - System Administration
 ---
 

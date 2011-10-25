@@ -9,9 +9,7 @@ wordpress_id: '39'
 categories:
 - Java
 - Technology
-tags:
 - Eclipse
-- Java
 - User Experience
 ---
 

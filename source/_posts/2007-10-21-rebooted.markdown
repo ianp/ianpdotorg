@@ -8,7 +8,6 @@ title: Rebooted
 wordpress_id: '84'
 categories:
 - Trivia
-tags:
 - Life
 ---
 

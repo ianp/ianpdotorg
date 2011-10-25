@@ -8,9 +8,7 @@ title: Custom Functions in BW Cannot be in Final Classes
 wordpress_id: '85'
 categories:
 - TIBCO
-tags:
 - BusinessWorks
-- TIBCO
 ---
 
 Or so it seems. According to [TIBCO support](http://support.tibco.com),

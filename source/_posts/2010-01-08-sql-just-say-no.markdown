@@ -8,7 +8,6 @@ title: 'SQL: Just Say No!'
 wordpress_id: '488'
 categories:
 - Technology
-tags:
 - Databases
 ---
 

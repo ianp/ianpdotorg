@@ -9,7 +9,6 @@ wordpress_id: '5'
 categories:
 - Lisp
 - Technology
-tags:
 - Computer Languages
 ---
 

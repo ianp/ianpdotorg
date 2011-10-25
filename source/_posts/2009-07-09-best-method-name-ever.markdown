@@ -8,7 +8,6 @@ title: Best. Method. Name. Ever
 wordpress_id: '437'
 categories:
 - Technology
-tags:
 - Easter Eggs
 - Funny
 - iPhone

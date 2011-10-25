@@ -8,7 +8,6 @@ title: Plastic Bag Recycling
 wordpress_id: '88'
 categories:
 - Trivia
-tags:
 - Cool
 ---
 

@@ -10,8 +10,6 @@ categories:
 - Java
 - RvSnoop
 - Technology
-tags:
-- RvSnoop
 ---
 
 A new development build of [RvSnoop][RVS] is available for

@@ -10,8 +10,6 @@ categories:
 - Java
 - RvSnoop
 - Technology
-tags:
-- RvSnoop
 - TIBCO
 - XML
 ---

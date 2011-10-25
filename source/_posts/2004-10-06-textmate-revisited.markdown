@@ -8,7 +8,6 @@ title: TextMate Revisited
 wordpress_id: '48'
 categories:
 - Technology
-tags:
 - TextMate
 ---
 

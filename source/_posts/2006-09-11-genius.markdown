@@ -8,7 +8,6 @@ title: Genius!
 wordpress_id: '65'
 categories:
 - Trivia
-tags:
 - Art
 - Funny
 ---

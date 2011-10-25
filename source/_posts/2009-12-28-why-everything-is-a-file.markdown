@@ -8,7 +8,6 @@ title: Why Everything is a File
 wordpress_id: '469'
 categories:
 - Technology
-tags:
 - File Systems
 - Operating Systems
 - Unix

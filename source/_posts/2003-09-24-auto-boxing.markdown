@@ -9,8 +9,6 @@ wordpress_id: '10'
 categories:
 - Java
 - Technology
-tags:
-- Java
 ---
 
 I've been thinking a bit about autoboxing, a new feature slated for

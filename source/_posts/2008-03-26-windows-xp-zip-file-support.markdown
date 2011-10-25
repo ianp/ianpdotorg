@@ -8,7 +8,6 @@ title: Windows XP Zip File Support
 wordpress_id: '87'
 categories:
 - Technology
-tags:
 - Windows
 - Windows Annoyances
 ---

@@ -8,7 +8,6 @@ title: Why I Do Not Like Skype
 wordpress_id: '71'
 categories:
 - Trivia
-tags:
 - Skype
 ---
 

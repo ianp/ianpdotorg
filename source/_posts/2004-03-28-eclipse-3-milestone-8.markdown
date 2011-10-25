@@ -9,7 +9,6 @@ wordpress_id: '37'
 categories:
 - Java
 - Technology
-tags:
 - Eclipse
 - User Experience
 ---

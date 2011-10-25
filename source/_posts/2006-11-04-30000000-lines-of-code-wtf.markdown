@@ -9,7 +9,6 @@ wordpress_id: '75'
 categories:
 - Java
 - Technology
-tags:
 - Apple
 - Mac
 - RvSnoop

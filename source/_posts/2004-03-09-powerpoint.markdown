@@ -8,7 +8,6 @@ title: Powerpoint
 wordpress_id: '34'
 categories:
 - Trivia
-tags:
 - Design
 - User Experience
 ---

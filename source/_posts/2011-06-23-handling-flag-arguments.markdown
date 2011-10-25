@@ -9,9 +9,7 @@ wordpress_id: '506'
 categories:
  - Java
  - Technology
-tags:
  - API Design
- - Java
  - Programming
 ---
 

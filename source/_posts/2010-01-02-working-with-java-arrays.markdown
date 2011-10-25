@@ -9,11 +9,9 @@ wordpress_id: '473'
 categories:
 - Java
 - Lisp
-tags:
 - Clojure
 - Examples
 - Interop
-- Java
 ---
 
 One improvement that I'd like to see in Clojure is more examples in the doc strings (or maybe in a separate :example` metadata item). Still, nothing to stop me building up a set of my own. So, here are some simple examples of working with Java arrays in Clojure… Given some sample data:

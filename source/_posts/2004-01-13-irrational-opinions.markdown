@@ -8,8 +8,6 @@ title: Irrational Opinions
 wordpress_id: '25'
 categories:
 - Politics
-tags:
-- Politics
 - Religion
 ---
 

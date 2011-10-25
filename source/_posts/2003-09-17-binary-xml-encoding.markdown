@@ -8,7 +8,6 @@ title: Binary XML Encoding
 wordpress_id: '8'
 categories:
 - Technology
-tags:
 - XML
 ---
 

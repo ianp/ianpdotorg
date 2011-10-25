@@ -8,7 +8,6 @@ title: Gnome Wish List
 wordpress_id: '23'
 categories:
 - Technology
-tags:
 - Linux
 - User Experience
 ---

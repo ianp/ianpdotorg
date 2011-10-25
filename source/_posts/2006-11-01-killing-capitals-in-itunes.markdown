@@ -8,7 +8,6 @@ title: Killing Capitals in iTunes
 wordpress_id: '74'
 categories:
 - Technology
-tags:
 - Apple
 - iTunes
 ---

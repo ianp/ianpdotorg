@@ -8,7 +8,6 @@ title: Paredit.el Comes to IntelliJ
 wordpress_id: '465'
 categories:
 - Lisp
-tags:
 - Clojure
 - Emacs
 - IntelliJ

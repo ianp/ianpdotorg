@@ -9,9 +9,7 @@ wordpress_id: '94'
 categories:
 - Games
 - Technology
-tags:
 - Business
-- Games
 ---
 
 The [first][1], over at [InfoQ][2], is a talk given by one of the

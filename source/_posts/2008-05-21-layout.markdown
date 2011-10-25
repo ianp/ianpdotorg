@@ -8,7 +8,6 @@ title: Layout
 wordpress_id: '90'
 categories:
 - Trivia
-tags:
 - Meta
 ---
 

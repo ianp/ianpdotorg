@@ -10,10 +10,7 @@ categories:
 - Java
 - RvSnoop
 - Technology
-tags:
-- Java
 - OSGi
-- RvSnoop
 - TIBCO
 ---
 

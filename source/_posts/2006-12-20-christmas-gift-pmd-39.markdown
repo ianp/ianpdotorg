@@ -9,9 +9,7 @@ wordpress_id: '80'
 categories:
 - Java
 - Technology
-tags:
 - Eclipse
-- Java
 - PMD
 - Project Automation
 ---

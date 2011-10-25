@@ -8,7 +8,6 @@ title: Taking Multiple Classes
 wordpress_id: '63'
 categories:
 - Technology
-tags:
 - CSS
 - HTML
 ---

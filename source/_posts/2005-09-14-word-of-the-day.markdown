@@ -8,7 +8,6 @@ title: Word of the Day...
 wordpress_id: '53'
 categories:
 - Trivia
-tags:
 - Funny
 ---
 

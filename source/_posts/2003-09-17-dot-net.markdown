@@ -9,9 +9,7 @@ wordpress_id: '7'
 categories:
 - Java
 - Technology
-tags:
 - C#
-- Java
 - Lisp
 ---
 

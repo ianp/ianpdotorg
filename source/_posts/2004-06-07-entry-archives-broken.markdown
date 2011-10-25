@@ -8,7 +8,6 @@ title: Entry Archives Broken
 wordpress_id: '41'
 categories:
 - Trivia
-tags:
 - Meta
 ---
 

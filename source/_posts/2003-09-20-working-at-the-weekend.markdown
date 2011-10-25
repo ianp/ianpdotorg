@@ -9,7 +9,6 @@ wordpress_id: '9'
 categories:
 - Java
 - Trivia
-tags:
 - Life
 - RvSnoop
 ---

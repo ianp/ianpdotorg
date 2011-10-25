@@ -9,7 +9,6 @@ wordpress_id: '92'
 categories:
 - Technology
 - Trivia
-tags:
 - Apple
 - Email
 ---

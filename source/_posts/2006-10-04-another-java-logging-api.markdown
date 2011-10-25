@@ -9,8 +9,6 @@ wordpress_id: '69'
 categories:
 - Java
 - Technology
-tags:
-- Java
 - Logging
 ---
 

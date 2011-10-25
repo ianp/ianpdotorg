@@ -8,7 +8,6 @@ title: Typical!
 wordpress_id: '51'
 categories:
 - Trivia
-tags:
 - Life
 ---
 

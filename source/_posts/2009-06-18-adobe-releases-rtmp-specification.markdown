@@ -9,9 +9,7 @@ wordpress_id: '435'
 categories:
 - Flash
 - Python
-tags:
 - Adobe
-- Flash
 - Open Source
 ---
 

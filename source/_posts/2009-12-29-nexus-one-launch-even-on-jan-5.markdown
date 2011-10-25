@@ -9,10 +9,9 @@ wordpress_id: '471'
 categories:
 - Java
 - Technology
-tags:
 - Android
 - Google
-- mobile
+- Mobile
 ---
 
 \> This just in: [Google][01] will host an [Android][02] press gathering

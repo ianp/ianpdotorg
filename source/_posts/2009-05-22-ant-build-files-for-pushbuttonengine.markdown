@@ -8,11 +8,9 @@ title: Ant Build Files for PushButtonEngine
 wordpress_id: '102'
 categories:
 - Games
-tags:
 - Ant
-- Games
 - Project Automation
-- PushButtonEngine
+- Push Button Engine
 ---
 
 I've started to work up some standard build files for [PBE][01] based

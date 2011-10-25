@@ -9,10 +9,8 @@ wordpress_id: '45'
 categories:
 - Lisp
 - Technology
-tags:
 - Eclipse
 - Java
-- Lisp
 ---
 
 After playing around with Lisp for a few days I've diverted myself back

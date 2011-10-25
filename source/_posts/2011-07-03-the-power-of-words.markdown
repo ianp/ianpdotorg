@@ -8,9 +8,7 @@ title: The Power of Words
 wordpress_id: '510'
 categories:
 - Trivia
-tags:
-- advertising
-- trivia
+- Advertising
 ---
 
 Excellent… [The Power of Words][01].

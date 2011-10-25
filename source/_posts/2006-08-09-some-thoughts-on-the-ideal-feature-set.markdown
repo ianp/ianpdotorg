@@ -8,7 +8,6 @@ title: Some Thoughts on the Ideal Feature Set
 wordpress_id: '64'
 categories:
 - Technology
-tags:
 - User Experience
 ---
 

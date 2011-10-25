@@ -10,8 +10,6 @@ categories:
 - Lisp
 - Python
 - Technology
-tags:
-- Python
 ---
 
 According to [this article][ART] by [Ned Batcheleder][NB] python does

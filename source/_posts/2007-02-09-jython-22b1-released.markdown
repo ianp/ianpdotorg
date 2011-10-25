@@ -10,11 +10,8 @@ categories:
 - Java
 - RvSnoop
 - Technology
-tags:
-- Java
 - Jython
 - Python
-- RvSnoop
 ---
 
 The first beta of Jython 2.2 has [been released][DL]! Jyhon scripting is

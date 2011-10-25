@@ -8,7 +8,6 @@ title: Links that Reflow
 wordpress_id: '29'
 categories:
 - Technology
-tags:
 - CSS
 - User Experience
 ---

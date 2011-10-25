@@ -8,7 +8,6 @@ title: A $FuckAll value.
 wordpress_id: '57'
 categories:
 - Trivia
-tags:
 - Marketing
 ---
 

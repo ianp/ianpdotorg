@@ -9,10 +9,8 @@ wordpress_id: '49'
 categories:
 - Java
 - Technology
-tags:
 - Ant
 - Eclipse
-- Java
 - JUnit
 - Project Automation
 ---

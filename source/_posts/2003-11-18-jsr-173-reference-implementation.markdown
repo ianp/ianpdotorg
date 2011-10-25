@@ -9,8 +9,6 @@ wordpress_id: '21'
 categories:
 - Java
 - Technology
-tags:
-- Java
 - XML
 ---
 

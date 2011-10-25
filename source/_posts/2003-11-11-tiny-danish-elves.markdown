@@ -8,7 +8,6 @@ title: Tiny Danish Elves
 wordpress_id: '18'
 categories:
 - Trivia
-tags:
 - Flash
 - Lego
 ---

@@ -8,7 +8,6 @@ title: Disabling Airport Agent on Mac OS X
 wordpress_id: '178'
 categories:
 - Technology
-tags:
 - Apple
 - Mac
 ---

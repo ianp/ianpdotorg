@@ -8,7 +8,6 @@ title: Play Pumps
 wordpress_id: '61'
 categories:
 - Trivia
-tags:
 - 3rd World
 ---
 

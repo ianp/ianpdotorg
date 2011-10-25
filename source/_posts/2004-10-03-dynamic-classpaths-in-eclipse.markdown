@@ -9,7 +9,6 @@ wordpress_id: '46'
 categories:
 - Java
 - Technology
-tags:
 - Eclipse
 - Java
 ---

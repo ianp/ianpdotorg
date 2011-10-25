@@ -8,7 +8,6 @@ title: Mac Annoyances
 wordpress_id: '22'
 categories:
 - Technology
-tags:
 - Apple
 - Mac
 - User Experience

@@ -8,7 +8,6 @@ title: Go Antigua!
 wordpress_id: '86'
 categories:
 - Politics
-tags:
 - Copyright
 - Intellectual Property
 - MPAA

@@ -9,7 +9,6 @@ wordpress_id: '467'
 categories:
 - Technology
 - Trivia
-tags:
 - C
 - Cthulhu
 - Humour

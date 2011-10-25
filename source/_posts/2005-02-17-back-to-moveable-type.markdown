@@ -8,7 +8,6 @@ title: Back to Moveable Type
 wordpress_id: '50'
 categories:
 - Trivia
-tags:
 - Meta
 ---
 

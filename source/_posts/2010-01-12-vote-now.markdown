@@ -8,7 +8,6 @@ title: Vote Now!
 wordpress_id: '493'
 categories:
 - Trivia
-tags:
 - Barbie
 - Vote
 ---

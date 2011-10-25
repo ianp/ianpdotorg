@@ -8,7 +8,6 @@ title: Wired's Worst Software Bugs
 wordpress_id: '54'
 categories:
 - Technology
-tags:
 - Bugs
 - Funny
 ---

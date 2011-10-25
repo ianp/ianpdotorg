@@ -8,7 +8,6 @@ title: David Blaine
 wordpress_id: '11'
 categories:
 - Trivia
-tags:
 - Funny
 - News
 ---

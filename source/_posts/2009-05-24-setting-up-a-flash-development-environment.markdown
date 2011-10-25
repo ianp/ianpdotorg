@@ -9,12 +9,9 @@ wordpress_id: '104'
 categories:
 - Flash
 - Games
-tags:
 - AXDT
 - Eclipse
 - FDT
-- Flash
-- Games
 ---
 
 I've been playing around with [PushButtonEngine][05] and Flash over the

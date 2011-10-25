@@ -9,9 +9,7 @@ wordpress_id: '97'
 categories:
 - Games
 - Java
-tags:
 - Ardor3D
-- Java
 ---
 
 [Ardor3D][01] adds a mechanism for subscribing to events in the scene

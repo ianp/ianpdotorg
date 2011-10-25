@@ -8,7 +8,6 @@ title: Where is the user interface?
 wordpress_id: '56'
 categories:
 - Technology
-tags:
 - User Experience
 - XML
 ---

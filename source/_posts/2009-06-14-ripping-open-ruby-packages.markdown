@@ -9,9 +9,7 @@ wordpress_id: '429'
 categories:
 - Python
 - Technology
-tags:
 - Packaging
-- Python
 - Ruby
 ---
 

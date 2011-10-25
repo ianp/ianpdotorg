@@ -8,7 +8,6 @@ title: New York Post Blocks iPad Users
 wordpress_id: '504'
 categories:
 - Technology
-tags:
 - Apple
 - iPad
 ---

@@ -9,7 +9,6 @@ wordpress_id: '35'
 categories:
 - Technology
 - Trivia
-tags:
 - Travel
 ---
 

@@ -8,9 +8,7 @@ title: Guice Development Stages
 wordpress_id: '98'
 categories:
 - Java
-tags:
 - Guice
-- Java
 ---
 
 [Guice][01] has a concept called 'develpment stages' which affect how

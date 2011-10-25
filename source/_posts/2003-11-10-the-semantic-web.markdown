@@ -8,7 +8,6 @@ title: The Semantic Web
 wordpress_id: '17'
 categories:
 - Technology
-tags:
 - Business
 - Semantic Web
 ---

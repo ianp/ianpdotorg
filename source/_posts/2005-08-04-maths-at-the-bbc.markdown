@@ -8,13 +8,11 @@ title: Maths at the BBC
 wordpress_id: '52'
 categories:
 - Trivia
-tags:
 - Bad Science
 - News
 ---
 
-As reported at the [BBC
-News](http://news.bbc.co.uk/1/hi/technology/4745205.stm) site, 'One in
+As reported at the [BBC News](http://news.bbc.co.uk/1/hi/technology/4745205.stm) site, 'One in
 seven new mobiles faulty', the opening line of the article is 'An
 estimated two million of the 18 million mobiles sold last year in the UK
 could have been faulty', so, clearly, elementary maths isn't a

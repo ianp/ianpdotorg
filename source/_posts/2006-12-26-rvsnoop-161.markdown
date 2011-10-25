@@ -11,9 +11,6 @@ categories:
 - RvSnoop
 - Technology
 - TIBCO
-tags:
-- RvSnoop
-- TIBCO
 ---
 
 A new stable build of [RvSnoop][RVS] is available for [downloading][DL]

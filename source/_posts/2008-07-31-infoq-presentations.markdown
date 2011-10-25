@@ -8,7 +8,6 @@ title: InfoQ Presentations
 wordpress_id: '93'
 categories:
 - Technology
-tags:
 - News
 ---
 

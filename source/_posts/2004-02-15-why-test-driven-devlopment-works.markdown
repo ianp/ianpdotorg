@@ -9,7 +9,6 @@ wordpress_id: '30'
 categories:
 - Java
 - Technology
-tags:
 - Testing
 ---
 

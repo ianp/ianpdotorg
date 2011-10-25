@@ -8,7 +8,6 @@ title: Moved to TextDrive
 wordpress_id: '58'
 categories:
 - Trivia
-tags:
 - Hosting
 - Meta
 ---

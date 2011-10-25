@@ -8,7 +8,6 @@ title: Just Plain Wrong
 wordpress_id: '6'
 categories:
 - Technology
-tags:
 - Bugs
 - Programming
 ---

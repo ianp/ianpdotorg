@@ -9,8 +9,6 @@ wordpress_id: '73'
 categories:
 - Java
 - Technology
-tags:
-- Java
 - NetKernel
 - TIBCO
 ---

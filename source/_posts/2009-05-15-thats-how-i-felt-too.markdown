@@ -9,7 +9,6 @@ wordpress_id: '101'
 categories:
 - Games
 - Trivia
-tags:
 - Geek
 - Movies
 ---

@@ -6,7 +6,7 @@ slug: quote-of-the-day-2
 status: publish
 title: Quote of the Day
 wordpress_id: '497'
-tags:
+categories:
 - Ant
 - Funny
 - Maven

@@ -8,7 +8,6 @@ title: Has Amazon Gone Crazy?
 wordpress_id: '89'
 categories:
 - Trivia
-tags:
 - Amazon
 - Forex
 ---

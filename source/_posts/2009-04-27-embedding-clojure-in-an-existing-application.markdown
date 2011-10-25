@@ -9,10 +9,7 @@ wordpress_id: '99'
 categories:
 - Java
 - Lisp
-tags:
 - Clojure
-- Java
-- Lisp
 ---
 
 I've been taking a look at [Clojure][01] lately, as a JVM friendly

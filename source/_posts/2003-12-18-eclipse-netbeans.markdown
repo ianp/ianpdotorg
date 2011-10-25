@@ -9,9 +9,7 @@ wordpress_id: '24'
 categories:
 - Java
 - Technology
-tags:
 - Eclipse
-- Java
 - NetBeans
 ---
 

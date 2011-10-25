@@ -8,7 +8,6 @@ title: Cool Glass
 wordpress_id: '96'
 categories:
 - Trivia
-tags:
 - Beer
 ---
 

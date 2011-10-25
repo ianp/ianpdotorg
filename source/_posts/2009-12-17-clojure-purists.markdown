@@ -9,10 +9,8 @@ wordpress_id: '463'
 categories:
 - Java
 - Lisp
-tags:
 - Clojure
 - Concurrency
-- Java
 - Performance
 ---
 

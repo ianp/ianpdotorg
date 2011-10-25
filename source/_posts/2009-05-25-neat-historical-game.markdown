@@ -9,9 +9,6 @@ wordpress_id: '106'
 categories:
 - Flash
 - Games
-tags:
-- Flash
-- Games
 - History
 ---
 

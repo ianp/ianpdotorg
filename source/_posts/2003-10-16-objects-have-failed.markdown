@@ -8,7 +8,6 @@ title: Objects have Failed
 wordpress_id: '13'
 categories:
 - Technology
-tags:
 - Design Patterns
 - Programming
 ---

@@ -8,8 +8,6 @@ title: How to End the Deficit
 wordpress_id: '512'
 categories:
 - Politics
-tags:
-- Politics
 ---
 
 {% blockquote Warren Buffet, CNBC http://www.ritholtz.com/blog/2011/07/warren-buffett-i-could-end-the-deficit-in-5-minutes/ %}

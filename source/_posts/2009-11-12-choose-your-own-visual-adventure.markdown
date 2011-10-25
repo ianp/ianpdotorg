@@ -9,7 +9,6 @@ wordpress_id: '449'
 categories:
 - Design
 - Games
-tags:
 - Data Visualisation
 ---
 

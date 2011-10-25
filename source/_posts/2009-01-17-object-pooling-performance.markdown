@@ -9,8 +9,6 @@ wordpress_id: '95'
 categories:
 - Games
 - Java
-tags:
-- Java
 - Performance
 ---
 

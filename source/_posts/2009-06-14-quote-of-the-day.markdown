@@ -8,9 +8,7 @@ title: Quote of the Day
 wordpress_id: '431'
 categories:
 - Politics
-tags:
 - Funny
-- Politics
 ---
 
 Tip o' the hat to [Bishop Hill][01]... \>In the US Congress, it looks as

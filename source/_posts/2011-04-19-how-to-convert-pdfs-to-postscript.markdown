@@ -8,7 +8,6 @@ title: How to Convert PDFs to Postscript
 wordpress_id: '500'
 categories:
 - Technology
-tags:
 - Command-Line Tips
 ---
 

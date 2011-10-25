@@ -9,7 +9,6 @@ wordpress_id: '36'
 categories:
 - Politics
 - Trivia
-tags:
 - News
 ---
 

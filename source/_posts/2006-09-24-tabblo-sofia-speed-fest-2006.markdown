@@ -8,8 +8,7 @@ title: 'Tabblo: Sofia Speed Fest 2006'
 wordpress_id: '67'
 categories:
 - Trivia
-tags:
-- photography
+- Photography
 ---
 
 Not the greatest day out, but we had beers and played dodgems when we

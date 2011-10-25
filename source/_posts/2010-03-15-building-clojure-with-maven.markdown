@@ -6,7 +6,7 @@ slug: building-clojure-with-maven
 status: publish
 title: Building Clojure with Maven
 wordpress_id: '495'
-tags:
+categories:
 - Clojure
 - Maven
 ---

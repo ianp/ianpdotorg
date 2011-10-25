@@ -10,9 +10,7 @@ categories:
 - Java
 - Lisp
 - Technology
-tags:
 - Clojure
-- Java
 ---
 
 So there’s [this blog post][01] over on the [Best in Class][02] blog

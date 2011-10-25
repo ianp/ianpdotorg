@@ -8,7 +8,6 @@ title: Word Press
 wordpress_id: '42'
 categories:
 - Trivia
-tags:
 - Meta
 ---
 

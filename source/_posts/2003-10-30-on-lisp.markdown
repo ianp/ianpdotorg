@@ -9,9 +9,7 @@ wordpress_id: '16'
 categories:
 - Lisp
 - Technology
-tags:
 - Java
-- Lisp
 ---
 
 I've been playing a little with learning Lisp (not that I've much free

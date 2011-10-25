@@ -9,9 +9,7 @@ wordpress_id: '78'
 categories:
 - Java
 - Technology
-tags:
 - Design Patterns
-- Java
 ---
 
 There are a number of cases in Java where I find myself wanting to use a

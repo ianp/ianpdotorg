@@ -9,8 +9,6 @@ wordpress_id: '66'
 categories:
 - Java
 - Technology
-tags:
-- Java
 - User Experience
 ---
 

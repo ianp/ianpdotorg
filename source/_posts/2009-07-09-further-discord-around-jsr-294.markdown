@@ -8,8 +8,6 @@ title: Further discord around JSR-294
 wordpress_id: '439'
 categories:
 - Java
-tags:
-- Java
 - Oracle
 - OSGi
 - Sun

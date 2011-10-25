@@ -8,7 +8,6 @@ title: Gimp UI Blooper
 wordpress_id: '40'
 categories:
 - Technology
-tags:
 - Gimp
 - User Experience
 ---

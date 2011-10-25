@@ -9,9 +9,6 @@ wordpress_id: '68'
 categories:
 - Java
 - Technology
-tags:
-- IDE
-- Java
 - NetBeans
 ---
 

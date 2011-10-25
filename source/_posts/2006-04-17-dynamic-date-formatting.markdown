@@ -10,9 +10,6 @@ categories:
 - Java
 - RvSnoop
 - Technology
-tags:
-- Java
-- RvSnoop
 - User Experience
 ---
 

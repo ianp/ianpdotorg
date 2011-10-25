@@ -8,7 +8,6 @@ title: First Gallery
 wordpress_id: '43'
 categories:
 - Trivia
-tags:
 - photography
 ---
 

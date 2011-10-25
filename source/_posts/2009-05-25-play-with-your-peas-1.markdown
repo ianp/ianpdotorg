@@ -9,10 +9,7 @@ wordpress_id: '105'
 categories:
 - Flash
 - Games
-tags:
-- Flash
-- Games
-- PushButtonEngine
+- Push Button Engine
 ---
 
 So the project I'm using to learn Flash and [PushButtonEngine][01]

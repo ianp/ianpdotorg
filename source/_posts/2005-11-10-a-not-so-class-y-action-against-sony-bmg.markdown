@@ -8,7 +8,6 @@ title: A not-so-class-y action against Sony BMG
 wordpress_id: '55'
 categories:
 - Trivia
-tags:
 - Copyright
 - Intellectual Property
 ---

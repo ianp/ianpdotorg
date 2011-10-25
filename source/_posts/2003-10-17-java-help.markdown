@@ -9,8 +9,6 @@ wordpress_id: '15'
 categories:
 - Java
 - Technology
-tags:
-- Java
 ---
 
 I had a look at the [Java Help

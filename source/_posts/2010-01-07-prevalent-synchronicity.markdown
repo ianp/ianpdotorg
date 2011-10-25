@@ -9,7 +9,6 @@ wordpress_id: '486'
 categories:
 - Lisp
 - Technology
-tags:
 - Clojure
 - Databases
 - Prevalent Systems

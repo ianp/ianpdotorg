@@ -8,7 +8,6 @@ title: Markup Cleanup
 wordpress_id: '44'
 categories:
 - Trivia
-tags:
 - Meta
 ---
 

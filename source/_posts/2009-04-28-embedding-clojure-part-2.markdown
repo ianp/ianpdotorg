@@ -9,10 +9,7 @@ wordpress_id: '100'
 categories:
 - Java
 - Lisp
-tags:
 - Clojure
-- Java
-- Lisp
 ---
 
 Following on from the last post, it actually turns out to be much easier

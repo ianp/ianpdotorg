@@ -9,7 +9,6 @@ wordpress_id: '62'
 categories:
 - Java
 - Technology
-tags:
 - Frameworks
 - XML
 ---

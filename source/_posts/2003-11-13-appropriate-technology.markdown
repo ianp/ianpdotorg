@@ -8,7 +8,6 @@ title: Appropriate Technology
 wordpress_id: '19'
 categories:
 - Technology
-tags:
 - TIBCO
 - Web Services
 ---

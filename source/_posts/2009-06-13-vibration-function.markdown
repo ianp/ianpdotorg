@@ -8,11 +8,9 @@ title: Vibration Function
 wordpress_id: '425'
 categories:
 - Games
-tags:
-- adult
+- Adult
 - Funny
-- Games
-- mobile
+- Mobile
 ---
 
 [GameSetWatch][01] is reporting about a new ['motion-based erotic

@@ -63,9 +63,10 @@ sequences was inspired by [Sean Devlin][03]’s [excellent proposal][04]
 for some new sequence functions for Clojure 1.2. The full code for this
 is available [here][05] (it’s just the above, but with an added doc
 comment on the `squeeze` function definition).
+
 [01]: http://clojure.org/
 [02]: http://clojure.org/sequences
 [03]: http://fulldisclojure.blogspot.com/
 [04]: http://fulldisclojure.blogspot.com/2010/01/12-fn-proposal-same-multisame.html
-[05]: /files/2010/01/squeeze.clj
+[05]: /code/2010/01/squeeze.clj
 

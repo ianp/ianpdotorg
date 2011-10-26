@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT things (entity | group | template)*>
+<!ATTLIST things
+          version CDATA #REQUIRED>
+
+<!ELEMENT entity (component)*>
+<!ATTLIST entity
+          name CDATA #REQUIRED
+          template CDATA #IMPLIED>
+
+<!ELEMENT group (objectReference | groupReference)*>
+<!ATTLIST group
+          name CDATA #REQUIRED>
+
+<!ELEMENT template (component)*>
+<!ATTLIST template
+          name CDATA #REQUIRED
+          template CDATA #IMPLIED>
+
+<!ELEMENT component ANY>
+<!ATTLIST component
+          name CDATA #REQUIRED
+          type CDATA #IMPLIED>
+
+<!ELEMENT objectReference EMPTY>
+<!ATTLIST objectReference
+          name CDATA #REQUIRED>
+
+<!ELEMENT groupReference EMPTY>
+<!ATTLIST groupReference
+          name CDATA #REQUIRED>

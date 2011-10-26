@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="PlayWithYourPeas" default="compile.web" basedir=".">
+  
+  <property file="build.properties"/>
+  <xmlproperty file="${ant.project.name}.pbeproj"/>
+  
+  <description>
+    ${Project.Description}
+  
+    Set up the localtion of your Flex SDK by adding a file called
+    'build.properties' containing FLEX_HOME=... .
+
+    To compile a debug build run 'ant'
+    To compile a debug build run 'ant -DDEBUG=true'
+  </description>
+  
+  <target name="-preinit">
+    <condition property="flexSdkIsSet">
+      <and>
+        <isset property="FLEX_HOME"/>
+        <available file="${FLEX_HOME}"/>
+      </and>
+    </condition>
+    <condition property="project.extension" value="mxml" else="as">
+      <available file="Source/${ant.project.name}.mxml"/>
+    </condition>
+  </target>
+
+  <target name="-init" depends="-preinit">
+    <fail unless="flexSdkIsSet">Missing Flex SDK!
+
+      Either FLEX_HOME is not set, or it points to a missing directory.
+      
+      Set the FLEX_HOME parameter by adding it to the build.properties file
+      (you may need to create this file if it is not already present);
+      otherwise, you may specify it by using '-DFLEX_HOME=...' when you
+      invoke ant.
+    </fail>
+    <property name="DEBUG" value="false"/>
+    <property name="LOCALE" value="en_US"/>
+    <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+    <path id="path.source">
+      <fileset dir="Source" includes="**/*.as,**/*.mxml"/>
+    </path>
+    <pathconvert property="path.classes" refid="path.source" pathsep=" ">
+      <chainedmapper>
+        <mapper type="glob" from="${basedir}/Source/*" to="*"/>
+        <mapper type="regexp" from="^(.*)\.((mxml)|(as))" to="\1"/>
+        <mapper type="package" from="*" to="*"/>
+      </chainedmapper>
+    </pathconvert>
+    <fileset id="path.deps" dir="..">
+      <include name="PlayWithYourPeas/Libraries/*.swc"/>
+      <include name="PBEngine/Output/*.swc"/>
+      <include name="BoxTwoDPhysics/Output/*.swc"/>
+      <include name="TwoDRenderer/Output/*.swc"/>
+      <include name="MPThreeSound/Output/*.swc"/>
+    </fileset>
+  </target>
+
+  <target name="-check" depends="-init">
+    <uptodate property="isUpToDate" targetfile="Libraries/${ant.project.name}.swc">
+      <srcfiles dir="Source">
+        <include name="**/*.as"/>
+        <include name="**/*.mxml"/>
+      </srcfiles>
+      <srcfiles refid="path.deps"/>
+    </uptodate>
+    <available file="Assets/${ant.project.name}.p12" property="certificateExists"/>
+  </target>
+  
+  <target name="-print" depends="-check" if="isUpToDate">
+    <echo>${ant.project.name} is up to date, skipping.</echo>
+  </target>
+
+  <target name="-printCertificate" depends="-check" if="certificateExists">
+    <echo>Found certificate for ${ant.project.name}.</echo>
+  </target>  
+
+  <target name="-createCertificate" depends="-printCertificate" unless="certificateExists">
+    <echo>Creating self signed certificate for ${ant.project.name}...</echo>
+    <java jar="${FLEX_HOME}/lib/adt.jar" failonerror="true" fork="true">
+      <arg value="-certificate"/>
+      <arg value="-cn"/>
+      <arg value="SelfSign"/>
+      <arg value="2048-RSA"/>
+      <arg value="Assets/${ant.project.name}.p12"/>
+      <arg value="${ant.project.name}#pass"/>
+    </java>
+  </target>
+  
+  <target name="-copyAssets" depends="-init">
+    <mkdir dir="Output/Assets"/>
+    <copy todir="Output">
+      <fileset refid="path.deps"/>
+      <mapper type="flatten"/>
+    </copy>
+    <copy todir="Output/Assets">
+      <fileset dir="Assets" includes="Images/**,Levels/**"/>
+    </copy>
+  </target>
+  
+  <target name="compile.web" description="Compile a SWF version of the app." depends="-print,-copyAssets" unless="isUpToDate">
+    <echo>Building ${ant.project.name} (SWF version)...</echo>
+    <mkdir dir="Output"/>
+    <mxmlc file="Source/${ant.project.name}.${project.extension}" output="Output/${ant.project.name}.swf"
+           debug="${DEBUG}" compiler.optimize="true" use-network="false" locale="${LOCALE}">
+      <compiler.library-path dir=".." append="true">
+        <!-- TODO: eliminate this duplication, find out why refid="paths.deps" doesn't work. -->
+        <include name="PlayWithYourPeas/Libraries/*.swc"/>
+        <include name="PBEngine/Output/*.swc"/>
+        <include name="BoxTwoDPhysics/Output/*.swc"/>
+        <include name="TwoDRenderer/Output/*.swc"/>
+        <include name="MPThreeSound/Output/*.swc"/>
+      </compiler.library-path>
+    </mxmlc>
+  </target>
+
+  <target name="compile.air" description="Compile an Air version of the app." depends="-print,-createCertificate" unless="isUpToDate">
+    <echo>Building ${ant.project.name} (Air version)...</echo>
+    <mkdir dir="Output"/>
+    <copy file="Source/${ant.project.name}-app.xml" todir="Output">
+      <filterset>
+        <filter token="FILENAME" value="${ant.project.name}"/>
+        <filter token="VERSION" value="${Project.Version}"/>
+      </filterset>
+    </copy>
+    <mxmlc file="Source/${ant.project.name}.${project.extension}" output="Output/${ant.project.name}.swf"
+           debug="${DEBUG}" compiler.optimize="true" use-network="false" locale="${LOCALE}" configname="air">
+      <library-path dir="${FLEX_HOME}/frameworks/libs/air" append="true">
+        <include name="*.swc"/>
+      </library-path>
+      <compiler.library-path dir=".." append="true">
+        <!-- TODO: eliminate this duplication, find out why refid="paths.deps" doesn't work. -->
+        <include name="PlayWithYourPeas/Libraries/*.swc"/>
+        <include name="PBEngine/Output/*.swc"/>
+        <include name="BoxTwoDPhysics/Output/*.swc"/>
+        <include name="TwoDRenderer/Output/*.swc"/>
+        <include name="MPThreeSound/Output/*.swc"/>
+      </compiler.library-path>
+    </mxmlc>
+  </target>  
+  
+  <target name="package.air" description="Create a distributable of the app." depends="compile.air,-createCertificate,-copyAssets">
+    <echo>Packaging ${ant.project.name} (Air version)...</echo>
+    <java jar="${FLEX_HOME}/lib/adt.jar" failonerror="true" fork="true">
+      <arg value="-package"/>
+      <arg value="-storetype"/>
+      <arg value="pkcs12"/>
+      <arg value="-keystore"/>
+      <arg value="Assets/${ant.project.name}.p12"/>
+      <arg value="-storepass"/>
+      <arg value="${ant.project.name}#pass"/>
+      <arg value="Output/${ant.project.name}.air"/>
+      <arg value="Output/${ant.project.name}-app.xml"/>
+      <arg value="-C"/>
+      <arg value="Output"/>
+      <arg value="."/>
+    </java>
+  </target>
+  
+  <target name="run.air" description="Run the Air app with the debug launcher." depends="compile.air,-copyAssets">
+    <condition property="cmd.extension" value=".exe" else="">
+      <os family="windows"/>
+    </condition>
+    <exec executable="${FLEX_HOME}/bin/adl${cmd.extension}" dir="Output">
+      <arg value="${ant.project.name}-app.xml"/>
+    </exec>
+  </target>
+  
+  <target name="docs" description="Generate the API documentation." depends="-init">
+    <mkdir dir="Documentation"/>
+    <asdoc output="Documentation" doc-classes="${path.classes}">
+      <source-path path-element="Source"/>
+    </asdoc>
+  </target>
+  
+  <target name="clean" description="Remove all of the generated files.">
+    <echo>Removing generated files (swc, documentation, and certificate).</echo>
+    <delete dir="Output"/>
+    <delete dir="Documentation"/>
+  </target>
+  
+</project>

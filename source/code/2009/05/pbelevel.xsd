@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="things">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="entity"/>
+        <xs:element ref="group"/>
+        <xs:element ref="template"/>
+      </xs:choice>
+      <xs:attribute name="version" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="entity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="component"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="template"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="group">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="objectReference"/>
+        <xs:element ref="groupReference"/>
+      </xs:choice>
+      <xs:attribute name="name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="template">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="component"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required"/>
+      <xs:attribute name="template"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="component">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="any">
+          <xs:attribute name="name" use="required"/>
+          <xs:attribute name="type"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="objectReference">
+    <xs:complexType>
+      <xs:attribute name="name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="groupReference">
+    <xs:complexType>
+      <xs:attribute name="name" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="any" mixed="true">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

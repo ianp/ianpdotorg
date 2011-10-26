@@ -1,0 +1,21 @@
+---
+layout: post
+title: "JavaFX: the Good, the Bad, and the Ugly"
+date: 2011-10-25 10:56
+comments: true
+categories:
+- JavaFX
+- User Interface
+---
+
+There's been quite a flurry of activity around [JavaFX][JFX] recently, with the [2.0 GA release for Windows][WIN], a [public beta for the Mac][MAC], and the announcement at [JavaOne][J1] that Oracle is going to [open source][OPEN] the whole shebang.
+
+
+
+
+[JFX]:  http://javafx.com/ "JavaFX"
+[WIN]:  http://oracle.com/technetwork/java/javafx/downloads
+[MAC]:  http://oracle.com/technetwork/java/javafx/downloads/javafx2-macosx-487281.html 
+[J1]:   http://oracle.com/javaone/index.html "JavaOne"
+[OPEN]: http://zdnet.co.uk/news/application-development/2011/10/06/javafx-20-arrives-and-heads-for-open-source-40094121
+

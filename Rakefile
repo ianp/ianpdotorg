@@ -328,6 +328,21 @@ task :setup_github_pages do
   puts "\n---\n## Now you can deploy to #{url} with `rake deploy` ##"
 end
 
+desc "Ping blog aggregators with the latest post"
+task :ping do
+  require "yaml"
+  require "xmlrpc/client"
+  cfg = YAML.load_file("_config.yml")
+  puts "pinging ping-o-matic..."
+  pom = XMLRPC::Client.new("rpc.pingomatic.com", "/")
+  begin
+    result = pom.call("weblogUpdates.extendedPing", "#{cfg['title']}", "#{cfg['url']}", "#{cfg['url']}#{cfg['subscribe_rss']}")
+    puts result['message']
+  rescue => e
+    puts "ping failed (#{e})."
+  end
+end
+
 def ok_failed(condition)
   if (condition)
     puts "OK"

@@ -5,6 +5,7 @@ require "stringex"
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
 ssh_user       = "jill@gq2tt5aa.joyent.us"
+ssh_port       = 22
 document_root  = "~/web/sites/ianp.org/public/"
 deploy_default = "rsync"
 

@@ -333,7 +333,7 @@ task :ping do
   require "yaml"
   require "xmlrpc/client"
   cfg = YAML.load_file("_config.yml")
-  puts "pinging ping-o-matic..."
+  puts "Pinging ping-o-matic..."
   pom = XMLRPC::Client.new("rpc.pingomatic.com", "/")
   begin
     result = pom.call("weblogUpdates.extendedPing", "#{cfg['title']}", "#{cfg['url']}", "#{cfg['url']}#{cfg['subscribe_rss']}")

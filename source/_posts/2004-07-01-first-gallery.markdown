@@ -8,7 +8,7 @@ title: First Gallery
 wordpress_id: '43'
 categories:
 - Trivia
-- photography
+- Photography
 ---
 
 I've finally got around to uploading the first gallery, from when I went

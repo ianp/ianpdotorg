@@ -8,9 +8,8 @@ title: Best. Method. Name. Ever
 wordpress_id: '437'
 categories:
 - Programming
-- Easter Eggs
-- Funny
-- iPhone
+- Humour
+- iOS
 ---
 
 In the iPhone SDK (with camel case broken out into separate words):

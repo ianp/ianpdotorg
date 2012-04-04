@@ -8,9 +8,8 @@ title: Plastic Bag Recycling
 wordpress_id: '88'
 categories:
 - Trivia
-- Cool
 ---
 
-You've got to love [this!][01] [01]:
-http://nedbatchelder.com/blog/200803/street\_bag\_animals.html "Street
-Bag Animals"
+You've got to love [this!][01]
+
+[01]: http://nedbatchelder.com/blog/200803/street_bag_animals.html

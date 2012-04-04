@@ -8,13 +8,10 @@ title: Working with Java Arrays
 wordpress_id: '473'
 categories:
 - Java
-- Lisp
 - Clojure
-- Examples
-- Interop
 ---
 
-One improvement that I'd like to see in Clojure is more examples in the doc strings (or maybe in a separate :example` metadata item). Still, nothing to stop me building up a set of my own. So, here are some simple examples of working with Java arrays in Clojure… Given some sample data:
+One improvement that I'd like to see in Clojure is more examples in the doc strings (or maybe in a separate `:example` metadata item). Still, nothing to stop me building up a set of my own. So, here are some simple examples of working with Java arrays in Clojure… Given some sample data:
 
 ```clj
 (def my-list '(1 2 3 4 5))

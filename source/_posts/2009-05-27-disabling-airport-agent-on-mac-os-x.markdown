@@ -7,9 +7,7 @@ status: publish
 title: Disabling Airport Agent on Mac OS X
 wordpress_id: '178'
 categories:
-- Technology
-- Apple
-- Mac
+- Mac OS X
 ---
 
 With OS X Leopard the airport base station utility is now started by
@@ -17,9 +15,13 @@ default and will run as a background process occasionally connecting to
 Akamai servers to check for updates. I don't use an Airport base station
 and I'd like to minimise the number of processes with open network ports
 in the interests of security I'd like to disable this 'feature', here's
-how: Open \_Airport Utility\_, it won't find any base stations
+how: Open *Airport Utility*, it won't find any base stations
 (obviously) but you can still open the preferences window, uncheck the
-following three items: \* Check for updates when opening AirPort Utility
-\* Check for updates: Weekly \* Monitor Apple wireless devices for
-problems Doing this should both shut down the Airport agent \_and\_
+following three items:
+
+* Check for updates when opening AirPort Utility
+* Check for updates: Weekly
+* Monitor Apple wireless devices for problems
+
+Doing this should both shut down the Airport agent *and*
 prevent it from automatically starting the next time you log in.

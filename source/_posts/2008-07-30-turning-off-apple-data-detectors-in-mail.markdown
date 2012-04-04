@@ -7,17 +7,17 @@ status: publish
 title: Turning Off Apple Data Detectors in Mail
 wordpress_id: '92'
 categories:
-- Trivia
 - Apple
-- Email
 ---
 
 Apparently [Michael Tsai doesn't like][1] the data detectors feature in
-Leopard. Personally I \_love\_ it. For those of you who don't know, data
+Leopard. Personally I _love_ it. For those of you who don't know, data
 detectors is a feature that adds smart links to chunks of text based on
 what it thinks the text describes. For example, one feature that I use
 all the time in Mail is the detector that turns any date or time into a
-link allowing you to add it to iCal as an event. The really neat thing
+link allowing you to add it to iCal as an event.
+
+The really neat thing
 about it is how it can scan the entire post to come up with information
 to fill in about the event -- even looking at different regions of text
 scattered throughout a mail. It's pretty neat and is exactly the type of

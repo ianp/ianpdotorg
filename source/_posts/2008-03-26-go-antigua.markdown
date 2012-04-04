@@ -8,11 +8,6 @@ title: Go Antigua!
 wordpress_id: '86'
 categories:
 - Politics
-- Copyright
-- Intellectual Property
-- MPAA
-- RIAA
 ---
 
-From the pages of Variety magazine: [Antigua threatens to allow
-piracy](http://www.variety.com/article/VR1117982630.html).
+From the pages of Variety magazine: [Antigua threatens to allow piracy](http://www.variety.com/article/VR1117982630.html).

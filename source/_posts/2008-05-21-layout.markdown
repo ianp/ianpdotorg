@@ -8,7 +8,6 @@ title: Layout
 wordpress_id: '90'
 categories:
 - Trivia
-- Meta
 ---
 
 Hmmm, I need to something about the site layout if I'm going to include

@@ -7,17 +7,11 @@ status: publish
 title: Fedora
 wordpress_id: '20'
 categories:
-- Technology
 - Business
 - Linux
 ---
 
-By coincidence I just finished reading up on the [Fedora
-Project](http://fedora.redhat.com) before I read
-[this](http://www.dynamicobjects.com/d2r "d2r: diego's weblog") post
-from Diego. As I see it Redhat are going to push the Fedora project as
-their replacement for the Professional edition (i.e. Red Hat 9). This
-probably makes sense since they can free up a lot of resources whilst
-hopefullty maintaining market visibility. If they can increase the speed
-of the release cycle for this it may even help them gain some more
-converts (and it sure does look pretty!).
+By coincidence I just finished reading up on the [Fedora Project][FP] before I read [this][D2] post from Diego. As I see it Redhat are going to push the Fedora project as their replacement for the Professional edition (i.e. Red Hat 9). This probably makes sense since they can free up a lot of resources whilst hopefullty maintaining market visibility. If they can increase the speed of the release cycle for this it may even help them gain some more converts (and it sure does look pretty!).
+
+[FP]: http://fedora.redhat.com
+[D2]: http://www.dynamicobjects.com/d2r

@@ -8,14 +8,9 @@ title: Dot Net
 wordpress_id: '7'
 categories:
 - Java
-- Technology
+- Programming
 - C#
 - Lisp
 ---
 
-I've just written my first \_.net\_ program! (Using
-[mono](http://www.go-mono.com)) It seems \_very\_ similar to Java, I'm
-going to grab a book and have a play with it some more over the next few
-days. Of source, I'm really trying to learn Lisp, but since the books I
-bought have been stranded in Vienna it seems like I may have to wait a
-few weeks for that.
+I've just written my first _.net_ program! (Using [mono](http://www.go-mono.com)) It seems _very_ similar to Java, I'm going to grab a book and have a play with it some more over the next few days. Of course, I'm really trying to learn Lisp, but since the books I bought have been stranded in Vienna it seems like I may have to wait a few weeks for that.

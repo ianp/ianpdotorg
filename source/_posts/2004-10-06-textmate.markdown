@@ -7,7 +7,7 @@ status: publish
 title: TextMate
 wordpress_id: '47'
 categories:
-- Technology
+- Programming
 - TextMate
 ---
 
@@ -21,6 +21,6 @@ features is the ability to group files together into projects, which I
 expect to be a big time saver. Another win is the fact that it's easy to
 set up custom syntax highlighting and add additional commands to the
 editor. After a couple of hours of use I had a custom syntax mode for
-C\# defined, and commands to compile and run the current file using
+C# defined, and commands to compile and run the current file using
 [Mono](http://www.go-mono.org). I'll post them here once they're a bit
 more polished.

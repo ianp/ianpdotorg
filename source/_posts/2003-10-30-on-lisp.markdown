@@ -8,31 +8,22 @@ title: On Lisp...
 wordpress_id: '16'
 categories:
 - Lisp
-- Technology
+- Programming
 - Java
 ---
 
-I've been playing a little with learning Lisp (not that I've much free
-time, but hey, what the hell). This example, taken from Dave Lamkins'
-[Successful Lisp](http://www.psg.com/\~dlamkins), more than any other
-that I've seen so far, expresses the power of the language.
+I've been playing a little with learning Lisp (not that I've much free time, but hey, what the hell). This example, taken from Dave Lamkins' [Successful Lisp][SL]), more than any other that I've seen so far, expresses the power of the language.
 
-~~~~ {lang="Lisp" line="1"}
+```common-lisp
 (defun open-bracket (stream char)
-`',(read-delimited-list #] stream t))
+  `,(read-delimited-list #] stream t))
 (set-macro-character #[#'open-bracket)
 (set-macro-character #] (get-macro-character #)))
-~~~~
+```
 
-Here's what's happening: we're redefining the syntax of the language
-dynamically! Normally, if I type \`[1 2 3]\` into a Lisp interpreter it
-will raise an error, something along the lines of \_variable \`[1\` has
-no value\_, but after running that little code snippet I can now type
-\`[1 2 3]\` and it will create a three element list populated with the
-numbers 1, 2, and 3. Here's the equivalent in a
-[Java](http://java.sun.com) like syntax.
+Here's what's happening: we're redefining the syntax of the language dynamically! Normally, if I type `[1 2 3]` into a Lisp interpreter it will raise an error, something along the lines of _variable `[1` has no value_, but after running that little code snippet I can now type `[1 2 3]` and it will create a three element list populated with the numbers 1, 2, and 3. Here's the equivalent in a Java like syntax.
 
-~~~~ {lang="Java" line="1"}
+```java
 class OpenBracket implements JavaLanguageParser {
     static List list;
     public void nextToken(RuntimeEnv env, StreamTokenizer stok) {
@@ -56,14 +47,11 @@ class CloseBracket extends JavaLanguageParser {
 }
 Lang.defineNewKeyword("[", new OpenBracket());
 Lang.defineNewKeyworkd("]", new CloseBracket());
-~~~~
+```
 
-Then writing \`List foo = [1 2 3 bar]\` would yield a new \`ArrayList\`
-populated with 3 \`Double\` objects and a string. Even with my friendly
-psuedo-code it's a lot more work, but to actually do this is impossible.
-I assume that this is what folks like [Paul
-Graham](http://www.paulgraham.com) mean when they say things like 'If
-you re writing a text-editor, you can turn Lisp into a language for
-writing text-editors. If you re writing a CAD program, you can turn Lisp
-into a language for writing CAD programs' and it strikes me as an
-amazingly powerful concept. I think I really like this language.
+Then writing `List foo = [1 2 3 bar]` would yield a new `ArrayList` populated with 3 `Double` objects and a string. Even with my friendly psuedo-code it's a lot more work, but to actually do this is impossible.
+
+I assume that this is what folks like [Paul Graham][PG] mean when they say things like 'If you re writing a text-editor, you can turn Lisp into a language for writing text-editors. If you re writing a CAD program, you can turn Lisp into a language for writing CAD programs' and it strikes me as an amazingly powerful concept. I think I really like this language.
+
+[SL]: http://www.psg.com/~dlamkins
+[PG]: http://www.paulgraham.com

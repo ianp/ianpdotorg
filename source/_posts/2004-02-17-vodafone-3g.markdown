@@ -7,7 +7,6 @@ status: publish
 title: Vodafone 3G
 wordpress_id: '31'
 categories:
-- Technology
 - Business
 - Telecoms
 ---

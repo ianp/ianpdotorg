@@ -8,7 +8,6 @@ title: Eclipse & Netbeans
 wordpress_id: '24'
 categories:
 - Java
-- Technology
 - Eclipse
 - NetBeans
 ---

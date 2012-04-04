@@ -8,7 +8,6 @@ title: Interactive Programming
 wordpress_id: '45'
 categories:
 - Lisp
-- Technology
 - Eclipse
 - Java
 ---

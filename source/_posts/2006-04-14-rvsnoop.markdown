@@ -9,19 +9,31 @@ wordpress_id: '59'
 categories:
 - Java
 - RvSnoop
-- Technology
+- Programming
 ---
 
 I've taken over pretty much all of the development of the
 [rvSnoop](http://rvsnoop.org) utility now, the first major new release
 has been put out today with a number of changes in it. Here, briefly,
-are the plans for the next few versions: \* A graphical widget to
-display messages instead of the text field. \* More import/export
-formats for messages. \* General user interface clean-up. \* Better
-documentation. I'll have more plans once I get to know the code a little
-better. \* Add a new action to delete connections. \* Add support for
-viewing serialized Java objects. \* Move the preferences to a separate
-dialog. \* Add support for editing messages before republishing. Along
+are the plans for the next few versions:
+
+* A graphical widget to display messages instead of the text field.
+
+* More import/export formats for messages.
+
+* General user interface clean-up.
+
+* Better documentation. I'll have more plans once I get to know the code a little better.
+
+* Add a new action to delete connections.
+
+* Add support for viewing serialized Java objects.
+
+* Move the preferences to a separate dialog.
+
+* Add support for editing messages before republishing.
+
+Along
 with some more code cleanup. After that I'm planning to push for a 2.0
 release which should contain a much more robust export mechanism,
 persistent record ledgers, and graphical charts. Finally, once the code

@@ -7,7 +7,6 @@ status: publish
 title: Taking Multiple Classes
 wordpress_id: '63'
 categories:
-- Technology
 - CSS
 - HTML
 ---
@@ -15,6 +14,7 @@ categories:
 Here's something that I didn't realise, but do now thanks to [this
 entry][01] on [Bite Size Standards][02]: elements in HTML can have more
 than one class assigned to them, simply provide a space separated list
-of classes in the class attribute. [01]:
-http://bitesizestandards.com/bites/create-complex-borders-with-multiple-classes
+of classes in the class attribute.
+
+[01]: http://bitesizestandards.com/bites/create-complex-borders-with-multiple-classes
 [02]: http://bitesizestandards.com/

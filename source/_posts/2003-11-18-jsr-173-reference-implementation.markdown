@@ -8,16 +8,13 @@ title: JSR-173 Reference Implementation
 wordpress_id: '21'
 categories:
 - Java
-- Technology
+- Programming
 - XML
 ---
 
-I've been looking at the new streaming API for XML
-([JSR-173](http;//www.jcp.org/en/jsr/detail?id=173)), I've been
-generally impressed but have found a bug in the reference
-implementation, here's the details, using this test program:
+I've been looking at the new streaming API for XML ([JSR-173][JSR]), I've been generally impressed but have found a bug in the reference implementation, here's the details, using this test program:
 
-~~~~ {lang="Java" line="1"}
+```java
 import java.io.*;
 import javax.xml.stream.*;
 public class StaxWriterTest {
@@ -67,12 +64,11 @@ public class StaxWriterTest {
         }
     }
 }
-~~~~
+```
 
-This is using version 7 of the reference implementation, by the way. The
-program should produce this output:
+This is using version 7 of the reference implementation, by the way. The program should produce this output:
 
-~~~~ {lang="XML" line="1"}
+```xml
 <?xml version='1.0' encoding='utf-8'?>
 <a:root xmlns:a="http://ianp.org/nsURI">
     <a:levelOne a:foo="foo"/>
@@ -82,11 +78,11 @@ program should produce this output:
     </a:levelOne>
     <a:levelOne/></a:levelOne>
 </a:root>
-~~~~
+```
 
 But actually produces this:
 
-~~~~ {lang="XML" line="1"}
+```xml
 <?xml version='1.0' encoding='utf-8'?>
 <a:root xmlns:a="http://ianp.org/nsURI">
     <a:levelOne a:foo="foo"/>
@@ -96,7 +92,8 @@ But actually produces this:
     </a:levelOne>
     <a:levelOne/></a:levelOne>
 </a:root>
-~~~~
+```
 
-Line 5 is generated as an empty element instead of a start element. I've
-pointed this out the to JCP committee, we'll see if they repsond.
+Line 5 is generated as an empty element instead of a start element. I've pointed this out the to JCP committee, we'll see if they repsond.
+
+[JSR]: http;//www.jcp.org/en/jsr/detail?id=173

@@ -9,21 +9,27 @@ wordpress_id: '77'
 categories:
 - Java
 - RvSnoop
-- Technology
 ---
 
 A new development build of [RvSnoop][RVS] is available for
 [downloading][DL]. This release contains all of the features that will
 be in the finished 1.6 release, due out sometime next week. Changes from
-the last development build include: \* Added support for republishing on
-different connections. \* Added column to ledger to display wire size of
-messages. \* Fixed bug that caused republished messages to be filtered
-incorrectly from the subject hierarchy. \* Fixed bug with ledger
-renderer which caused striping to break when columns were added/removed
-from the view. \* Minor code clean-ups and removal of a couple of unused
-methods. \* Updated the FAQs page with correct details of timestamp
-formatting in ledger (this hasn't been pushed out to the public site
-yet). The only things left to do now (assuming no new bugs are found)
-are some additional testing and documentation updates. [RVS]:
-http://rvsnoop.org/ [DL]:
-http://downloads.sourceforge.net/rvsn00p/rvsnoop-356-bin.tgz
+the last development build include:
+
+* Added support for republishing on different connections.
+
+* Added column to ledger to display wire size of messages.
+
+* Fixed bug that caused republished messages to be filtered incorrectly from the subject hierarchy.
+
+* Fixed bug with ledger renderer which caused striping to break when columns were added/removed from the view.
+
+* Minor code clean-ups and removal of a couple of unused methods.
+
+* Updated the FAQs page with correct details of timestamp formatting in ledger (this hasn't been pushed out to the public site yet).
+
+The only things left to do now (assuming no new bugs are found)
+are some additional testing and documentation updates.
+
+[RVS]: http://rvsnoop.org/
+[DL]: http://downloads.sourceforge.net/rvsn00p/rvsnoop-356-bin.tgz

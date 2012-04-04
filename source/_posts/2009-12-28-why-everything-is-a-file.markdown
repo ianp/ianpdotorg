@@ -7,7 +7,7 @@ status: publish
 title: Why Everything is a File
 wordpress_id: '469'
 categories:
-- Technology
+- Programming
 - File Systems
 - Operating Systems
 - Unix
@@ -24,8 +24,10 @@ system. I was writing the shell to drive the file system. And then I was
 writing a couple other programs that drove the file system. And right
 about there I said, “All I need is an editor and I’ve got an operating
 system.” So Unix started life as a glorified test harness for Ken’s file
-system! Amusing… [01]: http://en.wikipedia.org/wiki/Unix\_architecture
-[02]: http://en.wikipedia.org/wiki/Linux [03]:
-http://plan9.bell-labs.com/plan9/ [04]:
-http://en.wikipedia.org/wiki/Ken\_Thompson [05]:
-http://www.codersatwork.com/
+system! Amusing…
+
+[01]: http://en.wikipedia.org/wiki/Unix_architecture
+[02]: http://en.wikipedia.org/wiki/Linux
+[03]: http://plan9.bell-labs.com/plan9/
+[04]: http://en.wikipedia.org/wiki/Ken_Thompson
+[05]: http://www.codersatwork.com/

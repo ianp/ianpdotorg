@@ -8,16 +8,18 @@ title: 1060 Comes of Age
 wordpress_id: '73'
 categories:
 - Java
-- Technology
+- Programming
 - NetKernel
-- TIBCO
+- Tibco
 ---
 
 A new version of [1060 NetKernel][NK] was released today, version 3.1. I
 had a brief play around with the previous release but never really had
 the time to dig into it too deeply. It always looked pretty neat though,
-a possible good solution to base adapter (in the TIBCO sense) style
+a possible good solution to base adapter (in the Tibco sense) style
 components on. One of the [advertised][ADV] features of the new release
 is a newly written 'Getting Started Guide', so this may be a good
-opportunity to have another look. [NK]: http://www.1060.org/ [ADV]:
-http://www.1060.org/blogxter/entry?publicid=50D78082263C424820791B1886C6C971
+opportunity to have another look.
+
+[NK]: http://www.1060.org/
+[ADV]: http://www.1060.org/blogxter/entry?publicid=50D78082263C424820791B1886C6C971

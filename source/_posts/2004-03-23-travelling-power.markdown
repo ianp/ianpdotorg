@@ -7,7 +7,6 @@ status: publish
 title: Travelling Power
 wordpress_id: '35'
 categories:
-- Technology
 - Trivia
 - Travel
 ---

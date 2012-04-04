@@ -31,11 +31,13 @@ down to about half it's current length; \* finally, [Rebecca Wirfs-Brock
 talks about][6] the benefits of, and problems of conducting,
 architectural reviews. I've listened to some of this before as Rebecca
 did an [interview][7] with [SE Radio][8] a while back, but this is good
-for people who haven't heard her talk before. [1]: http://www.infoq.com/
+for people who haven't heard her talk before.
+
+[1]: http://www.infoq.com/
 [2]: http://www.infoq.com/news/2008/07/Developing-Expertise-Dave-Thomas
 [3]: http://www.infoq.com/news/2008/07/presentation-botch-scalability
-[4]: http://www.infoq.com/articles/ddd-evolving-architecture [5]:
-http://guardian.co.uk/ [6]:
-http://www.infoq.com/news/2008/07/Architecture-Reviews-Brock [7]:
-http://www.se-radio.net/podcast/2008-04/episode-93-lessons-learned-architecture-reviews-rebecca-wirfsbrock
+[4]: http://www.infoq.com/articles/ddd-evolving-architecture
+[5]: http://guardian.co.uk/
+[6]: http://www.infoq.com/news/2008/07/Architecture-Reviews-Brock
+[7]: http://www.se-radio.net/podcast/2008-04/episode-93-lessons-learned-architecture-reviews-rebecca-wirfsbrock
 [8]: http://se-radio.net/

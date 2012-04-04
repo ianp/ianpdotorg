@@ -7,7 +7,6 @@ status: publish
 title: Why I Do Not Like Skype
 wordpress_id: '71'
 categories:
-- Trivia
 - Skype
 ---
 
@@ -17,4 +16,6 @@ office (just one more reason why open plan offices suck arse). At least
 in the past it was just a few ignorant tossers who did this, but now
 with [Skype][SK] a whole bunch of otherwise considerate people seem to
 think it's fine to yammer away at high volume while sat at their PCs.
-Bastards. [SK]: http://www.skype.com/
+Bastards.
+
+[SK]: http://www.skype.com/

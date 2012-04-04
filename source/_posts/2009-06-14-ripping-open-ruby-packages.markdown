@@ -21,8 +21,9 @@ a number of different packaging systems (see, e.g. [this discussion][03]
 by Ian Bicking), and it's just a mess---this stands out all the more as
 Python normally follows a 'one way to do it' approach. Hopefully this
 attempt to fork the Ruby packaging world will be dead on arrival. Tip o'
-the hat to [Ryan Tomayko][04] for pointing this out. [01]:
-http://www.rubyinside.com/rip-ruby-packaging-system-1837.html [02]:
-http://rubygems.org/ [03]:
-http://blog.ianbicking.org/packaging-python.html [04]:
-http://tomayko.com/
+the hat to [Ryan Tomayko][04] for pointing this out.
+
+[01]: http://www.rubyinside.com/rip-ruby-packaging-system-1837.html
+[02]: http://rubygems.org/
+[03]: http://blog.ianbicking.org/packaging-python.html
+[04]: http://tomayko.com/

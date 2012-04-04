@@ -8,8 +8,7 @@ title: Computer Language Evolution
 wordpress_id: '5'
 categories:
 - Lisp
-- Technology
-- Computer Languages
+- Programming
 ---
 
 There's a fascinating [article](http://www.paulgraham.com/hundred.html

@@ -14,9 +14,12 @@ categories:
 - Privacy
 ---
 
-[Mark Pilgrim](http://www.diveintomark.org "Dive into Mark") writes: \>
-In short, the only way to use [Gmail](http://gmail.google.com) is the
-way \> that the Gmail designers use Gmail. The only way Gmail could be
-less \> accessible is if the entire site were built in Flash. So with
-this and the associated privacy concerns, it looks like this could turn
-into a bit of a turkey. \*Update:\* Boy, was I wrong on this!
+[Mark Pilgrim](http://www.diveintomark.org "Dive into Mark") writes:
+
+> In short, the only way to use [Gmail](http://gmail.google.com) is the way
+> that the Gmail designers use Gmail. The only way Gmail could be less
+> accessible is if the entire site were built in Flash.
+
+So with this and the associated privacy concerns, it looks like this could turn into a bit of a turkey.
+
+*Update:* Boy, was I wrong on this!

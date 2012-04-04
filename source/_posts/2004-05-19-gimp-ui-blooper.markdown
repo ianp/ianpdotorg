@@ -7,7 +7,6 @@ status: publish
 title: Gimp UI Blooper
 wordpress_id: '40'
 categories:
-- Technology
 - Gimp
 - User Experience
 ---

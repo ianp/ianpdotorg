@@ -9,7 +9,6 @@ wordpress_id: '79'
 categories:
 - Java
 - RvSnoop
-- Technology
 - OSGi
 - TIBCO
 ---
@@ -46,10 +45,13 @@ entirely from plug-ins wrapped around a small core. So, the upshot of
 this is that I'm planning on migrating to a managed runtime, probably
 [OSGi][OSGI], for the 2.0 release. I'll talk about this more in another
 post. In particular, what's the cost/benefit ratio of using this type of
-runtime; and which runtimes are good? [RS]: http://rvsnoop.org/ [ES]:
-http://emssnoop.org/ [DL]:
-http://downloads.sourceforge.net/rvsn00p/rvsnoop-1.6.1-bin.tgz [PF]:
-http://svn.sourceforge.net/viewvc/\*checkout\*/rvsn00p/trunk/rvsn00p/doc/plans.txt
-[SVN]: http://sourceforge.net/svn/?group\_id=63447 [OSGI]:
-http://www.osgi.org/ [ECL]: http://www.eclipse.org/ [LUC]:
-http://lucene.apache.org/java/
+runtime; and which runtimes are good?
+
+[RS]: http://rvsnoop.org/
+[ES]: http://emssnoop.org/
+[DL]: http://downloads.sourceforge.net/rvsn00p/rvsnoop-1.6.1-bin.tgz
+[PF]: http://svn.sourceforge.net/viewvc/\*checkout\*/rvsn00p/trunk/rvsn00p/doc/plans.txt
+[SVN]: http://sourceforge.net/svn/?group\_id=63447
+[OSGI]: http://www.osgi.org/
+[ECL]: http://www.eclipse.org/
+[LUC]: http://lucene.apache.org/java/

@@ -8,7 +8,7 @@ title: Prevalent Synchronicity
 wordpress_id: '486'
 categories:
 - Lisp
-- Technology
+- Programming
 - Clojure
 - Databases
 - Prevalent Systems

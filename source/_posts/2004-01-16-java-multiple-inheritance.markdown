@@ -8,7 +8,7 @@ title: Java Multiple Inheritance
 wordpress_id: '27'
 categories:
 - Java
-- Technology
+- Programming
 ---
 
 Can somebody answer this question for me please: why does this code not

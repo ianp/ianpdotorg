@@ -12,6 +12,5 @@ categories:
 ---
 
 The individual entry archives seem to be screwed at the moment, since
-I'm planning to move over to using [Word
-Press](http://www.wordpress.org) in a couple of days I'm not going to
+I'm planning to move over to using [Word Press](http://www.wordpress.org) in a couple of days I'm not going to
 waste time trying to fix them right now.

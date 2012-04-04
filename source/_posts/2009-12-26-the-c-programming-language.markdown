@@ -7,10 +7,7 @@ status: publish
 title: The C Programming Language
 wordpress_id: '467'
 categories:
-- Technology
-- Trivia
-- C
-- Cthulhu
+- Programming
 - Humour
 ---
 

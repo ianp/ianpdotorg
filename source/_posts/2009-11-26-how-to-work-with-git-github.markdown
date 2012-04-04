@@ -7,7 +7,7 @@ status: publish
 title: How to Work with Git & GitHub
 wordpress_id: '451'
 categories:
-- Technology
+- Programming
 - Git
 - GitHub
 - Mac OS X
@@ -35,8 +35,11 @@ so others can see what I'm working on \`git push origin feature\_name\`.
 If the work is in a fork then you’ll also want to send a pull-request
 back to the original project with \`github pull-request project\_owner
 feature\_name\`. All from the command line, neat huh? For more tricks,
-you can also browse issues with \`github issues {open|closed}\`. [01]:
-http://groups.google.com/group/leiningen/browse\_thread/thread/c4688dfa32557edd?hl=en
-[02]: http://groups.google.com/group/leiningen/ [03]:
-http://git-scm.com/ [04]: http://github.com/ [05]: http://macports.org/
+you can also browse issues with \`github issues {open|closed}\`.
+
+[01]: http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en
+[02]: http://groups.google.com/group/leiningen/
+[03]: http://git-scm.com/
+[04]: http://github.com/
+[05]: http://macports.org/
 [06]: http://github.com/account

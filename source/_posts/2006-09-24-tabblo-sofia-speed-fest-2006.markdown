@@ -11,8 +11,7 @@ categories:
 - Photography
 ---
 
-Not the greatest day out, but we had beers and played dodgems when we
-got back to town, so it ended well. See [some photo's from the day][DAY]
-over at [Tabblo][TBL]. [DAY]:
-http://www.tabblo.com/studio/stories/shared/6231/fq5pdzue07cngby [TBL]:
-http://www.tabblo.com/
+Not the greatest day out, but we had beers and played dodgems when we got back to town, so it ended well. See [some photo's from the day][DAY] over at [Tabblo][TBL].
+
+[DAY]: http://www.tabblo.com/studio/stories/shared/6231/fq5pdzue07cngby
+[TBL]: http://www.tabblo.com/

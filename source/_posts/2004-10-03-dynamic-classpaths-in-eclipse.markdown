@@ -8,9 +8,8 @@ title: Dynamic Classpaths in Eclipse
 wordpress_id: '46'
 categories:
 - Java
-- Technology
+- Programming
 - Eclipse
-- Java
 ---
 
 In Eclipse your plug-ins normally have their classpath’s based upon
@@ -19,7 +18,7 @@ that will need to reference external libraries to avoid onerous
 licensing requirements. Here's the somewhat convoluted code required to
 do this:
 
-~~~~ {lang="Java" line="1"}
+```java
 Context getContext() {
     if (context != null) { return context; }
     final Properties props = new Properties();
@@ -56,16 +55,16 @@ Context getContext() {
     }
     return context;
 }
-~~~~
+```
 
-The relevant code is in the first \`try... catch\` block. Then I can
+The relevant code is in the first `try... catch` block. Then I can
 have this plug-in rely on a second plug in which includes the JMS
 interfaces only, and have a preference page which allows the user to
 select a third party JMS provider by URL. At the moment it won't handle
 JMS providers that reply on native methods, but that could be fixed the
-same way if needed. The \`Debug.error(...)\` is just a utility class to
-log an Eclipse \`IStatus.ERROR\` message. As an added benefit of this
+same way if needed. The `Debug.error(...)` is just a utility class to
+log an Eclipse `IStatus.ERROR` message. As an added benefit of this
 approach, because I use the latest API version in my JMS plugin, I can
 check for a JMS version at runtime using the metadata returned by
-\`Connection.getMetaData()\` and then only call JMS 1.1 supplied methods
+`Connection.getMetaData()` and then only call JMS 1.1 supplied methods
 when they are available.

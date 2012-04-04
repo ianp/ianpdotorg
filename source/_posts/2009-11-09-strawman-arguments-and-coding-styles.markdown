@@ -9,7 +9,7 @@ wordpress_id: '443'
 categories:
 - Java
 - Lisp
-- Technology
+- Programming
 - Clojure
 ---
 

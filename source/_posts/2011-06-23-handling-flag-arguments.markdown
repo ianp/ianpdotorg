@@ -8,7 +8,7 @@ title: Handling Flag Arguments
 wordpress_id: '506'
 categories:
  - Java
- - Technology
+ - Programming
  - API Design
  - Programming
 ---

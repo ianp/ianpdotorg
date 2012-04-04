@@ -7,7 +7,6 @@ status: publish
 title: Sourceforge Annoyances
 wordpress_id: '91'
 categories:
-- Technology
 - Trivia
 - Sourceforge
 ---
@@ -16,5 +15,6 @@ categories:
 corporate IT departments can behave like petit-Hilters with their
 ridiculous password policies, but now SF has started to do the same. For
 fuck's sake, just let me pick a password and keep it, it's not like the
-world is going to end if somebody gets my SF login details. [1]:
-http://www.sourceforge.net/
+world is going to end if somebody gets my SF login details.
+
+[1]: http://www.sourceforge.net/

@@ -7,7 +7,6 @@ status: publish
 title: Turning Off Apple Data Detectors in Mail
 wordpress_id: '92'
 categories:
-- Technology
 - Trivia
 - Apple
 - Email
@@ -25,7 +24,8 @@ scattered throughout a mail. It's pretty neat and is exactly the type of
 thing that [Wil Shipley][2] is talking about [here][3] when he mentions
 adding features to your apps that constantly surprise users in a good
 way (I've seen designers from BMW talk about the same thing in the
-context of styling their car interiors). [1]:
-http://mjtsai.com/blog/2008/07/29/turning-off-apple-data-detectors-in-mail/
-[2]: http://wilshipley.com/ [3]:
-http://www.viddler.com/explore/rentzsch/videos/4/
+context of styling their car interiors).
+
+[1]: http://mjtsai.com/blog/2008/07/29/turning-off-apple-data-detectors-in-mail/
+[2]: http://wilshipley.com/
+[3]: http://www.viddler.com/explore/rentzsch/videos/4/

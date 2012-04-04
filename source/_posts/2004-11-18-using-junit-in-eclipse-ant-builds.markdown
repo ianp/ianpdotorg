@@ -8,7 +8,7 @@ title: Using JUnit in Eclipse Ant Builds
 wordpress_id: '49'
 categories:
 - Java
-- Technology
+- Programming
 - Ant
 - Eclipse
 - JUnit

@@ -9,19 +9,18 @@ wordpress_id: '60'
 categories:
 - Java
 - RvSnoop
-- Technology
+- Programming
 - User Experience
 ---
 
-I've noticed a neat feature in [Path
-Finder](http://www.cocoatech.com/pf4/) where it changes the date format
+I've noticed a neat feature in [Path Finder](http://www.cocoatech.com/pf4/) where it changes the date format
 used to display time stamps in the main table based on the width of the
 column. In [RvSnoop](http://rvsnoop.org) I was allowing the user to set
 a preferred format as a configuration option, but this seems much
 better. It turns out that this is pretty easy to achieve in Java, just
 use the following class:
 
-~~~~ {lang="Java"}
+```java
 public class DateCellRenderer extends DefaultTableCellRenderer {
     // Or load these from a user preference...
     private static final DateFormat[] dateFormats = {
@@ -63,9 +62,8 @@ public class DateCellRenderer extends DefaultTableCellRenderer {
         return currentFormat;
     }
 }
-~~~~
+```
 
-You will need to register it with your \`JTable\` via
-\`myTable.getColumnModel().getColumn(0).setCellRenderer(myRenderer);\`
+You will need to register it with your `JTable` via `myTable.getColumnModel().getColumn(0).setCellRenderer(myRenderer);`
 and away you go. You can have more or less format options by altering
 the static array in the class.

@@ -7,7 +7,6 @@ status: publish
 title: Writing Smart Code
 wordpress_id: '502'
 categories:
-- Technology
 - Programming
 ---
 

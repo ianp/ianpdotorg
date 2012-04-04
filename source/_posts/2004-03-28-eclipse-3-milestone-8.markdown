@@ -8,7 +8,6 @@ title: Eclipse 3 Milestone 8
 wordpress_id: '37'
 categories:
 - Java
-- Technology
 - Eclipse
 - User Experience
 ---

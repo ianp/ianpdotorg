@@ -9,10 +9,10 @@ wordpress_id: '82'
 categories:
 - Lisp
 - Python
-- Technology
 ---
 
 According to [this article][ART] by [Ned Batcheleder][NB] python does
-destructuring bind by default. Well, I did not know that. [ART]:
-http://www.nedbatchelder.com/blog/200701.html\#e20070110T070106 [NB]:
-http://www.nedbatchelder.com/blog
+destructuring bind by default. Well, I did not know that.
+
+[ART]: http://www.nedbatchelder.com/blog/200701.html#e20070110T070106
+[NB]: http://www.nedbatchelder.com/blog

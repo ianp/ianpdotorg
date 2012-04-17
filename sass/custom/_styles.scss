@@ -1,2 +1,23 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+.tabular {
+    line-height: 1.6em;
+    margin: 1em auto;
+	padding: 0.5em;
+	border-collapse: collapse;
+	text-align: left;
+}
+.tabular thead tr th {
+	font-size: 110%;
+	font-weight: bold;
+	padding: 0.3em;
+	border-bottom: 2px solid $base0;
+}
+.tabular tbody tr td {
+	padding: 0.3em;
+}
+.tabular tbody tr:hover td {
+	color: $base0;
+}
+

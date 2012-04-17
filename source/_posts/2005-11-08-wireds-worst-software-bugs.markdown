@@ -7,9 +7,7 @@ status: publish
 title: Wired's Worst Software Bugs
 wordpress_id: '54'
 categories:
-- Programming
-- Bugs
-- Funny
+- Humour
 ---
 
 Ironically enough, following [this link](http://www.wired.com/news/technology/bugs/0,2924,69355,00.html) to

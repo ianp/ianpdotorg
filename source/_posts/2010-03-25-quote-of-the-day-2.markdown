@@ -8,7 +8,7 @@ title: Quote of the Day
 wordpress_id: '497'
 categories:
 - Ant
-- Funny
+- Humour
 - Maven
 ---
 

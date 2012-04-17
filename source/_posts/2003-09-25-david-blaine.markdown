@@ -7,9 +7,7 @@ status: publish
 title: David Blaine
 wordpress_id: '11'
 categories:
-- Trivia
-- Funny
-- News
+- Humour
 ---
 
 I used to read Tom Coates' weblog regularly, and came back to it after a break today. [This post][1] pretty much sums up my thoughts about David Blaine, and is very funny at the same time. My favourite quote?

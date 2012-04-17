@@ -126,6 +126,9 @@ For most text the simplest solution is to use a regular expression here. If your
 
 **Update:** all of the code here, plus a `main` function to call it, is available as a [gist][GG].
 
+**Update:** I talk a little more about normalization and linguistic tagging in [this post][TP].
+
 [DT]: http://iphonedevelopertips.com/data-file-management/count-the-number-of-words-in-an-string.html
 [GG]: https://gist.github.com/2401251
+[TP]: /2012/04/17/what-is-text-normalization
 

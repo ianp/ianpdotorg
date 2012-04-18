@@ -7,8 +7,7 @@ status: publish
 title: Quote of the Day - Great Things
 wordpress_id: '508'
 categories:
-- Trivia
-- Quotes
+- Humour
 ---
 
 {% blockquote Leonard Bernstein %}

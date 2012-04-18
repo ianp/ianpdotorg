@@ -8,7 +8,6 @@ title: Vibration Function
 wordpress_id: '425'
 categories:
 - Games
-- Adult
 - Humour
 ---
 

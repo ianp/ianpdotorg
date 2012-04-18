@@ -7,9 +7,7 @@ status: publish
 title: Vote Now!
 wordpress_id: '493'
 categories:
-- Trivia
-- Barbie
-- Vote
+- Humour
 ---
 
 Fed up with all of the pre-election coverage in the (UK) media right now? Instead of listening to call-me-Dave drone on and on, or hearing how the one-eyed Gobblin’ King has once again saved the world, go cast your [vote][01] for Computer Engineer Barbie!

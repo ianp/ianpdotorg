@@ -7,8 +7,7 @@ status: publish
 title: Play Pumps
 wordpress_id: '61'
 categories:
-- Trivia
-- 3rd World
+- Politics
 ---
 
 This is a really cool idea (and not at all what you'd expect to find on

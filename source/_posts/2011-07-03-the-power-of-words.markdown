@@ -7,8 +7,6 @@ status: publish
 title: The Power of Words
 wordpress_id: '510'
 categories:
-- Trivia
-- Advertising
 ---
 
 Excellent… [The Power of Words][01].

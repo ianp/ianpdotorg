@@ -8,7 +8,6 @@ title: Rebooted
 wordpress_id: '84'
 categories:
 - Trivia
-- Life
 ---
 
 I've been away for a while, and now I'm back. In other news, I've moved

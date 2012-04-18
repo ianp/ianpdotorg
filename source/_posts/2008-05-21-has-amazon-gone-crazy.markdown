@@ -7,7 +7,6 @@ status: publish
 title: Has Amazon Gone Crazy?
 wordpress_id: '89'
 categories:
-- Trivia
 - Amazon
 ---
 

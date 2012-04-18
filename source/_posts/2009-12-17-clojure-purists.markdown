@@ -8,10 +8,7 @@ title: Clojure Purists?
 wordpress_id: '463'
 categories:
 - Java
-- Lisp
 - Clojure
-- Concurrency
-- Performance
 ---
 
 I’ve been following [Tim Bray][05]’s excellent [Concur.next][01] article series covering approaches to concurrency in various languages, and currently (no pun intended!) covering Clojure. The [latest article][02] talks about a super efficient log parsing [implementation][03] done by [Alex Osborne][04] an includes the following comment:

@@ -7,7 +7,6 @@ status: publish
 title: Tiny Danish Elves
 wordpress_id: '18'
 categories:
-- Trivia
 - Flash
 - Lego
 ---

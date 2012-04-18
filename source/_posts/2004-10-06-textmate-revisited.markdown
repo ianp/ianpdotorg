@@ -8,7 +8,7 @@ title: TextMate Revisited
 wordpress_id: '48'
 categories:
 - Programming
-- TextMate
+- Writing
 ---
 
 After a bit more usage, some pros and cons of

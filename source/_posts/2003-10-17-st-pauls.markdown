@@ -8,7 +8,6 @@ title: St. Pauls
 wordpress_id: '14'
 categories:
 - London
-- Travel
 ---
 
 I was walking past St. Pauls cathedral yesterday and it is currently wrapped in scaffolding. Rather than leave this in plain view, some bright spark has come up with the idea of wrapping a big sheet of cloth around it with a _pencil sketch of the cathedral_ on it. How gypped would you feel if you'd just trekked half way across London just for that!

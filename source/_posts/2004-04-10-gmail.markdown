@@ -7,10 +7,7 @@ status: publish
 title: Gmail
 wordpress_id: '38'
 categories:
-- Technology
-- Trivia
 - Google
-- Mail
 - Privacy
 ---
 

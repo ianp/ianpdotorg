@@ -8,7 +8,6 @@ title: Strawman Arguments and Coding Styles
 wordpress_id: '443'
 categories:
 - Java
-- Programming
 - Clojure
 ---
 

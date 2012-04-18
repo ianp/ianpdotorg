@@ -8,8 +8,6 @@ title: Configuration via XML or code?
 wordpress_id: '62'
 categories:
 - Java
-- Programming
-- Frameworks
 - XML
 ---
 

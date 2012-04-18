@@ -7,7 +7,6 @@ status: publish
 title: Best. Method. Name. Ever
 wordpress_id: '437'
 categories:
-- Programming
 - Humour
 - iOS
 ---

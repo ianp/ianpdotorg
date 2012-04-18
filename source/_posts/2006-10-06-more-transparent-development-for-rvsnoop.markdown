@@ -9,7 +9,6 @@ wordpress_id: '70'
 categories:
 - Java
 - RvSnoop
-- Programming
 - TIBCO
 ---
 

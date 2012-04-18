@@ -8,10 +8,8 @@ title: Prevalent Synchronicity
 wordpress_id: '486'
 categories:
 - Lisp
-- Programming
 - Clojure
 - Databases
-- Prevalent Systems
 ---
 
 Maybe it’s just an idea whose time has come, but in the past few days there’ve been 2 prevalent database systems announced for [Clojure][01]: [FleetDB][02] and [Persister][03].

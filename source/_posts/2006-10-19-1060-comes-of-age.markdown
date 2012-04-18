@@ -8,8 +8,6 @@ title: 1060 Comes of Age
 wordpress_id: '73'
 categories:
 - Java
-- Programming
-- NetKernel
 - Tibco
 ---
 

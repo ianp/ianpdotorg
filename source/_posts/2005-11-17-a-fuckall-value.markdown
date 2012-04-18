@@ -8,7 +8,6 @@ title: A $FuckAll value.
 wordpress_id: '57'
 categories:
 - Trivia
-- Marketing
 ---
 
 I've noticed this trend in several marketing pushes, to state a value

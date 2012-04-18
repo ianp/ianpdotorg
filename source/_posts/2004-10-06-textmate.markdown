@@ -8,7 +8,7 @@ title: TextMate
 wordpress_id: '47'
 categories:
 - Programming
-- TextMate
+- Writing
 ---
 
 I've been looking for a good text editor for the Mac for a few weeks

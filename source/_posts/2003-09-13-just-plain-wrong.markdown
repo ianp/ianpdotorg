@@ -7,7 +7,6 @@ status: publish
 title: Just Plain Wrong
 wordpress_id: '6'
 categories:
-- Bugs
 - Programming
 ---
 

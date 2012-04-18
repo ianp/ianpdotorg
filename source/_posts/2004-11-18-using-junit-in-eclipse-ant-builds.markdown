@@ -7,12 +7,9 @@ status: publish
 title: Using JUnit in Eclipse Ant Builds
 wordpress_id: '49'
 categories:
-- Java
-- Programming
 - Ant
 - Eclipse
 - JUnit
-- Project Automation
 ---
 
 Just a quick note so that it gets into the

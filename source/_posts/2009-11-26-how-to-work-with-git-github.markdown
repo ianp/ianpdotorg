@@ -7,7 +7,6 @@ status: publish
 title: How to Work with Git & GitHub
 wordpress_id: '451'
 categories:
-- Programming
 - Git
 - Mac OS X
 ---

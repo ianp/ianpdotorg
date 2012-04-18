@@ -4,10 +4,8 @@ title: "Developing for the BlackBerry"
 date: 2012-03-29 15:12
 comments: true
 categories: 
+- Programming
 - Mobile
-- BlackBerry
-- Appcelerator
-- PhoneGap
 ---
 
 For a change from the day job I've been doing some mobile development, all iOS up to now, and I've got to say it's a pretty nice development experience - especially with the new features (e.g. ARC, new literals) that are being added to Objective-C. But then earlier this week I was asked to look into writing a BlackBerry app at work, so that led me to looking into the different options that are available for that platform, here's what I looked into:

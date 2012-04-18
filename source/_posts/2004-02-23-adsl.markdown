@@ -8,7 +8,6 @@ title: ADSL
 wordpress_id: '33'
 categories:
 - Trivia
-- Life
 ---
 
 Welcome to the 21st century! Got my 1 meg. ADSL connection up and

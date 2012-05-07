@@ -105,10 +105,13 @@ Let's take a look at each scheme and what it gives us in this example.
 
 For a simple word count it seems that the regular expression wins out, but the linguistic tagger provides some interesting additional information. One downside to the tagger is that it doesn't seem to be extensible in any way, so you're limited to those schemes and tags that Apple ship with the OS. There is no way to, for example, use this mechanism to tag keywords and operators in a code editor, which may be useful.
 
+The code used for this post can be found in [this gist][GG].
+
 [PP]: /2012/04/16/how-many-words-make-a-string
 [W1]: https://en.wikipedia.org/wiki/Text_normalization
 [UN]: http://www.unicode.org/reports/tr15/
 [BP]: http://tools.ietf.org/html/bcp47
 [MC]: http://www.mudcat.org/@displaysong.cfm?SongID=1242
 [SP]: http://daringfireball.net/projects/smartypants/
+[GG]: https://gist.github.com/2413356
 

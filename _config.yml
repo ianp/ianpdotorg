@@ -94,7 +94,10 @@ disqus_short_name: ianpdotorg
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id: UA-266232-3
+# google_analytics_tracking_id: UA-266232-3
+
+# Guages
+guages_tracking_id: 4fa7e376613f5d2014000195
 
 # Facebook Like
 facebook_like: true

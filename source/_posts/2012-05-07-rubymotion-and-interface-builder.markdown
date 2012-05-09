@@ -53,6 +53,8 @@ do
 done
 ```
 
+**Update:** as of RubyMotion 1.3 this happens automatically, no need to compile your nibs by hand and more!
+
 ## Connecting up the Code
 
 The first thing we need to do is make sure our app delegate loads the interface from the nib that we've created, and we set our `@window` ivar from the loaded nib.

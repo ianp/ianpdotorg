@@ -12,7 +12,9 @@ categories:
 
 So, all of the cool kids have been talking about [Laurent Sansonetti][LS]'s next project: [RubyMotion][RM], a port of MacRuby targeted at iOS. On the whole I'm pretty impressed with what you can already do with it. One of the issues that people having been mentioning though, is that you lose the ability to use Interface Builder with it, but this isn't actually true!
 
-Here I'm going to show you how to work with Interface Builder, I'll base the project off the one used in the Pragmatic Programmers [screencast][PP] (the icon and background images come from there as well, by the way).
+Here I'm going to show you how to work with Interface Builder, I'll base the project off the one used in the Pragmatic Studio [screencast][PP] (the icon and background images come from there as well, by the way).
+
+**Update:** the images don't dome from there any more! The images used in the screencast are from iStockPhoto, so I've replaced the background image with a different one. Needless to say this doesn;t affect any of the code.
 
 All of the code for this project can be found on [GitHub][GH]. 
 
@@ -37,14 +39,14 @@ The next thing to do is create the UI using interface builder.
 
 Open Xcode and hit *⌘-N* to create a new file, select the *Empty* template and save the file into the folder you just created. Now add a `View Controller` from the object library and set the custom class to `MagicViewController`; you can't edit this field directly but you *can* paste into it, so select the class name from `app/magic_view_controller.rb`. 
 
-There is a small issue with interface builder in that you can't add subviews to `UIImageViews`, which is a pain in the ass. A simple workaround is described in [this][SO] Stack Overflow question, and that's what we'll do here. So, add a `UIView` to the view controller and set it's custom class to be `UIImageView` (which should be available in the pick-list). You can't set the image here, that will need to be done in code.
+The next step is to add the view to it's controller, normally this would just mean dragging a `UIImageView` on top of the controller but that won't work here. There is a problem with interface builder in that you can't add subviews to `UIImageView`s, which is a pain in the ass. A simple workaround is described in [this][SO] Stack Overflow question, and that's what we'll do here. So, add a `UIView` to the view controller and set it's custom class to be `UIImageView` (which should be available in the pick-list). You can't set the image here, that will need to be done in code.
 
 Finally add the label and configure it as desired. Save your changes and close XCode.
 
 You can compile this into a `.nib` using `ibtool`, this script will compile all of the interfaces in your project (just one in this case):
 
 ```sh
-for i in interfaces/*.xix
+for i in interfaces/*.xib
 do
   echo "compiling `basename $i`..."
   ibtool --compile resources/`basename -s .xib $i`.nib $i
@@ -98,6 +100,8 @@ Finally, set up the gesture recognizer. This is one place that Ruby shines, it's
 It's a good idea to add `resources/*.nib` to the `.gitignore` file as compiled resources don;t need to be committed to Git. I also add `doc/app` then I can use *rocco* to generate some documentation.
 
 Take a look at the full [project on GitHub][GH] and let me know what you think!
+
+**Update:** clarified the wording around adding the `UIImageView`.
 
 [GH]: https://github.com/ianp/MagicBallDemo
 [LS]: http://chopine.be/

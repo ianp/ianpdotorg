@@ -8,7 +8,7 @@ categories:
 - Command-Line Tips
 ---
 
-Here's a quick shell script to get the number of posts in each category for an [Octopress][OP] blog, just cat your `source/_posts` folder through the following one-liner:
+Here's a quick shell script to get the number of posts in each category for an [Octopress][O] blog, just cat your `source/_posts` folder through the following one-liner:
 
 ```sh
 sed -n '/^---/,/^---/p' |\
@@ -29,5 +29,8 @@ Here's what each line does:
 
 Maybe this will be useful to somebody out there…
 
-[OP]: http://octopress.org/
+**Update:** I've [written a version][U] that's integrated with rake as well.
+
+[O]: http://octopress.org/
+[U]: /2012/10/30/category-counts-in-octopress-revisited/
 

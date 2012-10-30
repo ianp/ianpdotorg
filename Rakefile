@@ -390,3 +390,26 @@ task :list do
   puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
   puts "(type rake -T for more detail)\n\n"
 end
+
+desc "count the number of posts in each category"
+task :count_categories do
+  require 'yaml'
+
+  counts = {}
+
+  Dir.glob('source/_posts/*.markdown').each do |f|
+    post = begin
+      YAML.load(File.open(f))
+    rescue ArgumentError => e
+      puts "error: parsing #{f} - #{e.message}"
+    end
+    cats = post['categories']
+    if cats.respond_to? "each"
+      cats.each {|c| counts[c] = counts[c].to_i + 1}
+    else
+      counts[cats] = counts[cats].to_i + 1
+    end
+  end
+
+  counts.sort_by {|k,v| v}.reverse.each {|k,v| puts "#{v} #{k}"}
+end

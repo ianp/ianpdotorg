@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Strawman Arguments and Coding Styles - Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="So there’s this blog post over on the Best in Class blog
+that talks about ceremony in programming languages and compares
+Clojure with Java on this &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.github.com/ianpdotorg/2009/11/09/strawman-arguments-and-coding-styles">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.github.com/ianpdotorg" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Strawman Arguments and Coding Styles</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-09T12:11:09+01:00" pubdate data-updated="true">Nov 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>So there’s <a href="http://blog.bestinclass.dk/index.php/2009/09/java-vs-clojure-lets-talk-ceremony/">this blog post</a> over on the <a href="http://blog.bestinclass.dk/">Best in Class</a> blog
+that talks about ceremony in programming languages and compares
+<a href="http://clojure.org/">Clojure</a> with <a href="http://java.sun.com/">Java</a> on this basis. While I’d agree with the
+basic premise of the article (that there is less ceremony in Clojure),
+I’m less keen on the way it’s presented: by way of a needlessly verbose
+strawman example.</p>
+
+<p>To be fair the article does kind of admit that this is
+what is being done, but it’s still annoying. With this in mind let’s see
+how well we can do with the Java version of the code, relying on a
+better coding style and a couple of freely available libraries (one of
+the platforms much touted strengths).</p>
+
+<p>For the original — 28 line —
+version of the code I’ll refer you to the <a href="http://blog.bestinclass.dk/index.php/2009/09/java-vs-clojure-lets-talk-ceremony/">original post</a> (but warn
+you that it’s presented in that well known code storage format, PNG!).
+The same code rewritten in a smarter manner, but still using only the
+core Java libraries. This gets it down to 10 lines of code and also
+makes the intent of the code clearer. There’s still a fair amount of
+ceremony about this however: the multiple imports, and all of the class
+and static main method boilerplate.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">class</span> <span class="nc">Distinct</span> <span class="o">{</span>
+</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">Set</span> <span class="n">distinct</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span>
+</span><span class="line">        <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span>
+</span><span class="line">    <span class="o">}));</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Let’s see if we can’t do a little better with the addition of some open
+source libraries. Enter <a href="http://code.google.com/p/google-collections/">Google Collections</a>, a really neat library
+that improves the collections API from the JDK. We’re now down to 7
+lines of code, and 2 of those are just closing braces! In any reasonably
+size program the class and main statements disappear into the noise, so
+we’re really saying that we have 2 import statements and a single line
+of code. That’s not too different from the Clojure version all things
+considered.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">google</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">collect</span><span class="o">.</span><span class="na">Sets</span><span class="o">.</span><span class="na">newHashSet</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">class</span> <span class="nc">Distinct</span> <span class="o">{</span>
+</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">Set</span> <span class="n">distinct</span> <span class="o">=</span> <span class="n">newHashSet</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It’s interesting to note that the second Java version weighs in at 10
+lines of code, versus 8 for the equivalent clojure version; not much of
+a difference really. I think that the benefits of Clojure come from it’s
+<a href="http://clojure.org/functional_programming">functional style</a>, <a href="http://clojure.org/macros">macro system</a>, and excellent <a href="http://clojure.org/concurrent_programming">concurrency support</a> — not from the fact that you can save a few lines of code
+here and there.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ianp</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-09T12:11:09+01:00" pubdate data-updated="true">Nov 9<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/clojure/'>Clojure</a>, <a class='category' href='/categories/java/'>Java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2009/07/09/further-discord-around-jsr-294" title="Previous Post: Further discord around JSR-294">&laquo; Further discord around JSR-294</a>
+      
+      
+        <a class="basic-alignment right" href="/2009/11/12/choose-your-own-visual-adventure" title="Next Post: Choose Your Own Visual Adventure">Choose Your Own Visual Adventure &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://www.joyentcloud.com/">Joyent</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

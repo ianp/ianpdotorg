@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Lisp | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/lisp/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Prevalent Synchronicity]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity"/>
+    <updated>2010-01-07T13:23:33+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity</id>
+    <content type="html"><![CDATA[<p>Maybe it’s just an idea whose time has come, but in the past few days there’ve been 2 prevalent database systems announced for <a href="http://clojure.org/">Clojure</a>: <a href="http://fleetdb.org/">FleetDB</a> and <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Persister</a>.</p>
+
+<h4 id="prevalent-databases">Prevalent Databases</h4>
+
+<p>The idea behind prevalent databases has been around for a while being, if not ‘popularised’ exactly, at least pushed by the guys behind <a href="http://www.prevayler.org/">Prevayler</a>. Here’s how they describe them:</p>
+
+<blockquote>
+  <p>Prevayler is an open source object persistence library for Java. It is an implementation of the Prevalent System design pattern, in which business objects are kept live in memory and transactions are journaled for system recovery.</p>
+</blockquote>
+
+<h4 id="fleet-db">Fleet DB</h4>
+
+<p>While <a href="http://twitter.com/mmcgrana">Mark McGranaghan</a>’s Fleet DB doesn’t use the term prevalent database, but right now that’s basically what it is. The core of Fleet DB is a Clojure based append-only log based database; it provides a native clojure query language (with built in query optimiser), schema-less records, indexes, and a server with a JSON based network protocol.</p>
+
+<p>For a new new project Fleet DB also has a good set of documentation and it sounds like Mark has some big plans for it in the future. As an added benefit there are also clients for the network protocol in languages other than Clojure (Ruby officially, and a set of Python bindings in development).</p>
+
+<h4 id="persister">Persister</h4>
+
+<p>Sergey Didenko’s <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Simple Persistence for Clojure</a> project is a much less ambitious offering, but with the really cool feature of being a single (255 line, ~11KB) file that you could just drop into your project and start using - that’s pretty lightweight! From the read me file:</p>
+
+<blockquote>
+  <p>Simple Persistence for Clojure is a journal-based persistence library for Clojure programs. It follows “Prevalent system” design pattern.</p>
+</blockquote>
+
+<p>The intended usage is assist you in making a prevalent system. Thus you work with your in-memory data and wrap every writing call into one of <code>(apply-transaction*)</code> macros. A nice feature is that the log files are just Clojure code: transactions are logged as a valid Clojure code, so they are easy to read and run separately.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Squeeze!]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2010/01/06/squeeze"/>
+    <updated>2010-01-06T18:38:16+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2010/01/06/squeeze</id>
+    <content type="html"><![CDATA[<p>One of the neat features of <a href="http://clojure.org/">Clojure</a> is the <a href="http://clojure.org/sequences">sequence</a> abstraction — it makes solving a whole host of data processing tasks much easier, simply get you data into a sequence and you’ve got a huge toolbox available to work on it. Of course being a guy I’m firmly of the belief that more tools are better, with that in mind let’s add another one to our toolbox. Given a sequence the squeeze function returns another sequence with any adjacent items which match a supplied predicate merged together using a supplied function. It’s probably easier to illustrate by example, suppose I have a sequence of strings and I want to merge them together when the trailing string starts with whitespace, I can squeeze them like this:</p>
+
+<p><code>clj
+(squeeze #(and %2 (re-matches #"\A\s.*" %2))
+         #(apply str (apply concat %&amp;))
+         ["hello" " world." "foo" " bar"])
+</code></p>
+
+<p>Another example, given a sequence of characters (read from an <code>InputStream</code> for example), I could group them into words by squeezing then thusly (the first line is just to remind you that calling <code>seq</code> on a string produces a sequence of characters):</p>
+
+<p>```clj
+user=&gt; (seq “Cheers, chars!”)
+(\C \h \e \e \r \s \, \space \c \h \a \r \s !)</p>
+
+<p>user=&gt; (map str/trim
+         (squeeze #(and %2 (not= \space %2))
+                  #(apply str (apply concat %&amp;))
+                   (seq “I’m sorry Dave, I can’t let you do that.”)))
+(“I’m” “sorry” “Dave,” “I” “can’t” “let” “you” “do” “that.”)
+```</p>
+
+<p>So how does it work? Well, here’s the interface:</p>
+
+<p><code>clj
+(defn squeeze
+  [pred merge-fn coll]
+  (squeeze- pred merge-fn coll nil))
+</code></p>
+
+<p>And here’s the actual function that does the work, it’s declared private
+because I don’t want to expose the matched parameter to the outside
+world.</p>
+
+<p><code>clj
+(defn- squeeze-
+  ([pred merge-fn coll matched]
+    (lazy-seq
+      (when-let [s (seq coll)]
+        (let [f (first s)
+              s (second s)
+              rest (rest coll)]
+          (if (pred f s)
+            (squeeze- pred merge-fn rest (cons f matched))
+            (let [next (if matched (merge-fn (cons f (reverse matched))) f)]
+              (cons next (squeeze- pred merge-fn rest nil)))))))))
+</code></p>
+
+<p>I should probably point out that all of this playing around with
+sequences was inspired by <a href="http://fulldisclojure.blogspot.com/">Sean Devlin</a>’s <a href="http://fulldisclojure.blogspot.com/2010/01/12-fn-proposal-same-multisame.html">excellent proposal</a>
+for some new sequence functions for Clojure 1.2. The full code for this
+is available <a href="/code/2010/01/squeeze.clj">here</a> (it’s just the above, but with an added doc
+comment on the <code>squeeze</code> function definition).</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Paredit.el Comes to IntelliJ]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/12/25/paredit-el-comes-to-intellij"/>
+    <updated>2009-12-25T20:21:47+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/12/25/paredit-el-comes-to-intellij</id>
+    <content type="html"><![CDATA[<p>I’ve been working on adding <a href="http://mumble.net/~campbell/emacs/paredit.el">paredit.el</a> like structural editing to
+the next version of the <a href="http://plugins.intellij.net/plugin/?id=4050">La Clojure</a> plugin for <a href="http://www.jetbrains.com/idea/index.html">Intellij IDEA</a>.
+IDEA already does most of the paren matching stuff (automatically
+inserting a closing paren when you type an opening paren and so on). So
+far I’ve got the basic barf and slurp commands working, and splicing, as
+you can see in the screenshot below:</p>
+
+<p><img src="/images/2009/12/idea-slurp-and-barf.png"></p>
+
+<p>The next step is
+probably to make IDEA’s expand selection code be a little smarter in the
+face of s-expressions. In related news: I found a good <a href="http://www.slideshare.net/mudphone/paredit-preso">introduction to paredit.el</a> on <a href="http://www.slideshare.net/">SlideShare</a> which may be of interest. I’ll try
+to get the guys at IntelliJ to push out a new version of the plugin
+after the 9.0.1 release is out (it’s in beta now).</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python Does Destructuring Bind]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2007/01/11/python-does-destructuring-bind"/>
+    <updated>2007-01-11T13:51:49+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2007/01/11/python-does-destructuring-bind</id>
+    <content type="html"><![CDATA[<p>According to <a href="http://www.nedbatchelder.com/blog/200701.html#e20070110T070106">this article</a> by <a href="http://www.nedbatchelder.com/blog">Ned Batcheleder</a> python does
+destructuring bind by default. Well, I did not know that.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Interactive Programming]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/09/24/interactive-programming"/>
+    <updated>2004-09-24T07:09:45+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/09/24/interactive-programming</id>
+    <content type="html"><![CDATA[<p>After playing around with Lisp for a few days I’ve diverted myself back
+to a small Java project. Almost immediately I’m missing the Lisp
+environment! To be sure there are some things that I prefer about my
+Java environment, which is <a href="http://www.eclipse.org">Eclipse</a>, but I just
+miss having an interactive top-level so much! It’s just amazingly
+convenient to be able to try sunning a fragment of code, and the ability
+to tweak it and try again if you hit any problems is such a productvity
+boost.</p>
+]]></content>
+  </entry>
+  
+</feed>

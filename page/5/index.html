@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="Based on Alex’s comment on the Leiningen group, here’s my
+shiny new setup for working with Git &amp; GitHub on OS X, I’m
+posting it here then it’ll &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.github.com/ianpdotorg/page/5">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.github.com/ianpdotorg" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/11/26/how-to-work-with-git-github">How to Work With Git & GitHub</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-26T15:33:36+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
+shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
+posting it here then it’ll be easy for me to refer back to in future…</p>
+
+<h3 id="installing-the-tools">Installing the Tools</h3>
+
+<ol>
+  <li>install <a href="http://macports.org/">MacPorts</a> if you don’t already have it;</li>
+  <li>get an up-to-date version of ruby and rubygems with <code>sudo port install rb-rubygems</code>;</li>
+  <li>install the <code>github</code> tool with <code>sudo port install json github</code>; and</li>
+  <li>upload your public key to your <a href="http://github.com/account">GitHub account</a>.</li>
+</ol>
+
+<h3 id="creating-a-new-project">Creating a New Project</h3>
+
+<p>Run <code>github create project_name</code> to create a public project, append <code>--private</code>
+to create a private project (you will need a paid account at GitHub for
+this).</p>
+
+<h3 id="forking">Forking</h3>
+
+<p>Run <code>github fork project_owner project_name</code>, for example to create a fork of the Cucumber testing
+framework run <code>github fork aslakhellesoy cucumber</code>.</p>
+
+<h3 id="making-changes">Making Changes</h3>
+
+<p>Make your changes in a branch, this took me a little while to
+get used to at first as it’s different from the normal way of working
+with version control systems like CVS:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd </span>project_dir
+</span><span class="line"><span class="nv">$ </span>git checkout -b feature_name
+</span><span class="line">... edit edit edit ...
+</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Witty comment.&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>From time to time push the branch to github
+so others can see what I’m working on <code>git push origin feature_name</code>.
+If the work is in a fork then you’ll also want to send a pull-request
+back to the original project with <code>github pull-request project_owner feature_name</code>. All from the command line, neat huh? For more tricks,
+you can also browse issues with <code>github issues {open|closed}</code>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/11/12/choose-your-own-visual-adventure">Choose Your Own Visual Adventure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-12T10:20:19+01:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A <a href="http://samizdat.cc/cyoa/">really nice set</a> of visualisations of the old Choose Your Own
+Adventure books, I was a big fan of the <a href="http://en.wikipedia.org/wiki/The_Warlock_of_Firetop_Mountain">English equivalents</a> when I
+was a kid.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/11/09/strawman-arguments-and-coding-styles">Strawman Arguments and Coding Styles</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-09T12:11:09+01:00" pubdate data-updated="true">Nov 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>So there’s <a href="http://blog.bestinclass.dk/index.php/2009/09/java-vs-clojure-lets-talk-ceremony/">this blog post</a> over on the <a href="http://blog.bestinclass.dk/">Best in Class</a> blog
+that talks about ceremony in programming languages and compares
+<a href="http://clojure.org/">Clojure</a> with <a href="http://java.sun.com/">Java</a> on this basis. While I’d agree with the
+basic premise of the article (that there is less ceremony in Clojure),
+I’m less keen on the way it’s presented: by way of a needlessly verbose
+strawman example.</p>
+
+<p>To be fair the article does kind of admit that this is
+what is being done, but it’s still annoying. With this in mind let’s see
+how well we can do with the Java version of the code, relying on a
+better coding style and a couple of freely available libraries (one of
+the platforms much touted strengths).</p>
+
+<p>For the original — 28 line —
+version of the code I’ll refer you to the <a href="http://blog.bestinclass.dk/index.php/2009/09/java-vs-clojure-lets-talk-ceremony/">original post</a> (but warn
+you that it’s presented in that well known code storage format, PNG!).
+The same code rewritten in a smarter manner, but still using only the
+core Java libraries. This gets it down to 10 lines of code and also
+makes the intent of the code clearer. There’s still a fair amount of
+ceremony about this however: the multiple imports, and all of the class
+and static main method boilerplate.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">class</span> <span class="nc">Distinct</span> <span class="o">{</span>
+</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">Set</span> <span class="n">distinct</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span>
+</span><span class="line">        <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span>
+</span><span class="line">    <span class="o">}));</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Let’s see if we can’t do a little better with the addition of some open
+source libraries. Enter <a href="http://code.google.com/p/google-collections/">Google Collections</a>, a really neat library
+that improves the collections API from the JDK. We’re now down to 7
+lines of code, and 2 of those are just closing braces! In any reasonably
+size program the class and main statements disappear into the noise, so
+we’re really saying that we have 2 import statements and a single line
+of code. That’s not too different from the Clojure version all things
+considered.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">google</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">collect</span><span class="o">.</span><span class="na">Sets</span><span class="o">.</span><span class="na">newHashSet</span><span class="o">;</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">class</span> <span class="nc">Distinct</span> <span class="o">{</span>
+</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">Set</span> <span class="n">distinct</span> <span class="o">=</span> <span class="n">newHashSet</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>It’s interesting to note that the second Java version weighs in at 10
+lines of code, versus 8 for the equivalent clojure version; not much of
+a difference really. I think that the benefits of Clojure come from it’s
+<a href="http://clojure.org/functional_programming">functional style</a>, <a href="http://clojure.org/macros">macro system</a>, and excellent <a href="http://clojure.org/concurrent_programming">concurrency support</a> — not from the fact that you can save a few lines of code
+here and there.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/07/09/further-discord-around-jsr-294">Further Discord Around JSR-294</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-09T23:54:21+02:00" pubdate data-updated="true">Jul 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.osgi.org/blog/">Peter Kriens</a> of <a href="http://www.osgi.org/">OSGi</a> fame has posted some comments about the
+current EDR from <a href="http://jcp.org/en/jsr/summary?id=294">JSR-294</a>, the proposed Java language changes in
+support of module systems:</p>
+
+<blockquote>
+  <p>In Java 1..6 the language offered a pretty
+pure model that was mapped to reality in the VM. With class loader
+tricks we could tweak the perspective each JAR had of this pure world,
+solving many real world problems. In JSR 294, we will for the first time
+introduce this messy and complex runtime world in the language. Untold
+millions have been spent to make Java run on hundreds of platforms, and
+with one simple JSR we bring back the need for <code>#ifdef ...</code></p>
+</blockquote>
+
+<p>Read the
+<a href="http://altair.cs.oswego.edu/pipermail/jsr294-modularity-observer/2009-July/thread.html">relevant posts</a> on the mailing list, especially <a href="http://altair.cs.oswego.edu/pipermail/jsr294-modularity-observer/2009-July/000225.html">this one</a>. I
+generally agree with the OSGi camp here, this is a giant case of ‘not
+invented here’ syndrome from the Sun people. It’ll be interesting to see
+if the acquisition by Oracle has any effect on this (or the JCP in
+general) but I guess we’ll only find out about that after the deal goes
+through (i.e. months away yet).</p>
+
+<p>Hat tip to <a href="http://aniszczyk.org/2009/07/09/jsr-294-and-meta-module-systems/">Chris Aniszczyk</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/07/09/best-method-name-ever">Best. Method. Name. Ever</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-07-09T18:01:27+02:00" pubdate data-updated="true">Jul 9<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In the iPhone SDK (with camel case broken out into separate words):</p>
+
+<blockquote>
+  <p><code>attention class dump user yes its us again although swizzling and
+overriding private methods is fun it wasnt much fun when your app
+stopped working please refrain from doing so in the future okay thanks
+bye</code></p>
+</blockquote>
+
+<p>Via <a href="http://ericasadun.com/iPhoneDocs300/_u_i_view_controller-_u_i_view_controller_class_dump_warning_8h-source.html">Erica Sadun</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/06/18/adobe-releases-rtmp-specification">Adobe Releases RTMP Specification</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-18T06:56:52+02:00" pubdate data-updated="true">Jun 18<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is a few days old now, but on Monday <a href="http://www.adobe.com/">Adobe</a> finally got around
+to releasing <a href="http://www.adobe.com/devnet/rtmp/">the specification</a> for their real-time messaging
+protocol. This should make it much easier for open source efforts like
+<a href="http://rtmpy.org/">RTMPy</a> to polish their implementations. Interesting times…</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/06/14/quote-of-the-day">Quote of the Day</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-14T20:37:09+02:00" pubdate data-updated="true">Jun 14<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Tip o’ the hat to [Bishop Hill][01]…</p>
+
+<blockquote>
+  <p>In the US Congress, it looks as though they look across the Atlantic to our own Galumphin’ Gordon Brown
+for inspiration. This might look a bit like getting your chat-up lines
+from Benny Hill</p>
+</blockquote>
+
+<p>Note: this post is only tagged as humour funny because if you
+don’t laugh then your only remaining options are to cry or take up arms…</p>
+
+<p>[01]:
+http://bishophill.squarespace.com/blog/2009/6/14/need-a-new-policy-idea.html</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/06/14/ripping-open-ruby-packages">Ripping Open Ruby Packages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-14T02:30:06+02:00" pubdate data-updated="true">Jun 14<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This looks like a mistake: <a href="http://www.rubyinside.com/rip-ruby-packaging-system-1837.html">Rip: A Next Generation Ruby Packaging System</a>. One of the things that Ruby does really well is library
+packaging, <a href="http://rubygems.org/">RubyGems</a> may have some flaws but it basically works
+really well. Contrast this with the situation in Python where there are
+a number of different packaging systems (see, e.g. <a href="http://blog.ianbicking.org/packaging-python.html">this discussion</a>
+by Ian Bicking), and it’s just a mess—this stands out all the more as
+Python normally follows a ‘one way to do it’ approach. Hopefully this
+attempt to fork the Ruby packaging world will be dead on arrival.</p>
+
+<p>Tip o’
+the hat to <a href="http://tomayko.com/">Ryan Tomayko</a> for pointing this out.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/06/13/vibration-function">Vibration Function</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-13T23:09:02+02:00" pubdate data-updated="true">Jun 13<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.gamesetwatch.com/">GameSetWatch</a> is reporting about a new <a href="http://www.gamesetwatch.com/2009/06/play_mobile_motionbased_erotic.php">‘motion-based erotic game’</a> for the Nokia N95:</p>
+
+<blockquote>
+  <p>Players have to move and tilt their phone along with the game’s music …, Play also seems to use the handset’s vibration function in some manner.</p>
+</blockquote>
+
+<p>Oh yeah, I’ll just bet it does!</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/05/27/disabling-airport-agent-on-mac-os-x">Disabling Airport Agent on Mac OS X</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-27T17:46:07+02:00" pubdate data-updated="true">May 27<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>With OS X Leopard the airport base station utility is now started by
+default and will run as a background process occasionally connecting to
+Akamai servers to check for updates. I don’t use an Airport base station
+and I’d like to minimise the number of processes with open network ports
+in the interests of security I’d like to disable this ‘feature’, here’s
+how: Open <em>Airport Utility</em>, it won’t find any base stations
+(obviously) but you can still open the preferences window, uncheck the
+following three items:</p>
+
+<ul>
+  <li>Check for updates when opening AirPort Utility</li>
+  <li>Check for updates: Weekly</li>
+  <li>Monitor Apple wireless devices for problems</li>
+</ul>
+
+<p>Doing this should both shut down the Airport agent <em>and</em>
+prevent it from automatically starting the next time you log in.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/page/6/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/page/4/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://www.joyentcloud.com/">Joyent</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

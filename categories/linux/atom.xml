@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/linux/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gnome Wish List]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2003/12/10/gnome-wish-list"/>
+    <updated>2003-12-10T15:12:33+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2003/12/10/gnome-wish-list</id>
+    <content type="html"><![CDATA[<p>My thoughts on the <a href="http://www.osnews.com">OS News</a> Gnome wish list,
+<a href="http://www.burtonini.com/cgi/pyblosxom.cgi/computers/gnome-wishlist-pah-20031210">others</a> have already commented. Now I haven’t been following too closely the new features in 2.6, but here’s my thoughts anyway: </p>
+
+<ul>
+  <li>
+    <p><strong>Nautilus Scripting</strong>
+a new plugin API and smart menu merging would go a long way to making Nautilus cooler, assuming of course that developers step up to the base and write plugins for it! And by the way, we really need to change the (legally incredibly dodgy) icon for this app!</p>
+  </li>
+  <li>
+    <p><strong>Spatial Mode</strong>
+I can’t wait for this, assuming the implementation doesn’t totally suck it will be way cool.</p>
+  </li>
+  <li>
+    <p><strong>Metacity Features</strong>
+Viewports == Crack. But the magnetic windows feature in metacity is broken, so it’s fair game for criticism as far as I’m concerned.</p>
+  </li>
+  <li>
+    <p><strong>File Selector</strong>
+The new file selector <em>does</em> suck. As far as I can see the two
+problems with the current file selector are that it looks ugly as fuck,
+and that it lacks even basic features. The proposed new design solves
+the fugly problem but doesn’t appear to add any features. I’d like to
+see, at least, improved filtering, and more details of files being
+displayed.</p>
+  </li>
+  <li>
+    <p><strong>Development Tools</strong>
+I don’t use Glade so I don’t know whether it sucks or not. I suspect the same is true of Eugenia so these comments don’t really seem fair. That said, what I’d really like to see is a GUI builder integrated with Eclipse, maybe as a new back end for the <a href="http://www.eclipse.org/vep" title="Visual Editor">VE</a> project.</p>
+  </li>
+  <li>
+    <p><strong>Drag and drop, copy and paste</strong>
+Yeah, this sucks, but now that there are Free Desktop specs for this the situation should improve.</p>
+  </li>
+</ul>
+
+<p>I’ll update this as I get time over the next couple of days.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fedora]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2003/11/16/fedora"/>
+    <updated>2003-11-16T11:11:07+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2003/11/16/fedora</id>
+    <content type="html"><![CDATA[<p>By coincidence I just finished reading up on the <a href="http://fedora.redhat.com">Fedora Project</a> before I read <a href="http://www.dynamicobjects.com/d2r">this</a> post from Diego. As I see it Redhat are going to push the Fedora project as their replacement for the Professional edition (i.e. Red Hat 9). This probably makes sense since they can free up a lot of resources whilst hopefullty maintaining market visibility. If they can increase the speed of the release cycle for this it may even help them gain some more converts (and it sure does look pretty!).</p>
+
+]]></content>
+  </entry>
+  
+</feed>

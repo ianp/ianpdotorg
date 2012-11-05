@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: iPad | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/ipad/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[New York Post Blocks iPad Users]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2011/06/20/new-york-post-blocks-ipad-users"/>
+    <updated>2011-06-20T18:39:56+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2011/06/20/new-york-post-blocks-ipad-users</id>
+    <content type="html"><![CDATA[<p>It seems that the New York Post have decided to block all access to their site from iPads, telling users to download their (subscription only) app instead. As <a href="http://scripting.com/stories/2011/06/18/theNyPostTheIpadAndTheWeb.html">Scripting News</a> said…</p>
+
+<blockquote>
+  <p>I wonder how Apple feels about this? I can’t imagine they like it. I can see the ads now. ‘Get an Android tablet to read the web.’ Hmmm… I wonder how long said app will remain in the store after pulling a trick like this?</p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+</feed>

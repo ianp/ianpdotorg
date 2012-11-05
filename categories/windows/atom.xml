@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Windows | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/windows/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Windows XP Zip File Support]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2008/03/26/windows-xp-zip-file-support"/>
+    <updated>2008-03-26T19:47:48+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2008/03/26/windows-xp-zip-file-support</id>
+    <content type="html"><![CDATA[<p>Windows XP, which I’m forced to use at work at the moment, normally
+treats Zip files as though they were folders, letting you view their
+contents in explorer. Unfortunately there are a number of problems with
+this feature: it can kill the performance of Java based apps which work
+on the files (a Java bug), and it can mangle any files in the Zips with
+long names or long paths (a Windows bug).</p>
+
+<p>All is not lost however, to
+disable this behaviour simple open up a command prompt and run the
+following command: <code>regsvr32 /u %windir%\system32\zipfldr.dll</code> And,
+should you want to restore the original settings, just run the same
+command without the ‘u’ switch.</p>
+]]></content>
+  </entry>
+  
+</feed>

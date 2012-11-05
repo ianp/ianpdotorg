@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: OSGi | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/osgi/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Further discord around JSR-294]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/07/09/further-discord-around-jsr-294"/>
+    <updated>2009-07-09T23:54:21+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/07/09/further-discord-around-jsr-294</id>
+    <content type="html"><![CDATA[<p><a href="http://www.osgi.org/blog/">Peter Kriens</a> of <a href="http://www.osgi.org/">OSGi</a> fame has posted some comments about the
+current EDR from <a href="http://jcp.org/en/jsr/summary?id=294">JSR-294</a>, the proposed Java language changes in
+support of module systems:</p>
+
+<blockquote>
+  <p>In Java 1..6 the language offered a pretty
+pure model that was mapped to reality in the VM. With class loader
+tricks we could tweak the perspective each JAR had of this pure world,
+solving many real world problems. In JSR 294, we will for the first time
+introduce this messy and complex runtime world in the language. Untold
+millions have been spent to make Java run on hundreds of platforms, and
+with one simple JSR we bring back the need for <code>#ifdef ...</code></p>
+</blockquote>
+
+<p>Read the
+<a href="http://altair.cs.oswego.edu/pipermail/jsr294-modularity-observer/2009-July/thread.html">relevant posts</a> on the mailing list, especially <a href="http://altair.cs.oswego.edu/pipermail/jsr294-modularity-observer/2009-July/000225.html">this one</a>. I
+generally agree with the OSGi camp here, this is a giant case of ‘not
+invented here’ syndrome from the Sun people. It’ll be interesting to see
+if the acquisition by Oracle has any effect on this (or the JCP in
+general) but I guess we’ll only find out about that after the deal goes
+through (i.e. months away yet).</p>
+
+<p>Hat tip to <a href="http://aniszczyk.org/2009/07/09/jsr-294-and-meta-module-systems/">Chris Aniszczyk</a>.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Oh, Such a Good Infrastructure]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2006/12/19/oh-such-a-good-infrastructure"/>
+    <updated>2006-12-19T21:40:23+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2006/12/19/oh-such-a-good-infrastructure</id>
+    <content type="html"><![CDATA[<p>Now that <a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-1.6.1-bin.tgz">the 1.6 release</a> of <a href="http://rvsnoop.org/">RvSnoop</a> is out of the door (OK, 1.6.1 ‘cause of a wart inthe original release), there are certain
+features that I’d like to see added, and for the 2.0 release I want to
+have in place a foundation that will make it easier to add these. A full
+list of features can be found in the <a href="http://svn.sourceforge.net/viewvc/*checkout*/rvsn00p/trunk/rvsn00p/doc/plans.txt">plan file</a> in the <a href="http://sourceforge.net/svn/?group_id=63447">RvSnoop Subversion repository</a>, but some of the big ones that will impact
+the overall architecture of RvSnoop are:</p>
+
+<h3 id="pluggable-persistence">Pluggable Persistence</h3>
+
+<p>Mechanism I’m going to migrate the record ledger to being persistent,
+there are a couple of options here as to how this will be handled: flat
+files, a combination of flat files and <a href="http://lucene.apache.org/java/">Lucene</a> based indexes, or
+some kind of JDBC backed store.</p>
+
+<p>One option would be to make the
+persistence mechanism plug-able, this would also ease the use of an
+all-in-memory storage system, like the one that is currently used (which
+is useful when you just want to use RvSnoop as a graphical replacement
+for <code>tibrvlisten</code>).</p>
+
+<h3 id="able-to-run-headless">Able to Run Headless</h3>
+
+<p>I’d like to add the
+ability to run RvSnoop without the UI, this would be based on loading a
+pre-configured project. Combining this feature with a JDBC backed store
+this could be really useful for auditing and logging messages.</p>
+
+<h3 id="ems-support">EMS Support</h3>
+
+<p>I registered the <a href="http://emssnoop.org/">emssnoop.org</a> domain at the same time
+as <a href="http://rvsnoop.org/">rvsnoop.org</a>, and there has been a project on SourceForge for a
+while, even if it hasn’t had anything checked in to it yet! An open
+question is whether to try for generic JMS support or just work with EMS
+directly.</p>
+
+<h3 id="user-written-plug-ins">User Written Plug-ins</h3>
+
+<p>It would be nice to be able to
+cleanly extend RvSnoop if required, without going back and modifying the
+main code base.</p>
+
+<h3 id="so-what-about-20">So, What About 2.0?</h3>
+
+<p>All (well, most) of these
+features point to a need for an extensible plug-in system,
+<a href="http://www.eclipse.org/">Eclipse</a> has shown that a good way of architecting a desktop
+application (or any application, for that matter) is to build it
+entirely from plug-ins wrapped around a small core. So, the upshot of
+this is that I’m planning on migrating to a managed runtime, probably
+<a href="http://www.osgi.org/">OSGi</a>, for the 2.0 release. I’ll talk about this more in another
+post. In particular, what’s the cost/benefit ratio of using this type of
+runtime; and which runtimes are good?</p>
+
+]]></content>
+  </entry>
+  
+</feed>

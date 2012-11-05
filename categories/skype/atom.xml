@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Skype | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/skype/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Why I Do Not Like Skype]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2006/10/12/why-i-do-not-like-skype"/>
+    <updated>2006-10-12T10:20:29+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2006/10/12/why-i-do-not-like-skype</id>
+    <content type="html"><![CDATA[<p>There is nothing more annoying than people who insist on standing up and
+talking loudly on their mobile phones in the middle of an open plan
+office (just one more reason why open plan offices suck arse). At least
+in the past it was just a few ignorant tossers who did this, but now
+with <a href="http://www.skype.com/">Skype</a> a whole bunch of otherwise considerate people seem to
+think it’s fine to yammer away at high volume while sat at their PCs.
+Bastards.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Amazon | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/amazon/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Has Amazon Gone Crazy?]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2008/05/21/has-amazon-gone-crazy"/>
+    <updated>2008-05-21T19:03:47+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2008/05/21/has-amazon-gone-crazy</id>
+    <content type="html"><![CDATA[<p>I’ve just been looking at getting a copy of the newly released Cocoa
+Programming 3rd Edition (tip o’ the hat to <a href="http://theocacao.com/document.page/571">Scott Stevenson</a>) and, as
+the link from there is to the <a href="http://www.amazon.com/dp/0321503619">U.S. Amazon site</a> I saw the price
+there:</p>
+
+<p><img src="/images/2008/05/21/cocoa-programming-us.png"></p>
+
+<p>then going to my local <a href="http://www.amazon.co.uk/dp/0321503619">U.K. based Amazon page</a> to place an order and:</p>
+
+<p><img src="/images/2008/05/21/cocoa-programming-uk.png"></p>
+
+<p>well, what
+the fuck is that all about exactly? Check out the <a href="http://www.oanda.com/convert/classic">conversion rates</a>:</p>
+
+<blockquote>
+  <p>Wednesday, May 21, 2008
+28.79 British Pound = 57.526 US Dollar
+28.79 US Dollar (USD) = 14.991 British Pound (GBP)
+Interbank rate +/- 2%</p>
+</blockquote>
+
+<p>That’s getting on for sixty bucks! almost twice the price of the US site. That’s just fucking ridiculous.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

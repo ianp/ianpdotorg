@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Apple | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/apple/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rearranging the Apples]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples"/>
+    <updated>2012-10-31T19:18:00+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples</id>
+    <content type="html"><![CDATA[<p>Some <a href="http://www.appleoutsider.com/2012/10/30/regimechange/">insightful analysis</a> about the recent Apple reorganisation (a.k.a. Scott Forstall getting shit-canned) from <a href="http://www.appleoutsider.com/">Matt Drance</a>:</p>
+
+<blockquote>
+  <p>Not only is this a profound increase in responsibility for all three of these top executives, it’s a profound change in Apple’s organization going as far back as I can remember. There’s a long-standing pattern of separating watershed products important to the company’s future. The Mac and Apple teams. Mac OS X and Classic. The iPod division. iOS and Mac OS X. Suddenly, Tim Cook has pulled the reins in. Federighi owns software. Ive owns design. Cue owns services. Period.</p>
+</blockquote>
+
+<p>While it looks like this is something that asn’t exactly planned in advance, it seems like some people at Apple have been hoping for it for a while now. According to <a href="http://gigaom.com/2012/10/29/from-inside-apple-the-scott-forstall-fallout/">Om Malik</a>:</p>
+
+<blockquote>
+  <p>Forstall’s firing was met with a sense of quiet jubilation, especially among people who worked in the engineering groups.</p>
+</blockquote>
+
+<p>For my part, I’m mainly interested in seeing what happens to the UI now that Jony Ive is in charge of it, hopefully the misguided move towards skeuomorphic interfaces will be taken out back and shot.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[I Swallowed a Fly]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/06/20/i-swallowed-a-fly"/>
+    <updated>2012-06-20T17:54:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/06/20/i-swallowed-a-fly</id>
+    <content type="html"><![CDATA[<p><img src="http://www.onefoottsunami.com/wordpress/wp-content/uploads/20120620magsafeadapter/6-forthesakeofcompleteness.jpg" alt="MagSafe Adapter" /></p>
+
+<p>Wow, <a href="http://www.onefoottsunami.com/2012/06/20/the-magsafe-to-magsafe-2-adapter/">that</a> really is a lot of packaging for probably the world’s smallest connector. Also, reading the post about it, was anybody else reminded of <a href="https://en.wikipedia.org/wiki/There_Was_an_Old_Lady_Who_Swallowed_a_Fly">this</a>?</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[That was Quick]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/06/20/that-was-quick"/>
+    <updated>2012-06-20T16:58:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/06/20/that-was-quick</id>
+    <content type="html"><![CDATA[<p>That was quick! The videos from WWDC are <a href="https://developer.apple.com/videos/wwdc/2012/">up already</a>, last year it took Apple about a month to get them posted. Great news for folks like me who didn’t get to attend.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Apple Security Cock-Up]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/apple-security-cock-up"/>
+    <updated>2012-05-07T16:04:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/05/07/apple-security-cock-up</id>
+    <content type="html"><![CDATA[<p><a href="http://www.zdnet.com/blog/security/apple-security-blunder-exposes-lion-login-passwords-in-clear-text/11963">This</a> doesn’t look good.</p>
+
+<p>Apple’s approach to security in general is a bit worrying: one the one hand they seem to have the right approach to securing the OS with App Store entitlements (although these aren’t without <a href="http://www.robpeck.com/2012/01/app-store-entitlements-and-the-crippling-of-an-app/">issues</a>) and <a href="http://www.apple.com/macosx/mountain-lion/security.html">Gatekeeper</a>, but their timeliness in shipping security fixes leaves a lot to be desired. Note from the article that this flaw was pointed out to them <em>3 months</em> ago!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[New York Post Blocks iPad Users]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2011/06/20/new-york-post-blocks-ipad-users"/>
+    <updated>2011-06-20T18:39:56+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2011/06/20/new-york-post-blocks-ipad-users</id>
+    <content type="html"><![CDATA[<p>It seems that the New York Post have decided to block all access to their site from iPads, telling users to download their (subscription only) app instead. As <a href="http://scripting.com/stories/2011/06/18/theNyPostTheIpadAndTheWeb.html">Scripting News</a> said…</p>
+
+<blockquote>
+  <p>I wonder how Apple feels about this? I can’t imagine they like it. I can see the ads now. ‘Get an Android tablet to read the web.’ Hmmm… I wonder how long said app will remain in the store after pulling a trick like this?</p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+</feed>

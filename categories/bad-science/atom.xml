@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Bad Science | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/bad-science/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Maths at the BBC]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2005/08/04/maths-at-the-bbc"/>
+    <updated>2005-08-04T16:36:21+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2005/08/04/maths-at-the-bbc</id>
+    <content type="html"><![CDATA[<p>As reported at the <a href="http://news.bbc.co.uk/1/hi/technology/4745205.stm">BBC News</a> site, ‘One in
+seven new mobiles faulty’, the opening line of the article is ‘An
+estimated two million of the 18 million mobiles sold last year in the UK
+could have been faulty’, so, clearly, elementary maths isn’t a
+requirement for passing most media studies courses these days.</p>
+]]></content>
+  </entry>
+  
+</feed>

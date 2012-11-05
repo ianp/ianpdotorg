@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Databases | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/databases/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SQL: Just Say No!]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2010/01/08/sql-just-say-no"/>
+    <updated>2010-01-08T16:29:30+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2010/01/08/sql-just-say-no</id>
+    <content type="html"><![CDATA[<p>Just in time for the weekend, the SF <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> community have put up a <a href="http://blog.oskarsson.nu/2009/06/nosql-debrief.html">collection of talks and slides</a> from their recent get together. I’ll have more to say after I’ve had a chance to look these over…</p>
+
+<p><em>Update:</em> not actually a new set of talks, these have been online for about 6 months now, but it’s the first time that I’ve seen them…</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Prevalent Synchronicity]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity"/>
+    <updated>2010-01-07T13:23:33+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity</id>
+    <content type="html"><![CDATA[<p>Maybe it’s just an idea whose time has come, but in the past few days there’ve been 2 prevalent database systems announced for <a href="http://clojure.org/">Clojure</a>: <a href="http://fleetdb.org/">FleetDB</a> and <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Persister</a>.</p>
+
+<h4 id="prevalent-databases">Prevalent Databases</h4>
+
+<p>The idea behind prevalent databases has been around for a while being, if not ‘popularised’ exactly, at least pushed by the guys behind <a href="http://www.prevayler.org/">Prevayler</a>. Here’s how they describe them:</p>
+
+<blockquote>
+  <p>Prevayler is an open source object persistence library for Java. It is an implementation of the Prevalent System design pattern, in which business objects are kept live in memory and transactions are journaled for system recovery.</p>
+</blockquote>
+
+<h4 id="fleet-db">Fleet DB</h4>
+
+<p>While <a href="http://twitter.com/mmcgrana">Mark McGranaghan</a>’s Fleet DB doesn’t use the term prevalent database, but right now that’s basically what it is. The core of Fleet DB is a Clojure based append-only log based database; it provides a native clojure query language (with built in query optimiser), schema-less records, indexes, and a server with a JSON based network protocol.</p>
+
+<p>For a new new project Fleet DB also has a good set of documentation and it sounds like Mark has some big plans for it in the future. As an added benefit there are also clients for the network protocol in languages other than Clojure (Ruby officially, and a set of Python bindings in development).</p>
+
+<h4 id="persister">Persister</h4>
+
+<p>Sergey Didenko’s <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Simple Persistence for Clojure</a> project is a much less ambitious offering, but with the really cool feature of being a single (255 line, ~11KB) file that you could just drop into your project and start using - that’s pretty lightweight! From the read me file:</p>
+
+<blockquote>
+  <p>Simple Persistence for Clojure is a journal-based persistence library for Clojure programs. It follows “Prevalent system” design pattern.</p>
+</blockquote>
+
+<p>The intended usage is assist you in making a prevalent system. Thus you work with your in-memory data and wrap every writing call into one of <code>(apply-transaction*)</code> macros. A nice feature is that the log files are just Clojure code: transactions are logged as a valid Clojure code, so they are easy to read and run separately.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

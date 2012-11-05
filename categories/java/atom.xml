@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/java/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform"/>
+    <updated>2012-10-03T18:32:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform</id>
+    <content type="html"><![CDATA[<p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
+
+<h4 id="picking-a-platform">Picking a Platform</h4>
+
+<p>There are a number of options out there, including:</p>
+
+<ul>
+  <li><a href="http://www.jcp.org/en/jsr/detail?id=296">JSR-296</a> Swing Application Framework;</li>
+  <li><a href="http://wiki.eclipse.org/index.php/Rich_Client_Platform">Eclipse RCP</a>;</li>
+  <li><a href="http://netbeans.org/features/platform/">NetBeans RCP</a>; and</li>
+  <li><a href="http://jidesoft.com/jdaf/">Jide</a> Desktop Application Framework.</li>
+</ul>
+
+<p>JSR-296 is basically dead in the water at this point, and while there are a <a href="https://en.wikipedia.org/wiki/Swing_Application_Framework">few forks</a> doing the rounds I’m not really confident enough in any of them to want to move a reasonably sized codebase to it.</p>
+
+<p>Eclipse uses a different UI toolkit altogether so it’s really a nonpstarter for this excercise, although it would be a good option if starting a new project from scratch.</p>
+
+<p>Jide is a swing component vendor and a relatively new entrant into the RCP space. JDAF has some things going for it: it has the best platform integration of any framework, with much better native fidelity (e.g. message dialogs look OK on Mac OS X and Gnome) than either Eclipse or NetBeans. It also has some handy built-in support for document-centric apps. The downsides are that unlike the other offerings here it’s a commercial product, and it’s much less ambitious in scope than either Eclipse or NetBeans, presumably as many of the other features that these offer are also Jide products (e.g. their docking framework). I also found myself fighting to work with it’s limited data model support.</p>
+
+<p>NetBeans seems to e a good fit for the apps that I’m converting, and it plays well with standard Swing idioms so it should be quite easy to port the code over. Recent releases have extensive support for annotation based configuration as well, which should ease the learning curve.</p>
+
+<p>One downside is that most of the tutorials and documentation assume that you will also be using NetBeans as an IDE, which I won’t be (I use <a href="http://www.jetbrains.com/idea/">IntelliJ</a>), still, NetBeans RCP has pretty good Maven support so it shouldn’t matter too much.</p>
+
+<h4 id="setting-up-a-project-with-netbeans-rcp">Setting Up a Project with NetBeans RCP</h4>
+
+<p>Here’s how to create a project and add a module to it:</p>
+
+<script src="https://gist.github.com/3828460.js?file=nbproject.sh"></script>
+
+<p>You can then open this up in IntelliJ as a Maven based project and start editing away.</p>
+
+<p>Adding additional modules (e.g. myviews, &amp;c.) is as simple as rerunning the last command and re-importing the maven model (or enabling auto-import in IntelliJ).</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Convenient]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/10/01/convenient"/>
+    <updated>2012-10-01T18:35:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/10/01/convenient</id>
+    <content type="html"><![CDATA[<p><a href="http://www.lispcast.com/class-abstractsingletonproxyfactorybean">This</a> is what’s wrong with a lot of the Java code out there.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
+    <updated>2011-11-04T11:34:00+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
+    <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
+
+<p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
+
+<p><code>groovy
+apply plugin 'maven'
+configure(install.repositories.mavenInstaller) {
+    pom.project {
+        groupId 'com.example'
+        artifactId 'project-name'
+        inceptionYear '2011'
+        packaging 'jar'
+        licenses {
+            license {
+                name 'Eclipse Public License (Version 1.0)'
+                url 'http://www.eclipse.org/legal/epl-v10.html'
+                distribution 'repo'
+            }
+        }
+    }
+}
+</code></p>
+
+<p>this will install the project binaries, to also install source and JavaDocs (which <em>every</em> project should really do) then you’ll also need to add:</p>
+
+<p>```groovy
+task sourcesJar(type: Jar, dependsOn:classes) {
+     classifier = ‘sources’
+     from sourceSets.main.allSource
+}</p>
+
+<p>task javadocJar(type: Jar, dependsOn:javadoc) {
+     classifier = ‘javadoc’
+     from javadoc.destinationDir
+}</p>
+
+<p>artifacts {
+     archives sourcesJar
+     archives javadocJar
+}
+```</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Handling Flag Arguments]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2011/06/23/handling-flag-arguments"/>
+    <updated>2011-06-23T14:42:28+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2011/06/23/handling-flag-arguments</id>
+    <content type="html"><![CDATA[<p><a href="http://martinfowler.com/">Martin Fowler</a> has a <a href="http://martinfowler.com/bliki/FlagArgument.html">new bliki entry talking about flag arguments</a>, defined as:</p>
+
+<blockquote>
+  <p>A flag argument is a kind of function argument that tells the
+function to carry out a different operation depending on its value.</p>
+</blockquote>
+
+<p>And, as an example of this API style:</p>
+
+<p><code>java
+Class Concert {
+  public Booking book(Customer aCustomer, boolean isPremium);
+}
+</code></p>
+
+<p>And his preferred API design:</p>
+
+<p><code>java
+Class Concert {
+  public Booking bookRegular(Customer aCustomer);
+  public Booking bookPremium(Customer aCustomer);
+}
+</code></p>
+
+<p>The problem with this, as Mr. Fowler points out, is that it can lead to problems with the implementation. His preferred solution is to have a private implementation method exactly like the original problematic API:</p>
+
+<p><code>java
+private Booking bookImpl(Customer aCustomer, boolean isPremium)
+</code></p>
+
+<p>But if we think about the problem for a little longer we can see that there is a better option available to us. The real problem with flag arguments is that they lose information at the call site, so the original example method would be called like this:</p>
+
+<p><code>java
+. . .
+myConcert.book(poorCustomer, false);
+myConcert.book(richCustomer, true);
+. . .
+</code></p>
+
+<p>There’s nothing to say what those true and false arguments actually mean. We can just define a type-safe enum to use instead of the boolean, that way the information is still present at the call site. This was our API becomes:</p>
+
+<p><code>java
+Class Concert public {
+  enum TicketType { REGULAR, PREMIUM }
+  public Booking book(Customer aCustomer, TicketType ticketType)
+</code></p>
+
+<p>And at the call site:</p>
+
+<p><code>java
+. . .
+myConcert.book(poorCustomer, TicketType.REGULAR);
+myConcert.book(richCustomer, TicketType.PREMIUM);
+. . .
+</code></p>
+
+<p>This is easier to implement, and works for multi valued (e.g. integer) flags as well.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Working with Java Arrays]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2010/01/02/working-with-java-arrays"/>
+    <updated>2010-01-02T14:23:44+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2010/01/02/working-with-java-arrays</id>
+    <content type="html"><![CDATA[<p>One improvement that I’d like to see in Clojure is more examples in the doc strings (or maybe in a separate <code>:example</code> metadata item). Still, nothing to stop me building up a set of my own. So, here are some simple examples of working with Java arrays in Clojure… Given some sample data:</p>
+
+<p><code>clj
+(def my-list '(1 2 3 4 5))
+(def my-vector [1 2 3 4 5])
+(def my-map {:a "apple" :b "banana" :c "chopped liver"})
+</code></p>
+
+<p>To convert to Java arrays:</p>
+
+<p><code>clj
+(to-array my-list)
+#
+(to-array my-vector)
+#
+(to-array my-map)
+#
+</code></p>
+
+<p>Note that this always returns <code>Object[]</code> regardless of the contents of the collection. Note also that the map isn’t flattened (the <code>pp</code> function used here is in <code>clojure.contrib.pprint</code>):</p>
+
+<p><code>clj
+user=&gt; (pp)
+[[:a "apple"], [:b "banana"], [:c "chopped liver"]]
+</code></p>
+
+<p>If the array is 2-dimensional there is a corresponding function:</p>
+
+<p><code>clj
+user=&gt; (def my-vec-2d [[1 2 3] [4 5 6] [7 8 9]])
+#'user/my-vec-2d
+user=&gt; (to-array-2d my-vec-2d)
+#
+user=&gt; (pp)
+[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+nil
+</code></p>
+
+<p>If you need to use a specific type of array (e.g. to pass a <code>String[]</code> into a Java method) or need to use an array with more than 3 dimensions it’s a little trickier:</p>
+
+<p><code>clj
+user=&gt; (into-array my-list)
+#
+user=&gt; (pp)
+[1, 2, 3, 4, 5]
+nil
+user=&gt; (into-array my-vector)
+#
+user=&gt; (pp)
+[1, 2, 3, 4, 5]
+nil
+user=&gt; (into-array my-map)
+#
+user=&gt; (into-array (vals my-map))
+#
+user=&gt; (pp)
+["apple", "banana", "chopped liver"]
+nil
+</code></p>
+
+<p>There, that should serve as a handy reference for myself for when I’m feeling forgetful…</p>
+]]></content>
+  </entry>
+  
+</feed>

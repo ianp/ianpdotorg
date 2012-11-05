@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Git | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/git/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to Work with Git & GitHub]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/11/26/how-to-work-with-git-github"/>
+    <updated>2009-11-26T15:33:36+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/11/26/how-to-work-with-git-github</id>
+    <content type="html"><![CDATA[<p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
+shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
+posting it here then it’ll be easy for me to refer back to in future…</p>
+
+<h3 id="installing-the-tools">Installing the Tools</h3>
+
+<ol>
+  <li>install <a href="http://macports.org/">MacPorts</a> if you don’t already have it;</li>
+  <li>get an up-to-date version of ruby and rubygems with <code>sudo port install rb-rubygems</code>;</li>
+  <li>install the <code>github</code> tool with <code>sudo port install json github</code>; and</li>
+  <li>upload your public key to your <a href="http://github.com/account">GitHub account</a>.</li>
+</ol>
+
+<h3 id="creating-a-new-project">Creating a New Project</h3>
+
+<p>Run <code>github create project_name</code> to create a public project, append <code>--private</code>
+to create a private project (you will need a paid account at GitHub for
+this).</p>
+
+<h3 id="forking">Forking</h3>
+
+<p>Run <code>github fork project_owner project_name</code>, for example to create a fork of the Cucumber testing
+framework run <code>github fork aslakhellesoy cucumber</code>.</p>
+
+<h3 id="making-changes">Making Changes</h3>
+
+<p>Make your changes in a branch, this took me a little while to
+get used to at first as it’s different from the normal way of working
+with version control systems like CVS:</p>
+
+<p><code>sh
+$ cd project_dir
+$ git checkout -b feature_name
+... edit edit edit ...
+$ git commit -a -m "Witty comment."
+</code>
+From time to time push the branch to github
+so others can see what I’m working on <code>git push origin feature_name</code>.
+If the work is in a fork then you’ll also want to send a pull-request
+back to the original project with <code>github pull-request project_owner feature_name</code>. All from the command line, neat huh? For more tricks,
+you can also browse issues with <code>github issues {open|closed}</code>.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

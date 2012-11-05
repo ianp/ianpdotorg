@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[RubyMotion and Interface Builder…]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder"/>
+    <updated>2012-05-07T19:24:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder</id>
+    <content type="html"><![CDATA[<p>…sitting in a tree, K-I-S-S-I-N-G…</p>
+
+<p>So, all of the cool kids have been talking about <a href="http://chopine.be/">Laurent Sansonetti</a>’s next project: <a href="http://www.rubymotion.com/">RubyMotion</a>, a port of MacRuby targeted at iOS. On the whole I’m pretty impressed with what you can already do with it. One of the issues that people having been mentioning though, is that you lose the ability to use Interface Builder with it, but this isn’t actually true!</p>
+
+<p>Here I’m going to show you how to work with Interface Builder, I’ll base the project off the one used in the Pragmatic Studio <a href="http://pragmaticstudio.com/screencasts/rubymotion">screencast</a> (the icon and background images come from there as well, by the way).</p>
+
+<p><strong>Update:</strong> the images don’t dome from there any more! The images used in the screencast are from iStockPhoto, so I’ve replaced the background image with a different one. Needless to say this doesn;t affect any of the code.</p>
+
+<p>All of the code for this project can be found on <a href="https://github.com/ianp/MagicBallDemo">GitHub</a>. </p>
+
+<h2 id="setting-up-a-project">Setting up a Project</h2>
+
+<p>Start off as normal: <code>motion create MagicBallDemo</code>. In the project folder create a new subfolder called <em>interfaces</em>, this is where all of the <code>.xib</code> files will be saved.</p>
+
+<p>Next create a model class called <code>MagicBall</code> and a view controller called <code>MagicViewController</code> which extends <code>UIViewController</code>, also create a file to store some small helper methods called <code>helpers.rb</code>. Don’t worry about the contents of these files for now, I’ll come back to them, but you should have the following:</p>
+
+<p><code>sh
+$ ls app
+app_delegate.rb          magic_ball.rb
+helpers.rb               magic_view_controller.rb
+$ cat app/magic_view_controller.rb
+class MagicViewController &lt; UIViewController
+end
+</code></p>
+
+<p>The next thing to do is create the UI using interface builder.</p>
+
+<h2 id="creating-the-user-interface">Creating the User Interface</h2>
+
+<p>Open Xcode and hit <em>⌘-N</em> to create a new file, select the <em>Empty</em> template and save the file into the folder you just created. Now add a <code>View Controller</code> from the object library and set the custom class to <code>MagicViewController</code>; you can’t edit this field directly but you <em>can</em> paste into it, so select the class name from <code>app/magic_view_controller.rb</code>. </p>
+
+<p>The next step is to add the view to it’s controller, normally this would just mean dragging a <code>UIImageView</code> on top of the controller but that won’t work here. There is a problem with interface builder in that you can’t add subviews to <code>UIImageView</code>s, which is a pain in the ass. A simple workaround is described in <a href="http://stackoverflow.com/questions/2415561/apple-interface-builder-adding-subview-to-uiimageview">this</a> Stack Overflow question, and that’s what we’ll do here. So, add a <code>UIView</code> to the view controller and set it’s custom class to be <code>UIImageView</code> (which should be available in the pick-list). You can’t set the image here, that will need to be done in code.</p>
+
+<p>Finally add the label and configure it as desired. Save your changes and close XCode.</p>
+
+<p>You can compile this into a <code>.nib</code> using <code>ibtool</code>, this script will compile all of the interfaces in your project (just one in this case):</p>
+
+<p><code>sh
+for i in interfaces/*.xib
+do
+  echo "compiling `basename $i`..."
+  ibtool --compile resources/`basename -s .xib $i`.nib $i
+done
+</code></p>
+
+<p><strong>Update:</strong> as of RubyMotion 1.3 this happens automatically, no need to compile your nibs by hand and more!</p>
+
+<h2 id="connecting-up-the-code">Connecting up the Code</h2>
+
+<p>The first thing we need to do is make sure our app delegate loads the interface from the nib that we’ve created, and we set our <code>@window</code> ivar from the loaded nib.</p>
+
+<p><code>objc
+def application(application, didFinishLaunchingWithOptions:options)
+  @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
+  @window.rootViewController = NSBundle.mainBundle.loadNibNamed('MagicBallView', owner:self, options:nil).first
+  @window.rootViewController.wantsFullScreenLayout = true
+  @window.makeKeyAndVisible
+  true
+end
+</code></p>
+
+<p>The nib loading process will create an instance of our view controllor for us, but we need to wire up a few connections add add some behaviour, here’s a simplified version of the code:</p>
+
+<p>```objc
+  def viewDidLoad
+    @magicBall = MagicBall.new
+    @label = self.view.subviews.first</p>
+
+<pre><code>view.image = UIImage.imageNamed('background.png')
+view.whenTapped do
+  UIView.animateWithDuration(0.75,
+    animations:lambda {
+      @label.alpha = 0
+      @label.transform = createTransform
+    },
+    completion:lambda { |finished|
+      @label.text = @magicBall.answer
+      @label.transform = CGAffineTransformIdentity
+    })
+end   end ```
+</code></pre>
+
+<p>I know that there is only 1 subview so it’s easy to grab a reference to the label and store it in an ivar, a more realisic example could <code>select</code> the label based on a tag.</p>
+
+<p>As mentioned above, I need to explicitly set the image and this happens here as well.</p>
+
+<p>Finally, set up the gesture recognizer. This is one place that Ruby shines, it’s trivial for us to add helper methods like this, have a look in <code>app/helpers.rb</code> for the code that enabled this.</p>
+
+<h2 id="wrapping-up">Wrapping Up</h2>
+
+<p>It’s a good idea to add <code>resources/*.nib</code> to the <code>.gitignore</code> file as compiled resources don;t need to be committed to Git. I also add <code>doc/app</code> then I can use <em>rocco</em> to generate some documentation.</p>
+
+<p>Take a look at the full <a href="https://github.com/ianp/MagicBallDemo">project on GitHub</a> and let me know what you think!</p>
+
+<p><strong>Update:</strong> clarified the wording around adding the <code>UIImageView</code>.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ripping Open Ruby Packages]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/06/14/ripping-open-ruby-packages"/>
+    <updated>2009-06-14T02:30:06+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/06/14/ripping-open-ruby-packages</id>
+    <content type="html"><![CDATA[<p>This looks like a mistake: <a href="http://www.rubyinside.com/rip-ruby-packaging-system-1837.html">Rip: A Next Generation Ruby Packaging System</a>. One of the things that Ruby does really well is library
+packaging, <a href="http://rubygems.org/">RubyGems</a> may have some flaws but it basically works
+really well. Contrast this with the situation in Python where there are
+a number of different packaging systems (see, e.g. <a href="http://blog.ianbicking.org/packaging-python.html">this discussion</a>
+by Ian Bicking), and it’s just a mess—this stands out all the more as
+Python normally follows a ‘one way to do it’ approach. Hopefully this
+attempt to fork the Ruby packaging world will be dead on arrival.</p>
+
+<p>Tip o’
+the hat to <a href="http://tomayko.com/">Ryan Tomayko</a> for pointing this out.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

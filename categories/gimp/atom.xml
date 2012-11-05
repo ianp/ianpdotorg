@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gimp | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/gimp/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Gimp UI Blooper]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/05/19/gimp-ui-blooper"/>
+    <updated>2004-05-19T23:05:57+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/05/19/gimp-ui-blooper</id>
+    <content type="html"><![CDATA[<p>Why would the developers of <a href="http://www.gimp.org">Gimp</a> want to offer
+LZW compression as an option in the save as tiff dialog of said
+application? When you try to select this it just whines about a patent
+issue and then the save fails. It seems to me that it would be far
+better to just not offer the option, or only offer the option when it
+can be fulfilled. Let’s hope that they’ll fix this in an upcoming
+release, it doesn’t seem like it would be much work for somebody alreay
+familiar with the code base.</p>
+]]></content>
+  </entry>
+  
+</feed>

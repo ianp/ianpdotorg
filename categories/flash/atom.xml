@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Flash | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/flash/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Adobe Releases RTMP Specification]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/06/18/adobe-releases-rtmp-specification"/>
+    <updated>2009-06-18T06:56:52+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/06/18/adobe-releases-rtmp-specification</id>
+    <content type="html"><![CDATA[<p>This is a few days old now, but on Monday <a href="http://www.adobe.com/">Adobe</a> finally got around
+to releasing <a href="http://www.adobe.com/devnet/rtmp/">the specification</a> for their real-time messaging
+protocol. This should make it much easier for open source efforts like
+<a href="http://rtmpy.org/">RTMPy</a> to polish their implementations. Interesting times…</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tiny Danish Elves]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2003/11/11/tiny-danish-elves"/>
+    <updated>2003-11-11T22:11:37+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2003/11/11/tiny-danish-elves</id>
+    <content type="html"><![CDATA[<p>A neat <a href="http://www.macromedia.com/software/flash">Flash</a> animation about
+<a href="http://www.popandco.com/archive/moab">Lego</a> bricks.</p>
+]]></content>
+  </entry>
+  
+</feed>

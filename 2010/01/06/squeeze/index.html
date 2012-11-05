@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Squeeze! - Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="One of the neat features of Clojure is the sequence abstraction — it makes solving a whole host of data processing tasks much easier, simply get you &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.github.com/ianpdotorg/2010/01/06/squeeze">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.github.com/ianpdotorg" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Squeeze!</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-06T18:38:16+01:00" pubdate data-updated="true">Jan 6<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>One of the neat features of <a href="http://clojure.org/">Clojure</a> is the <a href="http://clojure.org/sequences">sequence</a> abstraction — it makes solving a whole host of data processing tasks much easier, simply get you data into a sequence and you’ve got a huge toolbox available to work on it. Of course being a guy I’m firmly of the belief that more tools are better, with that in mind let’s add another one to our toolbox. Given a sequence the squeeze function returns another sequence with any adjacent items which match a supplied predicate merged together using a supplied function. It’s probably easier to illustrate by example, suppose I have a sequence of strings and I want to merge them together when the trailing string starts with whitespace, I can squeeze them like this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nf">squeeze</span> <span class="o">#</span><span class="p">(</span><span class="nv">and</span> <span class="nv">%2</span> <span class="p">(</span><span class="nb">re-matches </span><span class="o">#</span><span class="s">&quot;\A\s.*&quot;</span> <span class="nv">%2</span><span class="p">))</span>
+</span><span class="line">         <span class="o">#</span><span class="p">(</span><span class="nv">apply</span> <span class="nv">str</span> <span class="p">(</span><span class="nb">apply </span><span class="nv">concat</span> <span class="nv">%&amp;</span><span class="p">))</span>
+</span><span class="line">         <span class="p">[</span><span class="s">&quot;hello&quot;</span> <span class="s">&quot; world.&quot;</span> <span class="s">&quot;foo&quot;</span> <span class="s">&quot; bar&quot;</span><span class="p">])</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Another example, given a sequence of characters (read from an <code>InputStream</code> for example), I could group them into words by squeezing then thusly (the first line is just to remind you that calling <code>seq</code> on a string produces a sequence of characters):</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">seq </span><span class="s">&quot;Cheers, chars!&quot;</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="sc">\C</span> <span class="sc">\h</span> <span class="sc">\e</span> <span class="sc">\e</span> <span class="sc">\r</span> <span class="sc">\s</span> <span class="err">\</span><span class="o">,</span> <span class="sc">\space</span> <span class="sc">\c</span> <span class="sc">\h</span> <span class="sc">\a</span> <span class="sc">\r</span> <span class="sc">\s</span> <span class="sc">\!</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">map </span><span class="nv">str/trim</span>
+</span><span class="line">         <span class="p">(</span><span class="nf">squeeze</span> <span class="o">#</span><span class="p">(</span><span class="nv">and</span> <span class="nv">%2</span> <span class="p">(</span><span class="nb">not= </span><span class="sc">\space</span> <span class="nv">%2</span><span class="p">))</span>
+</span><span class="line">                  <span class="o">#</span><span class="p">(</span><span class="nv">apply</span> <span class="nv">str</span> <span class="p">(</span><span class="nb">apply </span><span class="nv">concat</span> <span class="nv">%&amp;</span><span class="p">))</span>
+</span><span class="line">                   <span class="p">(</span><span class="nb">seq </span><span class="s">&quot;I&#39;m sorry Dave, I can&#39;t let you do that.&quot;</span><span class="p">)))</span>
+</span><span class="line"><span class="p">(</span><span class="s">&quot;I&#39;m&quot;</span> <span class="s">&quot;sorry&quot;</span> <span class="s">&quot;Dave,&quot;</span> <span class="s">&quot;I&quot;</span> <span class="s">&quot;can&#39;t&quot;</span> <span class="s">&quot;let&quot;</span> <span class="s">&quot;you&quot;</span> <span class="s">&quot;do&quot;</span> <span class="s">&quot;that.&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So how does it work? Well, here’s the interface:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="k">defn </span><span class="nv">squeeze</span>
+</span><span class="line">  <span class="p">[</span><span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">coll</span><span class="p">]</span>
+</span><span class="line">  <span class="p">(</span><span class="nf">squeeze-</span> <span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">coll</span> <span class="nv">nil</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And here’s the actual function that does the work, it’s declared private
+because I don’t want to expose the matched parameter to the outside
+world.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="k">defn- </span><span class="nv">squeeze-</span>
+</span><span class="line">  <span class="p">([</span><span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">coll</span> <span class="nv">matched</span><span class="p">]</span>
+</span><span class="line">    <span class="p">(</span><span class="nf">lazy-seq</span>
+</span><span class="line">      <span class="p">(</span><span class="nb">when-let </span><span class="p">[</span><span class="nv">s</span> <span class="p">(</span><span class="nb">seq </span><span class="nv">coll</span><span class="p">)]</span>
+</span><span class="line">        <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">f</span> <span class="p">(</span><span class="nb">first </span><span class="nv">s</span><span class="p">)</span>
+</span><span class="line">              <span class="nv">s</span> <span class="p">(</span><span class="nb">second </span><span class="nv">s</span><span class="p">)</span>
+</span><span class="line">              <span class="nv">rest</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">coll</span><span class="p">)]</span>
+</span><span class="line">          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">pred</span> <span class="nv">f</span> <span class="nv">s</span><span class="p">)</span>
+</span><span class="line">            <span class="p">(</span><span class="nf">squeeze-</span> <span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">rest</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">f</span> <span class="nv">matched</span><span class="p">))</span>
+</span><span class="line">            <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">next</span> <span class="p">(</span><span class="k">if </span><span class="nv">matched</span> <span class="p">(</span><span class="nf">merge-fn</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">f</span> <span class="p">(</span><span class="nb">reverse </span><span class="nv">matched</span><span class="p">)))</span> <span class="nv">f</span><span class="p">)]</span>
+</span><span class="line">              <span class="p">(</span><span class="nb">cons </span><span class="nv">next</span> <span class="p">(</span><span class="nf">squeeze-</span> <span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">rest</span> <span class="nv">nil</span><span class="p">)))))))))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>I should probably point out that all of this playing around with
+sequences was inspired by <a href="http://fulldisclojure.blogspot.com/">Sean Devlin</a>’s <a href="http://fulldisclojure.blogspot.com/2010/01/12-fn-proposal-same-multisame.html">excellent proposal</a>
+for some new sequence functions for Clojure 1.2. The full code for this
+is available <a href="/code/2010/01/squeeze.clj">here</a> (it’s just the above, but with an added doc
+comment on the <code>squeeze</code> function definition).</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ianp</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-06T18:38:16+01:00" pubdate data-updated="true">Jan 6<span>th</span>, 2010</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/clojure/'>Clojure</a>, <a class='category' href='/categories/lisp/'>Lisp</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2010/01/02/working-with-java-arrays" title="Previous Post: Working with Java Arrays">&laquo; Working with Java Arrays</a>
+      
+      
+        <a class="basic-alignment right" href="/2010/01/07/prevalent-synchronicity" title="Next Post: Prevalent Synchronicity">Prevalent Synchronicity &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://www.joyentcloud.com/">Joyent</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

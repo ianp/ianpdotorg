@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Privacy | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/privacy/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Stroke Me Gently]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/11/05/stroke-me-gently"/>
+    <updated>2012-11-05T22:53:00+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/11/05/stroke-me-gently</id>
+    <content type="html"><![CDATA[<p>Excellent <a href="http://www.gizmodo.co.uk/2012/10/search-me/">article</a> over at <a href="http://www.gizmodo.co.uk/">Gizmodo</a> about the whole security theatre dance that we’re forced to do any time we want to fly these days. My favourite quote:</p>
+
+<blockquote>
+  <p>I don’t have a problem with being searched at all – in fact, if you guys think it’s necessary, I’d be the first to admit that I look a little bit suspicious before I’ve had my first cup of coffee in the morning – but if you’re going to stroke me gently in front of hundreds of people, you’d better buy me a fucking drink first, is all I am saying.</p>
+</blockquote>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gmail]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/04/10/gmail"/>
+    <updated>2004-04-10T16:04:47+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/04/10/gmail</id>
+    <content type="html"><![CDATA[<p><a href="http://www.diveintomark.org" title="Dive into Mark">Mark Pilgrim</a> writes:</p>
+
+<blockquote>
+  <p>In short, the only way to use <a href="http://gmail.google.com">Gmail</a> is the way
+that the Gmail designers use Gmail. The only way Gmail could be less
+accessible is if the entire site were built in Flash.</p>
+</blockquote>
+
+<p>So with this and the associated privacy concerns, it looks like this could turn into a bit of a turkey.</p>
+
+<p><em>Update:</em> Boy, was I wrong on this!</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Business | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/business/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rearranging the Apples]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples"/>
+    <updated>2012-10-31T19:18:00+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples</id>
+    <content type="html"><![CDATA[<p>Some <a href="http://www.appleoutsider.com/2012/10/30/regimechange/">insightful analysis</a> about the recent Apple reorganisation (a.k.a. Scott Forstall getting shit-canned) from <a href="http://www.appleoutsider.com/">Matt Drance</a>:</p>
+
+<blockquote>
+  <p>Not only is this a profound increase in responsibility for all three of these top executives, it’s a profound change in Apple’s organization going as far back as I can remember. There’s a long-standing pattern of separating watershed products important to the company’s future. The Mac and Apple teams. Mac OS X and Classic. The iPod division. iOS and Mac OS X. Suddenly, Tim Cook has pulled the reins in. Federighi owns software. Ive owns design. Cue owns services. Period.</p>
+</blockquote>
+
+<p>While it looks like this is something that asn’t exactly planned in advance, it seems like some people at Apple have been hoping for it for a while now. According to <a href="http://gigaom.com/2012/10/29/from-inside-apple-the-scott-forstall-fallout/">Om Malik</a>:</p>
+
+<blockquote>
+  <p>Forstall’s firing was met with a sense of quiet jubilation, especially among people who worked in the engineering groups.</p>
+</blockquote>
+
+<p>For my part, I’m mainly interested in seeing what happens to the UI now that Jony Ive is in charge of it, hopefully the misguided move towards skeuomorphic interfaces will be taken out back and shot.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Two Articles About Online Games]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2008/12/19/two-articles-about-online-games"/>
+    <updated>2008-12-19T14:25:40+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2008/12/19/two-articles-about-online-games</id>
+    <content type="html"><![CDATA[<p>The <a href="http://www.infoq.com/presentations/Second-Life-Ian-Wilkes">first</a>, over at <a href="http://www.infoq.com/">InfoQ</a>, is a talk given by one of the
+<a href="http://lindenlab.com/">Linden Labs</a> guys about the architecture of <a href="http://secondlife.com/">Second Life</a>. The
+<a href="http://arstechnica.com/news.ars/post/20081219-online-buzz-key-to-creating-long-term-game-revenue.html">other</a> is at <a href="http://arstechnica.com/">Ars Technica</a> and looks at some of the numbers
+surrounding the business of gaming.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vodafone 3G]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g"/>
+    <updated>2004-02-17T14:02:22+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g</id>
+    <content type="html"><![CDATA[<p>Well, I mentioned this many a time whilst I was consulting at
+<a href="http://www.three.com">Three</a> as being something that they should
+definitely offer, but it seems like <a href="http://www.vodafone.com">Vodafone</a>
+have beaten them to it. They
+<a href="http://www.vodafone.com/article\_with\_thumbnail/0,3038,CATEGORY\_ID%253D102%2526LANGUAGE\_ID%253D0%2526CONTENT\_ID%253D214962,00.html">announced</a>
+a few days ago that they’d soon be offering 3G data services throughout
+pretty much most of Europe. Looks like 3 could soon be a thing of the
+past, I really don’t fancy their chances in the marketplace now the big
+V is moving in.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fedora]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2003/11/16/fedora"/>
+    <updated>2003-11-16T11:11:07+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2003/11/16/fedora</id>
+    <content type="html"><![CDATA[<p>By coincidence I just finished reading up on the <a href="http://fedora.redhat.com">Fedora Project</a> before I read <a href="http://www.dynamicobjects.com/d2r">this</a> post from Diego. As I see it Redhat are going to push the Fedora project as their replacement for the Professional edition (i.e. Red Hat 9). This probably makes sense since they can free up a lot of resources whilst hopefullty maintaining market visibility. If they can increase the speed of the release cycle for this it may even help them gain some more converts (and it sure does look pretty!).</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The Semantic Web]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2003/11/10/the-semantic-web"/>
+    <updated>2003-11-10T13:11:12+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2003/11/10/the-semantic-web</id>
+    <content type="html"><![CDATA[<p>Clay Shirky’s <a href="http://www.shirky.com/writings/semantic_syllogism.html">latest newsletter</a>) on networks, economics and culture discusses the semantic web. In a nutshell, he’s not very impressed. The starting point for this argument is that syllogisms don’t model the real world well, an example:</p>
+
+<blockquote>
+  <p>The creator of <a href="http://www.shirky.com">shirky.com</a>) lives in Brooklyn. People who live in
+Brooklyn speak with a Brooklyn accent.</p>
+</blockquote>
+
+<p>Well in this case clearly they don’t, the second assertation is clearly false, it’s obvious that not everybody who lives in Brooklyn calls birds <em>boids</em>, so that absolute assertaion does not hold.</p>
+
+<p>The example later on using Nike and the first amendment of the US constitution has more merit, in this case the fact asserted (the first amendment covers the rights of US citizens) is a subset of the actual applicability rather than a superset as in the Brooklyn case. I think that this is still a surmountable problem, but it may require a more complex representation of ‘facts’ than initially considered. I think that maybe the way forward if not, as Clay suggests (if only to point out it’s impracticality), to attach context to each assertation and then cross check against this.</p>
+
+<p>A better approach surely would be to attach an accuracy value to each statement, then the syllogisms could have attached accuracy values also. For example, the following pseudo code:</p>
+
+<p><code>
+LET clay lives in Brooklyn ACCURACY 1.0
+LET people who live in brooklyn say boids ACCURACY 0.7
+DEDUCE clay says boids ACCURACY 0.7
+</code></p>
+
+<p>With the final 0.7 being the product of the two ‘fact’ accuracies. Now this is just something that I’ve come up with on the spur of the moment, not a result of research so I don’t know how generally useful this would be, but in tools designed for human use it should be possible to tolerate a level of inaccuracy, so long as it is marked as such.</p>
+
+<p>Reading further, the examples about merging databases I can agree with the fact that it’s <em>way</em> more complicated that just simply mapping field names! When it comes to meta data, this is probably best if it can be extracted from the data itself automatically, of course this would reduce the amount of available data, but maybe we could tag any manually added meta data with a date and allow it’s accuracy to deteriorate as time goes by (or as the tagged data is revised), and you could always tweak your reasoner to reduce the accuracy of human added data anyway.</p>
+
+<p>Hmmm, but this goes against what the semantic web is supposed to be for to a large extent. Machines need to be able to rely on absolute (i.e. <code>ACCURACY 1.0</code>) facts to be able to use them a lot of the time. I think the conclusion that I’m coming to is that there is a benefit to be gained from the semantic web and it’s related technologies and ideas, but probably not as great as it’s champions make out.</p>
+
+<p>So it’s another web related technology with potential that has been overmarketed. Nothing new there then.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

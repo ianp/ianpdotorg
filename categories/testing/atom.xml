@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Testing | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/testing/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Why Test Driven Devlopment Works]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/02/15/why-test-driven-devlopment-works"/>
+    <updated>2004-02-15T07:02:10+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/02/15/why-test-driven-devlopment-works</id>
+    <content type="html"><![CDATA[<p>From a Salon
+<a href="http://archive.salon.com/21st/feature/1997/10/09interview.html">interview</a>
+with Ellen Ullman:</p>
+
+<blockquote>
+  <p>When you’re around really serious professional programmers, this
+code jockey stuff really falls away, and there is a recognition
+that the best programmers spend a lot of time thinking first, and
+working out the algorithms on paper or in their heads, at a white
+board, walking.</p>
+</blockquote>
+
+<p>Is this one of the reasons why test driven development is successful? It forces you to take a step back and consider the problem in a greater level of detail before you start writing code. If it’s not the main reason then I think it’s a large influencing factor. Several of the XP practices exhibit this behaviour (more thinking, less typing) in fact, despite it’s name. Take pair programming, if you’re forced to work with somebody and explain what you are doing then you are forced to think about your work at least to the level of articulating your thoughts to another.</p>
+]]></content>
+  </entry>
+  
+</feed>

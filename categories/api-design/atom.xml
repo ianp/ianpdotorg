@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: API Design | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/api-design/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Handling Flag Arguments]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2011/06/23/handling-flag-arguments"/>
+    <updated>2011-06-23T14:42:28+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2011/06/23/handling-flag-arguments</id>
+    <content type="html"><![CDATA[<p><a href="http://martinfowler.com/">Martin Fowler</a> has a <a href="http://martinfowler.com/bliki/FlagArgument.html">new bliki entry talking about flag arguments</a>, defined as:</p>
+
+<blockquote>
+  <p>A flag argument is a kind of function argument that tells the
+function to carry out a different operation depending on its value.</p>
+</blockquote>
+
+<p>And, as an example of this API style:</p>
+
+<p><code>java
+Class Concert {
+  public Booking book(Customer aCustomer, boolean isPremium);
+}
+</code></p>
+
+<p>And his preferred API design:</p>
+
+<p><code>java
+Class Concert {
+  public Booking bookRegular(Customer aCustomer);
+  public Booking bookPremium(Customer aCustomer);
+}
+</code></p>
+
+<p>The problem with this, as Mr. Fowler points out, is that it can lead to problems with the implementation. His preferred solution is to have a private implementation method exactly like the original problematic API:</p>
+
+<p><code>java
+private Booking bookImpl(Customer aCustomer, boolean isPremium)
+</code></p>
+
+<p>But if we think about the problem for a little longer we can see that there is a better option available to us. The real problem with flag arguments is that they lose information at the call site, so the original example method would be called like this:</p>
+
+<p><code>java
+. . .
+myConcert.book(poorCustomer, false);
+myConcert.book(richCustomer, true);
+. . .
+</code></p>
+
+<p>There’s nothing to say what those true and false arguments actually mean. We can just define a type-safe enum to use instead of the boolean, that way the information is still present at the call site. This was our API becomes:</p>
+
+<p><code>java
+Class Concert public {
+  enum TicketType { REGULAR, PREMIUM }
+  public Booking book(Customer aCustomer, TicketType ticketType)
+</code></p>
+
+<p>And at the call site:</p>
+
+<p><code>java
+. . .
+myConcert.book(poorCustomer, TicketType.REGULAR);
+myConcert.book(richCustomer, TicketType.PREMIUM);
+. . .
+</code></p>
+
+<p>This is easier to implement, and works for multi valued (e.g. integer) flags as well.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

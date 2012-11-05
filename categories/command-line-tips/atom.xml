@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Command-Line Tips | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/command-line-tips/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Category Counts in OctoPress Revisited]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/10/30/category-counts-in-octopress-revisited"/>
+    <updated>2012-10-30T18:41:00+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/10/30/category-counts-in-octopress-revisited</id>
+    <content type="html"><![CDATA[<p>As an improvement on an older shell script, here’s a rake task to list all of the categories in your blog, along with post counts for each of them:</p>
+
+<p>```ruby
+desc “count the number of posts in each category”
+task :count_categories do
+  require ‘yaml’</p>
+
+<p>counts = {}</p>
+
+<p>Dir.glob(‘source/_posts/*.markdown’).each do |f|
+    post = begin
+      YAML.load(File.open(f))
+    rescue ArgumentError =&gt; e
+      puts “error: parsing #{f} - #{e.message}”
+    end
+    cats = post[‘categories’]
+    if cats.respond_to? “each”
+      cats.each {|c| counts[c] = counts[c].to_i + 1}
+    else
+      counts[cats] = counts[cats].to_i + 1
+    end
+  end</p>
+
+<p>counts.sort_by {|k,v| v}.reverse.each {|k,v| puts “#{v} #{k}”}
+end
+```</p>
+
+<p>Just add this to the end of your OctoPress Rakefile and you’re good to go.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Category Counts in Octopress]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/04/18/category-counts-in-octopress"/>
+    <updated>2012-04-18T10:36:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/04/18/category-counts-in-octopress</id>
+    <content type="html"><![CDATA[<p>Here’s a quick shell script to get the number of posts in each category for an <a href="http://octopress.org/">Octopress</a> blog, just cat your <code>source/_posts</code> folder through the following one-liner:</p>
+
+<p>```sh
+sed -n ‘/^—/,/^—/p’ |\
+grep ‘^- ‘ |\
+sort |\
+uniq -s 2 -c - |\
+sort -n</p>
+
+<p>```</p>
+
+<p>Here’s what each line does:</p>
+
+<ol>
+  <li>extracts the Yaml front-matter from each file;</li>
+  <li>extracts each top-level list entry, this assumes that the only top-level list is the category list, which is the default for Octopress posts;</li>
+  <li>sort the lines;</li>
+  <li>collapse identical lines, prepending a count of the number of lines collapsed; and finally</li>
+  <li>sort numerically.</li>
+</ol>
+
+<p>Maybe this will be useful to somebody out there…</p>
+
+<p><strong>Update:</strong> I’ve <a href="/2012/10/30/category-counts-in-octopress-revisited/">written a version</a> that’s integrated with rake as well.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Convert PDFs to Postscript]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2011/04/19/how-to-convert-pdfs-to-postscript"/>
+    <updated>2011-04-19T09:43:14+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2011/04/19/how-to-convert-pdfs-to-postscript</id>
+    <content type="html"><![CDATA[<p>It’s easy using <em>pdftops</em>, part of the <a href="http://poppler.freedesktop.org/">Poppler</a> suite of programs. First make sure it’s installed, or install it (using <a href="http://mxcl.github.com/homebrew/">Homebrew</a> on OS X):</p>
+
+<p><code>console
+$ brew update
+$ brew install poppler
+</code></p>
+
+<p>Then the command <code>pdftops infile.pdf outfile.ps</code> can be scripted as per
+usual, something like this:</p>
+
+<p><code>console
+for page in pages/*.pdf
+do
+  pdftops $page postscript/`basename -s .pdf $page`.ps
+done
+</code></p>
+
+<p>Recorded in the interest of helping Google organise my brain.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Unix | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/unix/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Why Everything is a File]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/12/28/why-everything-is-a-file"/>
+    <updated>2009-12-28T17:54:29+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/12/28/why-everything-is-a-file</id>
+    <content type="html"><![CDATA[<p>One of the <a href="http://en.wikipedia.org/wiki/Unix_architecture">distinguishing characteristics of Unix</a> is the
+philosophy that “everything is a file” (taken even further in
+<a href="http://en.wikipedia.org/wiki/Linux">Linux</a> and <a href="http://plan9.bell-labs.com/plan9/">Plan 9</a>). Reading the interview with <a href="http://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> in <a href="http://www.codersatwork.com/">Coders at Work</a> (page 465) sheds some light on why
+this is the case:</p>
+
+<blockquote>
+  <p><strong>Seibel:</strong> So you basically wrote an OS so you’d
+have a better environment to test your file system.
+<strong>Thompson:</strong> Yes. Halfway through there that I realized it was a real time-sharing
+system. I was writing the shell to drive the file system. And then I was
+writing a couple other programs that drove the file system. And right
+about there I said, “All I need is an editor and I’ve got an operating
+system.”</p>
+</blockquote>
+
+<p>So Unix started life as a glorified test harness for Ken’s file system! Amusing…</p>
+
+]]></content>
+  </entry>
+  
+</feed>

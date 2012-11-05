@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Games | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/games/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Choose Your Own Visual Adventure]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/11/12/choose-your-own-visual-adventure"/>
+    <updated>2009-11-12T10:20:19+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/11/12/choose-your-own-visual-adventure</id>
+    <content type="html"><![CDATA[<p>A <a href="http://samizdat.cc/cyoa/">really nice set</a> of visualisations of the old Choose Your Own
+Adventure books, I was a big fan of the <a href="http://en.wikipedia.org/wiki/The_Warlock_of_Firetop_Mountain">English equivalents</a> when I
+was a kid.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vibration Function]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/06/13/vibration-function"/>
+    <updated>2009-06-13T23:09:02+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/06/13/vibration-function</id>
+    <content type="html"><![CDATA[<p><a href="http://www.gamesetwatch.com/">GameSetWatch</a> is reporting about a new <a href="http://www.gamesetwatch.com/2009/06/play_mobile_motionbased_erotic.php">‘motion-based erotic game’</a> for the Nokia N95:</p>
+
+<blockquote>
+  <p>Players have to move and tilt their phone along with the game’s music …, Play also seems to use the handset’s vibration function in some manner.</p>
+</blockquote>
+
+<p>Oh yeah, I’ll just bet it does!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Neat Historical Game]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/05/25/neat-historical-game"/>
+    <updated>2009-05-25T17:48:55+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/05/25/neat-historical-game</id>
+    <content type="html"><![CDATA[<p><a href="http://www.channel4.com/history/microsites/0-9/1066/game/index.html">1066</a>, over at <a href="http://www.channel4.com/">Channel 4</a> (courtesy of <a href="http://www.wonderlandblog.com/wonderland/2009/05/1066-the-game.html">Wonderland</a>). I’ve
+often though that there’s a lot of untapped potential in historical
+games, and maybe smaller efforts like this one are a better way of
+leveraging the wealth of material that’s available than, say, more
+traditional ‘epic’ style games like Age of Empires.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Play with your Peas 1]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/05/25/play-with-your-peas-1"/>
+    <updated>2009-05-25T00:32:05+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/05/25/play-with-your-peas-1</id>
+    <content type="html"><![CDATA[<p>So the project I’m using to learn Flash and <a href="http://pushbuttonengine.com/">PushButtonEngine</a>
+learning is <a href="http://lostgarden.com/">Dan Cook</a>’s <a href="http://lostgarden.com/2008/02/play-with-your-peas-game-prototyping.html">Play with your Peas</a> game prototype
+challenge, I’ll keep a log of my progress here. First things are to get
+the libraries set up, this was pretty well covered in the last couple of
+posts, but the actual steps I took (in brief) are:</p>
+
+<ol>
+  <li>checked out PBE from subversion, it’s hosted at <code>http://code.google.com/p/pushbuttonengine/</code> and there are instructions there on how to get it;</li>
+  <li>copied the 5 main projects from <code>pushbuttonengine/Projects/Engine</code> into my workspace;</li>
+  <li>added <code>build.xml</code> and <code>build.properties</code> files, and set up the dependencies in them;</li>
+  <li>created a new project called <code>PlayWithYourPeas</code> and set up the dependencies and build files; and finally</li>
+  <li>set up a <code>pbeproj</code> file by copying an existing file and modifying it.</li>
+</ol>
+
+<p>At this stage I’m almost ready to start cranking out some
+code! But first, I need to copy all of the artwork that I’m going to
+use, so I grabbed the zip file from <a href="http://lostgarden.com/2008/02/play-with-your-peas-game-prototyping.html">danc’s site</a> and opened it up,
+then created an <code>Assets/Images</code> folder and moved all of the images
+apart from the mock-up to there. I also created <code>Levels</code> and
+<code>Sounds</code> folders in my <code>Assets</code> folder, as I’ll need them later on.</p>
+
+<p>Now I can finally start writing code. For this project I’m going to
+stick to plain ActionScript3 files: no Flex or MXML as I’d like to keep
+the gradient of my learning curve down to a reasonable angle! Looking
+over the <a href="http://pushbuttonengine.com/docs/">documentation</a> and sample projects I can see that there
+are four main files that I need to create for my game: components,
+levels, resources, and the main file which, in my case, is going to be
+<code>PlayWithYourPeas.as</code>. I can start be just creating each file (<code>⌘N →
+AS Class...</code> if you’re using FDT, or however you normally create a new
+ActionScript 3 class in your own set-up). I’ll go through each file in
+turn and explain what it’s for and what I’ve put in it.</p>
+
+<h3 id="levels">Levels</h3>
+
+<p>The first class I’ll look at is called <code>Levels</code>, in the <code>Levels.as</code>
+file. Go ahead and create it now if your following along and haven’t
+already done so. The level information in PBE is all loaded from an XML
+based level description file, but there needs to be something to hook
+that into the rest of the game, and that’s what this class is for. It
+just has a single class with a constructor and the following code</p>
+
+<p><code>actionscript
+public class Levels {
+   public function Levels() {
+      LevelManager.Instance.AddLevelFileReference(
+         "../Assets/Levels/level-01.pbelevel", 0);
+      LevelManager.Instance.AddGroupReference("Everything", 0);
+      LevelManager.Instance.Start();
+   }
+}
+</code></p>
+
+<p>The first line tells PBE where to find my level file (I’ll describe it’s
+contents later on); the next line tells PBE whereabouts in the file to
+start loading things from, and the last line starts the loading process.
+The second line is important because you can have a huge amount of stuff
+in your levels file and not everything needs to be loaded at the same
+time, a single file can contain multiple game levels, allowing them to
+share resources. Game levels are simple numbers as far as the engine is
+concerned, so you add everything to your level description file and then
+set up a group (see below) that contains just the relevant bits and
+pieces needed for each actual game level. The second line says that
+‘level 0 uses all the things described in the group named “Everything”’.</p>
+
+<p>One last thing to note about this file: the name <code>level-01</code> that I’ve
+chosen for my level description file is a bit different from the
+examples that are bundles with PBE; this is because I want to be able to
+keep the initial download size for my game as small as possible and so
+will want to break things up into different levels that can be loaded
+asynchronously in the background - this way the player will get a fast
+start-up and quick loading of new levels. This game will be too small
+for this to matter, but I’d like to try to start off with good habits
+then I don’t need to change them later on!</p>
+
+<h3 id="resources">Resources</h3>
+
+<p>This is just
+a list of all of the resources (images, sounds, the level description,
+and so on) that will be included in the game initially; i.e. will be
+packaged up into the SWF or Air installer. As an aside, I’m going to
+optimise this for the SWF version of the game, I’ll handle bundling up
+additional resources into the Air installer via the build scripts;
+although, as with the levels file, for a game this small it makes no
+difference.</p>
+
+<p>Initially I’m going to set up my resources so that they
+include the level description file (it needs to be references here as
+well) and the background image.</p>
+
+<p><code>actionscript
+public class Resources {
+   [Embed(source="../Assets/Levels/level-01.pbelevel",
+          mimeType='application/octet-stream')]
+   private var _level:Class;
+   [Embed(source="../Assets/Images/Background.png",
+          mimeType='application/octet-stream')]
+   private var _background:Class;
+   public function Resources() {
+      ResourceManager.Instance.RegisterEmbeddedResource(
+         "../Assets/Levels/level-01.pbelevel",
+         XMLResource,
+         new _level() as ByteArray);
+      ResourceManager.Instance.RegisterEmbeddedResource(
+         "../Assets/Images/Background.png",
+         ImageResource,
+         new _background() as ByteArray);
+   }
+}
+</code></p>
+
+<p>The two private variables here basically hooks to hang the <code>Embed</code>
+metadata from. Note that they both need to be octet streams, if you try
+to use something more intuitive (say <code>application/xml</code> for the level
+description and <code>image/png</code> for the background) it won’t work, as the
+PBE class that loads them basically just deals with things in terms of
+raw byte arrays. </p>
+
+<p>he code in the constructor tells PBE how to handle the
+data in the octet steams: <code>XMLResource</code> and <code>ImageResource</code> are
+class names, the <code>_level</code> class is created by the engine based on the
+metadata that you pass in, so the <code>new _level()</code> is just using the
+<code>Class</code> as an object factory here. Since all of the use of these is
+internal to the engine (we just tell it what to do, no actual code
+required) this isn’t a problem. Even so, hopefully in a future (i.e.
+post 1.0) version of the engine it’ll be possible to use smarter mime
+types and have the resource loaders do some automatic conversion as a
+result; it’s be nice to be able to declare something of type
+<code>application/vnd.mycoolxsd+xml</code> and have it accessible as an
+ActionScript XML instance (via the E4X support in AS3).</p>
+
+<h3 id="and-theres-more">And There’s More…</h3>
+
+<p>OK, this has run on for a wile now so I’m going to
+finish this up in another post tomorrow, but to whet your appetite
+here’s a screenshot of what I’ve got so far:</p>
+
+<p><img src="/images/2009/05/peas-01-bg-and-timer.png"></p>
+
+<p>Cool, huh? Well,
+everybody’s got to start somewhere, but it does demonstrate an import
+feature: the timer in the top right hand corner is a custom component
+that I’ve written and then added via the level description file, this is
+neat as it’s a standard component that I’ll be able to reuse in other
+games. I’ll cover the other two files (components and the main game
+file) as well as the custom component in my next post in this series…</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up a Flash Development Environment]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/05/24/setting-up-a-flash-development-environment"/>
+    <updated>2009-05-24T22:04:57+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/05/24/setting-up-a-flash-development-environment</id>
+    <content type="html"><![CDATA[<p>I’ve been playing around with <a href="http://pushbuttonengine.com/">PushButtonEngine</a> and Flash over the
+last couple of days, and though it may be useful to document how I’ve
+hooked this up to my existing Eclipse install. I’ve started off with a
+fairly vanilla Eclipse Java installation, v3.4.2, with the subversion
+plug-ins and Oxygen XML for eclipse. The 2 options that I’ve looked at
+for Flash development are</p>
+
+<ul>
+  <li>
+    <p><a href="http://www.axdt.org/">AXDT</a> - an open source plug-in; and</p>
+  </li>
+  <li>
+    <p><a href="http://fdt.powerflasher.com/">FDT</a> - a commercial offering from a company in Germany.</p>
+  </li>
+</ul>
+
+<p>I’m going
+with FDT at the moment as it seems much more feature complete, it comes
+with a 30-day trial period so I guess I’ll have to decide if it’s worth
+the money after that, the biggest problems it has are a lack of
+documentation and poor support from the parent company, on the upside
+there seems to be a vibrant and helpful community of users. It’s also
+<em>massively</em> overpriced, but that seems to be par for the course with
+small German software vendors (EJ Technologies, I’m looking at you…).</p>
+
+<p>I’m using the the build files described <a href="http://ianp.org/2009/05/ant-build-files-for-pushbuttonengine">in a previous post</a>, and
+have set up <a href="http://ianp.org/2009/05/level-dtd-for-pushbuttonengine">a custom schema</a> for editing PBE level files. The other
+neat tool that I’ve found is the <a href="http://www.monsterdebugger.com/">Monster Debugger</a>, which has a
+nice logging UI and the ability to inspect objects at run-time, it can
+also dynamically invoke methods, to a fairly limited extent (Flash IDE’s
+are about 30 years behind Lisp in this respect, even the JVM can do
+limited hot code replacement).</p>
+
+<p>I should probably do a round up of useful
+links as well, as the Flash community in general seems to be really
+helpful and there’s loads of good stuff out there.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

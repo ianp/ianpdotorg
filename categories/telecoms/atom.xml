@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Telecoms | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/telecoms/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vodafone 3G]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g"/>
+    <updated>2004-02-17T14:02:22+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g</id>
+    <content type="html"><![CDATA[<p>Well, I mentioned this many a time whilst I was consulting at
+<a href="http://www.three.com">Three</a> as being something that they should
+definitely offer, but it seems like <a href="http://www.vodafone.com">Vodafone</a>
+have beaten them to it. They
+<a href="http://www.vodafone.com/article\_with\_thumbnail/0,3038,CATEGORY\_ID%253D102%2526LANGUAGE\_ID%253D0%2526CONTENT\_ID%253D214962,00.html">announced</a>
+a few days ago that they’d soon be offering 3G data services throughout
+pretty much most of Europe. Looks like 3 could soon be a thing of the
+past, I really don’t fancy their chances in the marketplace now the big
+V is moving in.</p>
+]]></content>
+  </entry>
+  
+</feed>

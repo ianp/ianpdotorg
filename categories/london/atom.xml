@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: London | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/london/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[St. Pauls]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2003/10/17/st-pauls"/>
+    <updated>2003-10-17T08:10:18+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2003/10/17/st-pauls</id>
+    <content type="html"><![CDATA[<p>I was walking past St. Pauls cathedral yesterday and it is currently wrapped in scaffolding. Rather than leave this in plain view, some bright spark has come up with the idea of wrapping a big sheet of cloth around it with a <em>pencil sketch of the cathedral</em> on it. How gypped would you feel if you’d just trekked half way across London just for that!</p>
+]]></content>
+  </entry>
+  
+</feed>

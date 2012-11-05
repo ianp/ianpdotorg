@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: CSS | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/css/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Taking Multiple Classes]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2006/05/17/taking-multiple-classes"/>
+    <updated>2006-05-17T19:06:44+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2006/05/17/taking-multiple-classes</id>
+    <content type="html"><![CDATA[<p>Here’s something that I didn’t realise, but do now thanks to <a href="http://bitesizestandards.com/bites/create-complex-borders-with-multiple-classes">this
+entry</a> on <a href="http://bitesizestandards.com/">Bite Size Standards</a>: elements in HTML can have more
+than one class assigned to them, simply provide a space separated list
+of classes in the class attribute.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Links that Reflow]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/02/12/links-that-reflow"/>
+    <updated>2004-02-12T10:02:32+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/02/12/links-that-reflow</id>
+    <content type="html"><![CDATA[<p>A minor annonyance with peoples CSS: having an <code>onMouseOver</code> effect
+that causes the enclosing paragraph to reflow when you move the mouse
+over it. The common culprit is changing the background colour of the
+surrounding box and, I assume, failing to take into account insets and
+borders correctly.</p>
+]]></content>
+  </entry>
+  
+</feed>

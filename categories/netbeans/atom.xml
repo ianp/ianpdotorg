@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: NetBeans | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/netbeans/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform"/>
+    <updated>2012-10-03T18:32:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform</id>
+    <content type="html"><![CDATA[<p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
+
+<h4 id="picking-a-platform">Picking a Platform</h4>
+
+<p>There are a number of options out there, including:</p>
+
+<ul>
+  <li><a href="http://www.jcp.org/en/jsr/detail?id=296">JSR-296</a> Swing Application Framework;</li>
+  <li><a href="http://wiki.eclipse.org/index.php/Rich_Client_Platform">Eclipse RCP</a>;</li>
+  <li><a href="http://netbeans.org/features/platform/">NetBeans RCP</a>; and</li>
+  <li><a href="http://jidesoft.com/jdaf/">Jide</a> Desktop Application Framework.</li>
+</ul>
+
+<p>JSR-296 is basically dead in the water at this point, and while there are a <a href="https://en.wikipedia.org/wiki/Swing_Application_Framework">few forks</a> doing the rounds I’m not really confident enough in any of them to want to move a reasonably sized codebase to it.</p>
+
+<p>Eclipse uses a different UI toolkit altogether so it’s really a nonpstarter for this excercise, although it would be a good option if starting a new project from scratch.</p>
+
+<p>Jide is a swing component vendor and a relatively new entrant into the RCP space. JDAF has some things going for it: it has the best platform integration of any framework, with much better native fidelity (e.g. message dialogs look OK on Mac OS X and Gnome) than either Eclipse or NetBeans. It also has some handy built-in support for document-centric apps. The downsides are that unlike the other offerings here it’s a commercial product, and it’s much less ambitious in scope than either Eclipse or NetBeans, presumably as many of the other features that these offer are also Jide products (e.g. their docking framework). I also found myself fighting to work with it’s limited data model support.</p>
+
+<p>NetBeans seems to e a good fit for the apps that I’m converting, and it plays well with standard Swing idioms so it should be quite easy to port the code over. Recent releases have extensive support for annotation based configuration as well, which should ease the learning curve.</p>
+
+<p>One downside is that most of the tutorials and documentation assume that you will also be using NetBeans as an IDE, which I won’t be (I use <a href="http://www.jetbrains.com/idea/">IntelliJ</a>), still, NetBeans RCP has pretty good Maven support so it shouldn’t matter too much.</p>
+
+<h4 id="setting-up-a-project-with-netbeans-rcp">Setting Up a Project with NetBeans RCP</h4>
+
+<p>Here’s how to create a project and add a module to it:</p>
+
+<script src="https://gist.github.com/3828460.js?file=nbproject.sh"></script>
+
+<p>You can then open this up in IntelliJ as a Maven based project and start editing away.</p>
+
+<p>Adding additional modules (e.g. myviews, &amp;c.) is as simple as rerunning the last command and re-importing the maven model (or enabling auto-import in IntelliJ).</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[NetBeans Annoyances]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2006/09/28/netbeans-annoyances"/>
+    <updated>2006-09-28T14:45:33+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2006/09/28/netbeans-annoyances</id>
+    <content type="html"><![CDATA[<p>It’s time to try a new IDE again!</p>
+
+<p>Here’s what sucks about netbeans this time around. I should say before I start that I’m using a beta release
+(6.0 M3 2006-09-19-1800 to be specific) but anything that is obviously
+new functionality I’m not going to comment on, this is all stuff that
+has been around for a good long while now and so I think that these
+complaints are valid. If I find anything that looks especially cool
+about the new version I <em>will</em> mention it though, even if it’s a bit
+rough around the edges for now.</p>
+
+<h3 id="general-points">General Points</h3>
+
+<p>It’s still ugly as arse on the Mac. This is a problem with all Java IDEs on Mac OS X but
+NetBeans has it in spades. It’s far worse than Idea and Eclipse when it
+comes to visual appearance. There are hardly any refactorings available
+when compared to Eclipse or Idea, I mean, even basic stuff like ‘inline’
+is missing.</p>
+
+<p>On the plus side, one of the reasons that I’m looking at
+NetBeans again is to try out Jackpot, and when that’s included as
+standard it shoudl leapfrog the other IDEs in terms of refactoring and
+code re-engineering support. Next, the support for editing keybinding is
+pretty lame. For example, there appears to be no way of assigning a
+keyboard shortcut that selects all text between the insertion point and
+the start of the line (or end of the line for that matter).</p>
+
+<h3 id="find--search">Find &amp; Search</h3>
+
+<p>There are a number of issues with the find functionality. I’ve
+been mainly invoking it through control + F7 (find usages), so these
+comments apply specifically to that, but some of them are general to all
+of the find features of the IDE.</p>
+
+<ul>
+  <li>
+    <p>After a find, if I ckick refresh I have to then go through all of the dialogs again before the refresh is run. Just refresh the fucking search, OK?</p>
+  </li>
+  <li>
+    <p>In the find results window, if the result that I am interested in is in a new file I need to selct it <em>twice!</em> The first time just opens the file but doesn’t jump to the line, I have to select it again to get to the actual line.</p>
+  </li>
+  <li>
+    <p>I always have to click through a dialog asking whether I want to search in
+comments or not. I’m not against this as an option but I should be able
+to select a default setting then I don’t have to get this dialog every
+time (maybe a ‘do not show this dialog again’ checkbox?).</p>
+  </li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>Urghh! Enough already! In their defence, the last couple of
+times I’ve tried NetBeans it has just collapsed horribly in a steaming
+pile of stack trace, so they are making improvements, but it’s got a
+looong way to go beforfe it’s useable day-to-day.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Eclipse & Netbeans]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2003/12/18/eclipse-netbeans"/>
+    <updated>2003-12-18T13:12:50+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2003/12/18/eclipse-netbeans</id>
+    <content type="html"><![CDATA[<p>Talk of merging <a href="http://www.eclipse.org">Eclipse</a> and
+<a href="http://www.netbeans.org">NetBeans</a> is off then, according to
+<a href="http://weblogs.java.net/pub/wlg/751" title="Partial Eclipse">this</a> recent
+post. I can’t say that I’m surprised, since many of the differences
+between the two ‘platforms’ have become religious issues. What I’d like
+to see, however, is soome commonality and code sharing between the two
+where it makes sense. For example in the resource management / virtual
+file system APIs, or their action API. This kind of thing would make
+writing plugins that work with multiple IDEs much easier, and would
+avoid duplication of effort, allowing the developers to enhance the two
+products in new ways.</p>
+]]></content>
+  </entry>
+  
+</feed>

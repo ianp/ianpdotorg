@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mac | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/mac/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[I Swallowed a Fly]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/06/20/i-swallowed-a-fly"/>
+    <updated>2012-06-20T17:54:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/06/20/i-swallowed-a-fly</id>
+    <content type="html"><![CDATA[<p><img src="http://www.onefoottsunami.com/wordpress/wp-content/uploads/20120620magsafeadapter/6-forthesakeofcompleteness.jpg" alt="MagSafe Adapter" /></p>
+
+<p>Wow, <a href="http://www.onefoottsunami.com/2012/06/20/the-magsafe-to-magsafe-2-adapter/">that</a> really is a lot of packaging for probably the world’s smallest connector. Also, reading the post about it, was anybody else reminded of <a href="https://en.wikipedia.org/wiki/There_Was_an_Old_Lady_Who_Swallowed_a_Fly">this</a>?</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[30,000,000 Lines Of Code? WTF?]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2006/11/04/30000000-lines-of-code-wtf"/>
+    <updated>2006-11-04T21:08:26+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2006/11/04/30000000-lines-of-code-wtf</id>
+    <content type="html"><![CDATA[<p>Apparently (according to <a href="http://blogs.msdn.com/macmojo/archive/2006/11/03/it-s-all-in-the-numbers.aspx">this</a>) Mac Office is 30,000,000 lines of
+code, that’s a lot of code to try to keep bug free! Out of curiosity, I
+downloaded <a href="http://www.kclee.de/clemens/java/javancss/">a utility to count lines of code</a> and found that
+<a href="http://rvsnoop.org/">RvSnoop</a> is only ~7,000 lines of code. That’s only counting
+non-comment lines, I don’t know how well commented the MS codebase is.
+Not that there’s any real comparison in functionality between the two of
+course!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mac Annoyances]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2003/11/18/mac-annoyances"/>
+    <updated>2003-11-18T21:11:11+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2003/11/18/mac-annoyances</id>
+    <content type="html"><![CDATA[<p><a href="http://daringfireball.net">John Gruber</a> takes issue with external editor support in apples new XCode application. I’m wondering what the Mac is like as a development platform? I love the hardware, and there are lots of neat things about the Mac, but is it a viable platform to switch to?</p>
+
+<p><em>Update:</em> Yes, it is. I switched a few months after this was written and haven’t looked back.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

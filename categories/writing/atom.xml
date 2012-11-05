@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: writing | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/writing/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Think about that]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/think-about-that"/>
+    <updated>2012-05-07T23:32:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/05/07/think-about-that</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>Good design. From eBay. Think about that.</p>
+</blockquote>
+
+<p>Beautiful turn of phrase from John Gruber over at <a href="http://daringfireball.net/linked/2012/05/07/ebay-ipad-app">Daring Fireball</a>.</p>
+
+<p>Posted as part of my new effort to improve my writing.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

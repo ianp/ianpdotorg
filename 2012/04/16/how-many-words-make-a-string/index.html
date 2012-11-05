@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How Many Words Make a String? - Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="A recent post on the iOS Developer Tips blog provided a handy way to get the the word count for a string by using NSScanner, and asked for comments &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.github.com/ianpdotorg" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How Many Words Make a String?</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-16T15:16:00+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A recent post on the <a href="http://iphonedevelopertips.com/data-file-management/count-the-number-of-words-in-an-string.html">iOS Developer Tips</a> blog provided a handy way to get the the word count for a string by using <code>NSScanner</code>, and asked for comments on alternative approaches. Pretty quickly there were a few different suggestions so I thought that I’d take a look at them to see how they compare. It turns out that the different approaches give pretty different results when run over the same test string! To be honest this isn’t much of a surprise, but what was surprising is just how different the results were.</p>
+
+<p>I tested the original scanner based approach and also the first four alternatives from the comments. For the test string I used this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span> <span class="o">=</span> <span class="s">@&quot;Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>there are a couple of things to note here: some of the spaces are doubled up, the period is spaced French-style (i.e. with a space before and after) and the em-dashes have hair-space at either side of them. It’s easier to see some of these features when you look at the same string in a proportional font: “Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!”</p>
+
+<p>Anyway, the various approaches gave very different word counts for that example:</p>
+
+<table class="tabular">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th style="text-align: right">Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Original Scanner</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Regular Expression</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td>String Components</td>
+      <td style="text-align: right">18</td>
+    </tr>
+    <tr>
+      <td>Char Components</td>
+      <td style="text-align: right">22</td>
+    </tr>
+    <tr>
+      <td>Linguistic tagger</td>
+      <td style="text-align: right">12</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Anywhere from 12 to 22 words! Let’s take a look at the different approaches in turn.</p>
+
+<h2 id="original-scanner">Original Scanner</h2>
+
+<p>This is the original <code>NSScanner</code> based version from John’s post, here’s the code for it:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">scannerWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">NSScanner</span><span class="o">*</span> <span class="n">scanner</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSScanner</span> <span class="nl">scannerWithString:</span><span class="n">string</span><span class="p">];</span>
+</span><span class="line">  <span class="n">NSCharacterSet</span><span class="o">*</span> <span class="n">ws</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">];</span>
+</span><span class="line">  <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">while</span> <span class="p">([</span><span class="n">scanner</span> <span class="nl">scanUpToCharactersFromSet:</span><span class="n">ws</span> <span class="nl">intoString:</span><span class="nb">nil</span><span class="p">])</span>
+</span><span class="line">    <span class="o">++</span><span class="n">words</span><span class="p">;</span>
+</span><span class="line">  <span class="k">return</span> <span class="n">words</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This version correctly handles runs of whitespace, but it treats any non-space character as a valid word, so the French-spaced period get’s counted, as do the two em-dashes. Note however that this version <em>does</em> correctly pick up the four hair-spaces.</p>
+
+<h2 id="regular-expression">Regular Expression</h2>
+
+<p>This is my contribution:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">regexWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">NSRegularExpression</span><span class="o">*</span> <span class="n">regex</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSRegularExpression</span> <span class="nl">regularExpressionWithPattern:</span><span class="s">@&quot;</span><span class="se">\\</span><span class="s">w+&quot;</span> <span class="nl">options:</span><span class="mi">0</span> <span class="nl">error:</span><span class="nb">nil</span><span class="p">];</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">[</span><span class="n">regex</span> <span class="nl">numberOfMatchesInString:</span><span class="n">string</span> <span class="nl">options:</span><span class="mi">0</span> <span class="nl">range:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])];</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Obviously this isn’t production code as there is no error handling (or caching of the compiled regex, which may or may not make sense here). But I’d say that this version gives the correct result, both ignoring the French-stop and em-dashes, and handling all of the spaces correctly.</p>
+
+<h2 id="string-components">String Components</h2>
+
+<p>This is by far the simplest solution, provided by Frank in the comments:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">componentsByStringWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">componentsSeparatedByString:</span><span class="s">@&quot; &quot;</span><span class="p">]</span> <span class="n">count</span><span class="p">];</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Unfortunately it doesn’t work at all for this string. Just looking at an actual space character means that the double spaces get counted twice, and the entire substring “No — really — he” gets treated as a single word!</p>
+
+<p>Note though, that this approach is <em>really</em> easy to understand, and would be good if the input text had already been heavily normalized.</p>
+
+<h2 id="char-components">Char Components</h2>
+
+<p>Almost the same as the previous version, except that this uses an <code>NSCharacterSet</code> instead of a string:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">componentsByCharsWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">NSCharacterSet</span><span class="o">*</span> <span class="n">ws</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">];</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">componentsSeparatedByCharactersInSet:</span><span class="n">ws</span><span class="p">]</span> <span class="n">count</span><span class="p">];</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Compared to the previous version this one still double counts the 2-space wide spaces, but it correctly detects the hair-spaces surrounding the em-dashes. Useful I guess if your text has been partially normalized by collapsing runs of spaces.</p>
+
+<h2 id="linguistic-tagger">Linguistic Tagger</h2>
+
+<p>This one was interesting as it’s an API that I haven’t seen before:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">taggerWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">NSArray</span><span class="o">*</span> <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObject:</span><span class="n">NSLinguisticTagSchemeTokenType</span><span class="p">];</span>
+</span><span class="line">  <span class="n">NSLinguisticTagger</span><span class="o">*</span> <span class="n">tagger</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSLinguisticTagger</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTagSchemes:</span><span class="n">schemes</span>
+</span><span class="line">                                                                      <span class="nl">options:</span><span class="mi">0</span><span class="p">];</span>
+</span><span class="line">  <span class="p">[</span><span class="n">tagger</span> <span class="nl">setString:</span><span class="n">string</span><span class="p">];</span>
+</span><span class="line">  <span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="p">[</span><span class="n">tagger</span> <span class="nl">enumerateTagsInRange:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])</span>
+</span><span class="line">                        <span class="nl">scheme:</span><span class="n">NSLinguisticTagSchemeTokenType</span>
+</span><span class="line">                       <span class="nl">options:</span><span class="mi">0</span>
+</span><span class="line">                    <span class="nl">usingBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">tag</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">token</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">sentence</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">([</span><span class="n">tag</span> <span class="nl">isEqualTo:</span> <span class="n">NSLinguisticTagWord</span><span class="p">])</span> <span class="o">++</span><span class="n">words</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}];</span>
+</span><span class="line">  <span class="k">return</span> <span class="n">words</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This code returns the correct number of words, so we have another winner here! Although the code is definitely more complicated than the regex based version above. Also, the originally posted code gave a result of 30, as it also calls the block for whitespace and punctuation, you need to use the <code>tag</code> block parameter to disambiguate these.</p>
+
+<p>The linguistic tagger provides a number of advanced features which may be useful if you need more than just a simple word count though. Note, for example, the <code>sentence</code> block parameter which could be used to give a sentence count as well as a word count.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>For most text the simplest solution is to use a regular expression here. If your input text has already been normalized then the <code>componentsSeparatedByString:</code> based approach is probably the easiest to use. The linguistic tagger allows for more advanced analysis of the text.</p>
+
+<p><strong>Update:</strong> all of the code here, plus a <code>main</code> function to call it, is available as a <a href="https://gist.github.com/2401251">gist</a>.</p>
+
+<p><strong>Update:</strong> I talk a little more about normalization and linguistic tagging in <a href="/2012/04/17/what-is-text-normalization">this post</a>.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ian Phillips</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-16T15:16:00+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/programming/'>Programming</a>, <a class='category' href='/categories/ios/'>iOS</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/03/30/radial-menus" title="Previous Post: Radial Menus">&laquo; Radial Menus</a>
+      
+      
+        <a class="basic-alignment right" href="/2012/04/17/what-is-text-normalization" title="Next Post: What is Text Normalization?">What is Text Normalization? &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://www.joyentcloud.com/">Joyent</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string';
+        var disqus_url = 'http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

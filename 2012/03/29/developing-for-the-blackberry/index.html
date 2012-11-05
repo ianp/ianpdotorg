@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Developing for the BlackBerry - Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="For a change from the day job I’ve been doing some mobile development, all iOS up to now, and I’ve got to say it’s a pretty nice development &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.github.com/ianpdotorg/2012/03/29/developing-for-the-blackberry">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.github.com/ianpdotorg" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Developing for the BlackBerry</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-29T15:12:00+02:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>For a change from the day job I’ve been doing some mobile development, all iOS up to now, and I’ve got to say it’s a pretty nice development experience - especially with the new features (e.g. ARC, new literals) that are being added to Objective-C. But then earlier this week I was asked to look into writing a BlackBerry app at work, so that led me to looking into the different options that are available for that platform, here’s what I looked into:</p>
+
+<ul>
+  <li>the <a href="http://developer.blackberry.com/java">BlackBerry Java SDK</a>;</li>
+  <li><a href="http://developer.appcelerator.com/">Appcelerator Titanium</a>; and</li>
+  <li><a href="http://phonegap.com/">PhoneGap</a> (or <a href="http://incubator.apache.org/cordova/">Cordova</a> as it is becoming).</li>
+</ul>
+
+<p>After working with the iPhone SDK all three of these options left a lot be desired! Herewith, a summary of their shortcomings…</p>
+
+<h3 id="blackberry-java-sdk">BlackBerry Java SDK</h3>
+
+<p>First off let me say that there are too many development options for the BlackBerry platform, even an Android emulation layer if you’re targetting their tablet. It’s a bit of a joke really.</p>
+
+<p>Given their enterprise strengths, RIM should concentrate on getting one good Java based SDK and drop the Android layer. And rather than push their own WebWorks SDK they should concentrate on providing good support for Appcelerator and PhoneGap which will at least provide them with a growing stable of cross-platform apps written using these toolkits.</p>
+
+<p>A final gripe: their simulator is killingly slow to launch, when running in debug mode (which is required to get full console output) it takes 5 minutes to launch on a reasonably modern Windows laptop.</p>
+
+<h3 id="appcelerator-titanium">Appcelerator Titanium</h3>
+
+<p>I like the idea behind Titanium: native components driven by a JavaScript (or CoffeeScript!) engine, but the current implementation didn’t inspire confidence. The installers for both Mac and Windows were buggy. I encountered several errors during installation and the Eclipse based IDE failed to install the BlackBerry components.</p>
+
+<p>I expect that if you are just targetting iPhone and Android then Titanium is probably a viable option, although the problems that I had just getting it installed would give me pause before selecting it.</p>
+
+<h3 id="phonegap--cordova">PhoneGap / Cordova</h3>
+
+<p>The installation process was much smoother, and on the Mac it works with Xcode rather than installing an Eclipse based IDE. That said, the BlackBerry support again seemed to be quite poor, and only available on Windows.</p>
+
+<p>One advantage of PhoneGap is that it’s just HTML5, so you have access to the growing number of excellent frameworks for mobile development (e.g. <a href="http://jquerymobile.com/">jQuery Mobile</a> or <a href="http://spinejs.com/mobile">Spine.mobile</a>) and there is also the opportunity to reuse some code between your mobile app and a web based version.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>For the internal app that I’m working on I’m sticking with the BB Java SDK for now, although if I were going to be doing more than a single small app I would probably invest the time to get comfortable with PhoneGap and use that (of course, at the same time I’m trying to persuade the client that iOS is a better choice).</p>
+
+<p>I’d definitely use PhoneGap if I needed to write a cross-platform app as it seems to be the more mature option.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ian Phillips</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-29T15:12:00+02:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/mobile/'>Mobile</a>, <a class='category' href='/categories/programming/'>Programming</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2011/11/04/installing-to-the-local-maven-repo-with-gradle" title="Previous Post: Installing to the Local Maven Repo With Gradle">&laquo; Installing to the Local Maven Repo With Gradle</a>
+      
+      
+        <a class="basic-alignment right" href="/2012/03/30/radial-menus" title="Next Post: Radial Menus">Radial Menus &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://www.joyentcloud.com/">Joyent</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ianp.github.com/ianpdotorg/2012/03/29/developing-for-the-blackberry';
+        var disqus_url = 'http://ianp.github.com/ianpdotorg/2012/03/29/developing-for-the-blackberry';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

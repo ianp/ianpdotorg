@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Object Pooling Performance - Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="This is an attempt to compare the performance of various object reuse
+strategies for JMonkeyEngine (and, indirectly, Ardor3D). See
+this JME forum &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.github.com/ianpdotorg/2009/01/17/object-pooling-performance">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.github.com/ianpdotorg" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Object Pooling Performance</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-17T16:21:13+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>This is an attempt to compare the performance of various object reuse
+strategies for <a href="http://www.jmonkeyengine.com/">JMonkeyEngine</a> (and, indirectly, <a href="http://www.ardor3d.com/">Ardor3D</a>). See
+<a href="http://www.jmonkeyengine.com/jmeforum/index.php?topic=10146.0">this JME forum topic</a> for background info. Also, it’s worth bearing
+in mind that the main driver for this is to reduce GC pauses, not to
+improve throughput (this is mentioned in the forum topic).</p>
+
+<p>This is
+timings from my initial object pooling implementation using 1 thread
+(all timings throughout this article are in milliseconds):</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1793, 2109, 1485, 1418, 1414, 1592, 1675, 2206, 1768, 1685</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>An interesting
+(although unrelated to the topic at hand) thing to note here is that
+it’s pretty easy to spot when hotspot kicked in, although the jump in
+timings between runs 4 and 5 bears investigating further and the slow
+run (run 7) is certainly a worry. Run 7 seems to be consistently slow
+and turning on <code>-verbose:gc</code> doesn’t reveal anything here. This is
+timings from my object pooling implementation using 2 threads, note here
+that this is each thread doing a fixed chunk of work, not a fixed amount
+of work shared between threads (i.e. 2x number of threads = 2x amount of
+work):</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">2234, 2965, 1796, 1830, 2029, 2145, 2105, 2242, 2214, 2247</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So the timings are higher although not twice as high as might be expected,
+this is probably due to that fact that my laptop has a 2-core CPU. Now
+let’s look at the timings from the same with 10 threads:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">8869, 9814, 9203, 8966, 9182, 8973, 9176, 9166, 9358, 9182</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>Yep, about 5x the time as
+the 2 thread runs. Now let’s see how the existing implementation
+compares to these. OK, so now we have an idea how the thread local and
+pooling based implementation performs, let’s have a look at the existing
+implementation to give us a baseline to compare to. This is timings from
+the existing implementation using 1 thread:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1501, 1469, 1379, 1374, 1471, 1553, 1553, 1589, 1652, 1547</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Well, that’s quite a bit faster for a
+single thread, although not an order magnitude type difference, and it
+didn’t use any locking as it’s running from a single thread, a more
+realistic implementation would need to have the locks in place in case
+future code tried to use multiple threads. Let’s have a look at 2
+threads now:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">3038, 2906, 2797, 3140, 3120, 3124, 3143, 3179, 3340, 3352</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Oops! This is about what we’d expect to see, a doubling of the
+amount of work doubles the amount of time needed (as the quaternion
+class is now a shared resource). And 10 threads:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">15538, 16145</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>OK, I got bored of waiting after 2 runs! But it’s clear to see that it’s much
+slower. Finally, based on suggestions from vear and also looking at the
+code used in the <a href="http://www.javolution.com/">Javolution</a> library (a set of real-time Java
+classes), I decided to try a version that reduced the number of thread
+local look-ups needed, this comes at the cost of not providing a single
+reusable <code>ObjectPool</code> class, but as that class is pretty trivial
+anyway it’s no great loss leaving it out of the framework.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"> 1 thread : 1189, 1149, 1096, 1229, 1261, 1506, 1352, 1415, 1295, 1424
+</span><span class="line"> 2 threads: 1644, 1582, 1799, 1640, 1584, 1587, 1766, 1658, 1624, 1806
+</span><span class="line">10 threads: 6853, 7037, 7469, 7549, 7438, 7851, 7748, 7769, 7661, 7703</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Wow! it’s pretty clear that the pooled approach is much
+faster and that the cost of performing the thread local look-up is
+fairly significant. Interestingly I also tried this using raw arrays
+instead of <code>ArrayList</code>s and it was much slower, I can only surmise
+that because <code>ArrayList</code> is so heavily used throughout Java it gets
+insanely optimised by hotspot. As a side note, here’s my Java
+environment:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">~/tmp/perftests<span class="nv">$ </span>uname -a
+</span><span class="line">Darwin Kernel Version 9.6.0: Mon Nov 24 17:37:00 PST 2008;
+</span><span class="line">root:xnu-1228.9.59~1/RELEASE_I386
+</span><span class="line">~/tmp/perftests<span class="nv">$ </span>java -version
+</span><span class="line">java version <span class="s2">&quot;1.6.0_07&quot;</span>
+</span><span class="line">Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.6.0_07-b06-153<span class="o">)</span>
+</span><span class="line">Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 1.6.0_07-b06-57, mixed mode<span class="o">)</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And the code used for these tests is available <a href="http://ianp.org/2009/01/jme-thread-local-performance.tgz">here</a>. I also tried
+this using 1.5 with both the server and client VMs, the 1.5 server VM is
+noticeably slower and the 1.5 client VM is frankly a dog, it was 5-6
+times slower than the 1.6 times given here.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ianp</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-17T16:21:13+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/games/'>Games</a>, <a class='category' href='/categories/java/'>Java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2008/12/19/two-articles-about-online-games" title="Previous Post: Two Articles About Online Games">&laquo; Two Articles About Online Games</a>
+      
+      
+        <a class="basic-alignment right" href="/2009/04/10/cool-glass" title="Next Post: Cool Glass">Cool Glass &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://www.joyentcloud.com/">Joyent</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

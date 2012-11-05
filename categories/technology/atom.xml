@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Technology | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/technology/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Leap into the Future!]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/05/29/leap-into-the-future"/>
+    <updated>2012-05-29T14:59:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/05/29/leap-into-the-future</id>
+    <content type="html"><![CDATA[<p><img src="/2012/05/29/leap-motion.jpg" alt="Leap Motion" /></p>
+
+<p><a href="http://leapmotion.com/">This</a> looks like a fascinating piece of technology provided it works as advertised. Check out the video on their, it looks pretty slick.</p>
+
+<p>The company behind it make some pretty <a href="http://live.leapmotion.com/about.html">bold claims</a> about the technology:</p>
+
+<blockquote>
+  <p>Just about the size of a flash drive, the Leap can distinguish your individual fingers and track your movements down to a 1/100th of a millimeter.
+…
+Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motion software. Do a quick wave to calibrate. That’s it.</p>
+</blockquote>
+
+<p>Of course if you were to use it as a main input device I expect that you’d get tired pretty quickly, but for short sprints of use in specialist applications it looks neat.</p>
+
+<p>And I’d love to see it paired with one the <a href="http://www.vuzix.com/consumer/products_wrap_1200vr.html">new sets</a> of VR displays that are hitting the market right now.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

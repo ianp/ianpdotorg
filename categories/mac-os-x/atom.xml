@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Mac OS X | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/mac-os-x/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Apple Security Cock-Up]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/apple-security-cock-up"/>
+    <updated>2012-05-07T16:04:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/05/07/apple-security-cock-up</id>
+    <content type="html"><![CDATA[<p><a href="http://www.zdnet.com/blog/security/apple-security-blunder-exposes-lion-login-passwords-in-clear-text/11963">This</a> doesn’t look good.</p>
+
+<p>Apple’s approach to security in general is a bit worrying: one the one hand they seem to have the right approach to securing the OS with App Store entitlements (although these aren’t without <a href="http://www.robpeck.com/2012/01/app-store-entitlements-and-the-crippling-of-an-app/">issues</a>) and <a href="http://www.apple.com/macosx/mountain-lion/security.html">Gatekeeper</a>, but their timeliness in shipping security fixes leaves a lot to be desired. Note from the article that this flaw was pointed out to them <em>3 months</em> ago!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[What is Text Normalization?]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2012/04/17/what-is-text-normalization"/>
+    <updated>2012-04-17T09:33:00+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2012/04/17/what-is-text-normalization</id>
+    <content type="html"><![CDATA[<p>In my <a href="/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
+
+<blockquote>
+  <p>Text normalization is a process by which text is transformed in some way to make it consistent in a way which it might not have been before.</p>
+</blockquote>
+
+<p>The article also gives some examples of the kind of transformations that are commonly performed. Of necessity, any normalization process is going to be application specific, but let’s assume for the sake of example that the word count is intended to be used in a writing application of some sort (a text editor or word processor). Given that we probably don’t care about <a href="http://www.unicode.org/reports/tr15/">Unicode normalization</a>, and definitely don’t care about anything which would change the words such as stemming or canonicalization. But maybe we could normalize all runs of whitespace into single spaces? Our original test string then changes from “Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!” to “Peter piper picked a peck of pickled pepper . No — really — he did!”. The difference is probably hard to spot, but all of the doubled spaces in the first string have been replaces with single spaces, and the hair-spaces have been replaced with regular spaces.</p>
+
+<p>How do the different word counting functions work now?</p>
+
+<table class="tabular">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th style="text-align: right">Raw</th>
+      <th style="text-align: right">Normalized</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Original Scanner</td>
+      <td style="text-align: right">15</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Regular Expression</td>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td>String Components</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Char Components</td>
+      <td style="text-align: right">22</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Linguistic tagger</td>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">12</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Better, but it still only leaves the same two functions returning the correct result (assuming of course that you <em>don’t</em> want to count strings of puncuation, this may or may not be the case in a code editor for example).</p>
+
+<p>I can’t speak for the inner working of the linguistic tagger, but the reason that the regex based function works is that it is basing it’s approach on a <em>whitelist</em> rather than a <em>blacklist</em>. The regex basically says “these are valid word characters, everything else can be ignored” whereas all of the other functions take the stance “these are whitespace, eveything else must be part of a word”. Anybody who has done any web development or input validation generally will tell you that whitelists are almost always the correct approach to take. It’s just easier to enumerate all of the valid values for a given set than to try to list all of the exceptions.</p>
+
+<h2 id="linguistic-tagger">Linguistic Tagger</h2>
+
+<p>There are quite a few more options available for analysing text here, let’s start by counting sentences as well as words, this can be done by adding a count for sentences and keeping track of the current sentence based on it’s starting location. The interesting code is on lines 9 and 10:</p>
+
+<p><code>objc
+__block NSUInteger words = 0;
+__block NSUInteger sentences = 0;
+__block NSUInteger current_sentence = 0;
+[tagger enumerateTagsInRange:NSMakeRange(0, [string length])
+                      scheme:NSLinguisticTagSchemeTokenType
+                     options:0
+                  usingBlock:^(NSString* tag, NSRange token, NSRange sentence, BOOL *stop) {
+  if ([tag isEqual:NSLinguisticTagWord]) ++words;
+  if (!sentences || current_sentence != sentence.location) ++sentences;
+  current_sentence = sentence.location;
+}];
+</code></p>
+
+<p>Updating the <code>taggerWordCount</code> function with this code tells us that we still have 12 words, and that they are spread over 2 sentences, cool!</p>
+
+<p>But what about that <code>schemes</code> parameter that we used to set up the tagger and run the enumeration? That allows the tagger to provide different types of information to the enumeration, we can tell the tagger to tag as much as it can by initializing the <code>schemes</code> variable with all available schemes. The <code>en-GB</code> string, by the way, is a <a href="http://tools.ietf.org/html/bcp47">BCP-47</a> code. The list of available schemes for this language is shown as a comment:</p>
+
+<p>```objc
+NSArray* schemes = [NSLinguisticTagger availableTagSchemesForLanguage:@”en-GB”];
+NSLog(@”%@”, schemes);</p>
+
+<p>// 2012-04-17 13:08:16.947 wordcounters[54440:707] (
+//    TokenType,
+//    Language,
+//    Script
+// )
+```</p>
+
+<p>According to Apple’s docs there are several different schemes available. One warning: if you use BCP-47 codes with more information in (such as <code>en-US</code> or <code>pt-BR</code>) then you will just get the basic 3 schemes shown above, using <code>en</code> gets the full list and other languages have varying levels of support.</p>
+
+<p>Let’s alter the test string and see what the different <code>en</code> schemes give us. For a new test string I’m going to use <a href="http://www.mudcat.org/@displaysong.cfm?SongID=1242">this little ditty</a>:</p>
+
+<p><code>objc
+NSString* coffee = @"What I want - is a proper cup ’o coffee,"
+                   @" Made in a proper copper coffee pot."
+                   @" Ik kan van mijn punt,"
+                   @" Ach ba mhaith liom cupán caife o ó pota caife cuí."
+</code></p>
+
+<p>The 3rd and 4th lines have been replaced with Dutch and Irish translations of the English words in order to test the language detection. Interesting to note here is the syntaxused for multi-line strings in Objective-C, and also that I’ve indented the following lines so that there is a space after the punctuation at the end of the preceeding line.</p>
+
+<p>Let’s take a look at each scheme and what it gives us in this example.</p>
+
+<ul>
+  <li>
+    <p><strong>Token Type</strong>
+We can tell the words apart from the whitespace and punctuation by the tag. I could see this being useful for implementing smart punctuation in a word processor (like <a href="http://daringfireball.net/projects/smartypants/">SmartyPants</a>).</p>
+  </li>
+  <li>
+    <p><strong>Lexical Class</strong>
+Instead of just words this gives us nouns, adjectives, and so on; it also classifies some of the puntuation more precisely, for example <code>OpenQuote</code>. Possibly useful in a word processing application, or to provide input to a higher-level analyser.</p>
+  </li>
+  <li>
+    <p><strong>Name Type</strong>
+This attempts to detect people and place names in the text. In this example it identified “Made” as a place name, so it’s probably guessing at this based on the word capitalization.</p>
+  </li>
+  <li>
+    <p><strong>Name Type or Lexical Class</strong>
+As it suggests, a combination of the previous two schemes.</p>
+  </li>
+  <li>
+    <p><strong>Lemma</strong>
+This scheme performs word stemming, returning the stemmed word in the <code>tag</code> block parameter.</p>
+  </li>
+  <li>
+    <p><strong>Language</strong>
+This supposedly analysis each sentence to try to guess which language it is written in. I found that it worked fairly poorly when the language used the same script but did OK when they were different. In the example above it guesses that all of the text is in English, but if you change the 3rd line to “Аз не мога да ми.” (the same in Bulgarian) then it guesses this correctly.</p>
+  </li>
+  <li>
+    <p><strong>Script</strong>
+This is the script used in the token, for us it is always “Latn” for Latin, unless you make the substitution mentioned above in which case it correctly picks up “Cyrl” for the Bulgarian Cyrillic script.</p>
+  </li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>For a simple word count it seems that the regular expression wins out, but the linguistic tagger provides some interesting additional information. One downside to the tagger is that it doesn’t seem to be extensible in any way, so you’re limited to those schemes and tags that Apple ship with the OS. There is no way to, for example, use this mechanism to tag keywords and operators in a code editor, which may be useful.</p>
+
+<p>The code used for this post can be found in <a href="https://gist.github.com/2413356">this gist</a>.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Work with Git & GitHub]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/11/26/how-to-work-with-git-github"/>
+    <updated>2009-11-26T15:33:36+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/11/26/how-to-work-with-git-github</id>
+    <content type="html"><![CDATA[<p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
+shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
+posting it here then it’ll be easy for me to refer back to in future…</p>
+
+<h3 id="installing-the-tools">Installing the Tools</h3>
+
+<ol>
+  <li>install <a href="http://macports.org/">MacPorts</a> if you don’t already have it;</li>
+  <li>get an up-to-date version of ruby and rubygems with <code>sudo port install rb-rubygems</code>;</li>
+  <li>install the <code>github</code> tool with <code>sudo port install json github</code>; and</li>
+  <li>upload your public key to your <a href="http://github.com/account">GitHub account</a>.</li>
+</ol>
+
+<h3 id="creating-a-new-project">Creating a New Project</h3>
+
+<p>Run <code>github create project_name</code> to create a public project, append <code>--private</code>
+to create a private project (you will need a paid account at GitHub for
+this).</p>
+
+<h3 id="forking">Forking</h3>
+
+<p>Run <code>github fork project_owner project_name</code>, for example to create a fork of the Cucumber testing
+framework run <code>github fork aslakhellesoy cucumber</code>.</p>
+
+<h3 id="making-changes">Making Changes</h3>
+
+<p>Make your changes in a branch, this took me a little while to
+get used to at first as it’s different from the normal way of working
+with version control systems like CVS:</p>
+
+<p><code>sh
+$ cd project_dir
+$ git checkout -b feature_name
+... edit edit edit ...
+$ git commit -a -m "Witty comment."
+</code>
+From time to time push the branch to github
+so others can see what I’m working on <code>git push origin feature_name</code>.
+If the work is in a fork then you’ll also want to send a pull-request
+back to the original project with <code>github pull-request project_owner feature_name</code>. All from the command line, neat huh? For more tricks,
+you can also browse issues with <code>github issues {open|closed}</code>.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Disabling Airport Agent on Mac OS X]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/05/27/disabling-airport-agent-on-mac-os-x"/>
+    <updated>2009-05-27T17:46:07+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/05/27/disabling-airport-agent-on-mac-os-x</id>
+    <content type="html"><![CDATA[<p>With OS X Leopard the airport base station utility is now started by
+default and will run as a background process occasionally connecting to
+Akamai servers to check for updates. I don’t use an Airport base station
+and I’d like to minimise the number of processes with open network ports
+in the interests of security I’d like to disable this ‘feature’, here’s
+how: Open <em>Airport Utility</em>, it won’t find any base stations
+(obviously) but you can still open the preferences window, uncheck the
+following three items:</p>
+
+<ul>
+  <li>Check for updates when opening AirPort Utility</li>
+  <li>Check for updates: Weekly</li>
+  <li>Monitor Apple wireless devices for problems</li>
+</ul>
+
+<p>Doing this should both shut down the Airport agent <em>and</em>
+prevent it from automatically starting the next time you log in.</p>
+]]></content>
+  </entry>
+  
+</feed>

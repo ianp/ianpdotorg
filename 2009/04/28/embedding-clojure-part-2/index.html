@@ -1,0 +1,427 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Embedding Clojure (part 2) - Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="Following on from the last post, it actually turns out to be much easier
+to do most of the work in Clojure itself — no need for all of that
+tiresome &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.github.com/ianpdotorg/2009/04/28/embedding-clojure-part-2">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.github.com/ianpdotorg" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Embedding Clojure (Part 2)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-28T08:20:08+02:00" pubdate data-updated="true">Apr 28<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Following on from the last post, it actually turns out to be much easier
+to do most of the work in Clojure itself — no need for all of that
+tiresome messing around with <code>Var</code>s and <code>Symbols</code>s on the Java side
+of things! The trick is to define an abstract class in Java to set a few
+things up and use as a hook, than implement this in Clojure. I’ll go
+through both sides of this, starting with the Java stuff.</p>
+
+<h3 id="the-abstract-class-in-java">The Abstract Class in Java</h3>
+
+<p>Basically, I’m using the Java side of things to
+set up my text pane with a standard stylesheet (I’d like it to use a
+proportional font, with different colours for input, output, and error
+text) and to install a key listener to send commands to the Clojure repl
+whenever the user hits enter or return. The basic class then, is</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">InteractiveConsole</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Document</span> <span class="n">_document</span> <span class="o">=</span> <span class="n">createStyledDocument</span><span class="o">():</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">JTextPane</span> <span class="n">_textpane</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">PipedWriter</span> <span class="n">_inWriter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PipedWriter</span><span class="o">();</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Reader</span> <span class="n">_in</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Writer</span> <span class="n">_out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="o">(</span><span class="k">new</span> <span class="n">DocWriter</span><span class="o">(</span><span class="s">&quot;output&quot;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Writer</span> <span class="n">_err</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="o">(</span><span class="k">new</span> <span class="n">DocWriter</span><span class="o">(</span><span class="s">&quot;error&quot;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+</span><span class="line">    <span class="kd">protected</span> <span class="nf">InteractiveConsole</span><span class="o">(</span><span class="n">JTextPane</span> <span class="n">textpane</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">_textpane</span> <span class="o">=</span> <span class="n">textpane</span><span class="o">;</span>
+</span><span class="line">        <span class="n">_in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PipedReader</span><span class="o">(</span><span class="n">_inWriter</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>createStyledDocument</code> method, which I won’t include here, just
+sets up the style context and my colour scheme. The <code>DocWriter</code> class
+that is references is an trivial writer subclass that just calls
+<code>insertString</code> on the document with the named style. The other class
+that I’ll be wanting to use is a runnable so that I can launch the
+Clojure REPL on it’s own thread. It’s about as trivial as it gets, it
+just calls back into the two abstract methods that I’m going to provide
+to provide my Clojure code somewhere to hook onto.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">private</span> <span class="kd">class</span> <span class="nc">ConsoleRunner</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">_context</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">public</span> <span class="nf">ConsoleRunner</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">      <span class="n">_context</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="nd">@Override</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">var</span> <span class="o">:</span> <span class="n">_context</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">bindVariable</span><span class="o">(</span><span class="n">var</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span> <span class="n">var</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">        <span class="n">doStart</span><span class="o">(</span><span class="n">_in</span><span class="o">,</span> <span class="n">_out</span><span class="o">,</span> <span class="n">_err</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>With this I can provide a start method that installs my key listener and
+then launches a new thread with an instance of this runnable. The two
+hook methods that I’m providing are:</p>
+
+<ul>
+  <li>
+    <p><code>abstract void bindVariable(String,Object)</code>
+to allow me to set up some domain objects on the clojure side of things; and</p>
+  </li>
+  <li>
+    <p><code>abstract void doStart(Reader,Writer,Writer)</code>
+to actually start the REPL, using the provided input, output, and error streams.</p>
+  </li>
+</ul>
+
+<h3 id="the-clojure-implementation">The Clojure Implementation</h3>
+
+<p>Turns out to be trivial as well, the implementation of <code>bindVariable</code> just interns the object passed in into the user
+namespace, it’s a one liner in Clojure.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nf">defn</span><span class="w"> </span><span class="nv">-bindVariable</span><span class="w"> </span><span class="p">[</span><span class="nv">this</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="nv">value</span><span class="p">]</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="nf">intern</span><span class="w"> </span><span class="ss">&#39;user</span><span class="w"> </span><span class="p">(</span><span class="nf">symbol</span><span class="w"> </span><span class="nv">name</span><span class="p">)</span><span class="w"> </span><span class="nv">value</span><span class="p">))</span><span class="w"></span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>doStart</code> method isn’t much more involved either, it just sets up
+the bindings and then launches the REPL.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nf">defn</span><span class="w"> </span><span class="nv">-doStart</span><span class="w"> </span><span class="p">[</span><span class="nv">this</span><span class="w"> </span><span class="o">#^</span><span class="nv">Reader</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="o">#^</span><span class="nv">Writer</span><span class="w"> </span><span class="nv">out</span><span class="w"> </span><span class="o">#^</span><span class="nv">Writer</span><span class="w"> </span><span class="nv">err</span><span class="p">]</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="nf">binding</span><span class="w"> </span><span class="p">[</span><span class="nv">*in*</span><span class="w">  </span><span class="p">(</span><span class="nf">LineNumberingPushbackReader.</span><span class="w"> </span><span class="nv">in</span><span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">              </span><span class="nv">*out*</span><span class="w"> </span><span class="nv">out</span><span class="w"></span>
+</span><span class="line"><span class="w">              </span><span class="nv">*err*</span><span class="w"> </span><span class="nv">err</span><span class="p">]</span><span class="w"></span>
+</span><span class="line"><span class="w">        </span><span class="p">(</span><span class="nf">clojure.main/repl</span><span class="p">)))</span><span class="w"></span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Notice that here I have added type annotations so that the correct
+method gets implemented, without these the Clojure code compiled but
+then I got abstract method errors at runtime. Check out the docstring
+for the <code>repl</code> function as well, there are a few useful options (for
+example in my actual code I have an <code>:init</code> function to switch to the
+user namespace, and a custom prompt). For completeness, here’s the rest
+of the Clojure file with the code required to inherit from the Java base
+class.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="nv">com.example.ClojureConsole</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="no">:import</span><span class="w"> </span><span class="p">(</span><span class="nf">clojure.lang</span><span class="w"> </span><span class="nv">LineNumberingPushbackReader</span><span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">             </span><span class="p">(</span><span class="nf">java.io</span><span class="w"> </span><span class="nv">Reader</span><span class="w"> </span><span class="nv">Writer</span><span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">             </span><span class="p">(</span><span class="nf">java.util</span><span class="w"> </span><span class="nv">Map</span><span class="p">))</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="no">:require</span><span class="w"> </span><span class="p">(</span><span class="nf">clojure</span><span class="w"> </span><span class="nv">main</span><span class="p">))</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="no">:gen-class</span><span class="w"></span>
+</span><span class="line"><span class="w">     </span><span class="no">:extends</span><span class="w"> </span><span class="nv">bg.beer.editor.InteractiveConsole</span><span class="w"></span>
+</span><span class="line"><span class="w">     </span><span class="no">:init</span><span class="w"> </span><span class="nv">init</span><span class="w"></span>
+</span><span class="line"><span class="w">     </span><span class="no">:constructors</span><span class="w"> </span><span class="p">{[</span><span class="nv">javax.swing.JTextPane</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nv">String</span><span class="w"> </span><span class="nv">javax.swing.JTextPane</span><span class="p">]}))</span><span class="w"></span>
+</span><span class="line"><span class="p">(</span><span class="nf">defn</span><span class="w"> </span><span class="nv">-init</span><span class="w"> </span><span class="p">[</span><span class="nv">textpane</span><span class="p">]</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">[[</span><span class="nv">textpane</span><span class="p">]])</span><span class="w"></span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="summary">Summary</h3>
+
+<p>This approach has the advantage that any additional
+configuration can happen in the clojure code. It would also be easy, for
+example, to have an additional script that was always run at start up,
+to allow the user to customize the console further (similar to the
+.emacs file in Emacs). You could also move most of the work that I’m
+doing in Java into the Clojure code. I haven’t done this as I may want
+to support multiple languages in my console and it’s nice to have a
+common stylesheet and keybindings (e.g. for history) across languages.
+Your mileage may vary.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ianp</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-28T08:20:08+02:00" pubdate data-updated="true">Apr 28<span>th</span>, 2009</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/clojure/'>Clojure</a>, <a class='category' href='/categories/java/'>Java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2009/04/27/embedding-clojure-in-an-existing-application" title="Previous Post: Embedding Clojure in an Existing Application">&laquo; Embedding Clojure in an Existing Application</a>
+      
+      
+        <a class="basic-alignment right" href="/2009/05/15/thats-how-i-felt-too" title="Next Post: That's how I felt too!">That's how I felt too! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://www.joyentcloud.com/">Joyent</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

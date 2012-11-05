@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: JUnit | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/junit/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Using JUnit in Eclipse Ant Builds]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/11/18/using-junit-in-eclipse-ant-builds"/>
+    <updated>2004-11-18T18:11:41+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/11/18/using-junit-in-eclipse-ant-builds</id>
+    <content type="html"><![CDATA[<p>Just a quick note so that it gets into the
+<a href="http://www.google.com">Google</a> help engine. By default the copy of
+<a href="http://ant.apache.org">Ant</a> that is included with
+<a href="http://www.eclipse.org">Eclipse</a> does not reference it’s own internal
+copy of <a href="http://www.junit.org">JUnit</a> on it’s class path, to change this
+open up the preferences window (hit command-comma if you’re on a Mac)
+and open the Ant/Runtime node then add the JUnit location to the global
+path. If you’re doing full-source editing (which is highly recommended
+for all Eclipse users!) then you can just add a workspace reference and
+it will work fine.</p>
+]]></content>
+  </entry>
+  
+</feed>

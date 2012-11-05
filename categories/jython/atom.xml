@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Jython | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/jython/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Jython 2.2b1 Released]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2007/02/09/jython-22b1-released"/>
+    <updated>2007-02-09T15:44:35+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2007/02/09/jython-22b1-released</id>
+    <content type="html"><![CDATA[<p>The first beta of Jython 2.2 has <a href="http://sourceforge.net/project/showfiles.php?group_id=12867&amp;package_id=12218&amp;release_id=485053">been released</a>! Jyhon scripting is
+something that I’m planning to add to <a href="http://rvsnoop.org/">RvSnoop</a> so I’m quite
+interested in this, especially given the current focus of development is
+making the codebase easier to understand for new developers, I’ve looked
+at it fairly recently and at the moment it’s quite a tangle!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Gradle | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/gradle/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
+    <updated>2011-11-04T11:34:00+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
+    <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
+
+<p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
+
+<p><code>groovy
+apply plugin 'maven'
+configure(install.repositories.mavenInstaller) {
+    pom.project {
+        groupId 'com.example'
+        artifactId 'project-name'
+        inceptionYear '2011'
+        packaging 'jar'
+        licenses {
+            license {
+                name 'Eclipse Public License (Version 1.0)'
+                url 'http://www.eclipse.org/legal/epl-v10.html'
+                distribution 'repo'
+            }
+        }
+    }
+}
+</code></p>
+
+<p>this will install the project binaries, to also install source and JavaDocs (which <em>every</em> project should really do) then you’ll also need to add:</p>
+
+<p>```groovy
+task sourcesJar(type: Jar, dependsOn:classes) {
+     classifier = ‘sources’
+     from sourceSets.main.allSource
+}</p>
+
+<p>task javadocJar(type: Jar, dependsOn:javadoc) {
+     classifier = ‘javadoc’
+     from javadoc.destinationDir
+}</p>
+
+<p>artifacts {
+     archives sourcesJar
+     archives javadocJar
+}
+```</p>
+
+]]></content>
+  </entry>
+  
+</feed>

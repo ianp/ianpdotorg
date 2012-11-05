@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JSR-173 Reference Implementation - Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="I’ve been looking at the new streaming API for XML (JSR-173), I’ve been generally impressed but have found a bug in the reference implementation, &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.github.com/ianpdotorg/2003/11/18/jsr-173-reference-implementation">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.github.com/ianpdotorg" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">JSR-173 Reference Implementation</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2003-11-18T19:11:04+01:00" pubdate data-updated="true">Nov 18<span>th</span>, 2003</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I’ve been looking at the new streaming API for XML (<a href="http;//www.jcp.org/en/jsr/detail?id=173">JSR-173</a>), I’ve been generally impressed but have found a bug in the reference implementation, here’s the details, using this test program:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+</span><span class="line"><span class="kn">import</span> <span class="nn">javax.xml.stream.*</span><span class="o">;</span>
+</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaxWriterTest</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">static</span> <span class="n">String</span> <span class="n">nsURI</span> <span class="o">=</span> <span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">static</span> <span class="n">String</span> <span class="n">nsPrefix</span> <span class="o">=</span> <span class="s">&quot;a&quot;</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">static</span> <span class="kt">int</span> <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// Used to pretty print the output.</span>
+</span><span class="line">    <span class="kd">static</span> <span class="n">XMLStreamWriter</span> <span class="n">w</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">try</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartDocument</span><span class="o">();</span>
+</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;root&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeNamespace</span><span class="o">(</span><span class="n">nsPrefix</span><span class="o">,</span> <span class="n">nsURI</span><span class="o">);</span>
+</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEmptyElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeAttribute</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
+</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEmptyElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelTwo&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeAttribute</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">indent</span><span class="o">(-</span><span class="mi">2</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
+</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
+</span><span class="line">            <span class="n">indent</span><span class="o">(-</span><span class="mi">1</span><span class="o">);</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span><span class="line">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class="line">            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">indent</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">try</span> <span class="o">{</span>
+</span><span class="line">            <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="n">depth</span> <span class="o">+=</span> <span class="n">d</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">depth</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span>
+</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeCharacters</span><span class="o">(</span><span class="s">&quot;  &quot;</span><span class="o">);</span>
+</span><span class="line">            <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="n">depth</span> <span class="o">+=</span> <span class="n">d</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">XMLStreamException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is using version 7 of the reference implementation, by the way. The program should produce this output:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;</span>
+</span><span class="line"><span class="nt">&lt;a:root</span> <span class="na">xmlns:a=</span><span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;a:levelOne</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
+</span><span class="line">    <span class="nt">&lt;a:levelOne&gt;</span>
+</span><span class="line">        <span class="nt">&lt;a:levelTwo</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/a:levelOne&gt;</span>
+</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
+</span><span class="line"><span class="nt">&lt;/a:root&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>But actually produces this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;</span>
+</span><span class="line"><span class="nt">&lt;a:root</span> <span class="na">xmlns:a=</span><span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">    <span class="nt">&lt;a:levelOne</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
+</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;</span>
+</span><span class="line">        <span class="nt">&lt;a:levelTwo</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/a:levelOne&gt;</span>
+</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
+</span><span class="line"><span class="nt">&lt;/a:root&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Line 5 is generated as an empty element instead of a start element. I’ve pointed this out the to JCP committee, we’ll see if they repsond.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">ianp</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2003-11-18T19:11:04+01:00" pubdate data-updated="true">Nov 18<span>th</span>, 2003</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/java/'>Java</a>, <a class='category' href='/categories/programming/'>Programming</a>, <a class='category' href='/categories/xml/'>XML</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2003/11/16/fedora" title="Previous Post: Fedora">&laquo; Fedora</a>
+      
+      
+        <a class="basic-alignment right" href="/2003/11/18/mac-annoyances" title="Next Post: Mac Annoyances">Mac Annoyances &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://www.joyentcloud.com/">Joyent</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

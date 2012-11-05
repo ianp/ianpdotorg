@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="PBEngine" default="compile" basedir=".">
+  
+  <property file="build.properties"/>
+  <xmlproperty file="${ant.project.name}.pbeproj"/>
+  
+  <description>
+    ${Project.Description}
+    
+    Set up the localtion of your Flex SDK by adding a file called
+    'build.properties' containing FLEX_HOME=... .
+    
+    To compile a debug build run 'ant'
+    To compile a debug build run 'ant -DDEBUG=true'
+  </description>
+  
+  <target name="-preinit">
+    <condition property="flexSdkIsSet">
+      <and>
+        <isset property="FLEX_HOME"/>
+        <available file="${FLEX_HOME}"/>
+      </and>
+    </condition>
+  </target>
+  
+  <target name="-init" depends="-preinit">
+    <fail unless="flexSdkIsSet">Missing Flex SDK!
+      
+      Either FLEX_HOME is not set, or it points to a missing directory.
+      
+      Set the FLEX_HOME parameter by adding it to the build.properties file
+      (you may need to create this file if it is not already present);
+      otherwise, you may specify it by using '-DFLEX_HOME=...' when you
+      invoke ant.
+    </fail>
+    <property name="DEBUG" value="false"/>
+    <property name="LOCALE" value="en_US"/>
+    <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+    <path id="path.source">
+      <fileset dir="Source" includes="**/*.as,**/*.mxml"/>
+    </path>
+    <pathconvert property="path.classes" refid="path.source" pathsep=" ">
+      <chainedmapper>
+        <mapper type="glob" from="${basedir}/Source/*" to="*"/>
+        <mapper type="regexp" from="^(.*)\.((mxml)|(as))" to="\1"/>
+        <mapper type="package" from="*" to="*"/>
+      </chainedmapper>
+    </pathconvert>
+  </target>
+  
+  <target name="-check" depends="-init">
+    <uptodate property="isUpToDate" targetfile="Libraries/${ant.project.name}.swc">
+      <srcfiles dir="Source">
+        <include name="**/*.as"/>
+        <include name="**/*.mxml"/>
+      </srcfiles>
+    </uptodate>
+  </target>
+  
+  <target name="-print" depends="-check" if="isUpToDate">
+    <echo>${ant.project.name} is up to date, skipping.</echo>
+  </target>
+  
+  <target name="compile" description="Compile the SWC file." depends="-print" unless="isUpToDate">
+    <echo>Building ${ant.project.name}...</echo>
+    <mkdir dir="Output"/>
+    <compc output="Output/${ant.project.name}.swc" debug="${DEBUG}" locale="${LOCALE}" include-classes="${path.classes}">
+      <keep-as3-metadata name="TypeHint"/>
+      <keep-as3-metadata name="EditorData"/>
+      <source-path path-element="Source"/>
+    </compc>
+  </target>
+  
+  <target name="docs" description="Generate the API documentation." depends="-init">
+    <mkdir dir="Documentation"/>
+    <asdoc output="Documentation" doc-classes="${path.classes}">
+      <source-path path-element="Source"/>
+    </asdoc>
+  </target>
+  
+  <target name="clean" description="Remove all of the generated files.">
+    <echo>Removing generated files (swc and documentation).</echo>
+    <delete dir="Output"/>
+    <delete dir="Documentation"/>
+  </target>
+  
+</project>

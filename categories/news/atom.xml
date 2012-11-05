@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: News | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/news/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[InfoQ Presentations]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2008/07/31/infoq-presentations"/>
+    <updated>2008-07-31T08:19:56+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2008/07/31/infoq-presentations</id>
+    <content type="html"><![CDATA[<p><a href="http://www.infoq.com/">InfoQ</a> are one of my favourite tech information sites anyway and the
+signal to noise ratio there is normally pretty high, they’ve got 3 great
+new presentations out today:</p>
+
+<ul>
+  <li>
+    <p>in <a href="http://www.infoq.com/news/2008/07/Developing-Expertise-Dave-Thomas">Herding Racehorses, Racing Sheep</a>, Dave Thomas talks about the problems of treating developers
+as interchangeable cogs (or <em>fungible resources</em>, as the project
+management crowd would say). Some great ideas for bringing new team
+members up to speed quickly (about 18 minutes in);</p>
+  </li>
+  <li>
+    <p>in <a href="http://www.infoq.com/news/2008/07/presentation-botch-scalability">The Top 10 Ways to Botch Enterprise Java Scalability and Reliability</a>, Cameron
+Purdy of Oracle talks about scaling Java. Obviously it’s not an
+impartial view but his points are good ones and it’s an interesting
+talk;</p>
+  </li>
+  <li>
+    <p>in <a href="http://www.infoq.com/articles/ddd-evolving-architecture">Domain-Driven Design in an Evolving Architecture</a>, Mat
+Wall and Nik Silver talk about their experiences applying DDD at the
+<a href="http://guardian.co.uk/">Guardian’s web site</a>, it covers why they selected DDD as a method as
+well as the benefits that they feel it brought. I’ve heard them talk
+about this before, on <a href="http://se-radio.net/">SE Radio</a>, and to be honest, it worked better
+in that format I thought - the written version here needs to be edited
+down to about half it’s current length;</p>
+  </li>
+  <li>
+    <p>finally, <a href="http://www.infoq.com/news/2008/07/Architecture-Reviews-Brock">Rebecca Wirfs-Brock talks about</a> the benefits of, and problems of conducting,
+architectural reviews. I’ve listened to some of this before as Rebecca
+did an <a href="http://www.se-radio.net/podcast/2008-04/episode-93-lessons-learned-architecture-reviews-rebecca-wirfsbrock">interview</a> with <a href="http://se-radio.net/">SE Radio</a> a while back, but this is good
+for people who haven’t heard her talk before.</p>
+  </li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Maths at the BBC]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2005/08/04/maths-at-the-bbc"/>
+    <updated>2005-08-04T16:36:21+02:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2005/08/04/maths-at-the-bbc</id>
+    <content type="html"><![CDATA[<p>As reported at the <a href="http://news.bbc.co.uk/1/hi/technology/4745205.stm">BBC News</a> site, ‘One in
+seven new mobiles faulty’, the opening line of the article is ‘An
+estimated two million of the 18 million mobiles sold last year in the UK
+could have been faulty’, so, clearly, elementary maths isn’t a
+requirement for passing most media studies courses these days.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Moron]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2004/03/23/moron"/>
+    <updated>2004-03-23T20:03:17+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2004/03/23/moron</id>
+    <content type="html"><![CDATA[<p><a href="http://www.nypost.com/news/nationalnews/21043.htm">New York Post</a>. All
+I can say is: what… a… fucking… idiot. Next!</p>
+
+<p><strong>Update:</strong> The NY Post page has been moved so the link above no longer works. Sorry.</p>
+]]></content>
+  </entry>
+  
+</feed>

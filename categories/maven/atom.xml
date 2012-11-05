@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Maven | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/maven/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
+    <updated>2011-11-04T11:34:00+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
+    <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
+
+<p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
+
+<p><code>groovy
+apply plugin 'maven'
+configure(install.repositories.mavenInstaller) {
+    pom.project {
+        groupId 'com.example'
+        artifactId 'project-name'
+        inceptionYear '2011'
+        packaging 'jar'
+        licenses {
+            license {
+                name 'Eclipse Public License (Version 1.0)'
+                url 'http://www.eclipse.org/legal/epl-v10.html'
+                distribution 'repo'
+            }
+        }
+    }
+}
+</code></p>
+
+<p>this will install the project binaries, to also install source and JavaDocs (which <em>every</em> project should really do) then you’ll also need to add:</p>
+
+<p>```groovy
+task sourcesJar(type: Jar, dependsOn:classes) {
+     classifier = ‘sources’
+     from sourceSets.main.allSource
+}</p>
+
+<p>task javadocJar(type: Jar, dependsOn:javadoc) {
+     classifier = ‘javadoc’
+     from javadoc.destinationDir
+}</p>
+
+<p>artifacts {
+     archives sourcesJar
+     archives javadocJar
+}
+```</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Quote of the Day]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2010/03/25/quote-of-the-day-2"/>
+    <updated>2010-03-25T09:41:48+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2010/03/25/quote-of-the-day-2</id>
+    <content type="html"><![CDATA[<p><blockquote><p>Q: What’s the difference between Ant and Maven? <br /><br/>A: The creator of Ant has apologised.</p><footer><strong>James Duncan Davidson</strong> <cite><a href='http://journal.duncandavidson.com/post/470882637/q-whats-the-difference-between-ant-and-maven-a'>journal.duncandavidson.com/post/&hellip;</a></cite></footer></blockquote></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Building Clojure with Maven]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2010/03/15/building-clojure-with-maven"/>
+    <updated>2010-03-15T18:48:51+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2010/03/15/building-clojure-with-maven</id>
+    <content type="html"><![CDATA[<p>Just a quick reminder on the steps I needed to take to build <a href="http://clojure.org/">Clojure</a> and install it in my local repository:</p>
+
+<ol>
+  <li>download the <a href="http://maven.apache.org/ant-tasks/download.html">Maven Ant tasks</a>, version 2.1.0 at the time of writing;</li>
+  <li>move them to <code>$ANT_HOME/lib</code> (this is <code>/usr/share/ant/lib</code> on Mac OS X);</li>
+  <li><code>cd</code> to my Clojure download folder, run <code>git pull</code> if needed;</li>
+  <li>run <code>ant -Dsnapshot.repo.dir=~/.m2/repository clean nightly-build</code>, this will perform a clean build and install it into the supplied repo; this can be anywhere, the default though is <code>/var/www/maven-snapshot-repository</code> which is probably no good;</li>
+  <li>to also install <code>clojure-contrib</code> just change to it’s download directory and run <code>mvn install</code>.</li>
+</ol>
+
+<p>Is simples!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

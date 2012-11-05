@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | Digital Magpie]]></title>
+  <link href="http://ianp.github.com/ianpdotorg/categories/android/atom.xml" rel="self"/>
+  <link href="http://ianp.github.com/ianpdotorg/"/>
+  <updated>2012-11-05T23:22:13+01:00</updated>
+  <id>http://ianp.github.com/ianpdotorg/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Nexus One Launch Even on Jan 5?]]></title>
+    <link href="http://ianp.github.com/ianpdotorg/2009/12/29/nexus-one-launch-even-on-jan-5"/>
+    <updated>2009-12-29T19:13:26+01:00</updated>
+    <id>http://ianp.github.com/ianpdotorg/2009/12/29/nexus-one-launch-even-on-jan-5</id>
+    <content type="html"><![CDATA[<blockquote>
+  <p>This just in: <a href="http://www.google.com/">Google</a> will host an <a href="http://www.android.com/">Android</a> press gathering
+at its global HQ on Jan. 5 ….</p>
+</blockquote>
+
+<p>Presumably, the event will have something
+to do with the company’s Nexus One, an Android phone that Google plans
+to sell on its own Web site and perhaps through T-Mobile as well.</p>
+
+<p>Via <a href="http://digitaldaily.allthingsd.com/20091229/google-announces-jan-5-android-event/">Digital Daily</a></p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -8,7 +8,7 @@ ssh_user       = "jill@gq2tt5aa.joyent.us"
 ssh_port       = 22
 document_root  = "~/web/sites/ianp.org/public/"
 rsync_delete   = true
-deploy_default = "rsync"
+deploy_default = "push"
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "gh-pages"

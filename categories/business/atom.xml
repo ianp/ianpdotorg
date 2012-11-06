@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Business | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/business/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/business/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rearranging the Apples]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples"/>
+    <link href="http://ianp.org/2012/10/31/rearranging-the-apples"/>
     <updated>2012-10-31T19:18:00+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples</id>
+    <id>http://ianp.org/2012/10/31/rearranging-the-apples</id>
     <content type="html"><![CDATA[<p>Some <a href="http://www.appleoutsider.com/2012/10/30/regimechange/">insightful analysis</a> about the recent Apple reorganisation (a.k.a. Scott Forstall getting shit-canned) from <a href="http://www.appleoutsider.com/">Matt Drance</a>:</p>
 
 <blockquote>
@@ -37,9 +37,9 @@
   
   <entry>
     <title type="html"><![CDATA[Two Articles About Online Games]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2008/12/19/two-articles-about-online-games"/>
+    <link href="http://ianp.org/2008/12/19/two-articles-about-online-games"/>
     <updated>2008-12-19T14:25:40+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2008/12/19/two-articles-about-online-games</id>
+    <id>http://ianp.org/2008/12/19/two-articles-about-online-games</id>
     <content type="html"><![CDATA[<p>The <a href="http://www.infoq.com/presentations/Second-Life-Ian-Wilkes">first</a>, over at <a href="http://www.infoq.com/">InfoQ</a>, is a talk given by one of the
 <a href="http://lindenlab.com/">Linden Labs</a> guys about the architecture of <a href="http://secondlife.com/">Second Life</a>. The
 <a href="http://arstechnica.com/news.ars/post/20081219-online-buzz-key-to-creating-long-term-game-revenue.html">other</a> is at <a href="http://arstechnica.com/">Ars Technica</a> and looks at some of the numbers
@@ -50,9 +50,9 @@ surrounding the business of gaming.</p>
   
   <entry>
     <title type="html"><![CDATA[Vodafone 3G]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g"/>
+    <link href="http://ianp.org/2004/02/17/vodafone-3g"/>
     <updated>2004-02-17T14:02:22+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g</id>
+    <id>http://ianp.org/2004/02/17/vodafone-3g</id>
     <content type="html"><![CDATA[<p>Well, I mentioned this many a time whilst I was consulting at
 <a href="http://www.three.com">Three</a> as being something that they should
 definitely offer, but it seems like <a href="http://www.vodafone.com">Vodafone</a>
@@ -67,9 +67,9 @@ V is moving in.</p>
   
   <entry>
     <title type="html"><![CDATA[Fedora]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/11/16/fedora"/>
+    <link href="http://ianp.org/2003/11/16/fedora"/>
     <updated>2003-11-16T11:11:07+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/11/16/fedora</id>
+    <id>http://ianp.org/2003/11/16/fedora</id>
     <content type="html"><![CDATA[<p>By coincidence I just finished reading up on the <a href="http://fedora.redhat.com">Fedora Project</a> before I read <a href="http://www.dynamicobjects.com/d2r">this</a> post from Diego. As I see it Redhat are going to push the Fedora project as their replacement for the Professional edition (i.e. Red Hat 9). This probably makes sense since they can free up a lot of resources whilst hopefullty maintaining market visibility. If they can increase the speed of the release cycle for this it may even help them gain some more converts (and it sure does look pretty!).</p>
 
 ]]></content>
@@ -77,9 +77,9 @@ V is moving in.</p>
   
   <entry>
     <title type="html"><![CDATA[The Semantic Web]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/11/10/the-semantic-web"/>
+    <link href="http://ianp.org/2003/11/10/the-semantic-web"/>
     <updated>2003-11-10T13:11:12+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/11/10/the-semantic-web</id>
+    <id>http://ianp.org/2003/11/10/the-semantic-web</id>
     <content type="html"><![CDATA[<p>Clay Shirky’s <a href="http://www.shirky.com/writings/semantic_syllogism.html">latest newsletter</a>) on networks, economics and culture discusses the semantic web. In a nutshell, he’s not very impressed. The starting point for this argument is that syllogisms don’t model the real world well, an example:</p>
 
 <blockquote>

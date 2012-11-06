@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Design | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/design/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/design/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Choose Your Own Visual Adventure]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/11/12/choose-your-own-visual-adventure"/>
+    <link href="http://ianp.org/2009/11/12/choose-your-own-visual-adventure"/>
     <updated>2009-11-12T10:20:19+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/11/12/choose-your-own-visual-adventure</id>
+    <id>http://ianp.org/2009/11/12/choose-your-own-visual-adventure</id>
     <content type="html"><![CDATA[<p>A <a href="http://samizdat.cc/cyoa/">really nice set</a> of visualisations of the old Choose Your Own
 Adventure books, I was a big fan of the <a href="http://en.wikipedia.org/wiki/The_Warlock_of_Firetop_Mountain">English equivalents</a> when I
 was a kid.</p>
@@ -27,9 +27,9 @@ was a kid.</p>
   
   <entry>
     <title type="html"><![CDATA[Powerpoint]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/03/09/powerpoint"/>
+    <link href="http://ianp.org/2004/03/09/powerpoint"/>
     <updated>2004-03-09T16:03:44+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/03/09/powerpoint</id>
+    <id>http://ianp.org/2004/03/09/powerpoint</id>
     <content type="html"><![CDATA[<p>Now, I like David Byrne’s stuff quite a bit, but we obviously have
 different definitions of the word professional: ‘PowerPoint can make
 almost anything appear good and look professional. Quite frankly, I find

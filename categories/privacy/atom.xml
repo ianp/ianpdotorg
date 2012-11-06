@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Privacy | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/privacy/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/privacy/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Stroke Me Gently]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/11/05/stroke-me-gently"/>
+    <link href="http://ianp.org/2012/11/05/stroke-me-gently"/>
     <updated>2012-11-05T22:53:00+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/11/05/stroke-me-gently</id>
+    <id>http://ianp.org/2012/11/05/stroke-me-gently</id>
     <content type="html"><![CDATA[<p>Excellent <a href="http://www.gizmodo.co.uk/2012/10/search-me/">article</a> over at <a href="http://www.gizmodo.co.uk/">Gizmodo</a> about the whole security theatre dance that we’re forced to do any time we want to fly these days. My favourite quote:</p>
 
 <blockquote>
@@ -29,9 +29,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gmail]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/04/10/gmail"/>
+    <link href="http://ianp.org/2004/04/10/gmail"/>
     <updated>2004-04-10T16:04:47+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/04/10/gmail</id>
+    <id>http://ianp.org/2004/04/10/gmail</id>
     <content type="html"><![CDATA[<p><a href="http://www.diveintomark.org" title="Dive into Mark">Mark Pilgrim</a> writes:</p>
 
 <blockquote>

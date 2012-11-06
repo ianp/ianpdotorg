@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Web Services | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/web-services/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/web-services/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Appropriate Technology]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/11/13/appropriate-technology"/>
+    <link href="http://ianp.org/2003/11/13/appropriate-technology"/>
     <updated>2003-11-13T19:11:51+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/11/13/appropriate-technology</id>
+    <id>http://ianp.org/2003/11/13/appropriate-technology</id>
     <content type="html"><![CDATA[<p><a href="http://www.softwarereality.com/soapbox/softwarefashion.jsp" title="Software Fashion - Software Reality">This</a> says it all:</p>
 
 <blockquote>

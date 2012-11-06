@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Gradle | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/gradle/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/gradle/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
+    <link href="http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
     <updated>2011-11-04T11:34:00+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
+    <id>http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
     <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
 
 <p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>

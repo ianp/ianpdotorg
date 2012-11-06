@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Politics | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/politics/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/politics/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to End the Deficit]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2011/07/08/how-to-end-the-deficit"/>
+    <link href="http://ianp.org/2011/07/08/how-to-end-the-deficit"/>
     <updated>2011-07-08T17:52:17+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2011/07/08/how-to-end-the-deficit</id>
+    <id>http://ianp.org/2011/07/08/how-to-end-the-deficit</id>
     <content type="html"><![CDATA[<p><blockquote><p>&gt; I could end the deficit in 5 minutes. You just pass a law that says<br/>that anytime there is a deficit of more than 3% of GDP all sitting<br/>members of congress are ineligible for reelection.</p><footer><strong>Warren Buffet, CNBC</strong> <cite><a href='http://www.ritholtz.com/blog/2011/07/warren-buffett-i-could-end-the-deficit-in-5-minutes/'>www.ritholtz.com/blog/2011/07/&hellip;</a></cite></footer></blockquote></p>
 
 <p>He’s talking about the US Congress, but it would work here as well.</p>
@@ -27,9 +27,9 @@
   
   <entry>
     <title type="html"><![CDATA[Quote of the Day]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/06/14/quote-of-the-day"/>
+    <link href="http://ianp.org/2009/06/14/quote-of-the-day"/>
     <updated>2009-06-14T20:37:09+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/06/14/quote-of-the-day</id>
+    <id>http://ianp.org/2009/06/14/quote-of-the-day</id>
     <content type="html"><![CDATA[<p>Tip o’ the hat to [Bishop Hill][01]…</p>
 
 <blockquote>
@@ -48,18 +48,18 @@ http://bishophill.squarespace.com/blog/2009/6/14/need-a-new-policy-idea.html</p>
   
   <entry>
     <title type="html"><![CDATA[Go Antigua!]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2008/03/26/go-antigua"/>
+    <link href="http://ianp.org/2008/03/26/go-antigua"/>
     <updated>2008-03-26T19:16:57+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2008/03/26/go-antigua</id>
+    <id>http://ianp.org/2008/03/26/go-antigua</id>
     <content type="html"><![CDATA[<p>From the pages of Variety magazine: <a href="http://www.variety.com/article/VR1117982630.html">Antigua threatens to allow piracy</a>.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Play Pumps]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/04/17/play-pumps"/>
+    <link href="http://ianp.org/2006/04/17/play-pumps"/>
     <updated>2006-04-17T21:47:51+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/04/17/play-pumps</id>
+    <id>http://ianp.org/2006/04/17/play-pumps</id>
     <content type="html"><![CDATA[<p>This is a really cool idea (and not at all what you’d expect to find on
 a website called <a href="http://www.playpumps.org/">Play Pumps</a>)! It’s a kid’s
 roundabout that also acts as a pump for a fresh water well. They’re
@@ -69,9 +69,9 @@ definitely getting some cash from me.</p>
   
   <entry>
     <title type="html"><![CDATA[A not-so-class-y action against Sony BMG]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2005/11/10/a-not-so-class-y-action-against-sony-bmg"/>
+    <link href="http://ianp.org/2005/11/10/a-not-so-class-y-action-against-sony-bmg"/>
     <updated>2005-11-10T12:13:38+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2005/11/10/a-not-so-class-y-action-against-sony-bmg</id>
+    <id>http://ianp.org/2005/11/10/a-not-so-class-y-action-against-sony-bmg</id>
     <content type="html"><![CDATA[<p>According to <a href="http://news.bbc.co.uk/1/hi/technology/4424254.stm">this</a>
 article by the BBC it seems that people are now suing Sony over their
 (admittedly appalling) tactic of infecting their customers PCs with

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: RvSnoop | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/rvsnoop/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/rvsnoop/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Jython 2.2b1 Released]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2007/02/09/jython-22b1-released"/>
+    <link href="http://ianp.org/2007/02/09/jython-22b1-released"/>
     <updated>2007-02-09T15:44:35+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2007/02/09/jython-22b1-released</id>
+    <id>http://ianp.org/2007/02/09/jython-22b1-released</id>
     <content type="html"><![CDATA[<p>The first beta of Jython 2.2 has <a href="http://sourceforge.net/project/showfiles.php?group_id=12867&amp;package_id=12218&amp;release_id=485053">been released</a>! Jyhon scripting is
 something that I’m planning to add to <a href="http://rvsnoop.org/">RvSnoop</a> so I’m quite
 interested in this, especially given the current focus of development is
@@ -29,9 +29,9 @@ at it fairly recently and at the moment it’s quite a tangle!</p>
   
   <entry>
     <title type="html"><![CDATA[RvSnoop 1.6.1]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/12/26/rvsnoop-161"/>
+    <link href="http://ianp.org/2006/12/26/rvsnoop-161"/>
     <updated>2006-12-26T04:38:10+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/12/26/rvsnoop-161</id>
+    <id>http://ianp.org/2006/12/26/rvsnoop-161</id>
     <content type="html"><![CDATA[<p>A new stable build of <a href="http://rvsnoop.org/">RvSnoop</a> is available for <a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-1.6.1.tgz?download">downloading</a>
 (it was actually released back on the 12th, but I forgot to post about
 it here and have been away from the internet for a few days). New in
@@ -63,9 +63,9 @@ this release:</p>
   
   <entry>
     <title type="html"><![CDATA[Oh, Such a Good Infrastructure]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/12/19/oh-such-a-good-infrastructure"/>
+    <link href="http://ianp.org/2006/12/19/oh-such-a-good-infrastructure"/>
     <updated>2006-12-19T21:40:23+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/12/19/oh-such-a-good-infrastructure</id>
+    <id>http://ianp.org/2006/12/19/oh-such-a-good-infrastructure</id>
     <content type="html"><![CDATA[<p>Now that <a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-1.6.1-bin.tgz">the 1.6 release</a> of <a href="http://rvsnoop.org/">RvSnoop</a> is out of the door (OK, 1.6.1 ‘cause of a wart inthe original release), there are certain
 features that I’d like to see added, and for the 2.0 release I want to
 have in place a foundation that will make it easier to add these. A full
@@ -123,9 +123,9 @@ runtime; and which runtimes are good?</p>
   
   <entry>
     <title type="html"><![CDATA[RvSnoop 356]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/12/07/rvsnoop-356"/>
+    <link href="http://ianp.org/2006/12/07/rvsnoop-356"/>
     <updated>2006-12-07T18:59:37+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/12/07/rvsnoop-356</id>
+    <id>http://ianp.org/2006/12/07/rvsnoop-356</id>
     <content type="html"><![CDATA[<p>A new development build of <a href="http://rvsnoop.org/">RvSnoop</a> is available for
 <a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-356-bin.tgz">downloading</a>. This release contains all of the features that will
 be in the finished 1.6 release, due out sometime next week. Changes from
@@ -160,9 +160,9 @@ are some additional testing and documentation updates.</p>
   
   <entry>
     <title type="html"><![CDATA[RvSnoop 353]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/12/06/rvsnoop-353"/>
+    <link href="http://ianp.org/2006/12/06/rvsnoop-353"/>
     <updated>2006-12-06T00:42:35+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/12/06/rvsnoop-353</id>
+    <id>http://ianp.org/2006/12/06/rvsnoop-353</id>
     <content type="html"><![CDATA[<p>A new development version of <a href="http://rvsnoop.org/">RvSnoop</a> is now available for
 <a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-353-bin.tgz">download</a>. This version adds:</p>
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: XML | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/xml/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/xml/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Level Definition DTD for PushButtonEngine]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/05/23/level-definition-dtd-for-pushbuttonengine"/>
+    <link href="http://ianp.org/2009/05/23/level-definition-dtd-for-pushbuttonengine"/>
     <updated>2009-05-23T04:19:42+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/05/23/level-definition-dtd-for-pushbuttonengine</id>
+    <id>http://ianp.org/2009/05/23/level-definition-dtd-for-pushbuttonengine</id>
     <content type="html"><![CDATA[<p>I use Oxygen for all my XML editing and if you have a DTD or schema it has some pretty neat autocompletion and error highlighting features, with that in mind I’ve created a basic DTD for the level definition file in <a href="http://pushbuttonengine.com/">PBE</a>, you can grab it from <a href="/code/2009/05/pbelevel.dtd">here</a>. Note that it’s not ideal, as you get spurious warnings for the fields that you specify inside your component definitions, but there’s not much that can be done about that.</p>
 
 <p><strong>Update:</strong> added an XSD <a href="/code/2009/05/pbelevel.xsd">version of the file</a>, this handles unparsed content gracefully, useful for components.</p>
@@ -27,9 +27,9 @@
   
   <entry>
     <title type="html"><![CDATA[Adding Namespace Support to RvSnoop]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/10/17/adding-namespace-support-to-rvsnoop"/>
+    <link href="http://ianp.org/2006/10/17/adding-namespace-support-to-rvsnoop"/>
     <updated>2006-10-17T09:58:15+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/10/17/adding-namespace-support-to-rvsnoop</id>
+    <id>http://ianp.org/2006/10/17/adding-namespace-support-to-rvsnoop</id>
     <content type="html"><![CDATA[<p>For <a href="http://rvsnoop.prg/">RvSnoop</a> I’m currently working on adding namespaces to all of
 the files that are used to save the application preferences and also the
 project files. This is a Good Thing in and of itself, as it allows me to
@@ -62,9 +62,9 @@ project structure.</p>
   
   <entry>
     <title type="html"><![CDATA[Configuration via XML or code?]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/05/02/configuration-via-xml-or-code"/>
+    <link href="http://ianp.org/2006/05/02/configuration-via-xml-or-code"/>
     <updated>2006-05-02T19:34:56+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/05/02/configuration-via-xml-or-code</id>
+    <id>http://ianp.org/2006/05/02/configuration-via-xml-or-code</id>
     <content type="html"><![CDATA[<p>When is using XML based configuration files preferable to using source
 based interfaces and/or classes? I’ve been taking a look at command
 frameworks such as those that come with the various rich client toolkits
@@ -92,9 +92,9 @@ more readable).</p>
   
   <entry>
     <title type="html"><![CDATA[Where is the user interface?]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2005/11/17/where-is-the-user-interface"/>
+    <link href="http://ianp.org/2005/11/17/where-is-the-user-interface"/>
     <updated>2005-11-17T15:56:55+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2005/11/17/where-is-the-user-interface</id>
+    <id>http://ianp.org/2005/11/17/where-is-the-user-interface</id>
     <content type="html"><![CDATA[<p>This is related to this quote by Michael Kay on the XML-DEV mailing
 list, on the subject of validation.</p>
 
@@ -110,9 +110,9 @@ possible, not at the information management level.</p>
   
   <entry>
     <title type="html"><![CDATA[JSR-173 Reference Implementation]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/11/18/jsr-173-reference-implementation"/>
+    <link href="http://ianp.org/2003/11/18/jsr-173-reference-implementation"/>
     <updated>2003-11-18T19:11:04+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/11/18/jsr-173-reference-implementation</id>
+    <id>http://ianp.org/2003/11/18/jsr-173-reference-implementation</id>
     <content type="html"><![CDATA[<p>I’ve been looking at the new streaming API for XML (<a href="http;//www.jcp.org/en/jsr/detail?id=173">JSR-173</a>), I’ve been generally impressed but have found a bug in the reference implementation, here’s the details, using this test program:</p>
 
 <p><code>java

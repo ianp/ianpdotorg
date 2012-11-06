@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: API Design | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/api-design/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/api-design/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Handling Flag Arguments]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2011/06/23/handling-flag-arguments"/>
+    <link href="http://ianp.org/2011/06/23/handling-flag-arguments"/>
     <updated>2011-06-23T14:42:28+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2011/06/23/handling-flag-arguments</id>
+    <id>http://ianp.org/2011/06/23/handling-flag-arguments</id>
     <content type="html"><![CDATA[<p><a href="http://martinfowler.com/">Martin Fowler</a> has a <a href="http://martinfowler.com/bliki/FlagArgument.html">new bliki entry talking about flag arguments</a>, defined as:</p>
 
 <blockquote>

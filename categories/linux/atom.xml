@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Linux | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/linux/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/linux/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gnome Wish List]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/12/10/gnome-wish-list"/>
+    <link href="http://ianp.org/2003/12/10/gnome-wish-list"/>
     <updated>2003-12-10T15:12:33+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/12/10/gnome-wish-list</id>
+    <id>http://ianp.org/2003/12/10/gnome-wish-list</id>
     <content type="html"><![CDATA[<p>My thoughts on the <a href="http://www.osnews.com">OS News</a> Gnome wish list,
 <a href="http://www.burtonini.com/cgi/pyblosxom.cgi/computers/gnome-wishlist-pah-20031210">others</a> have already commented. Now I haven’t been following too closely the new features in 2.6, but here’s my thoughts anyway: </p>
 
@@ -59,9 +59,9 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
   
   <entry>
     <title type="html"><![CDATA[Fedora]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/11/16/fedora"/>
+    <link href="http://ianp.org/2003/11/16/fedora"/>
     <updated>2003-11-16T11:11:07+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/11/16/fedora</id>
+    <id>http://ianp.org/2003/11/16/fedora</id>
     <content type="html"><![CDATA[<p>By coincidence I just finished reading up on the <a href="http://fedora.redhat.com">Fedora Project</a> before I read <a href="http://www.dynamicobjects.com/d2r">this</a> post from Diego. As I see it Redhat are going to push the Fedora project as their replacement for the Professional edition (i.e. Red Hat 9). This probably makes sense since they can free up a lot of resources whilst hopefullty maintaining market visibility. If they can increase the speed of the release cycle for this it may even help them gain some more converts (and it sure does look pretty!).</p>
 
 ]]></content>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: writing | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/writing/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/writing/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Think about that]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/think-about-that"/>
+    <link href="http://ianp.org/2012/05/07/think-about-that"/>
     <updated>2012-05-07T23:32:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/05/07/think-about-that</id>
+    <id>http://ianp.org/2012/05/07/think-about-that</id>
     <content type="html"><![CDATA[<blockquote>
   <p>Good design. From eBay. Think about that.</p>
 </blockquote>

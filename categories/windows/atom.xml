@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Windows | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/windows/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/windows/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Windows XP Zip File Support]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2008/03/26/windows-xp-zip-file-support"/>
+    <link href="http://ianp.org/2008/03/26/windows-xp-zip-file-support"/>
     <updated>2008-03-26T19:47:48+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2008/03/26/windows-xp-zip-file-support</id>
+    <id>http://ianp.org/2008/03/26/windows-xp-zip-file-support</id>
     <content type="html"><![CDATA[<p>Windows XP, which I’m forced to use at work at the moment, normally
 treats Zip files as though they were folders, letting you view their
 contents in explorer. Unfortunately there are a number of problems with

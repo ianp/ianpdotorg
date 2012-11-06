@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Ruby | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[RubyMotion and Interface Builder…]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder"/>
+    <link href="http://ianp.org/2012/05/07/rubymotion-and-interface-builder"/>
     <updated>2012-05-07T19:24:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder</id>
+    <id>http://ianp.org/2012/05/07/rubymotion-and-interface-builder</id>
     <content type="html"><![CDATA[<p>…sitting in a tree, K-I-S-S-I-N-G…</p>
 
 <p>So, all of the cool kids have been talking about <a href="http://chopine.be/">Laurent Sansonetti</a>’s next project: <a href="http://www.rubymotion.com/">RubyMotion</a>, a port of MacRuby targeted at iOS. On the whole I’m pretty impressed with what you can already do with it. One of the issues that people having been mentioning though, is that you lose the ability to use Interface Builder with it, but this isn’t actually true!</p>
@@ -119,9 +119,9 @@ end   end ```
   
   <entry>
     <title type="html"><![CDATA[Ripping Open Ruby Packages]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/06/14/ripping-open-ruby-packages"/>
+    <link href="http://ianp.org/2009/06/14/ripping-open-ruby-packages"/>
     <updated>2009-06-14T02:30:06+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/06/14/ripping-open-ruby-packages</id>
+    <id>http://ianp.org/2009/06/14/ripping-open-ruby-packages</id>
     <content type="html"><![CDATA[<p>This looks like a mistake: <a href="http://www.rubyinside.com/rip-ruby-packaging-system-1837.html">Rip: A Next Generation Ruby Packaging System</a>. One of the things that Ruby does really well is library
 packaging, <a href="http://rubygems.org/">RubyGems</a> may have some flaws but it basically works
 really well. Contrast this with the situation in Python where there are

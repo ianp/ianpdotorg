@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Bad Science | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/bad-science/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/bad-science/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Maths at the BBC]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2005/08/04/maths-at-the-bbc"/>
+    <link href="http://ianp.org/2005/08/04/maths-at-the-bbc"/>
     <updated>2005-08-04T16:36:21+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2005/08/04/maths-at-the-bbc</id>
+    <id>http://ianp.org/2005/08/04/maths-at-the-bbc</id>
     <content type="html"><![CDATA[<p>As reported at the <a href="http://news.bbc.co.uk/1/hi/technology/4745205.stm">BBC News</a> site, ‘One in
 seven new mobiles faulty’, the opening line of the article is ‘An
 estimated two million of the 18 million mobiles sold last year in the UK

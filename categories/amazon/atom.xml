@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Amazon | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/amazon/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/amazon/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Has Amazon Gone Crazy?]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2008/05/21/has-amazon-gone-crazy"/>
+    <link href="http://ianp.org/2008/05/21/has-amazon-gone-crazy"/>
     <updated>2008-05-21T19:03:47+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2008/05/21/has-amazon-gone-crazy</id>
+    <id>http://ianp.org/2008/05/21/has-amazon-gone-crazy</id>
     <content type="html"><![CDATA[<p>I’ve just been looking at getting a copy of the newly released Cocoa
 Programming 3rd Edition (tip o’ the hat to <a href="http://theocacao.com/document.page/571">Scott Stevenson</a>) and, as
 the link from there is to the <a href="http://www.amazon.com/dp/0321503619">U.S. Amazon site</a> I saw the price

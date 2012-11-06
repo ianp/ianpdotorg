@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Gimp | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/gimp/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/gimp/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Gimp UI Blooper]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/05/19/gimp-ui-blooper"/>
+    <link href="http://ianp.org/2004/05/19/gimp-ui-blooper"/>
     <updated>2004-05-19T23:05:57+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/05/19/gimp-ui-blooper</id>
+    <id>http://ianp.org/2004/05/19/gimp-ui-blooper</id>
     <content type="html"><![CDATA[<p>Why would the developers of <a href="http://www.gimp.org">Gimp</a> want to offer
 LZW compression as an option in the save as tiff dialog of said
 application? When you try to select this it just whines about a patent

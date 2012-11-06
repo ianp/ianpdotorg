@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Git | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/git/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/git/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How to Work with Git & GitHub]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/11/26/how-to-work-with-git-github"/>
+    <link href="http://ianp.org/2009/11/26/how-to-work-with-git-github"/>
     <updated>2009-11-26T15:33:36+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/11/26/how-to-work-with-git-github</id>
+    <id>http://ianp.org/2009/11/26/how-to-work-with-git-github</id>
     <content type="html"><![CDATA[<p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
 shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
 posting it here then it’ll be easy for me to refer back to in future…</p>

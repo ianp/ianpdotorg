@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: C# | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/c-/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/c-/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Dot Net]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/09/17/dot-net"/>
+    <link href="http://ianp.org/2003/09/17/dot-net"/>
     <updated>2003-09-17T12:09:14+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/09/17/dot-net</id>
+    <id>http://ianp.org/2003/09/17/dot-net</id>
     <content type="html"><![CDATA[<p>I’ve just written my first <em>.net</em> program! (Using <a href="http://www.go-mono.com">mono</a>) It seems <em>very</em> similar to Java, I’m going to grab a book and have a play with it some more over the next few days. Of course, I’m really trying to learn Lisp, but since the books I bought have been stranded in Vienna it seems like I may have to wait a few weeks for that.</p>
 ]]></content>
   </entry>

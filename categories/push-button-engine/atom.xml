@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Push Button Engine | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/push-button-engine/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/push-button-engine/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Neat Historical Game]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/05/25/neat-historical-game"/>
+    <link href="http://ianp.org/2009/05/25/neat-historical-game"/>
     <updated>2009-05-25T17:48:55+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/05/25/neat-historical-game</id>
+    <id>http://ianp.org/2009/05/25/neat-historical-game</id>
     <content type="html"><![CDATA[<p><a href="http://www.channel4.com/history/microsites/0-9/1066/game/index.html">1066</a>, over at <a href="http://www.channel4.com/">Channel 4</a> (courtesy of <a href="http://www.wonderlandblog.com/wonderland/2009/05/1066-the-game.html">Wonderland</a>). I’ve
 often though that there’s a lot of untapped potential in historical
 games, and maybe smaller efforts like this one are a better way of
@@ -29,9 +29,9 @@ traditional ‘epic’ style games like Age of Empires.</p>
   
   <entry>
     <title type="html"><![CDATA[Play with your Peas 1]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/05/25/play-with-your-peas-1"/>
+    <link href="http://ianp.org/2009/05/25/play-with-your-peas-1"/>
     <updated>2009-05-25T00:32:05+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/05/25/play-with-your-peas-1</id>
+    <id>http://ianp.org/2009/05/25/play-with-your-peas-1</id>
     <content type="html"><![CDATA[<p>So the project I’m using to learn Flash and <a href="http://pushbuttonengine.com/">PushButtonEngine</a>
 learning is <a href="http://lostgarden.com/">Dan Cook</a>’s <a href="http://lostgarden.com/2008/02/play-with-your-peas-game-prototyping.html">Play with your Peas</a> game prototype
 challenge, I’ll keep a log of my progress here. First things are to get
@@ -183,9 +183,9 @@ file) as well as the custom component in my next post in this series…</p>
   
   <entry>
     <title type="html"><![CDATA[Setting up a Flash Development Environment]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/05/24/setting-up-a-flash-development-environment"/>
+    <link href="http://ianp.org/2009/05/24/setting-up-a-flash-development-environment"/>
     <updated>2009-05-24T22:04:57+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/05/24/setting-up-a-flash-development-environment</id>
+    <id>http://ianp.org/2009/05/24/setting-up-a-flash-development-environment</id>
     <content type="html"><![CDATA[<p>I’ve been playing around with <a href="http://pushbuttonengine.com/">PushButtonEngine</a> and Flash over the
 last couple of days, and though it may be useful to document how I’ve
 hooked this up to my existing Eclipse install. I’ve started off with a
@@ -228,9 +228,9 @@ helpful and there’s loads of good stuff out there.</p>
   
   <entry>
     <title type="html"><![CDATA[Level Definition DTD for PushButtonEngine]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/05/23/level-definition-dtd-for-pushbuttonengine"/>
+    <link href="http://ianp.org/2009/05/23/level-definition-dtd-for-pushbuttonengine"/>
     <updated>2009-05-23T04:19:42+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/05/23/level-definition-dtd-for-pushbuttonengine</id>
+    <id>http://ianp.org/2009/05/23/level-definition-dtd-for-pushbuttonengine</id>
     <content type="html"><![CDATA[<p>I use Oxygen for all my XML editing and if you have a DTD or schema it has some pretty neat autocompletion and error highlighting features, with that in mind I’ve created a basic DTD for the level definition file in <a href="http://pushbuttonengine.com/">PBE</a>, you can grab it from <a href="/code/2009/05/pbelevel.dtd">here</a>. Note that it’s not ideal, as you get spurious warnings for the fields that you specify inside your component definitions, but there’s not much that can be done about that.</p>
 
 <p><strong>Update:</strong> added an XSD <a href="/code/2009/05/pbelevel.xsd">version of the file</a>, this handles unparsed content gracefully, useful for components.</p>
@@ -240,9 +240,9 @@ helpful and there’s loads of good stuff out there.</p>
   
   <entry>
     <title type="html"><![CDATA[Ant Build Files for PushButtonEngine]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/05/22/ant-build-files-for-pushbuttonengine"/>
+    <link href="http://ianp.org/2009/05/22/ant-build-files-for-pushbuttonengine"/>
     <updated>2009-05-22T22:40:50+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/05/22/ant-build-files-for-pushbuttonengine</id>
+    <id>http://ianp.org/2009/05/22/ant-build-files-for-pushbuttonengine</id>
     <content type="html"><![CDATA[<p>I’ve started to work up some standard build files for <a href="http://pushbuttonengine.com/">PBE</a> based
 projects, more information can be had <a href="http://pushbuttonengine.com/forum/viewtopic.php?f=5&amp;t=166">here</a>, and here are the build
 files for <a href="http://ianp.org/files/2009/05/pbe-lib-build.xml">libraries (components)</a>, and for <a href="http://ianp.org/files/2009/05/pbe-app-build.xml">applications (both SWF and Air)</a>.</p>

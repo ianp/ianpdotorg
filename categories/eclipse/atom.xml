@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Eclipse | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/eclipse/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/eclipse/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Christmas Gift: PMD 3.9]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/12/20/christmas-gift-pmd-39"/>
+    <link href="http://ianp.org/2006/12/20/christmas-gift-pmd-39"/>
     <updated>2006-12-20T14:19:10+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/12/20/christmas-gift-pmd-39</id>
+    <id>http://ianp.org/2006/12/20/christmas-gift-pmd-39</id>
     <content type="html"><![CDATA[<p>Just in time for Christmas, <a href="http://tomcopeland.blogs.com/juniordeveloper">Tom Copeland</a> has <a href="http://tomcopeland.blogs.com/juniordeveloper/2006/12/pmd_39_three_ti.html">announced</a> a
 new release of <a href="http://pmd.sourceforge.net/">PMD</a> with some notable speed increases. Hopefully
 this will make it fast enough to use the <a href="http://pmd.sourceforge.net/integrations.html#eclipse">Eclipse plug-in</a> in
@@ -29,9 +29,9 @@ clean up any warts before each release.</p>
   
   <entry>
     <title type="html"><![CDATA[Using JUnit in Eclipse Ant Builds]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/11/18/using-junit-in-eclipse-ant-builds"/>
+    <link href="http://ianp.org/2004/11/18/using-junit-in-eclipse-ant-builds"/>
     <updated>2004-11-18T18:11:41+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/11/18/using-junit-in-eclipse-ant-builds</id>
+    <id>http://ianp.org/2004/11/18/using-junit-in-eclipse-ant-builds</id>
     <content type="html"><![CDATA[<p>Just a quick note so that it gets into the
 <a href="http://www.google.com">Google</a> help engine. By default the copy of
 <a href="http://ant.apache.org">Ant</a> that is included with
@@ -47,9 +47,9 @@ it will work fine.</p>
   
   <entry>
     <title type="html"><![CDATA[Dynamic Classpaths in Eclipse]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/10/03/dynamic-classpaths-in-eclipse"/>
+    <link href="http://ianp.org/2004/10/03/dynamic-classpaths-in-eclipse"/>
     <updated>2004-10-03T05:10:58+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/10/03/dynamic-classpaths-in-eclipse</id>
+    <id>http://ianp.org/2004/10/03/dynamic-classpaths-in-eclipse</id>
     <content type="html"><![CDATA[<p>In Eclipse your plug-ins normally have their classpath’s based upon
 their dependencies. I’m playing around with an RCP based application
 that will need to reference external libraries to avoid onerous
@@ -111,9 +111,9 @@ when they are available.</p>
   
   <entry>
     <title type="html"><![CDATA[Interactive Programming]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/09/24/interactive-programming"/>
+    <link href="http://ianp.org/2004/09/24/interactive-programming"/>
     <updated>2004-09-24T07:09:45+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/09/24/interactive-programming</id>
+    <id>http://ianp.org/2004/09/24/interactive-programming</id>
     <content type="html"><![CDATA[<p>After playing around with Lisp for a few days I’ve diverted myself back
 to a small Java project. Almost immediately I’m missing the Lisp
 environment! To be sure there are some things that I prefer about my
@@ -127,9 +127,9 @@ boost.</p>
   
   <entry>
     <title type="html"><![CDATA[SWT Look & Feel]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/04/11/swt-look-feel"/>
+    <link href="http://ianp.org/2004/04/11/swt-look-feel"/>
     <updated>2004-04-11T07:04:14+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/04/11/swt-look-feel</id>
+    <id>http://ianp.org/2004/04/11/swt-look-feel</id>
     <content type="html"><![CDATA[<p><img src="/images/2004/04/emulated-vs-native.png" title="New Eclipse Widgets" ></p>
 
 <p>Recently in the <a href="news://news.eclipse.org/eclipse.platform">Eclipse news group</a>

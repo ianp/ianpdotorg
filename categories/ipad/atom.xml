@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iPad | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/ipad/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/ipad/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[New York Post Blocks iPad Users]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2011/06/20/new-york-post-blocks-ipad-users"/>
+    <link href="http://ianp.org/2011/06/20/new-york-post-blocks-ipad-users"/>
     <updated>2011-06-20T18:39:56+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2011/06/20/new-york-post-blocks-ipad-users</id>
+    <id>http://ianp.org/2011/06/20/new-york-post-blocks-ipad-users</id>
     <content type="html"><![CDATA[<p>It seems that the New York Post have decided to block all access to their site from iPads, telling users to download their (subscription only) app instead. As <a href="http://scripting.com/stories/2011/06/18/theNyPostTheIpadAndTheWeb.html">Scripting News</a> said…</p>
 
 <blockquote>

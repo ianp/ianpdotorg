@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sourceforge | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/sourceforge/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/sourceforge/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Sourceforge Annoyances]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2008/05/25/sourceforge-annoyances"/>
+    <link href="http://ianp.org/2008/05/25/sourceforge-annoyances"/>
     <updated>2008-05-25T20:28:23+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2008/05/25/sourceforge-annoyances</id>
+    <id>http://ianp.org/2008/05/25/sourceforge-annoyances</id>
     <content type="html"><![CDATA[<p><a href="http://www.sourceforge.net/">That site</a> gets worse and worse. I can live with the fact that
 corporate IT departments can behave like petit-Hilters with their
 ridiculous password policies, but now SF has started to do the same. For

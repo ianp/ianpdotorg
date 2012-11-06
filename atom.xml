@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Stroke Me Gently]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/11/05/stroke-me-gently"/>
+    <link href="http://ianp.org/2012/11/05/stroke-me-gently"/>
     <updated>2012-11-05T22:53:00+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/11/05/stroke-me-gently</id>
+    <id>http://ianp.org/2012/11/05/stroke-me-gently</id>
     <content type="html"><![CDATA[<p>Excellent <a href="http://www.gizmodo.co.uk/2012/10/search-me/">article</a> over at <a href="http://www.gizmodo.co.uk/">Gizmodo</a> about the whole security theatre dance that we’re forced to do any time we want to fly these days. My favourite quote:</p>
 
 <blockquote>
@@ -29,9 +29,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rearranging the Apples]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples"/>
+    <link href="http://ianp.org/2012/10/31/rearranging-the-apples"/>
     <updated>2012-10-31T19:18:00+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples</id>
+    <id>http://ianp.org/2012/10/31/rearranging-the-apples</id>
     <content type="html"><![CDATA[<p>Some <a href="http://www.appleoutsider.com/2012/10/30/regimechange/">insightful analysis</a> about the recent Apple reorganisation (a.k.a. Scott Forstall getting shit-canned) from <a href="http://www.appleoutsider.com/">Matt Drance</a>:</p>
 
 <blockquote>
@@ -51,9 +51,9 @@
   
   <entry>
     <title type="html"><![CDATA[VLC Versions]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/30/vlc-versions"/>
+    <link href="http://ianp.org/2012/10/30/vlc-versions"/>
     <updated>2012-10-30T18:49:00+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/30/vlc-versions</id>
+    <id>http://ianp.org/2012/10/30/vlc-versions</id>
     <content type="html"><![CDATA[<p>So I started up <a href="http://www.videolan.org" title="VLC media player">VLC</a> just now and was greeted with this update notification:</p>
 
 <blockquote>
@@ -76,9 +76,9 @@
   
   <entry>
     <title type="html"><![CDATA[Category Counts in OctoPress Revisited]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/30/category-counts-in-octopress-revisited"/>
+    <link href="http://ianp.org/2012/10/30/category-counts-in-octopress-revisited"/>
     <updated>2012-10-30T18:41:00+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/30/category-counts-in-octopress-revisited</id>
+    <id>http://ianp.org/2012/10/30/category-counts-in-octopress-revisited</id>
     <content type="html"><![CDATA[<p>As an improvement on an older shell script, here’s a rake task to list all of the categories in your blog, along with post counts for each of them:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -133,9 +133,9 @@
   
   <entry>
     <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform"/>
+    <link href="http://ianp.org/2012/10/03/netbeans-rich-client-platform"/>
     <updated>2012-10-03T18:32:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform</id>
+    <id>http://ianp.org/2012/10/03/netbeans-rich-client-platform</id>
     <content type="html"><![CDATA[<p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
 
 <h4 id="picking-a-platform">Picking a Platform</h4>
@@ -174,9 +174,9 @@
   
   <entry>
     <title type="html"><![CDATA[Convenient]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/01/convenient"/>
+    <link href="http://ianp.org/2012/10/01/convenient"/>
     <updated>2012-10-01T18:35:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/01/convenient</id>
+    <id>http://ianp.org/2012/10/01/convenient</id>
     <content type="html"><![CDATA[<p><a href="http://www.lispcast.com/class-abstractsingletonproxyfactorybean">This</a> is what’s wrong with a lot of the Java code out there.</p>
 
 ]]></content>
@@ -184,9 +184,9 @@
   
   <entry>
     <title type="html"><![CDATA[Bacon]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/01/bacon"/>
+    <link href="http://ianp.org/2012/10/01/bacon"/>
     <updated>2012-10-01T18:35:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/01/bacon</id>
+    <id>http://ianp.org/2012/10/01/bacon</id>
     <content type="html"><![CDATA[<p>Mmmm, <a href="http://baconmethod.com">bacon</a>…</p>
 
 ]]></content>
@@ -194,9 +194,9 @@
   
   <entry>
     <title type="html"><![CDATA[I Swallowed a Fly]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/06/20/i-swallowed-a-fly"/>
+    <link href="http://ianp.org/2012/06/20/i-swallowed-a-fly"/>
     <updated>2012-06-20T17:54:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/06/20/i-swallowed-a-fly</id>
+    <id>http://ianp.org/2012/06/20/i-swallowed-a-fly</id>
     <content type="html"><![CDATA[<p><img src="http://www.onefoottsunami.com/wordpress/wp-content/uploads/20120620magsafeadapter/6-forthesakeofcompleteness.jpg" alt="MagSafe Adapter" /></p>
 
 <p>Wow, <a href="http://www.onefoottsunami.com/2012/06/20/the-magsafe-to-magsafe-2-adapter/">that</a> really is a lot of packaging for probably the world’s smallest connector. Also, reading the post about it, was anybody else reminded of <a href="https://en.wikipedia.org/wiki/There_Was_an_Old_Lady_Who_Swallowed_a_Fly">this</a>?</p>
@@ -206,9 +206,9 @@
   
   <entry>
     <title type="html"><![CDATA[That was Quick]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/06/20/that-was-quick"/>
+    <link href="http://ianp.org/2012/06/20/that-was-quick"/>
     <updated>2012-06-20T16:58:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/06/20/that-was-quick</id>
+    <id>http://ianp.org/2012/06/20/that-was-quick</id>
     <content type="html"><![CDATA[<p>That was quick! The videos from WWDC are <a href="https://developer.apple.com/videos/wwdc/2012/">up already</a>, last year it took Apple about a month to get them posted. Great news for folks like me who didn’t get to attend.</p>
 
 ]]></content>
@@ -216,10 +216,10 @@
   
   <entry>
     <title type="html"><![CDATA[Leap into the Future!]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/05/29/leap-into-the-future"/>
+    <link href="http://ianp.org/2012/05/29/leap-into-the-future"/>
     <updated>2012-05-29T14:59:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/05/29/leap-into-the-future</id>
-    <content type="html"><![CDATA[<p><img src="http://ianp.github.com/ianpdotorg/2012/05/29/leap-motion.jpg" alt="Leap Motion" /></p>
+    <id>http://ianp.org/2012/05/29/leap-into-the-future</id>
+    <content type="html"><![CDATA[<p><img src="http://ianp.org/2012/05/29/leap-motion.jpg" alt="Leap Motion" /></p>
 
 <p><a href="http://leapmotion.com/">This</a> looks like a fascinating piece of technology provided it works as advertised. Check out the video on their, it looks pretty slick.</p>
 
@@ -240,9 +240,9 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   
   <entry>
     <title type="html"><![CDATA[Think about that]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/think-about-that"/>
+    <link href="http://ianp.org/2012/05/07/think-about-that"/>
     <updated>2012-05-07T23:32:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/05/07/think-about-that</id>
+    <id>http://ianp.org/2012/05/07/think-about-that</id>
     <content type="html"><![CDATA[<blockquote>
   <p>Good design. From eBay. Think about that.</p>
 </blockquote>
@@ -256,9 +256,9 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   
   <entry>
     <title type="html"><![CDATA[RubyMotion and Interface Builder…]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder"/>
+    <link href="http://ianp.org/2012/05/07/rubymotion-and-interface-builder"/>
     <updated>2012-05-07T19:24:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder</id>
+    <id>http://ianp.org/2012/05/07/rubymotion-and-interface-builder</id>
     <content type="html"><![CDATA[<p>…sitting in a tree, K-I-S-S-I-N-G…</p>
 
 <p>So, all of the cool kids have been talking about <a href="http://chopine.be/">Laurent Sansonetti</a>’s next project: <a href="http://www.rubymotion.com/">RubyMotion</a>, a port of MacRuby targeted at iOS. On the whole I’m pretty impressed with what you can already do with it. One of the issues that people having been mentioning though, is that you lose the ability to use Interface Builder with it, but this isn’t actually true!</p>
@@ -392,9 +392,9 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   
   <entry>
     <title type="html"><![CDATA[Apple Security Cock-Up]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/apple-security-cock-up"/>
+    <link href="http://ianp.org/2012/05/07/apple-security-cock-up"/>
     <updated>2012-05-07T16:04:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/05/07/apple-security-cock-up</id>
+    <id>http://ianp.org/2012/05/07/apple-security-cock-up</id>
     <content type="html"><![CDATA[<p><a href="http://www.zdnet.com/blog/security/apple-security-blunder-exposes-lion-login-passwords-in-clear-text/11963">This</a> doesn’t look good.</p>
 
 <p>Apple’s approach to security in general is a bit worrying: one the one hand they seem to have the right approach to securing the OS with App Store entitlements (although these aren’t without <a href="http://www.robpeck.com/2012/01/app-store-entitlements-and-the-crippling-of-an-app/">issues</a>) and <a href="http://www.apple.com/macosx/mountain-lion/security.html">Gatekeeper</a>, but their timeliness in shipping security fixes leaves a lot to be desired. Note from the article that this flaw was pointed out to them <em>3 months</em> ago!</p>
@@ -404,9 +404,9 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   
   <entry>
     <title type="html"><![CDATA[Category Counts in Octopress]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/04/18/category-counts-in-octopress"/>
+    <link href="http://ianp.org/2012/04/18/category-counts-in-octopress"/>
     <updated>2012-04-18T10:36:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/04/18/category-counts-in-octopress</id>
+    <id>http://ianp.org/2012/04/18/category-counts-in-octopress</id>
     <content type="html"><![CDATA[<p>Here’s a quick shell script to get the number of posts in each category for an <a href="http://octopress.org/">Octopress</a> blog, just cat your <code>source/_posts</code> folder through the following one-liner:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
@@ -433,17 +433,17 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
 
 <p>Maybe this will be useful to somebody out there…</p>
 
-<p><strong>Update:</strong> I’ve <a href="http://ianp.github.com/ianpdotorg/2012/10/30/category-counts-in-octopress-revisited/">written a version</a> that’s integrated with rake as well.</p>
+<p><strong>Update:</strong> I’ve <a href="http://ianp.org/2012/10/30/category-counts-in-octopress-revisited/">written a version</a> that’s integrated with rake as well.</p>
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[What is Text Normalization?]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/04/17/what-is-text-normalization"/>
+    <link href="http://ianp.org/2012/04/17/what-is-text-normalization"/>
     <updated>2012-04-17T09:33:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/04/17/what-is-text-normalization</id>
-    <content type="html"><![CDATA[<p>In my <a href="http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
+    <id>http://ianp.org/2012/04/17/what-is-text-normalization</id>
+    <content type="html"><![CDATA[<p>In my <a href="http://ianp.org/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
 
 <blockquote>
   <p>Text normalization is a process by which text is transformed in some way to make it consistent in a way which it might not have been before.</p>
@@ -604,9 +604,9 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   
   <entry>
     <title type="html"><![CDATA[How Many Words Make a String?]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string"/>
+    <link href="http://ianp.org/2012/04/16/how-many-words-make-a-string"/>
     <updated>2012-04-16T15:16:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string</id>
+    <id>http://ianp.org/2012/04/16/how-many-words-make-a-string</id>
     <content type="html"><![CDATA[<p>A recent post on the <a href="http://iphonedevelopertips.com/data-file-management/count-the-number-of-words-in-an-string.html">iOS Developer Tips</a> blog provided a handy way to get the the word count for a string by using <code>NSScanner</code>, and asked for comments on alternative approaches. Pretty quickly there were a few different suggestions so I thought that I’d take a look at them to see how they compare. It turns out that the different approaches give pretty different results when run over the same test string! To be honest this isn’t much of a surprise, but what was surprising is just how different the results were.</p>
 
 <p>I tested the original scanner based approach and also the first four alternatives from the comments. For the test string I used this:</p>
@@ -778,16 +778,16 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
 
 <p><strong>Update:</strong> all of the code here, plus a <code>main</code> function to call it, is available as a <a href="https://gist.github.com/2401251">gist</a>.</p>
 
-<p><strong>Update:</strong> I talk a little more about normalization and linguistic tagging in <a href="http://ianp.github.com/ianpdotorg/2012/04/17/what-is-text-normalization">this post</a>.</p>
+<p><strong>Update:</strong> I talk a little more about normalization and linguistic tagging in <a href="http://ianp.org/2012/04/17/what-is-text-normalization">this post</a>.</p>
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Radial Menus]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/03/30/radial-menus"/>
+    <link href="http://ianp.org/2012/03/30/radial-menus"/>
     <updated>2012-03-30T16:38:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/03/30/radial-menus</id>
+    <id>http://ianp.org/2012/03/30/radial-menus</id>
     <content type="html"><![CDATA[<p>Some alternative menu / control styles with a radial theme, linked from here so that I don’t lose them:</p>
 
 <ul>
@@ -802,9 +802,9 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   
   <entry>
     <title type="html"><![CDATA[Developing for the BlackBerry]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/03/29/developing-for-the-blackberry"/>
+    <link href="http://ianp.org/2012/03/29/developing-for-the-blackberry"/>
     <updated>2012-03-29T15:12:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/03/29/developing-for-the-blackberry</id>
+    <id>http://ianp.org/2012/03/29/developing-for-the-blackberry</id>
     <content type="html"><![CDATA[<p>For a change from the day job I’ve been doing some mobile development, all iOS up to now, and I’ve got to say it’s a pretty nice development experience - especially with the new features (e.g. ARC, new literals) that are being added to Objective-C. But then earlier this week I was asked to look into writing a BlackBerry app at work, so that led me to looking into the different options that are available for that platform, here’s what I looked into:</p>
 
 <ul>
@@ -846,9 +846,9 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   
   <entry>
     <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
+    <link href="http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
     <updated>2011-11-04T11:34:00+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
+    <id>http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
     <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
 
 <p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
@@ -924,9 +924,9 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   
   <entry>
     <title type="html"><![CDATA[How to Enter Straight Quotes in Word]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2011/07/28/how-to-enter-straight-quotes-in-word"/>
+    <link href="http://ianp.org/2011/07/28/how-to-enter-straight-quotes-in-word"/>
     <updated>2011-07-28T15:35:43+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2011/07/28/how-to-enter-straight-quotes-in-word</id>
+    <id>http://ianp.org/2011/07/28/how-to-enter-straight-quotes-in-word</id>
     <content type="html"><![CDATA[<p>When I’m writing technical docs in MS Word (an unfortunate day-job-related requirement) one of the things that can be annoying it the fact that it ‘helpfully’ converts straight quotes into curly quotes, even in code samples and other places that it shouldn’t. The easy way to get rid of this is to hit undo (⌘-z) immediately after typing the quote, this will undo the auto-correction but leave the actual quote character in place.</p>
 ]]></content>
   </entry>

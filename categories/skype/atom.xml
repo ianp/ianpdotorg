@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Skype | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/skype/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/skype/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Why I Do Not Like Skype]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/10/12/why-i-do-not-like-skype"/>
+    <link href="http://ianp.org/2006/10/12/why-i-do-not-like-skype"/>
     <updated>2006-10-12T10:20:29+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/10/12/why-i-do-not-like-skype</id>
+    <id>http://ianp.org/2006/10/12/why-i-do-not-like-skype</id>
     <content type="html"><![CDATA[<p>There is nothing more annoying than people who insist on standing up and
 talking loudly on their mobile phones in the middle of an open plan
 office (just one more reason why open plan offices suck arse). At least

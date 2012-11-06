@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Databases | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/databases/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/databases/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SQL: Just Say No!]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2010/01/08/sql-just-say-no"/>
+    <link href="http://ianp.org/2010/01/08/sql-just-say-no"/>
     <updated>2010-01-08T16:29:30+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2010/01/08/sql-just-say-no</id>
+    <id>http://ianp.org/2010/01/08/sql-just-say-no</id>
     <content type="html"><![CDATA[<p>Just in time for the weekend, the SF <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> community have put up a <a href="http://blog.oskarsson.nu/2009/06/nosql-debrief.html">collection of talks and slides</a> from their recent get together. I’ll have more to say after I’ve had a chance to look these over…</p>
 
 <p><em>Update:</em> not actually a new set of talks, these have been online for about 6 months now, but it’s the first time that I’ve seen them…</p>
@@ -27,9 +27,9 @@
   
   <entry>
     <title type="html"><![CDATA[Prevalent Synchronicity]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity"/>
+    <link href="http://ianp.org/2010/01/07/prevalent-synchronicity"/>
     <updated>2010-01-07T13:23:33+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity</id>
+    <id>http://ianp.org/2010/01/07/prevalent-synchronicity</id>
     <content type="html"><![CDATA[<p>Maybe it’s just an idea whose time has come, but in the past few days there’ve been 2 prevalent database systems announced for <a href="http://clojure.org/">Clojure</a>: <a href="http://fleetdb.org/">FleetDB</a> and <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Persister</a>.</p>
 
 <h4 id="prevalent-databases">Prevalent Databases</h4>

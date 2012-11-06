@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: PMD | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/pmd/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/pmd/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Christmas Gift: PMD 3.9]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/12/20/christmas-gift-pmd-39"/>
+    <link href="http://ianp.org/2006/12/20/christmas-gift-pmd-39"/>
     <updated>2006-12-20T14:19:10+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/12/20/christmas-gift-pmd-39</id>
+    <id>http://ianp.org/2006/12/20/christmas-gift-pmd-39</id>
     <content type="html"><![CDATA[<p>Just in time for Christmas, <a href="http://tomcopeland.blogs.com/juniordeveloper">Tom Copeland</a> has <a href="http://tomcopeland.blogs.com/juniordeveloper/2006/12/pmd_39_three_ti.html">announced</a> a
 new release of <a href="http://pmd.sourceforge.net/">PMD</a> with some notable speed increases. Hopefully
 this will make it fast enough to use the <a href="http://pmd.sourceforge.net/integrations.html#eclipse">Eclipse plug-in</a> in

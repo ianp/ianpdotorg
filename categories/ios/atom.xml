@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: iOS | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/ios/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/ios/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[RubyMotion and Interface Builder…]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder"/>
+    <link href="http://ianp.org/2012/05/07/rubymotion-and-interface-builder"/>
     <updated>2012-05-07T19:24:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder</id>
+    <id>http://ianp.org/2012/05/07/rubymotion-and-interface-builder</id>
     <content type="html"><![CDATA[<p>…sitting in a tree, K-I-S-S-I-N-G…</p>
 
 <p>So, all of the cool kids have been talking about <a href="http://chopine.be/">Laurent Sansonetti</a>’s next project: <a href="http://www.rubymotion.com/">RubyMotion</a>, a port of MacRuby targeted at iOS. On the whole I’m pretty impressed with what you can already do with it. One of the issues that people having been mentioning though, is that you lose the ability to use Interface Builder with it, but this isn’t actually true!</p>
@@ -119,9 +119,9 @@ end   end ```
   
   <entry>
     <title type="html"><![CDATA[What is Text Normalization?]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/04/17/what-is-text-normalization"/>
+    <link href="http://ianp.org/2012/04/17/what-is-text-normalization"/>
     <updated>2012-04-17T09:33:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/04/17/what-is-text-normalization</id>
+    <id>http://ianp.org/2012/04/17/what-is-text-normalization</id>
     <content type="html"><![CDATA[<p>In my <a href="/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
 
 <blockquote>
@@ -263,9 +263,9 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   
   <entry>
     <title type="html"><![CDATA[How Many Words Make a String?]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string"/>
+    <link href="http://ianp.org/2012/04/16/how-many-words-make-a-string"/>
     <updated>2012-04-16T15:16:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string</id>
+    <id>http://ianp.org/2012/04/16/how-many-words-make-a-string</id>
     <content type="html"><![CDATA[<p>A recent post on the <a href="http://iphonedevelopertips.com/data-file-management/count-the-number-of-words-in-an-string.html">iOS Developer Tips</a> blog provided a handy way to get the the word count for a string by using <code>NSScanner</code>, and asked for comments on alternative approaches. Pretty quickly there were a few different suggestions so I thought that I’d take a look at them to see how they compare. It turns out that the different approaches give pretty different results when run over the same test string! To be honest this isn’t much of a surprise, but what was surprising is just how different the results were.</p>
 
 <p>I tested the original scanner based approach and also the first four alternatives from the comments. For the test string I used this:</p>
@@ -411,9 +411,9 @@ NSUInteger taggerWordCount(NSString* string)
   
   <entry>
     <title type="html"><![CDATA[Radial Menus]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/03/30/radial-menus"/>
+    <link href="http://ianp.org/2012/03/30/radial-menus"/>
     <updated>2012-03-30T16:38:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/03/30/radial-menus</id>
+    <id>http://ianp.org/2012/03/30/radial-menus</id>
     <content type="html"><![CDATA[<p>Some alternative menu / control styles with a radial theme, linked from here so that I don’t lose them:</p>
 
 <ul>
@@ -428,9 +428,9 @@ NSUInteger taggerWordCount(NSString* string)
   
   <entry>
     <title type="html"><![CDATA[Best. Method. Name. Ever]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/07/09/best-method-name-ever"/>
+    <link href="http://ianp.org/2009/07/09/best-method-name-ever"/>
     <updated>2009-07-09T18:01:27+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/07/09/best-method-name-ever</id>
+    <id>http://ianp.org/2009/07/09/best-method-name-ever</id>
     <content type="html"><![CDATA[<p>In the iPhone SDK (with camel case broken out into separate words):</p>
 
 <blockquote>

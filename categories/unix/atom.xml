@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Unix | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/unix/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/unix/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Why Everything is a File]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/12/28/why-everything-is-a-file"/>
+    <link href="http://ianp.org/2009/12/28/why-everything-is-a-file"/>
     <updated>2009-12-28T17:54:29+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/12/28/why-everything-is-a-file</id>
+    <id>http://ianp.org/2009/12/28/why-everything-is-a-file</id>
     <content type="html"><![CDATA[<p>One of the <a href="http://en.wikipedia.org/wiki/Unix_architecture">distinguishing characteristics of Unix</a> is the
 philosophy that “everything is a file” (taken even further in
 <a href="http://en.wikipedia.org/wiki/Linux">Linux</a> and <a href="http://plan9.bell-labs.com/plan9/">Plan 9</a>). Reading the interview with <a href="http://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> in <a href="http://www.codersatwork.com/">Coders at Work</a> (page 465) sheds some light on why

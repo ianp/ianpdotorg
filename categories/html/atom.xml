@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: HTML | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/html/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/html/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Taking Multiple Classes]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/05/17/taking-multiple-classes"/>
+    <link href="http://ianp.org/2006/05/17/taking-multiple-classes"/>
     <updated>2006-05-17T19:06:44+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/05/17/taking-multiple-classes</id>
+    <id>http://ianp.org/2006/05/17/taking-multiple-classes</id>
     <content type="html"><![CDATA[<p>Here’s something that I didn’t realise, but do now thanks to <a href="http://bitesizestandards.com/bites/create-complex-borders-with-multiple-classes">this
 entry</a> on <a href="http://bitesizestandards.com/">Bite Size Standards</a>: elements in HTML can have more
 than one class assigned to them, simply provide a space separated list

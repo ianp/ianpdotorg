@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Semantic Web | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/semantic-web/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/semantic-web/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[The Semantic Web]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/11/10/the-semantic-web"/>
+    <link href="http://ianp.org/2003/11/10/the-semantic-web"/>
     <updated>2003-11-10T13:11:12+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/11/10/the-semantic-web</id>
+    <id>http://ianp.org/2003/11/10/the-semantic-web</id>
     <content type="html"><![CDATA[<p>Clay Shirky’s <a href="http://www.shirky.com/writings/semantic_syllogism.html">latest newsletter</a>) on networks, economics and culture discusses the semantic web. In a nutshell, he’s not very impressed. The starting point for this argument is that syllogisms don’t model the real world well, an example:</p>
 
 <blockquote>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Lisp | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/lisp/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/lisp/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Prevalent Synchronicity]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity"/>
+    <link href="http://ianp.org/2010/01/07/prevalent-synchronicity"/>
     <updated>2010-01-07T13:23:33+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity</id>
+    <id>http://ianp.org/2010/01/07/prevalent-synchronicity</id>
     <content type="html"><![CDATA[<p>Maybe it’s just an idea whose time has come, but in the past few days there’ve been 2 prevalent database systems announced for <a href="http://clojure.org/">Clojure</a>: <a href="http://fleetdb.org/">FleetDB</a> and <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Persister</a>.</p>
 
 <h4 id="prevalent-databases">Prevalent Databases</h4>
@@ -49,9 +49,9 @@
   
   <entry>
     <title type="html"><![CDATA[Squeeze!]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2010/01/06/squeeze"/>
+    <link href="http://ianp.org/2010/01/06/squeeze"/>
     <updated>2010-01-06T18:38:16+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2010/01/06/squeeze</id>
+    <id>http://ianp.org/2010/01/06/squeeze</id>
     <content type="html"><![CDATA[<p>One of the neat features of <a href="http://clojure.org/">Clojure</a> is the <a href="http://clojure.org/sequences">sequence</a> abstraction — it makes solving a whole host of data processing tasks much easier, simply get you data into a sequence and you’ve got a huge toolbox available to work on it. Of course being a guy I’m firmly of the belief that more tools are better, with that in mind let’s add another one to our toolbox. Given a sequence the squeeze function returns another sequence with any adjacent items which match a supplied predicate merged together using a supplied function. It’s probably easier to illustrate by example, suppose I have a sequence of strings and I want to merge them together when the trailing string starts with whitespace, I can squeeze them like this:</p>
 
 <p><code>clj
@@ -110,9 +110,9 @@ comment on the <code>squeeze</code> function definition).</p>
   
   <entry>
     <title type="html"><![CDATA[Paredit.el Comes to IntelliJ]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2009/12/25/paredit-el-comes-to-intellij"/>
+    <link href="http://ianp.org/2009/12/25/paredit-el-comes-to-intellij"/>
     <updated>2009-12-25T20:21:47+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2009/12/25/paredit-el-comes-to-intellij</id>
+    <id>http://ianp.org/2009/12/25/paredit-el-comes-to-intellij</id>
     <content type="html"><![CDATA[<p>I’ve been working on adding <a href="http://mumble.net/~campbell/emacs/paredit.el">paredit.el</a> like structural editing to
 the next version of the <a href="http://plugins.intellij.net/plugin/?id=4050">La Clojure</a> plugin for <a href="http://www.jetbrains.com/idea/index.html">Intellij IDEA</a>.
 IDEA already does most of the paren matching stuff (automatically
@@ -133,9 +133,9 @@ after the 9.0.1 release is out (it’s in beta now).</p>
   
   <entry>
     <title type="html"><![CDATA[Python Does Destructuring Bind]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2007/01/11/python-does-destructuring-bind"/>
+    <link href="http://ianp.org/2007/01/11/python-does-destructuring-bind"/>
     <updated>2007-01-11T13:51:49+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2007/01/11/python-does-destructuring-bind</id>
+    <id>http://ianp.org/2007/01/11/python-does-destructuring-bind</id>
     <content type="html"><![CDATA[<p>According to <a href="http://www.nedbatchelder.com/blog/200701.html#e20070110T070106">this article</a> by <a href="http://www.nedbatchelder.com/blog">Ned Batcheleder</a> python does
 destructuring bind by default. Well, I did not know that.</p>
 
@@ -144,9 +144,9 @@ destructuring bind by default. Well, I did not know that.</p>
   
   <entry>
     <title type="html"><![CDATA[Interactive Programming]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/09/24/interactive-programming"/>
+    <link href="http://ianp.org/2004/09/24/interactive-programming"/>
     <updated>2004-09-24T07:09:45+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/09/24/interactive-programming</id>
+    <id>http://ianp.org/2004/09/24/interactive-programming</id>
     <content type="html"><![CDATA[<p>After playing around with Lisp for a few days I’ve diverted myself back
 to a small Java project. Almost immediately I’m missing the Lisp
 environment! To be sure there are some things that I prefer about my

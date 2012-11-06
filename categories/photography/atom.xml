@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Photography | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/photography/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/photography/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Tabblo: Sofia Speed Fest 2006]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/09/24/tabblo-sofia-speed-fest-2006"/>
+    <link href="http://ianp.org/2006/09/24/tabblo-sofia-speed-fest-2006"/>
     <updated>2006-09-24T14:07:27+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/09/24/tabblo-sofia-speed-fest-2006</id>
+    <id>http://ianp.org/2006/09/24/tabblo-sofia-speed-fest-2006</id>
     <content type="html"><![CDATA[<p>Not the greatest day out, but we had beers and played dodgems when we got back to town, so it ended well. See <a href="http://www.tabblo.com/studio/stories/shared/6231/fq5pdzue07cngby">some photo’s from the day</a> over at <a href="http://www.tabblo.com/">Tabblo</a>.</p>
 
 ]]></content>
@@ -25,9 +25,9 @@
   
   <entry>
     <title type="html"><![CDATA[First Gallery]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/07/01/first-gallery"/>
+    <link href="http://ianp.org/2004/07/01/first-gallery"/>
     <updated>2004-07-01T18:07:02+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/07/01/first-gallery</id>
+    <id>http://ianp.org/2004/07/01/first-gallery</id>
     <content type="html"><![CDATA[<p>I’ve finally got around to uploading the first gallery, from when I went
 to Spain a couple of weeks ago. I should get araound to putting another
 couple of galleries on line in the next week or so.</p>

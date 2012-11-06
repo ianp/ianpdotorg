@@ -1,657 +1,623 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/04/10/computer-language-evolution</loc>
-        <lastmod>2012-04-03T10:37:11+02:00</lastmod>
+        <loc>http://ianp.org/2003/04/10/computer-language-evolution</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/09/13/just-plain-wrong</loc>
-        <lastmod>2012-04-18T11:27:12+02:00</lastmod>
+        <loc>http://ianp.org/2003/09/13/just-plain-wrong</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/09/17/dot-net</loc>
-        <lastmod>2012-04-03T16:03:12+02:00</lastmod>
+        <loc>http://ianp.org/2003/09/17/dot-net</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/09/17/binary-xml-encoding</loc>
-        <lastmod>2012-04-03T16:05:46+02:00</lastmod>
+        <loc>http://ianp.org/2003/09/17/binary-xml-encoding</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/09/20/working-at-the-weekend</loc>
-        <lastmod>2012-04-03T16:10:27+02:00</lastmod>
+        <loc>http://ianp.org/2003/09/20/working-at-the-weekend</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/09/24/auto-boxing</loc>
-        <lastmod>2012-04-03T16:29:35+02:00</lastmod>
+        <loc>http://ianp.org/2003/09/24/auto-boxing</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/09/25/david-blaine</loc>
-        <lastmod>2012-04-17T09:11:46+02:00</lastmod>
+        <loc>http://ianp.org/2003/09/25/david-blaine</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/10/13/a-modest-proposal</loc>
-        <lastmod>2012-04-03T10:37:59+02:00</lastmod>
+        <loc>http://ianp.org/2003/10/13/a-modest-proposal</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/10/16/objects-have-failed</loc>
-        <lastmod>2012-04-03T16:18:53+02:00</lastmod>
+        <loc>http://ianp.org/2003/10/16/objects-have-failed</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/10/17/java-help</loc>
-        <lastmod>2012-04-03T16:20:50+02:00</lastmod>
+        <loc>http://ianp.org/2003/10/17/java-help</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/10/17/st-pauls</loc>
-        <lastmod>2012-04-18T11:30:13+02:00</lastmod>
+        <loc>http://ianp.org/2003/10/17/st-pauls</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/10/30/on-lisp</loc>
-        <lastmod>2012-04-03T16:40:03+02:00</lastmod>
+        <loc>http://ianp.org/2003/10/30/on-lisp</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/11/10/the-semantic-web</loc>
-        <lastmod>2012-04-03T16:40:01+02:00</lastmod>
+        <loc>http://ianp.org/2003/11/10/the-semantic-web</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/11/11/tiny-danish-elves</loc>
-        <lastmod>2012-04-18T11:29:57+02:00</lastmod>
+        <loc>http://ianp.org/2003/11/11/tiny-danish-elves</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/11/13/appropriate-technology</loc>
-        <lastmod>2012-04-03T10:39:41+02:00</lastmod>
+        <loc>http://ianp.org/2003/11/13/appropriate-technology</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/11/16/fedora</loc>
-        <lastmod>2012-04-03T19:04:38+02:00</lastmod>
+        <loc>http://ianp.org/2003/11/16/fedora</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/11/18/jsr-173-reference-implementation</loc>
-        <lastmod>2012-04-03T19:06:15+02:00</lastmod>
+        <loc>http://ianp.org/2003/11/18/jsr-173-reference-implementation</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/11/18/mac-annoyances</loc>
-        <lastmod>2012-04-03T19:07:04+02:00</lastmod>
+        <loc>http://ianp.org/2003/11/18/mac-annoyances</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/12/10/gnome-wish-list</loc>
-        <lastmod>2012-04-03T19:11:18+02:00</lastmod>
+        <loc>http://ianp.org/2003/12/10/gnome-wish-list</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2003/12/18/eclipse-netbeans</loc>
-        <lastmod>2012-04-03T10:43:33+02:00</lastmod>
+        <loc>http://ianp.org/2003/12/18/eclipse-netbeans</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/01/13/irrational-opinions</loc>
-        <lastmod>2012-04-18T09:56:58+02:00</lastmod>
+        <loc>http://ianp.org/2004/01/13/irrational-opinions</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/01/16/java-multiple-inheritance</loc>
-        <lastmod>2012-04-03T10:43:37+02:00</lastmod>
+        <loc>http://ianp.org/2004/01/16/java-multiple-inheritance</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/01/16/swing-font-defaults</loc>
-        <lastmod>2012-04-03T19:14:12+02:00</lastmod>
+        <loc>http://ianp.org/2004/01/16/swing-font-defaults</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/01/23/new-design-10</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2004/01/23/new-design-10</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/02/12/links-that-reflow</loc>
-        <lastmod>2012-04-03T19:14:41+02:00</lastmod>
+        <loc>http://ianp.org/2004/02/12/links-that-reflow</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/02/15/why-test-driven-devlopment-works</loc>
-        <lastmod>2012-04-03T10:44:53+02:00</lastmod>
+        <loc>http://ianp.org/2004/02/15/why-test-driven-devlopment-works</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g</loc>
-        <lastmod>2012-04-03T10:44:56+02:00</lastmod>
+        <loc>http://ianp.org/2004/02/17/vodafone-3g</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/02/18/retargetable-user-interfaces</loc>
-        <lastmod>2012-04-03T22:26:11+02:00</lastmod>
+        <loc>http://ianp.org/2004/02/18/retargetable-user-interfaces</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/02/23/adsl</loc>
-        <lastmod>2012-04-18T11:32:39+02:00</lastmod>
+        <loc>http://ianp.org/2004/02/23/adsl</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/03/09/powerpoint</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2004/03/09/powerpoint</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/03/23/travelling-power</loc>
-        <lastmod>2012-04-03T10:45:04+02:00</lastmod>
+        <loc>http://ianp.org/2004/03/23/travelling-power</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/03/23/moron</loc>
-        <lastmod>2012-04-03T19:18:52+02:00</lastmod>
+        <loc>http://ianp.org/2004/03/23/moron</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/03/28/eclipse-3-milestone-8</loc>
-        <lastmod>2012-04-03T10:45:08+02:00</lastmod>
+        <loc>http://ianp.org/2004/03/28/eclipse-3-milestone-8</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/04/10/gmail</loc>
-        <lastmod>2012-04-18T11:28:05+02:00</lastmod>
+        <loc>http://ianp.org/2004/04/10/gmail</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/04/11/swt-look-feel</loc>
-        <lastmod>2012-04-03T22:26:06+02:00</lastmod>
+        <loc>http://ianp.org/2004/04/11/swt-look-feel</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/05/19/gimp-ui-blooper</loc>
-        <lastmod>2012-04-03T10:46:03+02:00</lastmod>
+        <loc>http://ianp.org/2004/05/19/gimp-ui-blooper</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/06/07/entry-archives-broken</loc>
-        <lastmod>2012-04-03T22:26:49+02:00</lastmod>
+        <loc>http://ianp.org/2004/06/07/entry-archives-broken</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/06/23/word-press</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2004/06/23/word-press</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/07/01/first-gallery</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2004/07/01/first-gallery</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/07/25/markup-cleanup</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2004/07/25/markup-cleanup</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/09/24/interactive-programming</loc>
-        <lastmod>2012-04-03T10:46:05+02:00</lastmod>
+        <loc>http://ianp.org/2004/09/24/interactive-programming</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/10/03/dynamic-classpaths-in-eclipse</loc>
-        <lastmod>2012-04-03T22:28:29+02:00</lastmod>
+        <loc>http://ianp.org/2004/10/03/dynamic-classpaths-in-eclipse</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/10/06/textmate</loc>
-        <lastmod>2012-04-18T11:27:06+02:00</lastmod>
+        <loc>http://ianp.org/2004/10/06/textmate</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/10/06/textmate-revisited</loc>
-        <lastmod>2012-04-18T11:32:20+02:00</lastmod>
+        <loc>http://ianp.org/2004/10/06/textmate-revisited</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2004/11/18/using-junit-in-eclipse-ant-builds</loc>
-        <lastmod>2012-04-18T11:28:30+02:00</lastmod>
+        <loc>http://ianp.org/2004/11/18/using-junit-in-eclipse-ant-builds</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2005/02/17/back-to-moveable-type</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2005/02/17/back-to-moveable-type</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2005/06/30/typical</loc>
-        <lastmod>2012-04-18T11:30:19+02:00</lastmod>
+        <loc>http://ianp.org/2005/06/30/typical</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2005/08/04/maths-at-the-bbc</loc>
-        <lastmod>2012-04-18T11:26:15+02:00</lastmod>
+        <loc>http://ianp.org/2005/08/04/maths-at-the-bbc</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2005/09/14/word-of-the-day</loc>
-        <lastmod>2012-04-17T09:11:54+02:00</lastmod>
+        <loc>http://ianp.org/2005/09/14/word-of-the-day</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2005/11/08/wireds-worst-software-bugs</loc>
-        <lastmod>2012-04-17T09:12:23+02:00</lastmod>
+        <loc>http://ianp.org/2005/11/08/wireds-worst-software-bugs</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2005/11/10/a-not-so-class-y-action-against-sony-bmg
-        </loc>
-        <lastmod>2012-04-03T22:39:41+02:00</lastmod>
+        <loc>http://ianp.org/2005/11/10/a-not-so-class-y-action-against-sony-bmg</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2005/11/17/where-is-the-user-interface</loc>
-        <lastmod>2012-04-03T10:47:20+02:00</lastmod>
+        <loc>http://ianp.org/2005/11/17/where-is-the-user-interface</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2005/11/17/a-fuckall-value</loc>
-        <lastmod>2012-04-18T11:30:36+02:00</lastmod>
+        <loc>http://ianp.org/2005/11/17/a-fuckall-value</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2005/12/01/moved-to-textdrive</loc>
-        <lastmod>2012-04-18T11:29:48+02:00</lastmod>
+        <loc>http://ianp.org/2005/12/01/moved-to-textdrive</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/04/14/rvsnoop</loc>
-        <lastmod>2012-04-03T22:58:27+02:00</lastmod>
+        <loc>http://ianp.org/2006/04/14/rvsnoop</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/04/17/dynamic-date-formatting</loc>
-        <lastmod>2012-04-03T22:59:30+02:00</lastmod>
+        <loc>http://ianp.org/2006/04/17/dynamic-date-formatting</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/04/17/play-pumps</loc>
-        <lastmod>2012-04-18T07:03:15+02:00</lastmod>
+        <loc>http://ianp.org/2006/04/17/play-pumps</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/05/02/configuration-via-xml-or-code</loc>
-        <lastmod>2012-04-18T11:27:35+02:00</lastmod>
+        <loc>http://ianp.org/2006/05/02/configuration-via-xml-or-code</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/05/17/taking-multiple-classes</loc>
-        <lastmod>2012-04-03T23:03:17+02:00</lastmod>
+        <loc>http://ianp.org/2006/05/17/taking-multiple-classes</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2006/08/09/some-thoughts-on-the-ideal-feature-set
-        </loc>
-        <lastmod>2012-04-03T23:24:54+02:00</lastmod>
+        <loc>http://ianp.org/2006/08/09/some-thoughts-on-the-ideal-feature-set</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/09/11/genius</loc>
-        <lastmod>2012-04-03T23:29:37+02:00</lastmod>
+        <loc>http://ianp.org/2006/09/11/genius</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/09/11/installing-multiple-jvms</loc>
-        <lastmod>2012-04-03T23:30:38+02:00</lastmod>
+        <loc>http://ianp.org/2006/09/11/installing-multiple-jvms</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/09/24/tabblo-sofia-speed-fest-2006</loc>
-        <lastmod>2012-04-03T23:32:28+02:00</lastmod>
+        <loc>http://ianp.org/2006/09/24/tabblo-sofia-speed-fest-2006</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/09/28/netbeans-annoyances</loc>
-        <lastmod>2012-04-03T23:35:01+02:00</lastmod>
+        <loc>http://ianp.org/2006/09/28/netbeans-annoyances</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/10/04/another-java-logging-api</loc>
-        <lastmod>2012-04-03T23:40:42+02:00</lastmod>
+        <loc>http://ianp.org/2006/10/04/another-java-logging-api</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2006/10/06/more-transparent-development-for-rvsnoop
-        </loc>
-        <lastmod>2012-04-18T11:30:48+02:00</lastmod>
+        <loc>http://ianp.org/2006/10/06/more-transparent-development-for-rvsnoop</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/10/12/why-i-do-not-like-skype</loc>
-        <lastmod>2012-04-03T23:41:16+02:00</lastmod>
+        <loc>http://ianp.org/2006/10/12/why-i-do-not-like-skype</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2006/10/17/adding-namespace-support-to-rvsnoop
-        </loc>
-        <lastmod>2012-04-03T23:41:29+02:00</lastmod>
+        <loc>http://ianp.org/2006/10/17/adding-namespace-support-to-rvsnoop</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/10/19/1060-comes-of-age</loc>
-        <lastmod>2012-04-18T11:30:42+02:00</lastmod>
+        <loc>http://ianp.org/2006/10/19/1060-comes-of-age</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/11/01/killing-capitals-in-itunes</loc>
-        <lastmod>2012-04-03T23:43:36+02:00</lastmod>
+        <loc>http://ianp.org/2006/11/01/killing-capitals-in-itunes</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/11/04/30000000-lines-of-code-wtf</loc>
-        <lastmod>2012-04-03T23:44:44+02:00</lastmod>
+        <loc>http://ianp.org/2006/11/04/30000000-lines-of-code-wtf</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/12/06/rvsnoop-353</loc>
-        <lastmod>2012-04-03T23:45:32+02:00</lastmod>
+        <loc>http://ianp.org/2006/12/06/rvsnoop-353</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/12/07/rvsnoop-356</loc>
-        <lastmod>2012-04-03T23:46:32+02:00</lastmod>
+        <loc>http://ianp.org/2006/12/07/rvsnoop-356</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2006/12/08/factory-methods-vs-factory-classes-in-java
-        </loc>
-        <lastmod>2012-04-03T23:49:12+02:00</lastmod>
+        <loc>http://ianp.org/2006/12/08/factory-methods-vs-factory-classes-in-java</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/12/19/oh-such-a-good-infrastructure</loc>
-        <lastmod>2012-04-04T07:30:45+02:00</lastmod>
+        <loc>http://ianp.org/2006/12/19/oh-such-a-good-infrastructure</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/12/20/christmas-gift-pmd-39</loc>
-        <lastmod>2012-04-03T10:54:33+02:00</lastmod>
+        <loc>http://ianp.org/2006/12/20/christmas-gift-pmd-39</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2006/12/26/rvsnoop-161</loc>
-        <lastmod>2012-04-03T10:56:14+02:00</lastmod>
+        <loc>http://ianp.org/2006/12/26/rvsnoop-161</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2007/01/11/python-does-destructuring-bind</loc>
-        <lastmod>2012-04-03T10:56:36+02:00</lastmod>
+        <loc>http://ianp.org/2007/01/11/python-does-destructuring-bind</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2007/02/09/jython-22b1-released</loc>
-        <lastmod>2012-04-03T10:56:56+02:00</lastmod>
+        <loc>http://ianp.org/2007/02/09/jython-22b1-released</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2007/10/21/rebooted</loc>
-        <lastmod>2012-04-18T11:30:24+02:00</lastmod>
+        <loc>http://ianp.org/2007/10/21/rebooted</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2007/12/31/custom-functions-in-bw-cannot-be-in-final-classes
-        </loc>
-        <lastmod>2012-04-04T07:32:10+02:00</lastmod>
+        <loc>http://ianp.org/2007/12/31/custom-functions-in-bw-cannot-be-in-final-classes</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2008/03/26/go-antigua</loc>
-        <lastmod>2012-04-04T07:32:36+02:00</lastmod>
+        <loc>http://ianp.org/2008/03/26/go-antigua</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2008/03/26/windows-xp-zip-file-support</loc>
-        <lastmod>2012-04-04T07:34:14+02:00</lastmod>
+        <loc>http://ianp.org/2008/03/26/windows-xp-zip-file-support</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2008/03/30/plastic-bag-recycling</loc>
-        <lastmod>2012-04-04T07:34:50+02:00</lastmod>
+        <loc>http://ianp.org/2008/03/30/plastic-bag-recycling</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2008/05/21/has-amazon-gone-crazy</loc>
-        <lastmod>2012-04-18T11:24:32+02:00</lastmod>
+        <loc>http://ianp.org/2008/05/21/has-amazon-gone-crazy</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2008/05/21/layout</loc>
-        <lastmod>2012-04-04T07:36:54+02:00</lastmod>
+        <loc>http://ianp.org/2008/05/21/layout</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2008/05/25/sourceforge-annoyances</loc>
-        <lastmod>2012-04-03T10:57:28+02:00</lastmod>
+        <loc>http://ianp.org/2008/05/25/sourceforge-annoyances</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2008/07/30/turning-off-apple-data-detectors-in-mail
-        </loc>
-        <lastmod>2012-04-04T07:37:45+02:00</lastmod>
+        <loc>http://ianp.org/2008/07/30/turning-off-apple-data-detectors-in-mail</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2008/07/31/infoq-presentations</loc>
-        <lastmod>2012-04-04T09:08:12+02:00</lastmod>
+        <loc>http://ianp.org/2008/07/31/infoq-presentations</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2008/12/19/two-articles-about-online-games</loc>
-        <lastmod>2012-04-03T10:58:37+02:00</lastmod>
+        <loc>http://ianp.org/2008/12/19/two-articles-about-online-games</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/01/17/object-pooling-performance</loc>
-        <lastmod>2012-04-04T09:13:27+02:00</lastmod>
+        <loc>http://ianp.org/2009/01/17/object-pooling-performance</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/04/10/cool-glass</loc>
-        <lastmod>2012-04-18T11:25:01+02:00</lastmod>
+        <loc>http://ianp.org/2009/04/10/cool-glass</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2009/04/21/understanding-event-propagation-in-ardor3d
-        </loc>
-        <lastmod>2012-04-04T09:20:39+02:00</lastmod>
+        <loc>http://ianp.org/2009/04/21/understanding-event-propagation-in-ardor3d</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/04/23/guice-development-stages</loc>
-        <lastmod>2012-04-04T09:22:13+02:00</lastmod>
+        <loc>http://ianp.org/2009/04/23/guice-development-stages</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2009/04/27/embedding-clojure-in-an-existing-application
-        </loc>
-        <lastmod>2012-04-04T09:24:50+02:00</lastmod>
+        <loc>http://ianp.org/2009/04/27/embedding-clojure-in-an-existing-application</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/04/28/embedding-clojure-part-2</loc>
-        <lastmod>2012-04-04T09:33:40+02:00</lastmod>
+        <loc>http://ianp.org/2009/04/28/embedding-clojure-part-2</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/05/15/thats-how-i-felt-too</loc>
-        <lastmod>2012-04-04T09:34:44+02:00</lastmod>
+        <loc>http://ianp.org/2009/05/15/thats-how-i-felt-too</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2009/05/22/ant-build-files-for-pushbuttonengine
-        </loc>
-        <lastmod>2012-04-04T09:35:46+02:00</lastmod>
+        <loc>http://ianp.org/2009/05/22/ant-build-files-for-pushbuttonengine</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2009/05/23/level-definition-dtd-for-pushbuttonengine
-        </loc>
-        <lastmod>2012-04-04T09:36:25+02:00</lastmod>
+        <loc>http://ianp.org/2009/05/23/level-definition-dtd-for-pushbuttonengine</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2009/05/24/setting-up-a-flash-development-environment
-        </loc>
-        <lastmod>2012-04-04T09:37:51+02:00</lastmod>
+        <loc>http://ianp.org/2009/05/24/setting-up-a-flash-development-environment</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/05/25/play-with-your-peas-1</loc>
-        <lastmod>2012-04-04T09:58:42+02:00</lastmod>
+        <loc>http://ianp.org/2009/05/25/play-with-your-peas-1</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/05/25/neat-historical-game</loc>
-        <lastmod>2012-04-04T09:38:24+02:00</lastmod>
+        <loc>http://ianp.org/2009/05/25/neat-historical-game</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2009/05/27/disabling-airport-agent-on-mac-os-x
-        </loc>
-        <lastmod>2012-04-04T10:00:30+02:00</lastmod>
+        <loc>http://ianp.org/2009/05/27/disabling-airport-agent-on-mac-os-x</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/06/13/vibration-function</loc>
-        <lastmod>2012-04-18T07:03:29+02:00</lastmod>
+        <loc>http://ianp.org/2009/06/13/vibration-function</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/06/14/ripping-open-ruby-packages</loc>
-        <lastmod>2012-04-04T10:03:34+02:00</lastmod>
+        <loc>http://ianp.org/2009/06/14/ripping-open-ruby-packages</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/06/14/quote-of-the-day</loc>
-        <lastmod>2012-04-18T09:57:05+02:00</lastmod>
+        <loc>http://ianp.org/2009/06/14/quote-of-the-day</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/06/18/adobe-releases-rtmp-specification</loc>
-        <lastmod>2012-04-04T10:04:13+02:00</lastmod>
+        <loc>http://ianp.org/2009/06/18/adobe-releases-rtmp-specification</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/07/09/best-method-name-ever</loc>
-        <lastmod>2012-04-18T11:29:11+02:00</lastmod>
+        <loc>http://ianp.org/2009/07/09/best-method-name-ever</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/07/09/further-discord-around-jsr-294</loc>
-        <lastmod>2012-04-04T10:06:12+02:00</lastmod>
+        <loc>http://ianp.org/2009/07/09/further-discord-around-jsr-294</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2009/11/09/strawman-arguments-and-coding-styles
-        </loc>
-        <lastmod>2012-04-18T11:28:38+02:00</lastmod>
+        <loc>http://ianp.org/2009/11/09/strawman-arguments-and-coding-styles</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/11/12/choose-your-own-visual-adventure</loc>
-        <lastmod>2012-04-04T10:08:19+02:00</lastmod>
+        <loc>http://ianp.org/2009/11/12/choose-your-own-visual-adventure</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/11/26/how-to-work-with-git-github</loc>
-        <lastmod>2012-04-18T11:27:45+02:00</lastmod>
+        <loc>http://ianp.org/2009/11/26/how-to-work-with-git-github</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/12/07/clojure-evaluation</loc>
-        <lastmod>2012-04-04T10:58:41+02:00</lastmod>
+        <loc>http://ianp.org/2009/12/07/clojure-evaluation</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/12/17/clojure-purists</loc>
-        <lastmod>2012-04-18T11:27:25+02:00</lastmod>
+        <loc>http://ianp.org/2009/12/17/clojure-purists</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/12/25/paredit-el-comes-to-intellij</loc>
-        <lastmod>2012-04-04T11:06:06+02:00</lastmod>
+        <loc>http://ianp.org/2009/12/25/paredit-el-comes-to-intellij</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/12/26/the-c-programming-language</loc>
-        <lastmod>2012-04-04T11:06:47+02:00</lastmod>
+        <loc>http://ianp.org/2009/12/26/the-c-programming-language</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/12/28/why-everything-is-a-file</loc>
-        <lastmod>2012-04-04T11:07:41+02:00</lastmod>
+        <loc>http://ianp.org/2009/12/28/why-everything-is-a-file</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2009/12/29/nexus-one-launch-even-on-jan-5</loc>
-        <lastmod>2012-04-04T11:08:24+02:00</lastmod>
+        <loc>http://ianp.org/2009/12/29/nexus-one-launch-even-on-jan-5</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2010/01/02/working-with-java-arrays</loc>
-        <lastmod>2012-04-04T11:09:37+02:00</lastmod>
+        <loc>http://ianp.org/2010/01/02/working-with-java-arrays</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2010/01/06/squeeze</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2010/01/06/squeeze</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2010/01/07/prevalent-synchronicity</loc>
-        <lastmod>2012-04-18T11:31:12+02:00</lastmod>
+        <loc>http://ianp.org/2010/01/07/prevalent-synchronicity</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2010/01/08/sql-just-say-no</loc>
-        <lastmod>2012-04-03T11:01:52+02:00</lastmod>
+        <loc>http://ianp.org/2010/01/08/sql-just-say-no</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2010/01/12/vote-now</loc>
-        <lastmod>2012-04-18T09:56:53+02:00</lastmod>
+        <loc>http://ianp.org/2010/01/12/vote-now</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2010/03/15/building-clojure-with-maven</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2010/03/15/building-clojure-with-maven</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2010/03/25/quote-of-the-day-2</loc>
-        <lastmod>2012-04-18T09:57:09+02:00</lastmod>
+        <loc>http://ianp.org/2010/03/25/quote-of-the-day-2</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2011/04/19/how-to-convert-pdfs-to-postscript</loc>
-        <lastmod>2012-04-03T11:01:58+02:00</lastmod>
+        <loc>http://ianp.org/2011/04/19/how-to-convert-pdfs-to-postscript</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2011/04/24/writing-smart-code</loc>
-        <lastmod>2012-04-03T11:02:01+02:00</lastmod>
+        <loc>http://ianp.org/2011/04/24/writing-smart-code</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2011/06/20/new-york-post-blocks-ipad-users</loc>
-        <lastmod>2012-04-03T11:02:07+02:00</lastmod>
+        <loc>http://ianp.org/2011/06/20/new-york-post-blocks-ipad-users</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2011/06/23/handling-flag-arguments</loc>
-        <lastmod>2012-04-03T11:02:25+02:00</lastmod>
+        <loc>http://ianp.org/2011/06/23/handling-flag-arguments</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2011/06/29/quote-of-the-day-great-things</loc>
-        <lastmod>2012-04-18T09:57:28+02:00</lastmod>
+        <loc>http://ianp.org/2011/06/29/quote-of-the-day-great-things</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2011/07/03/the-power-of-words</loc>
-        <lastmod>2012-04-18T09:55:58+02:00</lastmod>
+        <loc>http://ianp.org/2011/07/03/the-power-of-words</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2011/07/08/how-to-end-the-deficit</loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2011/07/08/how-to-end-the-deficit</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2011/07/28/how-to-enter-straight-quotes-in-word
-        </loc>
-        <lastmod>2012-04-18T09:57:45+02:00</lastmod>
+        <loc>http://ianp.org/2011/07/28/how-to-enter-straight-quotes-in-word</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2011/11/04/installing-to-the-local-maven-repo-with-gradle
-        </loc>
-        <lastmod>2012-04-03T10:27:48+02:00</lastmod>
+        <loc>http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/03/29/developing-for-the-blackberry</loc>
-        <lastmod>2012-04-18T11:25:23+02:00</lastmod>
+        <loc>http://ianp.org/2012/03/29/developing-for-the-blackberry</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/03/30/radial-menus</loc>
-        <lastmod>2012-03-30T18:44:25+02:00</lastmod>
+        <loc>http://ianp.org/2012/03/30/radial-menus</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/04/16/how-many-words-make-a-string</loc>
-        <lastmod>2012-04-17T13:25:59+02:00</lastmod>
+        <loc>http://ianp.org/2012/04/16/how-many-words-make-a-string</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/04/17/what-is-text-normalization</loc>
-        <lastmod>2012-04-18T14:46:16+02:00</lastmod>
+        <loc>http://ianp.org/2012/04/17/what-is-text-normalization</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/04/18/category-counts-in-octopress</loc>
-        <lastmod>2012-10-30T18:44:21+01:00</lastmod>
+        <loc>http://ianp.org/2012/04/18/category-counts-in-octopress</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/05/07/apple-security-cock-up</loc>
-        <lastmod>2012-05-07T16:51:12+02:00</lastmod>
+        <loc>http://ianp.org/2012/05/07/apple-security-cock-up</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/05/07/rubymotion-and-interface-builder</loc>
-        <lastmod>2012-05-09T15:45:23+02:00</lastmod>
+        <loc>http://ianp.org/2012/05/07/rubymotion-and-interface-builder</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/05/07/think-about-that</loc>
-        <lastmod>2012-05-07T23:34:19+02:00</lastmod>
+        <loc>http://ianp.org/2012/05/07/think-about-that</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/05/29/leap-into-the-future</loc>
-        <lastmod>2012-05-29T15:20:32+02:00</lastmod>
+        <loc>http://ianp.org/2012/05/29/leap-into-the-future</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/06/20/that-was-quick</loc>
-        <lastmod>2012-06-20T17:01:42+02:00</lastmod>
+        <loc>http://ianp.org/2012/06/20/that-was-quick</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/06/20/i-swallowed-a-fly</loc>
-        <lastmod>2012-06-20T17:59:29+02:00</lastmod>
+        <loc>http://ianp.org/2012/06/20/i-swallowed-a-fly</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/10/01/bacon</loc>
-        <lastmod>2012-10-30T18:38:33+01:00</lastmod>
+        <loc>http://ianp.org/2012/10/01/bacon</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/10/01/convenient</loc>
-        <lastmod>2012-10-01T18:36:51+02:00</lastmod>
+        <loc>http://ianp.org/2012/10/01/convenient</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform</loc>
-        <lastmod>2012-10-03T19:29:29+02:00</lastmod>
+        <loc>http://ianp.org/2012/10/03/netbeans-rich-client-platform</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>
-            http://ianp.github.com/ianpdotorg/2012/10/30/category-counts-in-octopress-revisited
-        </loc>
-        <lastmod>2012-10-30T18:45:58+01:00</lastmod>
+        <loc>http://ianp.org/2012/10/30/category-counts-in-octopress-revisited</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/10/30/vlc-versions</loc>
-        <lastmod>2012-10-30T18:50:01+01:00</lastmod>
+        <loc>http://ianp.org/2012/10/30/vlc-versions</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/10/31/rearranging-the-apples</loc>
-        <lastmod>2012-10-31T15:19:26+01:00</lastmod>
+        <loc>http://ianp.org/2012/10/31/rearranging-the-apples</loc>
+        <lastmod>2012-11-06T18:36:52+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/2012/11/05/stroke-me-gently</loc>
-        <lastmod>2012-11-05T23:04:48+01:00</lastmod>
+        <loc>http://ianp.org/2012/11/05/stroke-me-gently</loc>
+        <lastmod>2012-11-06T18:36:53+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/about/</loc>
-        <lastmod>2012-03-22T03:07:37+01:00</lastmod>
+        <loc>http://ianp.org/about/</loc>
+        <lastmod>2012-11-06T18:36:53+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/archives/</loc>
-        <lastmod>2012-11-05T23:04:48+01:00</lastmod>
+        <loc>http://ianp.org/archives/</loc>
+        <lastmod>2012-11-06T18:36:53+01:00</lastmod>
     </url>
     <url>
-        <loc>http://ianp.github.com/ianpdotorg/</loc>
-        <lastmod>2012-11-05T23:04:48+01:00</lastmod>
+        <loc>http://ianp.org/</loc>
+        <lastmod>2012-11-06T18:36:53+01:00</lastmod>
     </url>
 </urlset>

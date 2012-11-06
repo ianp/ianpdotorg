@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Telecoms | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/telecoms/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/telecoms/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vodafone 3G]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g"/>
+    <link href="http://ianp.org/2004/02/17/vodafone-3g"/>
     <updated>2004-02-17T14:02:22+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/02/17/vodafone-3g</id>
+    <id>http://ianp.org/2004/02/17/vodafone-3g</id>
     <content type="html"><![CDATA[<p>Well, I mentioned this many a time whilst I was consulting at
 <a href="http://www.three.com">Three</a> as being something that they should
 definitely offer, but it seems like <a href="http://www.vodafone.com">Vodafone</a>

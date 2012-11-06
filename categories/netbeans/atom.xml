@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: NetBeans | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/netbeans/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/netbeans/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform"/>
+    <link href="http://ianp.org/2012/10/03/netbeans-rich-client-platform"/>
     <updated>2012-10-03T18:32:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/03/netbeans-rich-client-platform</id>
+    <id>http://ianp.org/2012/10/03/netbeans-rich-client-platform</id>
     <content type="html"><![CDATA[<p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
 
 <h4 id="picking-a-platform">Picking a Platform</h4>
@@ -56,9 +56,9 @@
   
   <entry>
     <title type="html"><![CDATA[NetBeans Annoyances]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2006/09/28/netbeans-annoyances"/>
+    <link href="http://ianp.org/2006/09/28/netbeans-annoyances"/>
     <updated>2006-09-28T14:45:33+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2006/09/28/netbeans-annoyances</id>
+    <id>http://ianp.org/2006/09/28/netbeans-annoyances</id>
     <content type="html"><![CDATA[<p>It’s time to try a new IDE again!</p>
 
 <p>Here’s what sucks about netbeans this time around. I should say before I start that I’m using a beta release
@@ -118,9 +118,9 @@ looong way to go beforfe it’s useable day-to-day.</p>
   
   <entry>
     <title type="html"><![CDATA[Eclipse & Netbeans]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2003/12/18/eclipse-netbeans"/>
+    <link href="http://ianp.org/2003/12/18/eclipse-netbeans"/>
     <updated>2003-12-18T13:12:50+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2003/12/18/eclipse-netbeans</id>
+    <id>http://ianp.org/2003/12/18/eclipse-netbeans</id>
     <content type="html"><![CDATA[<p>Talk of merging <a href="http://www.eclipse.org">Eclipse</a> and
 <a href="http://www.netbeans.org">NetBeans</a> is off then, according to
 <a href="http://weblogs.java.net/pub/wlg/751" title="Partial Eclipse">this</a> recent

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Food | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/food/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/food/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Bacon]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2012/10/01/bacon"/>
+    <link href="http://ianp.org/2012/10/01/bacon"/>
     <updated>2012-10-01T18:35:00+02:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2012/10/01/bacon</id>
+    <id>http://ianp.org/2012/10/01/bacon</id>
     <content type="html"><![CDATA[<p>Mmmm, <a href="http://baconmethod.com">bacon</a>…</p>
 
 ]]></content>

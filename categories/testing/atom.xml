@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Testing | Digital Magpie]]></title>
-  <link href="http://ianp.github.com/ianpdotorg/categories/testing/atom.xml" rel="self"/>
-  <link href="http://ianp.github.com/ianpdotorg/"/>
-  <updated>2012-11-05T23:36:28+01:00</updated>
-  <id>http://ianp.github.com/ianpdotorg/</id>
+  <link href="http://ianp.org/categories/testing/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2012-11-06T18:46:08+01:00</updated>
+  <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Why Test Driven Devlopment Works]]></title>
-    <link href="http://ianp.github.com/ianpdotorg/2004/02/15/why-test-driven-devlopment-works"/>
+    <link href="http://ianp.org/2004/02/15/why-test-driven-devlopment-works"/>
     <updated>2004-02-15T07:02:10+01:00</updated>
-    <id>http://ianp.github.com/ianpdotorg/2004/02/15/why-test-driven-devlopment-works</id>
+    <id>http://ianp.org/2004/02/15/why-test-driven-devlopment-works</id>
     <content type="html"><![CDATA[<p>From a Salon
 <a href="http://archive.salon.com/21st/feature/1997/10/09interview.html">interview</a>
 with Ellen Ullman:</p>

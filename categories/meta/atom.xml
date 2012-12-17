@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Meta | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/meta/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-11-06T18:46:08+01:00</updated>
+  <updated>2012-12-17T17:39:23+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Moved to TextDrive]]></title>
     <link href="http://ianp.org/2005/12/01/moved-to-textdrive"/>
-    <updated>2005-12-01T22:24:59+01:00</updated>
+    <updated>2005-12-01T22:24:59+00:00</updated>
     <id>http://ianp.org/2005/12/01/moved-to-textdrive</id>
     <content type="html"><![CDATA[<p>I’ve moved this site to a new host, at
 <a href="http://www.textdrive.com">TextDrive</a>. Unfortunately it didn’t do as
@@ -29,7 +29,7 @@ again. Doh!</p>
   <entry>
     <title type="html"><![CDATA[Back to Moveable Type]]></title>
     <link href="http://ianp.org/2005/02/17/back-to-moveable-type"/>
-    <updated>2005-02-17T16:31:23+01:00</updated>
+    <updated>2005-02-17T16:31:23+00:00</updated>
     <id>http://ianp.org/2005/02/17/back-to-moveable-type</id>
     <content type="html"><![CDATA[<p>Ho hum…</p>
 ]]></content>
@@ -38,7 +38,7 @@ again. Doh!</p>
   <entry>
     <title type="html"><![CDATA[Markup Cleanup]]></title>
     <link href="http://ianp.org/2004/07/25/markup-cleanup"/>
-    <updated>2004-07-25T17:07:18+02:00</updated>
+    <updated>2004-07-25T17:07:18+01:00</updated>
     <id>http://ianp.org/2004/07/25/markup-cleanup</id>
     <content type="html"><![CDATA[<p>Cleaned up some stupid markup errors that were preventing the main and
 (so far empty) articles pages from validating as strict XHTML, I’ve also
@@ -49,7 +49,7 @@ added validator tags to the bottom of the pages.</p>
   <entry>
     <title type="html"><![CDATA[Word Press]]></title>
     <link href="http://ianp.org/2004/06/23/word-press"/>
-    <updated>2004-06-23T18:06:06+02:00</updated>
+    <updated>2004-06-23T18:06:06+01:00</updated>
     <id>http://ianp.org/2004/06/23/word-press</id>
     <content type="html"><![CDATA[<p>As you can see the site now uses <a href="http://www.wordpress.org">Word Press</a>
 as it’s content management system. It’s going to take me a couple of
@@ -61,7 +61,7 @@ same as the rest of the pages here, but bear with me.</p>
   <entry>
     <title type="html"><![CDATA[Entry Archives Broken]]></title>
     <link href="http://ianp.org/2004/06/07/entry-archives-broken"/>
-    <updated>2004-06-07T02:06:34+02:00</updated>
+    <updated>2004-06-07T02:06:34+01:00</updated>
     <id>http://ianp.org/2004/06/07/entry-archives-broken</id>
     <content type="html"><![CDATA[<p>The individual entry archives seem to be screwed at the moment, since
 I’m planning to move over to using <a href="http://www.wordpress.org">Word Press</a> in a couple of days I’m not going to

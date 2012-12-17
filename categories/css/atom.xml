@@ -4,7 +4,7 @@
   <title><![CDATA[Category: CSS | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/css/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-11-06T18:46:08+01:00</updated>
+  <updated>2012-12-17T17:39:23+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Taking Multiple Classes]]></title>
     <link href="http://ianp.org/2006/05/17/taking-multiple-classes"/>
-    <updated>2006-05-17T19:06:44+02:00</updated>
+    <updated>2006-05-17T19:06:44+01:00</updated>
     <id>http://ianp.org/2006/05/17/taking-multiple-classes</id>
     <content type="html"><![CDATA[<p>Here’s something that I didn’t realise, but do now thanks to <a href="http://bitesizestandards.com/bites/create-complex-borders-with-multiple-classes">this
 entry</a> on <a href="http://bitesizestandards.com/">Bite Size Standards</a>: elements in HTML can have more
@@ -29,7 +29,7 @@ of classes in the class attribute.</p>
   <entry>
     <title type="html"><![CDATA[Links that Reflow]]></title>
     <link href="http://ianp.org/2004/02/12/links-that-reflow"/>
-    <updated>2004-02-12T10:02:32+01:00</updated>
+    <updated>2004-02-12T10:02:32+00:00</updated>
     <id>http://ianp.org/2004/02/12/links-that-reflow</id>
     <content type="html"><![CDATA[<p>A minor annonyance with peoples CSS: having an <code>onMouseOver</code> effect
 that causes the enclosing paragraph to reflow when you move the mouse

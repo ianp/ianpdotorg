@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="I’ve been playing a little with learning Lisp (not that I’ve much free time, but hey, what the hell). This example, taken from Dave Lamkins’ &hellip;">
+  <meta name="description" content="Clay Shirky’s latest newsletter) on networks, economics and culture discusses the semantic web. In a nutshell, he’s not very impressed. The starting &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ianp.org/page/15">
+  <link rel="canonical" href="http://ianp.org/page/15/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -88,6 +88,69 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2003/11/10/the-semantic-web">The Semantic Web</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2003-11-10T13:11:12+00:00" pubdate data-updated="true">Nov 10<span>th</span>, 2003</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Clay Shirky’s <a href="http://www.shirky.com/writings/semantic_syllogism.html">latest newsletter</a>) on networks, economics and culture discusses the semantic web. In a nutshell, he’s not very impressed. The starting point for this argument is that syllogisms don’t model the real world well, an example:</p>
+
+<blockquote>
+  <p>The creator of <a href="http://www.shirky.com">shirky.com</a>) lives in Brooklyn. People who live in
+Brooklyn speak with a Brooklyn accent.</p>
+</blockquote>
+
+<p>Well in this case clearly they don’t, the second assertation is clearly false, it’s obvious that not everybody who lives in Brooklyn calls birds <em>boids</em>, so that absolute assertaion does not hold.</p>
+
+<p>The example later on using Nike and the first amendment of the US constitution has more merit, in this case the fact asserted (the first amendment covers the rights of US citizens) is a subset of the actual applicability rather than a superset as in the Brooklyn case. I think that this is still a surmountable problem, but it may require a more complex representation of ‘facts’ than initially considered. I think that maybe the way forward if not, as Clay suggests (if only to point out it’s impracticality), to attach context to each assertation and then cross check against this.</p>
+
+<p>A better approach surely would be to attach an accuracy value to each statement, then the syllogisms could have attached accuracy values also. For example, the following pseudo code:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">LET clay lives in Brooklyn ACCURACY 1.0
+</span><span class="line">LET people who live in brooklyn say boids ACCURACY 0.7
+</span><span class="line">DEDUCE clay says boids ACCURACY 0.7</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>With the final 0.7 being the product of the two ‘fact’ accuracies. Now this is just something that I’ve come up with on the spur of the moment, not a result of research so I don’t know how generally useful this would be, but in tools designed for human use it should be possible to tolerate a level of inaccuracy, so long as it is marked as such.</p>
+
+<p>Reading further, the examples about merging databases I can agree with the fact that it’s <em>way</em> more complicated that just simply mapping field names! When it comes to meta data, this is probably best if it can be extracted from the data itself automatically, of course this would reduce the amount of available data, but maybe we could tag any manually added meta data with a date and allow it’s accuracy to deteriorate as time goes by (or as the tagged data is revised), and you could always tweak your reasoner to reduce the accuracy of human added data anyway.</p>
+
+<p>Hmmm, but this goes against what the semantic web is supposed to be for to a large extent. Machines need to be able to rely on absolute (i.e. <code>ACCURACY 1.0</code>) facts to be able to use them a lot of the time. I think the conclusion that I’m coming to is that there is a benefit to be gained from the semantic web and it’s related technologies and ideas, but probably not as great as it’s champions make out.</p>
+
+<p>So it’s another web related technology with potential that has been overmarketed. Nothing new there then.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2003/10/30/on-lisp">On Lisp&#8230;</a></h1>
     
     
@@ -104,7 +167,7 @@
   
 
 
-<time datetime="2003-10-30T07:00:35+01:00" pubdate data-updated="true">Oct 30<span>th</span>, 2003</time>
+<time datetime="2003-10-30T07:00:35+00:00" pubdate data-updated="true">Oct 30<span>th</span>, 2003</time>
         
       </p>
     
@@ -205,7 +268,7 @@
   
 
 
-<time datetime="2003-10-17T08:10:18+02:00" pubdate data-updated="true">Oct 17<span>th</span>, 2003</time>
+<time datetime="2003-10-17T08:10:18+01:00" pubdate data-updated="true">Oct 17<span>th</span>, 2003</time>
         
       </p>
     
@@ -241,7 +304,7 @@
   
 
 
-<time datetime="2003-10-17T08:10:18+02:00" pubdate data-updated="true">Oct 17<span>th</span>, 2003</time>
+<time datetime="2003-10-17T08:10:18+01:00" pubdate data-updated="true">Oct 17<span>th</span>, 2003</time>
         
       </p>
     
@@ -280,7 +343,7 @@
   
 
 
-<time datetime="2003-10-16T08:10:01+02:00" pubdate data-updated="true">Oct 16<span>th</span>, 2003</time>
+<time datetime="2003-10-16T08:10:01+01:00" pubdate data-updated="true">Oct 16<span>th</span>, 2003</time>
         
       </p>
     
@@ -321,7 +384,7 @@
   
 
 
-<time datetime="2003-10-13T06:10:58+02:00" pubdate data-updated="true">Oct 13<span>th</span>, 2003</time>
+<time datetime="2003-10-13T06:10:58+01:00" pubdate data-updated="true">Oct 13<span>th</span>, 2003</time>
         
       </p>
     
@@ -362,7 +425,7 @@ probably not even a realistic target, what with human nature and all.</p>
   
 
 
-<time datetime="2003-09-25T11:09:46+02:00" pubdate data-updated="true">Sep 25<span>th</span>, 2003</time>
+<time datetime="2003-09-25T11:09:46+01:00" pubdate data-updated="true">Sep 25<span>th</span>, 2003</time>
         
       </p>
     
@@ -404,7 +467,7 @@ teeth fixed.</p>
   
 
 
-<time datetime="2003-09-24T06:09:17+02:00" pubdate data-updated="true">Sep 24<span>th</span>, 2003</time>
+<time datetime="2003-09-24T06:09:17+01:00" pubdate data-updated="true">Sep 24<span>th</span>, 2003</time>
         
       </p>
     
@@ -461,7 +524,7 @@ teeth fixed.</p>
   
 
 
-<time datetime="2003-09-20T16:09:15+02:00" pubdate data-updated="true">Sep 20<span>th</span>, 2003</time>
+<time datetime="2003-09-20T16:09:15+01:00" pubdate data-updated="true">Sep 20<span>th</span>, 2003</time>
         
       </p>
     
@@ -500,7 +563,7 @@ teeth fixed.</p>
   
 
 
-<time datetime="2003-09-17T13:09:23+02:00" pubdate data-updated="true">Sep 17<span>th</span>, 2003</time>
+<time datetime="2003-09-17T13:09:23+01:00" pubdate data-updated="true">Sep 17<span>th</span>, 2003</time>
         
       </p>
     
@@ -525,42 +588,6 @@ different needs.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2003/09/17/dot-net">Dot Net</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2003-09-17T12:09:14+02:00" pubdate data-updated="true">Sep 17<span>th</span>, 2003</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve just written my first <em>.net</em> program! (Using <a href="http://www.go-mono.com">mono</a>) It seems <em>very</em> similar to Java, I’m going to grab a book and have a play with it some more over the next few days. Of course, I’m really trying to learn Lisp, but since the books I bought have been stranded in Vienna it seems like I may have to wait a few weeks for that.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/16/">&larr; Older</a>
@@ -578,6 +605,10 @@ different needs.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
@@ -591,10 +622,6 @@ different needs.</p>
     
       <li class="post">
         <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
       </li>
     
   </ul>

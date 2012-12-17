@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="And not the camera kind for a change… but [this][01] is pretty neat.
-[01]: http://sirtified.com/products/hopsidedown/
-">
+  <meta name="description" content="Ardor3D adds a mechanism for subscribing to events in the scene
+graph; things like when a node is added or removed, or has one of it’s
+render states &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ianp.org/page/7">
+  <link rel="canonical" href="http://ianp.org/page/7/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -90,6 +90,76 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2009/04/21/understanding-event-propagation-in-ardor3d">Understanding Event Propagation in Ardor3D</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-21T14:07:50+01:00" pubdate data-updated="true">Apr 21<span>st</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.ardor3d.com/">Ardor3D</a> adds a mechanism for subscribing to events in the scene
+graph; things like when a node is added or removed, or has one of it’s
+render states or it’s bounding volume altered. The way notifications are
+handled is a little confusing at first, as the listener interface
+(<code>DirtyEventListener</code>) has a method which takes a <code>Spatial</code> as it’s
+first argument; hoever, the spatial is the node in the scene graph on
+which the event occurred, it is <em>not</em> the node that the event is fired
+from.</p>
+
+<p>By way of example: if there are 2 scene nodes, a <code>Spatial</code> named
+‘child’ and a <code>Node</code> named ‘parent’, and the child is attached to the
+parent via a call to <code>Node#attachChild(Spatial)</code> then the following
+events will be fired (assuming that the child was not already attached
+to another node):</p>
+
+<ol>
+  <li>from the child: <code>spatialDirty(child, Attached)</code></li>
+  <li>
+    <p>from the parent: <code>spatialDirty(child, Attached)</code>
+if the parent was attached to another node (for example, ‘grandparent’) then this pattern would continue, like so:</p>
+  </li>
+  <li>from the grandparent: spatialDirty(child, Attached) also, if at any point in this one of the <code>spatialDirty</code> calls returns true, then the event is assumed to have been handled and propagation will stop at that point.</li>
+</ol>
+
+<p>What this means in practice is that
+if you need to know which node an event is being fired from you cannot
+reuse listeners on multiple nodes. For detaching nodes the situation is
+a little different: the event propagation starts at the parent node,
+with the detached child passed as as the method argument.</p>
+
+<p>Be aware that
+the parent will already have been set to <code>null</code> when the event is
+fired though, so if you need to be able to do something with the parent
+you will need to add distinct listeners to each node of interest.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2009/04/10/cool-glass">Cool Glass</a></h1>
     
     
@@ -106,7 +176,7 @@
   
 
 
-<time datetime="2009-04-10T12:07:27+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2009</time>
+<time datetime="2009-04-10T12:07:27+01:00" pubdate data-updated="true">Apr 10<span>th</span>, 2009</time>
         
       </p>
     
@@ -143,7 +213,7 @@
   
 
 
-<time datetime="2009-01-17T16:21:13+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2009</time>
+<time datetime="2009-01-17T16:21:13+00:00" pubdate data-updated="true">Jan 17<span>th</span>, 2009</time>
         
       </p>
     
@@ -282,7 +352,7 @@ times slower than the 1.6 times given here.</p>
   
 
 
-<time datetime="2008-12-19T14:25:40+01:00" pubdate data-updated="true">Dec 19<span>th</span>, 2008</time>
+<time datetime="2008-12-19T14:25:40+00:00" pubdate data-updated="true">Dec 19<span>th</span>, 2008</time>
         
       </p>
     
@@ -322,7 +392,7 @@ surrounding the business of gaming.</p>
   
 
 
-<time datetime="2008-07-31T08:19:56+02:00" pubdate data-updated="true">Jul 31<span>st</span>, 2008</time>
+<time datetime="2008-07-31T08:19:56+01:00" pubdate data-updated="true">Jul 31<span>st</span>, 2008</time>
         
       </p>
     
@@ -391,7 +461,7 @@ for people who haven’t heard her talk before.</p>
   
 
 
-<time datetime="2008-07-30T03:48:51+02:00" pubdate data-updated="true">Jul 30<span>th</span>, 2008</time>
+<time datetime="2008-07-30T03:48:51+01:00" pubdate data-updated="true">Jul 30<span>th</span>, 2008</time>
         
       </p>
     
@@ -442,7 +512,7 @@ context of styling their car interiors).</p>
   
 
 
-<time datetime="2008-05-25T20:28:23+02:00" pubdate data-updated="true">May 25<span>th</span>, 2008</time>
+<time datetime="2008-05-25T20:28:23+01:00" pubdate data-updated="true">May 25<span>th</span>, 2008</time>
         
       </p>
     
@@ -483,7 +553,7 @@ world is going to end if somebody gets my SF login details.</p>
   
 
 
-<time datetime="2008-05-21T19:09:02+02:00" pubdate data-updated="true">May 21<span>st</span>, 2008</time>
+<time datetime="2008-05-21T19:09:02+01:00" pubdate data-updated="true">May 21<span>st</span>, 2008</time>
         
       </p>
     
@@ -520,7 +590,7 @@ images like that.</p>
   
 
 
-<time datetime="2008-05-21T19:03:47+02:00" pubdate data-updated="true">May 21<span>st</span>, 2008</time>
+<time datetime="2008-05-21T19:03:47+01:00" pubdate data-updated="true">May 21<span>st</span>, 2008</time>
         
       </p>
     
@@ -578,7 +648,7 @@ Interbank rate +/- 2%</p>
   
 
 
-<time datetime="2008-03-30T00:05:28+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2008</time>
+<time datetime="2008-03-30T00:05:28+00:00" pubdate data-updated="true">Mar 30<span>th</span>, 2008</time>
         
       </p>
     
@@ -587,53 +657,6 @@ Interbank rate +/- 2%</p>
 
   <div class="entry-content"><p>You’ve got to love <a href="http://nedbatchelder.com/blog/200803/street_bag_animals.html">this!</a></p>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/03/26/windows-xp-zip-file-support">Windows XP Zip File Support</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-03-26T19:47:48+01:00" pubdate data-updated="true">Mar 26<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Windows XP, which I’m forced to use at work at the moment, normally
-treats Zip files as though they were folders, letting you view their
-contents in explorer. Unfortunately there are a number of problems with
-this feature: it can kill the performance of Java based apps which work
-on the files (a Java bug), and it can mangle any files in the Zips with
-long names or long paths (a Windows bug).</p>
-
-<p>All is not lost however, to
-disable this behaviour simple open up a command prompt and run the
-following command: <code>regsvr32 /u %windir%\system32\zipfldr.dll</code> And,
-should you want to restore the original settings, just run the same
-command without the ‘u’ switch.</p>
 </div>
   
   
@@ -658,6 +681,10 @@ command without the ‘u’ switch.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
@@ -671,10 +698,6 @@ command without the ‘u’ switch.</p>
     
       <li class="post">
         <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a>
       </li>
     
   </ul>

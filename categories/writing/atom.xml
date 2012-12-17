@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: writing | Digital Magpie]]></title>
+  <title><![CDATA[Category: Writing | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/writing/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-11-06T18:46:08+01:00</updated>
+  <updated>2012-12-17T17:39:23+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -14,9 +14,45 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Category Counts in OctoPress Revisited]]></title>
+    <link href="http://ianp.org/2012/10/30/category-counts-in-octopress-revisited"/>
+    <updated>2012-10-30T18:41:00+00:00</updated>
+    <id>http://ianp.org/2012/10/30/category-counts-in-octopress-revisited</id>
+    <content type="html"><![CDATA[<p>As an improvement on an older shell script, here’s a rake task to list all of the categories in your blog, along with post counts for each of them:</p>
+
+<p>```ruby
+desc “count the number of posts in each category”
+task :count_categories do
+  require ‘yaml’</p>
+
+<p>counts = {}</p>
+
+<p>Dir.glob(‘source/_posts/*.markdown’).each do |f|
+    post = begin
+      YAML.load(File.open(f))
+    rescue ArgumentError =&gt; e
+      puts “error: parsing #{f} - #{e.message}”
+    end
+    cats = post[‘categories’]
+    if cats.respond_to? “each”
+      cats.each {|c| counts[c] = counts[c].to_i + 1}
+    else
+      counts[cats] = counts[cats].to_i + 1
+    end
+  end</p>
+
+<p>counts.sort_by {|k,v| v}.reverse.each {|k,v| puts “#{v} #{k}”}
+end
+```</p>
+
+<p>Just add this to the end of your OctoPress Rakefile and you’re good to go.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Think about that]]></title>
     <link href="http://ianp.org/2012/05/07/think-about-that"/>
-    <updated>2012-05-07T23:32:00+02:00</updated>
+    <updated>2012-05-07T23:32:00+01:00</updated>
     <id>http://ianp.org/2012/05/07/think-about-that</id>
     <content type="html"><![CDATA[<blockquote>
   <p>Good design. From eBay. Think about that.</p>
@@ -26,6 +62,114 @@
 
 <p>Posted as part of my new effort to improve my writing.</p>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Category Counts in Octopress]]></title>
+    <link href="http://ianp.org/2012/04/18/category-counts-in-octopress"/>
+    <updated>2012-04-18T10:36:00+01:00</updated>
+    <id>http://ianp.org/2012/04/18/category-counts-in-octopress</id>
+    <content type="html"><![CDATA[<p>Here’s a quick shell script to get the number of posts in each category for an <a href="http://octopress.org/">Octopress</a> blog, just cat your <code>source/_posts</code> folder through the following one-liner:</p>
+
+<p>```sh
+sed -n ‘/^—/,/^—/p’ |\
+grep ‘^- ‘ |\
+sort |\
+uniq -s 2 -c - |\
+sort -n</p>
+
+<p>```</p>
+
+<p>Here’s what each line does:</p>
+
+<ol>
+  <li>extracts the Yaml front-matter from each file;</li>
+  <li>extracts each top-level list entry, this assumes that the only top-level list is the category list, which is the default for Octopress posts;</li>
+  <li>sort the lines;</li>
+  <li>collapse identical lines, prepending a count of the number of lines collapsed; and finally</li>
+  <li>sort numerically.</li>
+</ol>
+
+<p>Maybe this will be useful to somebody out there…</p>
+
+<p><strong>Update:</strong> I’ve <a href="/2012/10/30/category-counts-in-octopress-revisited/">written a version</a> that’s integrated with rake as well.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How to Enter Straight Quotes in Word]]></title>
+    <link href="http://ianp.org/2011/07/28/how-to-enter-straight-quotes-in-word"/>
+    <updated>2011-07-28T15:35:43+01:00</updated>
+    <id>http://ianp.org/2011/07/28/how-to-enter-straight-quotes-in-word</id>
+    <content type="html"><![CDATA[<p>When I’m writing technical docs in MS Word (an unfortunate day-job-related requirement) one of the things that can be annoying it the fact that it ‘helpfully’ converts straight quotes into curly quotes, even in code samples and other places that it shouldn’t. The easy way to get rid of this is to hit undo (⌘-z) immediately after typing the quote, this will undo the auto-correction but leave the actual quote character in place.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[TextMate Revisited]]></title>
+    <link href="http://ianp.org/2004/10/06/textmate-revisited"/>
+    <updated>2004-10-06T22:10:48+01:00</updated>
+    <id>http://ianp.org/2004/10/06/textmate-revisited</id>
+    <content type="html"><![CDATA[<p>After a bit more usage, some pros and cons of
+<a href="http://www.macromates.com">TextMate</a>. To evaluate it’s features I’ve
+been writing a bundle to work with <a href="http://www.go-mono.org">Mono</a>/C#
+development. First the good things:</p>
+
+<ul>
+  <li>
+    <p><strong>Shell Commands</strong>
+automatically run external commands, this can be used to kick off a compile or run a program for example. These are defined in a custom format but are basically shell scripts embedded in a property list file. I feel it would be a better approach to just use the property list for metadata and have a pointer to a real shell script, but I suppose you could do that anyway;</p>
+  </li>
+  <li>
+    <p><strong>Macros</strong>
+these should be a standard feature in any application, even so, it’s good to see them included;</p>
+  </li>
+  <li>
+    <p><strong>Code Snippets</strong>
+you can set up small text fragments to be inserted when you type a few characters and hit the tab key. More than this however, you can include positional parameters in your code snippets and hitting tab again will step through them. I use Eclipse as my IDE and it has a similar feature, so I’m right at home with this and it’s a great time saver for lazy typists like me. The only down side is that there is no way to have custom text entered in to multiple locations. I’d really like to be able to have a code snippet like this:</p>
+  </li>
+</ul>
+
+<p><code>java
+for (int $1 = 0; $1 &lt; $2; ++$1) {
+  // do something with myArray[$1] here...
+}
+</code>
+  and have it fill in the variable name every place it appears;</p>
+
+<ul>
+  <li>
+    <p><strong>Syntax Highlighting</strong>
+not too many language syntaxes are provided by default, but it’s easy to create you own. I had a workable C# syntax defined in about 15 minutes;</p>
+  </li>
+  <li>
+    <p><strong>File Templates</strong>
+like snippets but for entire files. They can reference any shell environment variables, as well as a few special variables that are supplied by TextMate. You can add your own variables to this list as well. I haven’t used this much yet, but I expect it will be reasonably useful;</p>
+  </li>
+  <li>
+    <p><strong>Bundles of Goodness</strong>
+you can define your own ‘feature bundles’ grouping together the features listed above. All of the features are described in standard property list files, so you can also edit them by hand if you want to. What would be a nice addition would be a way to enable and disable entire bundles, at the moment you have to manually remove them from the search path to do this; and</p>
+  </li>
+  <li>
+    <p><strong>Projects</strong>
+this allows you to group multiple files together. A nice addition to this feature would be the ability to add custom variables to a project, maybe with some kind of dialog to accomplish this when you select ‘New Project…’.</p>
+  </li>
+</ul>
+
+<p>And a couple of gripes I have:</p>
+
+<ul>
+  <li>
+    <p><strong>No Preferences Dialog</strong>
+apparently it’s a design <a href="http://macromates.com/blog/archives/2004/10/06/wheres-my-beloved-preference-window">decision</a> on the part of the developers. Their preferred approach is to take all of the preferences and scatter them around the menus, maybe to make it look like there are loads of extra features or something. This sucks. Looking at the mailing list archives I’m not alone in thinking this;</p>
+  </li>
+  <li>
+    <p><strong>No OSA Integration</strong>
+although commands let you call out to AppleScript, the editor itself isn’t scriptable at all. There are a few things which stand out as non-Mac-like actually. Sometimes this is for a good reason (for example, not using <code>NSTextView</code> enables it to have much better text handling than most other editors) but other times it just seems odd (for example not using Apple Script for scripting but instead including two alternative automation systems in macros and commands).</p>
+  </li>
+</ul>
 ]]></content>
   </entry>
   

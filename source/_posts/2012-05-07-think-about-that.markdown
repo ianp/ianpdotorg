@@ -4,7 +4,7 @@ title: "Think about that"
 date: 2012-05-07 23:32
 comments: true
 categories: 
-- writing
+- Writing
 ---
 
 > Good design. From eBay. Think about that.

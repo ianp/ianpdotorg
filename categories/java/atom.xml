@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/java/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-12-17T17:39:23+00:00</updated>
+  <updated>2013-01-01T21:00:26+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
     <link href="http://ianp.org/2012/10/03/netbeans-rich-client-platform"/>
-    <updated>2012-10-03T18:32:00+01:00</updated>
+    <updated>2012-10-03T18:32:00+02:00</updated>
     <id>http://ianp.org/2012/10/03/netbeans-rich-client-platform</id>
     <content type="html"><![CDATA[<p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
 
@@ -57,7 +57,7 @@
   <entry>
     <title type="html"><![CDATA[Convenient]]></title>
     <link href="http://ianp.org/2012/10/01/convenient"/>
-    <updated>2012-10-01T18:35:00+01:00</updated>
+    <updated>2012-10-01T18:35:00+02:00</updated>
     <id>http://ianp.org/2012/10/01/convenient</id>
     <content type="html"><![CDATA[<p><a href="http://www.lispcast.com/class-abstractsingletonproxyfactorybean">This</a> is what’s wrong with a lot of the Java code out there.</p>
 
@@ -67,14 +67,14 @@
   <entry>
     <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
     <link href="http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
-    <updated>2011-11-04T11:34:00+00:00</updated>
+    <updated>2011-11-04T11:34:00+01:00</updated>
     <id>http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
     <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
 
 <p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
 
 <p><code>groovy
-apply plugin 'maven'
+apply plugin: 'maven'
 configure(install.repositories.mavenInstaller) {
     pom.project {
         groupId 'com.example'
@@ -96,20 +96,22 @@ configure(install.repositories.mavenInstaller) {
 
 <p>```groovy
 task sourcesJar(type: Jar, dependsOn:classes) {
-     classifier = ‘sources’
-     from sourceSets.main.allSource
+    classifier = ‘sources’
+    from sourceSets.main.allSource
 }</p>
 
 <p>task javadocJar(type: Jar, dependsOn:javadoc) {
-     classifier = ‘javadoc’
-     from javadoc.destinationDir
+    classifier = ‘javadoc’
+    from javadoc.destinationDir
 }</p>
 
 <p>artifacts {
-     archives sourcesJar
-     archives javadocJar
+    archives sourcesJar
+    archives javadocJar
 }
 ```</p>
+
+<p><strong>Update:</strong> <a href="/2011/11/04/demo.zip">here</a> is a demo project with a complete build file and a ‘hello, world’ sample class, you should be able to just unzip this and then run <em>gradle install</em> to install it into your local repo.</p>
 
 ]]></content>
   </entry>
@@ -117,7 +119,7 @@ task sourcesJar(type: Jar, dependsOn:classes) {
   <entry>
     <title type="html"><![CDATA[Handling Flag Arguments]]></title>
     <link href="http://ianp.org/2011/06/23/handling-flag-arguments"/>
-    <updated>2011-06-23T14:42:28+01:00</updated>
+    <updated>2011-06-23T14:42:28+02:00</updated>
     <id>http://ianp.org/2011/06/23/handling-flag-arguments</id>
     <content type="html"><![CDATA[<p><a href="http://martinfowler.com/">Martin Fowler</a> has a <a href="http://martinfowler.com/bliki/FlagArgument.html">new bliki entry talking about flag arguments</a>, defined as:</p>
 
@@ -183,7 +185,7 @@ myConcert.book(richCustomer, TicketType.PREMIUM);
   <entry>
     <title type="html"><![CDATA[Working with Java Arrays]]></title>
     <link href="http://ianp.org/2010/01/02/working-with-java-arrays"/>
-    <updated>2010-01-02T14:23:44+00:00</updated>
+    <updated>2010-01-02T14:23:44+01:00</updated>
     <id>http://ianp.org/2010/01/02/working-with-java-arrays</id>
     <content type="html"><![CDATA[<p>One improvement that I’d like to see in Clojure is more examples in the doc strings (or maybe in a separate <code>:example</code> metadata item). Still, nothing to stop me building up a set of my own. So, here are some simple examples of working with Java arrays in Clojure… Given some sample data:</p>
 

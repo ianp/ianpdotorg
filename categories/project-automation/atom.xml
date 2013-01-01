@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Project Automation | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/project-automation/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-12-17T17:39:23+00:00</updated>
+  <updated>2013-01-01T21:00:26+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Ant Build Files for PushButtonEngine]]></title>
     <link href="http://ianp.org/2009/05/22/ant-build-files-for-pushbuttonengine"/>
-    <updated>2009-05-22T22:40:50+01:00</updated>
+    <updated>2009-05-22T22:40:50+02:00</updated>
     <id>http://ianp.org/2009/05/22/ant-build-files-for-pushbuttonengine</id>
     <content type="html"><![CDATA[<p>I’ve started to work up some standard build files for <a href="http://pushbuttonengine.com/">PBE</a> based
 projects, more information can be had <a href="http://pushbuttonengine.com/forum/viewtopic.php?f=5&amp;t=166">here</a>, and here are the build
@@ -30,7 +30,7 @@ files for <a href="http://ianp.org/files/2009/05/pbe-lib-build.xml">libraries (c
   <entry>
     <title type="html"><![CDATA[Christmas Gift: PMD 3.9]]></title>
     <link href="http://ianp.org/2006/12/20/christmas-gift-pmd-39"/>
-    <updated>2006-12-20T14:19:10+00:00</updated>
+    <updated>2006-12-20T14:19:10+01:00</updated>
     <id>http://ianp.org/2006/12/20/christmas-gift-pmd-39</id>
     <content type="html"><![CDATA[<p>Just in time for Christmas, <a href="http://tomcopeland.blogs.com/juniordeveloper">Tom Copeland</a> has <a href="http://tomcopeland.blogs.com/juniordeveloper/2006/12/pmd_39_three_ti.html">announced</a> a
 new release of <a href="http://pmd.sourceforge.net/">PMD</a> with some notable speed increases. Hopefully

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Python | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/python/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-12-17T17:39:23+00:00</updated>
+  <updated>2013-01-01T21:00:26+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Adobe Releases RTMP Specification]]></title>
     <link href="http://ianp.org/2009/06/18/adobe-releases-rtmp-specification"/>
-    <updated>2009-06-18T06:56:52+01:00</updated>
+    <updated>2009-06-18T06:56:52+02:00</updated>
     <id>http://ianp.org/2009/06/18/adobe-releases-rtmp-specification</id>
     <content type="html"><![CDATA[<p>This is a few days old now, but on Monday <a href="http://www.adobe.com/">Adobe</a> finally got around
 to releasing <a href="http://www.adobe.com/devnet/rtmp/">the specification</a> for their real-time messaging
@@ -29,7 +29,7 @@ protocol. This should make it much easier for open source efforts like
   <entry>
     <title type="html"><![CDATA[Ripping Open Ruby Packages]]></title>
     <link href="http://ianp.org/2009/06/14/ripping-open-ruby-packages"/>
-    <updated>2009-06-14T02:30:06+01:00</updated>
+    <updated>2009-06-14T02:30:06+02:00</updated>
     <id>http://ianp.org/2009/06/14/ripping-open-ruby-packages</id>
     <content type="html"><![CDATA[<p>This looks like a mistake: <a href="http://www.rubyinside.com/rip-ruby-packaging-system-1837.html">Rip: A Next Generation Ruby Packaging System</a>. One of the things that Ruby does really well is library
 packaging, <a href="http://rubygems.org/">RubyGems</a> may have some flaws but it basically works
@@ -48,7 +48,7 @@ the hat to <a href="http://tomayko.com/">Ryan Tomayko</a> for pointing this out.
   <entry>
     <title type="html"><![CDATA[Jython 2.2b1 Released]]></title>
     <link href="http://ianp.org/2007/02/09/jython-22b1-released"/>
-    <updated>2007-02-09T15:44:35+00:00</updated>
+    <updated>2007-02-09T15:44:35+01:00</updated>
     <id>http://ianp.org/2007/02/09/jython-22b1-released</id>
     <content type="html"><![CDATA[<p>The first beta of Jython 2.2 has <a href="http://sourceforge.net/project/showfiles.php?group_id=12867&amp;package_id=12218&amp;release_id=485053">been released</a>! Jyhon scripting is
 something that I’m planning to add to <a href="http://rvsnoop.org/">RvSnoop</a> so I’m quite
@@ -62,7 +62,7 @@ at it fairly recently and at the moment it’s quite a tangle!</p>
   <entry>
     <title type="html"><![CDATA[Python Does Destructuring Bind]]></title>
     <link href="http://ianp.org/2007/01/11/python-does-destructuring-bind"/>
-    <updated>2007-01-11T13:51:49+00:00</updated>
+    <updated>2007-01-11T13:51:49+01:00</updated>
     <id>http://ianp.org/2007/01/11/python-does-destructuring-bind</id>
     <content type="html"><![CDATA[<p>According to <a href="http://www.nedbatchelder.com/blog/200701.html#e20070110T070106">this article</a> by <a href="http://www.nedbatchelder.com/blog">Ned Batcheleder</a> python does
 destructuring bind by default. Well, I did not know that.</p>

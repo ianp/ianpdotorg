@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Flash | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/flash/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-12-17T17:39:23+00:00</updated>
+  <updated>2013-01-01T21:00:26+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Adobe Releases RTMP Specification]]></title>
     <link href="http://ianp.org/2009/06/18/adobe-releases-rtmp-specification"/>
-    <updated>2009-06-18T06:56:52+01:00</updated>
+    <updated>2009-06-18T06:56:52+02:00</updated>
     <id>http://ianp.org/2009/06/18/adobe-releases-rtmp-specification</id>
     <content type="html"><![CDATA[<p>This is a few days old now, but on Monday <a href="http://www.adobe.com/">Adobe</a> finally got around
 to releasing <a href="http://www.adobe.com/devnet/rtmp/">the specification</a> for their real-time messaging
@@ -29,7 +29,7 @@ protocol. This should make it much easier for open source efforts like
   <entry>
     <title type="html"><![CDATA[Tiny Danish Elves]]></title>
     <link href="http://ianp.org/2003/11/11/tiny-danish-elves"/>
-    <updated>2003-11-11T22:11:37+00:00</updated>
+    <updated>2003-11-11T22:11:37+01:00</updated>
     <id>http://ianp.org/2003/11/11/tiny-danish-elves</id>
     <content type="html"><![CDATA[<p>A neat <a href="http://www.macromedia.com/software/flash">Flash</a> animation about
 <a href="http://www.popandco.com/archive/moab">Lego</a> bricks.</p>

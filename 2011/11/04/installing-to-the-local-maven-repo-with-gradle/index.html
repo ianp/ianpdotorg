@@ -101,7 +101,7 @@
   
 
 
-<time datetime="2011-11-04T11:34:00+00:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
+<time datetime="2011-11-04T11:34:00+01:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
         
       </p>
     
@@ -128,7 +128,7 @@
 <span class="line-number">14</span>
 <span class="line-number">15</span>
 <span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">apply</span> <span class="n">plugin</span> <span class="s1">&#39;maven&#39;</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;maven&#39;</span>
 </span><span class="line"><span class="n">configure</span><span class="o">(</span><span class="n">install</span><span class="o">.</span><span class="na">repositories</span><span class="o">.</span><span class="na">mavenInstaller</span><span class="o">)</span> <span class="o">{</span>
 </span><span class="line">    <span class="n">pom</span><span class="o">.</span><span class="na">project</span> <span class="o">{</span>
 </span><span class="line">        <span class="n">groupId</span> <span class="s1">&#39;com.example&#39;</span>
@@ -163,20 +163,22 @@
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 </pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">task</span> <span class="nf">sourcesJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">classes</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">     <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;sources&#39;</span>
-</span><span class="line">     <span class="n">from</span> <span class="n">sourceSets</span><span class="o">.</span><span class="na">main</span><span class="o">.</span><span class="na">allSource</span>
+</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;sources&#39;</span>
+</span><span class="line">    <span class="n">from</span> <span class="n">sourceSets</span><span class="o">.</span><span class="na">main</span><span class="o">.</span><span class="na">allSource</span>
 </span><span class="line"><span class="o">}</span>
 </span><span class="line">
 </span><span class="line"><span class="n">task</span> <span class="nf">javadocJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">javadoc</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">     <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;javadoc&#39;</span>
-</span><span class="line">     <span class="n">from</span> <span class="n">javadoc</span><span class="o">.</span><span class="na">destinationDir</span>
+</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;javadoc&#39;</span>
+</span><span class="line">    <span class="n">from</span> <span class="n">javadoc</span><span class="o">.</span><span class="na">destinationDir</span>
 </span><span class="line"><span class="o">}</span>
 </span><span class="line">
 </span><span class="line"><span class="n">artifacts</span> <span class="o">{</span>
-</span><span class="line">     <span class="n">archives</span> <span class="n">sourcesJar</span>
-</span><span class="line">     <span class="n">archives</span> <span class="n">javadocJar</span>
+</span><span class="line">    <span class="n">archives</span> <span class="n">sourcesJar</span>
+</span><span class="line">    <span class="n">archives</span> <span class="n">javadocJar</span>
 </span><span class="line"><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Update:</strong> <a href="/2011/11/04/demo.zip">here</a> is a demo project with a complete build file and a ‘hello, world’ sample class, you should be able to just unzip this and then run <em>gradle install</em> to install it into your local repo.</p>
 
 </div>
 
@@ -200,7 +202,7 @@
   
 
 
-<time datetime="2011-11-04T11:34:00+00:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
+<time datetime="2011-11-04T11:34:00+01:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
       
 
 <span class="categories">
@@ -304,7 +306,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2003&ndash;2012 &mdash; Ian Phillips &mdash;
+  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
 </p>
 

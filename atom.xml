@@ -4,7 +4,7 @@
   <title><![CDATA[Digital Magpie]]></title>
   <link href="http://ianp.org/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-12-17T17:39:23+00:00</updated>
+  <updated>2013-01-01T21:00:26+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[I Remain a Free Man]]></title>
     <link href="http://ianp.org/2012/12/17/i-remain-a-free-man"/>
-    <updated>2012-12-17T17:19:00+00:00</updated>
+    <updated>2012-12-17T17:19:00+01:00</updated>
     <id>http://ianp.org/2012/12/17/i-remain-a-free-man</id>
     <content type="html"><![CDATA[<p>After being <a href="http://www.guardian.co.uk/world/2012/dec/16/gerard-depardieu-french-passport-tax">described</a> as “pathetic and unpatriotic” by the prime minister Jean-Marc Ayrault, actor Gérard Depardieu responded:</p>
 
@@ -32,7 +32,7 @@
   <entry>
     <title type="html"><![CDATA[Stroke Me Gently]]></title>
     <link href="http://ianp.org/2012/11/05/stroke-me-gently"/>
-    <updated>2012-11-05T22:53:00+00:00</updated>
+    <updated>2012-11-05T22:53:00+01:00</updated>
     <id>http://ianp.org/2012/11/05/stroke-me-gently</id>
     <content type="html"><![CDATA[<p>Excellent <a href="http://www.gizmodo.co.uk/2012/10/search-me/">article</a> over at <a href="http://www.gizmodo.co.uk/">Gizmodo</a> about the whole security theatre dance that we’re forced to do any time we want to fly these days. My favourite quote:</p>
 
@@ -46,7 +46,7 @@
   <entry>
     <title type="html"><![CDATA[Rearranging the Apples]]></title>
     <link href="http://ianp.org/2012/10/31/rearranging-the-apples"/>
-    <updated>2012-10-31T19:18:00+00:00</updated>
+    <updated>2012-10-31T19:18:00+01:00</updated>
     <id>http://ianp.org/2012/10/31/rearranging-the-apples</id>
     <content type="html"><![CDATA[<p>Some <a href="http://www.appleoutsider.com/2012/10/30/regimechange/">insightful analysis</a> about the recent Apple reorganisation (a.k.a. Scott Forstall getting shit-canned) from <a href="http://www.appleoutsider.com/">Matt Drance</a>:</p>
 
@@ -68,7 +68,7 @@
   <entry>
     <title type="html"><![CDATA[VLC Versions]]></title>
     <link href="http://ianp.org/2012/10/30/vlc-versions"/>
-    <updated>2012-10-30T18:49:00+00:00</updated>
+    <updated>2012-10-30T18:49:00+01:00</updated>
     <id>http://ianp.org/2012/10/30/vlc-versions</id>
     <content type="html"><![CDATA[<p>So I started up <a href="http://www.videolan.org" title="VLC media player">VLC</a> just now and was greeted with this update notification:</p>
 
@@ -93,7 +93,7 @@
   <entry>
     <title type="html"><![CDATA[Category Counts in OctoPress Revisited]]></title>
     <link href="http://ianp.org/2012/10/30/category-counts-in-octopress-revisited"/>
-    <updated>2012-10-30T18:41:00+00:00</updated>
+    <updated>2012-10-30T18:41:00+01:00</updated>
     <id>http://ianp.org/2012/10/30/category-counts-in-octopress-revisited</id>
     <content type="html"><![CDATA[<p>As an improvement on an older shell script, here’s a rake task to list all of the categories in your blog, along with post counts for each of them:</p>
 
@@ -150,7 +150,7 @@
   <entry>
     <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
     <link href="http://ianp.org/2012/10/03/netbeans-rich-client-platform"/>
-    <updated>2012-10-03T18:32:00+01:00</updated>
+    <updated>2012-10-03T18:32:00+02:00</updated>
     <id>http://ianp.org/2012/10/03/netbeans-rich-client-platform</id>
     <content type="html"><![CDATA[<p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
 
@@ -191,7 +191,7 @@
   <entry>
     <title type="html"><![CDATA[Convenient]]></title>
     <link href="http://ianp.org/2012/10/01/convenient"/>
-    <updated>2012-10-01T18:35:00+01:00</updated>
+    <updated>2012-10-01T18:35:00+02:00</updated>
     <id>http://ianp.org/2012/10/01/convenient</id>
     <content type="html"><![CDATA[<p><a href="http://www.lispcast.com/class-abstractsingletonproxyfactorybean">This</a> is what’s wrong with a lot of the Java code out there.</p>
 
@@ -201,7 +201,7 @@
   <entry>
     <title type="html"><![CDATA[Bacon]]></title>
     <link href="http://ianp.org/2012/10/01/bacon"/>
-    <updated>2012-10-01T18:35:00+01:00</updated>
+    <updated>2012-10-01T18:35:00+02:00</updated>
     <id>http://ianp.org/2012/10/01/bacon</id>
     <content type="html"><![CDATA[<p>Mmmm, <a href="http://baconmethod.com">bacon</a>…</p>
 
@@ -211,7 +211,7 @@
   <entry>
     <title type="html"><![CDATA[I Swallowed a Fly]]></title>
     <link href="http://ianp.org/2012/06/20/i-swallowed-a-fly"/>
-    <updated>2012-06-20T17:54:00+01:00</updated>
+    <updated>2012-06-20T17:54:00+02:00</updated>
     <id>http://ianp.org/2012/06/20/i-swallowed-a-fly</id>
     <content type="html"><![CDATA[<p><img src="http://www.onefoottsunami.com/wordpress/wp-content/uploads/20120620magsafeadapter/6-forthesakeofcompleteness.jpg" alt="MagSafe Adapter" /></p>
 
@@ -223,7 +223,7 @@
   <entry>
     <title type="html"><![CDATA[That was Quick]]></title>
     <link href="http://ianp.org/2012/06/20/that-was-quick"/>
-    <updated>2012-06-20T16:58:00+01:00</updated>
+    <updated>2012-06-20T16:58:00+02:00</updated>
     <id>http://ianp.org/2012/06/20/that-was-quick</id>
     <content type="html"><![CDATA[<p>That was quick! The videos from WWDC are <a href="https://developer.apple.com/videos/wwdc/2012/">up already</a>, last year it took Apple about a month to get them posted. Great news for folks like me who didn’t get to attend.</p>
 
@@ -233,7 +233,7 @@
   <entry>
     <title type="html"><![CDATA[Leap into the Future!]]></title>
     <link href="http://ianp.org/2012/05/29/leap-into-the-future"/>
-    <updated>2012-05-29T14:59:00+01:00</updated>
+    <updated>2012-05-29T14:59:00+02:00</updated>
     <id>http://ianp.org/2012/05/29/leap-into-the-future</id>
     <content type="html"><![CDATA[<p><img src="http://ianp.org/2012/05/29/leap-motion.jpg" alt="Leap Motion" /></p>
 
@@ -257,7 +257,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[Think about that]]></title>
     <link href="http://ianp.org/2012/05/07/think-about-that"/>
-    <updated>2012-05-07T23:32:00+01:00</updated>
+    <updated>2012-05-07T23:32:00+02:00</updated>
     <id>http://ianp.org/2012/05/07/think-about-that</id>
     <content type="html"><![CDATA[<blockquote>
   <p>Good design. From eBay. Think about that.</p>
@@ -273,7 +273,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[RubyMotion and Interface Builder…]]></title>
     <link href="http://ianp.org/2012/05/07/rubymotion-and-interface-builder"/>
-    <updated>2012-05-07T19:24:00+01:00</updated>
+    <updated>2012-05-07T19:24:00+02:00</updated>
     <id>http://ianp.org/2012/05/07/rubymotion-and-interface-builder</id>
     <content type="html"><![CDATA[<p>…sitting in a tree, K-I-S-S-I-N-G…</p>
 
@@ -409,7 +409,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[Apple Security Cock-Up]]></title>
     <link href="http://ianp.org/2012/05/07/apple-security-cock-up"/>
-    <updated>2012-05-07T16:04:00+01:00</updated>
+    <updated>2012-05-07T16:04:00+02:00</updated>
     <id>http://ianp.org/2012/05/07/apple-security-cock-up</id>
     <content type="html"><![CDATA[<p><a href="http://www.zdnet.com/blog/security/apple-security-blunder-exposes-lion-login-passwords-in-clear-text/11963">This</a> doesn’t look good.</p>
 
@@ -421,7 +421,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[Category Counts in Octopress]]></title>
     <link href="http://ianp.org/2012/04/18/category-counts-in-octopress"/>
-    <updated>2012-04-18T10:36:00+01:00</updated>
+    <updated>2012-04-18T10:36:00+02:00</updated>
     <id>http://ianp.org/2012/04/18/category-counts-in-octopress</id>
     <content type="html"><![CDATA[<p>Here’s a quick shell script to get the number of posts in each category for an <a href="http://octopress.org/">Octopress</a> blog, just cat your <code>source/_posts</code> folder through the following one-liner:</p>
 
@@ -457,7 +457,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[What is Text Normalization?]]></title>
     <link href="http://ianp.org/2012/04/17/what-is-text-normalization"/>
-    <updated>2012-04-17T09:33:00+01:00</updated>
+    <updated>2012-04-17T09:33:00+02:00</updated>
     <id>http://ianp.org/2012/04/17/what-is-text-normalization</id>
     <content type="html"><![CDATA[<p>In my <a href="http://ianp.org/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
 
@@ -621,7 +621,7 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   <entry>
     <title type="html"><![CDATA[How Many Words Make a String?]]></title>
     <link href="http://ianp.org/2012/04/16/how-many-words-make-a-string"/>
-    <updated>2012-04-16T15:16:00+01:00</updated>
+    <updated>2012-04-16T15:16:00+02:00</updated>
     <id>http://ianp.org/2012/04/16/how-many-words-make-a-string</id>
     <content type="html"><![CDATA[<p>A recent post on the <a href="http://iphonedevelopertips.com/data-file-management/count-the-number-of-words-in-an-string.html">iOS Developer Tips</a> blog provided a handy way to get the the word count for a string by using <code>NSScanner</code>, and asked for comments on alternative approaches. Pretty quickly there were a few different suggestions so I thought that I’d take a look at them to see how they compare. It turns out that the different approaches give pretty different results when run over the same test string! To be honest this isn’t much of a surprise, but what was surprising is just how different the results were.</p>
 
@@ -802,7 +802,7 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   <entry>
     <title type="html"><![CDATA[Radial Menus]]></title>
     <link href="http://ianp.org/2012/03/30/radial-menus"/>
-    <updated>2012-03-30T16:38:00+01:00</updated>
+    <updated>2012-03-30T16:38:00+02:00</updated>
     <id>http://ianp.org/2012/03/30/radial-menus</id>
     <content type="html"><![CDATA[<p>Some alternative menu / control styles with a radial theme, linked from here so that I don’t lose them:</p>
 
@@ -819,7 +819,7 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   <entry>
     <title type="html"><![CDATA[Developing for the BlackBerry]]></title>
     <link href="http://ianp.org/2012/03/29/developing-for-the-blackberry"/>
-    <updated>2012-03-29T15:12:00+01:00</updated>
+    <updated>2012-03-29T15:12:00+02:00</updated>
     <id>http://ianp.org/2012/03/29/developing-for-the-blackberry</id>
     <content type="html"><![CDATA[<p>For a change from the day job I’ve been doing some mobile development, all iOS up to now, and I’ve got to say it’s a pretty nice development experience - especially with the new features (e.g. ARC, new literals) that are being added to Objective-C. But then earlier this week I was asked to look into writing a BlackBerry app at work, so that led me to looking into the different options that are available for that platform, here’s what I looked into:</p>
 
@@ -863,7 +863,7 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   <entry>
     <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
     <link href="http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
-    <updated>2011-11-04T11:34:00+00:00</updated>
+    <updated>2011-11-04T11:34:00+01:00</updated>
     <id>http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
     <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
 
@@ -885,7 +885,7 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
 <span class="line-number">14</span>
 <span class="line-number">15</span>
 <span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">apply</span> <span class="n">plugin</span> <span class="s1">&#39;maven&#39;</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;maven&#39;</span>
 </span><span class="line"><span class="n">configure</span><span class="o">(</span><span class="n">install</span><span class="o">.</span><span class="na">repositories</span><span class="o">.</span><span class="na">mavenInstaller</span><span class="o">)</span> <span class="o">{</span>
 </span><span class="line">    <span class="n">pom</span><span class="o">.</span><span class="na">project</span> <span class="o">{</span>
 </span><span class="line">        <span class="n">groupId</span> <span class="s1">&#39;com.example&#39;</span>
@@ -920,20 +920,22 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
 <span class="line-number">13</span>
 <span class="line-number">14</span>
 </pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">task</span> <span class="nf">sourcesJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">classes</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">     <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;sources&#39;</span>
-</span><span class="line">     <span class="n">from</span> <span class="n">sourceSets</span><span class="o">.</span><span class="na">main</span><span class="o">.</span><span class="na">allSource</span>
+</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;sources&#39;</span>
+</span><span class="line">    <span class="n">from</span> <span class="n">sourceSets</span><span class="o">.</span><span class="na">main</span><span class="o">.</span><span class="na">allSource</span>
 </span><span class="line"><span class="o">}</span>
 </span><span class="line">
 </span><span class="line"><span class="n">task</span> <span class="nf">javadocJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">javadoc</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">     <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;javadoc&#39;</span>
-</span><span class="line">     <span class="n">from</span> <span class="n">javadoc</span><span class="o">.</span><span class="na">destinationDir</span>
+</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;javadoc&#39;</span>
+</span><span class="line">    <span class="n">from</span> <span class="n">javadoc</span><span class="o">.</span><span class="na">destinationDir</span>
 </span><span class="line"><span class="o">}</span>
 </span><span class="line">
 </span><span class="line"><span class="n">artifacts</span> <span class="o">{</span>
-</span><span class="line">     <span class="n">archives</span> <span class="n">sourcesJar</span>
-</span><span class="line">     <span class="n">archives</span> <span class="n">javadocJar</span>
+</span><span class="line">    <span class="n">archives</span> <span class="n">sourcesJar</span>
+</span><span class="line">    <span class="n">archives</span> <span class="n">javadocJar</span>
 </span><span class="line"><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Update:</strong> <a href="http://ianp.org/2011/11/04/demo.zip">here</a> is a demo project with a complete build file and a ‘hello, world’ sample class, you should be able to just unzip this and then run <em>gradle install</em> to install it into your local repo.</p>
 
 ]]></content>
   </entry>

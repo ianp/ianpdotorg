@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Programming | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/programming/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-12-17T17:39:23+00:00</updated>
+  <updated>2013-01-01T21:00:26+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[VLC Versions]]></title>
     <link href="http://ianp.org/2012/10/30/vlc-versions"/>
-    <updated>2012-10-30T18:49:00+00:00</updated>
+    <updated>2012-10-30T18:49:00+01:00</updated>
     <id>http://ianp.org/2012/10/30/vlc-versions</id>
     <content type="html"><![CDATA[<p>So I started up <a href="http://www.videolan.org" title="VLC media player">VLC</a> just now and was greeted with this update notification:</p>
 
@@ -41,7 +41,7 @@
   <entry>
     <title type="html"><![CDATA[What is Text Normalization?]]></title>
     <link href="http://ianp.org/2012/04/17/what-is-text-normalization"/>
-    <updated>2012-04-17T09:33:00+01:00</updated>
+    <updated>2012-04-17T09:33:00+02:00</updated>
     <id>http://ianp.org/2012/04/17/what-is-text-normalization</id>
     <content type="html"><![CDATA[<p>In my <a href="/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
 
@@ -185,7 +185,7 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   <entry>
     <title type="html"><![CDATA[How Many Words Make a String?]]></title>
     <link href="http://ianp.org/2012/04/16/how-many-words-make-a-string"/>
-    <updated>2012-04-16T15:16:00+01:00</updated>
+    <updated>2012-04-16T15:16:00+02:00</updated>
     <id>http://ianp.org/2012/04/16/how-many-words-make-a-string</id>
     <content type="html"><![CDATA[<p>A recent post on the <a href="http://iphonedevelopertips.com/data-file-management/count-the-number-of-words-in-an-string.html">iOS Developer Tips</a> blog provided a handy way to get the the word count for a string by using <code>NSScanner</code>, and asked for comments on alternative approaches. Pretty quickly there were a few different suggestions so I thought that I’d take a look at them to see how they compare. It turns out that the different approaches give pretty different results when run over the same test string! To be honest this isn’t much of a surprise, but what was surprising is just how different the results were.</p>
 
@@ -333,7 +333,7 @@ NSUInteger taggerWordCount(NSString* string)
   <entry>
     <title type="html"><![CDATA[Developing for the BlackBerry]]></title>
     <link href="http://ianp.org/2012/03/29/developing-for-the-blackberry"/>
-    <updated>2012-03-29T15:12:00+01:00</updated>
+    <updated>2012-03-29T15:12:00+02:00</updated>
     <id>http://ianp.org/2012/03/29/developing-for-the-blackberry</id>
     <content type="html"><![CDATA[<p>For a change from the day job I’ve been doing some mobile development, all iOS up to now, and I’ve got to say it’s a pretty nice development experience - especially with the new features (e.g. ARC, new literals) that are being added to Objective-C. But then earlier this week I was asked to look into writing a BlackBerry app at work, so that led me to looking into the different options that are available for that platform, here’s what I looked into:</p>
 
@@ -377,7 +377,7 @@ NSUInteger taggerWordCount(NSString* string)
   <entry>
     <title type="html"><![CDATA[Handling Flag Arguments]]></title>
     <link href="http://ianp.org/2011/06/23/handling-flag-arguments"/>
-    <updated>2011-06-23T14:42:28+01:00</updated>
+    <updated>2011-06-23T14:42:28+02:00</updated>
     <id>http://ianp.org/2011/06/23/handling-flag-arguments</id>
     <content type="html"><![CDATA[<p><a href="http://martinfowler.com/">Martin Fowler</a> has a <a href="http://martinfowler.com/bliki/FlagArgument.html">new bliki entry talking about flag arguments</a>, defined as:</p>
 

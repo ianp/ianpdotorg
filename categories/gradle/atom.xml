@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Gradle | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/gradle/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2012-12-17T17:39:23+00:00</updated>
+  <updated>2013-01-01T21:00:26+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,14 +16,14 @@
   <entry>
     <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
     <link href="http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
-    <updated>2011-11-04T11:34:00+00:00</updated>
+    <updated>2011-11-04T11:34:00+01:00</updated>
     <id>http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
     <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
 
 <p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
 
 <p><code>groovy
-apply plugin 'maven'
+apply plugin: 'maven'
 configure(install.repositories.mavenInstaller) {
     pom.project {
         groupId 'com.example'
@@ -45,20 +45,22 @@ configure(install.repositories.mavenInstaller) {
 
 <p>```groovy
 task sourcesJar(type: Jar, dependsOn:classes) {
-     classifier = ‘sources’
-     from sourceSets.main.allSource
+    classifier = ‘sources’
+    from sourceSets.main.allSource
 }</p>
 
 <p>task javadocJar(type: Jar, dependsOn:javadoc) {
-     classifier = ‘javadoc’
-     from javadoc.destinationDir
+    classifier = ‘javadoc’
+    from javadoc.destinationDir
 }</p>
 
 <p>artifacts {
-     archives sourcesJar
-     archives javadocJar
+    archives sourcesJar
+    archives javadocJar
 }
 ```</p>
+
+<p><strong>Update:</strong> <a href="/2011/11/04/demo.zip">here</a> is a demo project with a complete build file and a ‘hello, world’ sample class, you should be able to just unzip this and then run <em>gradle install</em> to install it into your local repo.</p>
 
 ]]></content>
   </entry>

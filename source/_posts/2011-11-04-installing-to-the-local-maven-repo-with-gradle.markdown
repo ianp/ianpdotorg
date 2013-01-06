@@ -14,7 +14,7 @@ I've been playing around with different build tools for my Java projects recentl
 Unfortunately the documentation isn't as comprehensive as it could be, and one of the areas where it's not too great is in it's interaction with the Maven repository system. So, here's the magic incantation that you have to add to your build file in order to have *gradle install* install things correctly to your local repository:
 
 ```groovy
-apply plugin 'maven'
+apply plugin: 'maven'
 configure(install.repositories.mavenInstaller) {
     pom.project {
         groupId 'com.example'
@@ -36,20 +36,23 @@ this will install the project binaries, to also install source and JavaDocs (whi
 
 ```groovy
 task sourcesJar(type: Jar, dependsOn:classes) {
-     classifier = 'sources'
-     from sourceSets.main.allSource
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
  
 task javadocJar(type: Jar, dependsOn:javadoc) {
-     classifier = 'javadoc'
-     from javadoc.destinationDir
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
  
 artifacts {
-     archives sourcesJar
-     archives javadocJar
+    archives sourcesJar
+    archives javadocJar
 }
 ```
 
+**Update:** [here][Z] is a demo project with a complete build file and a 'hello, world' sample class, you should be able to just unzip this and then run *gradle install* to install it into your local repo (tested with Gradle 1.3).
+
 [M]: http://maven.apache.org/ "Apache Maven"
 [G]: http://www.gradle.org/ "Gradle"
+[Z]: /2011/11/04/demo.zip

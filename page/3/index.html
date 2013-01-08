@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="When I’m writing technical docs in MS Word (an unfortunate day-job-related requirement) one of the things that can be annoying it the fact that it ‘ &hellip;">
+  <meta name="description" content="I’ve been playing around with different build tools for my Java projects recently, having never been very happy with Maven. Probably the best that I’ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,113 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/11/04/installing-to-the-local-maven-repo-with-gradle">Installing to the Local Maven Repo With Gradle</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-11-04T11:34:00+01:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
+
+<p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;maven&#39;</span>
+</span><span class="line"><span class="n">configure</span><span class="o">(</span><span class="n">install</span><span class="o">.</span><span class="na">repositories</span><span class="o">.</span><span class="na">mavenInstaller</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">pom</span><span class="o">.</span><span class="na">project</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">groupId</span> <span class="s1">&#39;com.example&#39;</span>
+</span><span class="line">        <span class="n">artifactId</span> <span class="s1">&#39;project-name&#39;</span>
+</span><span class="line">        <span class="n">inceptionYear</span> <span class="s1">&#39;2011&#39;</span>
+</span><span class="line">        <span class="n">packaging</span> <span class="s1">&#39;jar&#39;</span>
+</span><span class="line">        <span class="n">licenses</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">license</span> <span class="o">{</span>
+</span><span class="line">                <span class="n">name</span> <span class="s1">&#39;Eclipse Public License (Version 1.0)&#39;</span>
+</span><span class="line">                <span class="n">url</span> <span class="s1">&#39;http://www.eclipse.org/legal/epl-v10.html&#39;</span>
+</span><span class="line">                <span class="n">distribution</span> <span class="s1">&#39;repo&#39;</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>this will install the project binaries, to also install source and JavaDocs (which <em>every</em> project should really do) then you’ll also need to add:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">task</span> <span class="nf">sourcesJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">classes</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;sources&#39;</span>
+</span><span class="line">    <span class="n">from</span> <span class="n">sourceSets</span><span class="o">.</span><span class="na">main</span><span class="o">.</span><span class="na">allSource</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">task</span> <span class="nf">javadocJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">javadoc</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;javadoc&#39;</span>
+</span><span class="line">    <span class="n">from</span> <span class="n">javadoc</span><span class="o">.</span><span class="na">destinationDir</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">artifacts</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">archives</span> <span class="n">sourcesJar</span>
+</span><span class="line">    <span class="n">archives</span> <span class="n">javadocJar</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Update:</strong> <a href="/2011/11/04/demo.zip">here</a> is a demo project with a complete build file and a ‘hello, world’ sample class, you should be able to just unzip this and then run <em>gradle install</em> to install it into your local repo (tested with Gradle 1.3).</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -519,53 +626,6 @@ usual, something like this:</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/03/15/building-clojure-with-maven">Building Clojure With Maven</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-03-15T18:48:51+01:00" pubdate data-updated="true">Mar 15<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just a quick reminder on the steps I needed to take to build <a href="http://clojure.org/">Clojure</a> and install it in my local repository:</p>
-
-<ol>
-  <li>download the <a href="http://maven.apache.org/ant-tasks/download.html">Maven Ant tasks</a>, version 2.1.0 at the time of writing;</li>
-  <li>move them to <code>$ANT_HOME/lib</code> (this is <code>/usr/share/ant/lib</code> on Mac OS X);</li>
-  <li><code>cd</code> to my Clojure download folder, run <code>git pull</code> if needed;</li>
-  <li>run <code>ant -Dsnapshot.repo.dir=~/.m2/repository clean nightly-build</code>, this will perform a clean build and install it into the supplied repo; this can be anywhere, the default though is <code>/var/www/maven-snapshot-repository</code> which is probably no good;</li>
-  <li>to also install <code>clojure-contrib</code> just change to it’s download directory and run <code>mvn install</code>.</li>
-</ol>
-
-<p>Is simples!</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/4/">&larr; Older</a>
@@ -583,6 +643,10 @@ usual, something like this:</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
@@ -596,10 +660,6 @@ usual, something like this:</p>
     
       <li class="post">
         <a href="/2012/10/30/vlc-versions">VLC Versions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
       </li>
     
   </ul>

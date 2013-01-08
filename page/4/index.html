@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Fed up with all of the pre-election coverage in the (UK) media right now? Instead of listening to call-me-Dave drone on and on, or hearing how the &hellip;">
+  <meta name="description" content="Just a quick reminder on the steps I needed to take to build Clojure and install it in my local repository: download the Maven Ant tasks, version 2.1 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +82,53 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2010/03/15/building-clojure-with-maven">Building Clojure With Maven</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-15T18:48:51+01:00" pubdate data-updated="true">Mar 15<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Just a quick reminder on the steps I needed to take to build <a href="http://clojure.org/">Clojure</a> and install it in my local repository:</p>
+
+<ol>
+  <li>download the <a href="http://maven.apache.org/ant-tasks/download.html">Maven Ant tasks</a>, version 2.1.0 at the time of writing;</li>
+  <li>move them to <code>$ANT_HOME/lib</code> (this is <code>/usr/share/ant/lib</code> on Mac OS X);</li>
+  <li><code>cd</code> to my Clojure download folder, run <code>git pull</code> if needed;</li>
+  <li>run <code>ant -Dsnapshot.repo.dir=~/.m2/repository clean nightly-build</code>, this will perform a clean build and install it into the supplied repo; this can be anywhere, the default though is <code>/var/www/maven-snapshot-repository</code> which is probably no good;</li>
+  <li>to also install <code>clojure-contrib</code> just change to it’s download directory and run <code>mvn install</code>.</li>
+</ol>
+
+<p>Is simples!</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -647,55 +694,6 @@ after the 9.0.1 release is out (it’s in beta now).</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/12/17/clojure-purists">Clojure Purists?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-17T14:39:25+01:00" pubdate data-updated="true">Dec 17<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve been following <a href="http://www.tbray.org/ongoing/">Tim Bray</a>’s excellent <a href="http://www.tbray.org/ongoing/When/200x/2009/09/27/Concur-dot-next">Concur.next</a> article series covering approaches to concurrency in various languages, and currently (no pun intended!) covering Clojure. The <a href="http://www.tbray.org/ongoing/When/200x/2009/12/15/Osborne-WF2-Clojure">latest article</a> talks about a super efficient log parsing <a href="http://meshy.org/2009/12/13/widefinder-2-with-clojure.html">implementation</a> done by <a href="http://meshy.org/">Alex Osborne</a> an includes the following comment:</p>
-
-<blockquote>
-  <p>Lots of the performance wins come from dipping into Java-land (AtomicLongs, LinkedBlockingQueue), which is perfectly OK, but a Clojure purist would probably see those occasions as maybe highlighting gaps in that language’s coverage.</p>
-</blockquote>
-
-<p>I’d take issue with that, one of the real strengths of Clojure it that it has easy and fast access to the whole Java ecosystem. As <a href="http://clojure.org/jvm\_hosted">Rich says</a>:</p>
-
-<blockquote>
-  <p>Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java.</p>
-</blockquote>
-
-<p>That seems pretty clear to me. I wonder if the people claiming to be Clojure purists are all coming from a Lisp background rather than the Java world?</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/5/">&larr; Older</a>
@@ -713,6 +711,10 @@ after the 9.0.1 release is out (it’s in beta now).</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
@@ -726,10 +728,6 @@ after the 9.0.1 release is out (it’s in beta now).</p>
     
       <li class="post">
         <a href="/2012/10/30/vlc-versions">VLC Versions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
       </li>
     
   </ul>

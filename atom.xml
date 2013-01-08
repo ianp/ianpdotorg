@@ -4,7 +4,7 @@
   <title><![CDATA[Digital Magpie]]></title>
   <link href="http://ianp.org/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-01T21:00:26+01:00</updated>
+  <updated>2013-01-08T14:12:18+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[For Some Definition of Easily]]></title>
+    <link href="http://ianp.org/2013/01/08/for-some-definition-of-easily"/>
+    <updated>2013-01-08T14:00:00+01:00</updated>
+    <id>http://ianp.org/2013/01/08/for-some-definition-of-easily</id>
+    <content type="html"><![CDATA[<p><a href="http://www.mobileindustryreview.com/2013/01/lenovos-27-tablet-is-a-smart-idea-costs-1000-and-is-due-this-summer.html">This</a> is a joke, right?</p>
+
+<p><img src="http://ianp.org/2013/01/08/easily.jpg" alt="Lenovo Horizon" /></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[I Remain a Free Man]]></title>
@@ -856,86 +868,6 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
 <p>For the internal app that I’m working on I’m sticking with the BB Java SDK for now, although if I were going to be doing more than a single small app I would probably invest the time to get comfortable with PhoneGap and use that (of course, at the same time I’m trying to persuade the client that iOS is a better choice).</p>
 
 <p>I’d definitely use PhoneGap if I needed to write a cross-platform app as it seems to be the more mature option.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Installing to the Local Maven Repo With Gradle]]></title>
-    <link href="http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle"/>
-    <updated>2011-11-04T11:34:00+01:00</updated>
-    <id>http://ianp.org/2011/11/04/installing-to-the-local-maven-repo-with-gradle</id>
-    <content type="html"><![CDATA[<p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
-
-<p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;maven&#39;</span>
-</span><span class="line"><span class="n">configure</span><span class="o">(</span><span class="n">install</span><span class="o">.</span><span class="na">repositories</span><span class="o">.</span><span class="na">mavenInstaller</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">pom</span><span class="o">.</span><span class="na">project</span> <span class="o">{</span>
-</span><span class="line">        <span class="n">groupId</span> <span class="s1">&#39;com.example&#39;</span>
-</span><span class="line">        <span class="n">artifactId</span> <span class="s1">&#39;project-name&#39;</span>
-</span><span class="line">        <span class="n">inceptionYear</span> <span class="s1">&#39;2011&#39;</span>
-</span><span class="line">        <span class="n">packaging</span> <span class="s1">&#39;jar&#39;</span>
-</span><span class="line">        <span class="n">licenses</span> <span class="o">{</span>
-</span><span class="line">            <span class="n">license</span> <span class="o">{</span>
-</span><span class="line">                <span class="n">name</span> <span class="s1">&#39;Eclipse Public License (Version 1.0)&#39;</span>
-</span><span class="line">                <span class="n">url</span> <span class="s1">&#39;http://www.eclipse.org/legal/epl-v10.html&#39;</span>
-</span><span class="line">                <span class="n">distribution</span> <span class="s1">&#39;repo&#39;</span>
-</span><span class="line">            <span class="o">}</span>
-</span><span class="line">        <span class="o">}</span>
-</span><span class="line">    <span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>this will install the project binaries, to also install source and JavaDocs (which <em>every</em> project should really do) then you’ll also need to add:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">task</span> <span class="nf">sourcesJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">classes</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;sources&#39;</span>
-</span><span class="line">    <span class="n">from</span> <span class="n">sourceSets</span><span class="o">.</span><span class="na">main</span><span class="o">.</span><span class="na">allSource</span>
-</span><span class="line"><span class="o">}</span>
-</span><span class="line">
-</span><span class="line"><span class="n">task</span> <span class="nf">javadocJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">javadoc</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;javadoc&#39;</span>
-</span><span class="line">    <span class="n">from</span> <span class="n">javadoc</span><span class="o">.</span><span class="na">destinationDir</span>
-</span><span class="line"><span class="o">}</span>
-</span><span class="line">
-</span><span class="line"><span class="n">artifacts</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">archives</span> <span class="n">sourcesJar</span>
-</span><span class="line">    <span class="n">archives</span> <span class="n">javadocJar</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p><strong>Update:</strong> <a href="http://ianp.org/2011/11/04/demo.zip">here</a> is a demo project with a complete build file and a ‘hello, world’ sample class, you should be able to just unzip this and then run <em>gradle install</em> to install it into your local repo.</p>
 
 ]]></content>
   </entry>

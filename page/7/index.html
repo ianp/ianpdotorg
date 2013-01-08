@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Ardor3D adds a mechanism for subscribing to events in the scene
-graph; things like when a node is added or removed, or has one of it’s
-render states &hellip;">
+  <meta name="description" content="Guice has a concept called develpment stages which affect how
+the library works. Guice is written with server-side applications in
+mind (it is from &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,76 @@ render states &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/04/23/guice-development-stages">Guice Development Stages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-23T17:51:24+02:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://google-guice.googlecode.com/">Guice</a> has a concept called <em>develpment stages</em> which affect how
+the library works. Guice is written with server-side applications in
+mind (it is from Google, after all) so the behaviour for production mode
+is to do a bunch of work up front so that it can catch errors as soon as
+possible.</p>
+
+<p>The development mode defers work (i.e. object creation) until
+the last moment; Here’s how the Javadoc notes describe them:</p>
+
+<ul>
+  <li>
+    <p><strong>Development</strong>
+we want fast startup times at the expense of runtime performance and some up front error checking.</p>
+  </li>
+  <li>
+    <p><strong>Production</strong>
+we want to catch errors as early as possible and take performance hits up front.</p>
+  </li>
+  <li>
+    <p><strong>Tool</strong>
+we’re running in a tool (an IDE plugin for example).</p>
+  </li>
+</ul>
+
+<p>Ignoring tool mode, this is exactly the opposite of the behaviour that
+you want to see for client-side development. For client applications you
+want to have an much error checking as possible during development but
+for production use (i.e. use by a real user) you want to go for faster
+start-up times.</p>
+
+<p>Note that for production use it is also advantageous to
+defer error checking until later as well; after all, there is no point
+in refusing to start an app because feature ‘foo’ isn’t working, if the
+user doesn’t use or care about ‘foo’!</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -627,43 +697,6 @@ Interbank rate +/- 2%</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/03/30/plastic-bag-recycling">Plastic Bag Recycling</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-03-30T00:05:28+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>You’ve got to love <a href="http://nedbatchelder.com/blog/200803/street_bag_animals.html">this!</a></p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/8/">&larr; Older</a>
@@ -681,6 +714,10 @@ Interbank rate +/- 2%</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
@@ -694,10 +731,6 @@ Interbank rate +/- 2%</p>
     
       <li class="post">
         <a href="/2012/10/30/vlc-versions">VLC Versions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
       </li>
     
   </ul>

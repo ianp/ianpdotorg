@@ -9,10 +9,10 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="I’ve been looking for a good text editor for the Mac for a few weeks
-now, since I just can’t seem to get the hang of
-BBEdit, and $180
-seems a bit &hellip;">
+  <meta name="description" content="After a bit more usage, some pros and cons of
+TextMate. To evaluate it’s features I’ve
+been writing a bundle to work with Mono/C#
+development. First &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,101 @@ seems a bit &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2004/10/06/textmate-revisited">TextMate Revisited</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2004-10-06T22:10:48+02:00" pubdate data-updated="true">Oct 6<span>th</span>, 2004</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After a bit more usage, some pros and cons of
+<a href="http://www.macromates.com">TextMate</a>. To evaluate it’s features I’ve
+been writing a bundle to work with <a href="http://www.go-mono.org">Mono</a>/C#
+development. First the good things:</p>
+
+<ul>
+  <li>
+    <p><strong>Shell Commands</strong>
+automatically run external commands, this can be used to kick off a compile or run a program for example. These are defined in a custom format but are basically shell scripts embedded in a property list file. I feel it would be a better approach to just use the property list for metadata and have a pointer to a real shell script, but I suppose you could do that anyway;</p>
+  </li>
+  <li>
+    <p><strong>Macros</strong>
+these should be a standard feature in any application, even so, it’s good to see them included;</p>
+  </li>
+  <li>
+    <p><strong>Code Snippets</strong>
+you can set up small text fragments to be inserted when you type a few characters and hit the tab key. More than this however, you can include positional parameters in your code snippets and hitting tab again will step through them. I use Eclipse as my IDE and it has a similar feature, so I’m right at home with this and it’s a great time saver for lazy typists like me. The only down side is that there is no way to have custom text entered in to multiple locations. I’d really like to be able to have a code snippet like this:</p>
+  </li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">$1</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">$1</span> <span class="o">&lt;</span> <span class="n">$2</span><span class="o">;</span> <span class="o">++</span><span class="n">$1</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">  <span class="c1">// do something with myArray[$1] here...</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>and have it fill in the variable name every place it appears;</p>
+
+<ul>
+  <li>
+    <p><strong>Syntax Highlighting</strong>
+not too many language syntaxes are provided by default, but it’s easy to create you own. I had a workable C# syntax defined in about 15 minutes;</p>
+  </li>
+  <li>
+    <p><strong>File Templates</strong>
+like snippets but for entire files. They can reference any shell environment variables, as well as a few special variables that are supplied by TextMate. You can add your own variables to this list as well. I haven’t used this much yet, but I expect it will be reasonably useful;</p>
+  </li>
+  <li>
+    <p><strong>Bundles of Goodness</strong>
+you can define your own ‘feature bundles’ grouping together the features listed above. All of the features are described in standard property list files, so you can also edit them by hand if you want to. What would be a nice addition would be a way to enable and disable entire bundles, at the moment you have to manually remove them from the search path to do this; and</p>
+  </li>
+  <li>
+    <p><strong>Projects</strong>
+this allows you to group multiple files together. A nice addition to this feature would be the ability to add custom variables to a project, maybe with some kind of dialog to accomplish this when you select ‘New Project…’.</p>
+  </li>
+</ul>
+
+<p>And a couple of gripes I have:</p>
+
+<ul>
+  <li>
+    <p><strong>No Preferences Dialog</strong>
+apparently it’s a design <a href="http://macromates.com/blog/archives/2004/10/06/wheres-my-beloved-preference-window">decision</a> on the part of the developers. Their preferred approach is to take all of the preferences and scatter them around the menus, maybe to make it look like there are loads of extra features or something. This sucks. Looking at the mailing list archives I’m not alone in thinking this;</p>
+  </li>
+  <li>
+    <p><strong>No OSA Integration</strong>
+although commands let you call out to AppleScript, the editor itself isn’t scriptable at all. There are a few things which stand out as non-Mac-like actually. Sometimes this is for a good reason (for example, not using <code>NSTextView</code> enables it to have much better text handling than most other editors) but other times it just seems odd (for example not using Apple Script for scripting but instead including two alternative automation systems in macros and commands).</p>
+  </li>
+</ul>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -553,52 +648,6 @@ less.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/04/10/gmail">Gmail</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-04-10T16:04:47+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.diveintomark.org" title="Dive into Mark">Mark Pilgrim</a> writes:</p>
-
-<blockquote>
-  <p>In short, the only way to use <a href="http://gmail.google.com">Gmail</a> is the way
-that the Gmail designers use Gmail. The only way Gmail could be less
-accessible is if the entire site were built in Flash.</p>
-</blockquote>
-
-<p>So with this and the associated privacy concerns, it looks like this could turn into a bit of a turkey.</p>
-
-<p><em>Update:</em> Boy, was I wrong on this!</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/13/">&larr; Older</a>
@@ -616,6 +665,10 @@ accessible is if the entire site were built in Flash.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
+      </li>
+    
+      <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
@@ -629,10 +682,6 @@ accessible is if the entire site were built in Flash.</p>
     
       <li class="post">
         <a href="/2012/10/30/vlc-versions">VLC Versions</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/30/category-counts-in-octopress-revisited">Category Counts in OctoPress Revisited</a>
       </li>
     
   </ul>

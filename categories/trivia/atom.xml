@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Trivia | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/trivia/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-01T21:00:26+01:00</updated>
+  <updated>2013-01-08T14:12:18+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[For Some Definition of Easily]]></title>
+    <link href="http://ianp.org/2013/01/08/for-some-definition-of-easily"/>
+    <updated>2013-01-08T14:00:00+01:00</updated>
+    <id>http://ianp.org/2013/01/08/for-some-definition-of-easily</id>
+    <content type="html"><![CDATA[<p><a href="http://www.mobileindustryreview.com/2013/01/lenovos-27-tablet-is-a-smart-idea-costs-1000-and-is-due-this-summer.html">This</a> is a joke, right?</p>
+
+<p><img src="/2013/01/08/easily.jpg" alt="Lenovo Horizon" /></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cool Glass]]></title>
@@ -54,16 +66,6 @@ images like that.</p>
     <id>http://ianp.org/2008/03/30/plastic-bag-recycling</id>
     <content type="html"><![CDATA[<p>You’ve got to love <a href="http://nedbatchelder.com/blog/200803/street_bag_animals.html">this!</a></p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rebooted]]></title>
-    <link href="http://ianp.org/2007/10/21/rebooted"/>
-    <updated>2007-10-21T20:08:11+02:00</updated>
-    <id>http://ianp.org/2007/10/21/rebooted</id>
-    <content type="html"><![CDATA[<p>I’ve been away for a while, and now I’m back. In other news, I’ve moved
-back to the UK, to London again. More to follow…</p>
 ]]></content>
   </entry>
   

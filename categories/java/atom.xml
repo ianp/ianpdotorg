@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/java/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-08T14:20:50+01:00</updated>
+  <updated>2013-01-09T20:31:31+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -12,6 +12,190 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Builders and Factories]]></title>
+    <link href="http://ianp.org/2013/01/09/builders-and-factories"/>
+    <updated>2013-01-09T18:41:00+01:00</updated>
+    <id>http://ianp.org/2013/01/09/builders-and-factories</id>
+    <content type="html"><![CDATA[<p>I started to write a ‘quick’ response to <a href="http://toomuchcoding.blogspot.ie/2013/01/hamcrest-matchers-guava-predicate-and.html">this post about builders</a> and it kind of got out of hand, so I’m putting it up here instead.</p>
+
+<p>The post isn’t bad, but I think that Marcin is getting the builder and factory patterns a little mixed up. To recap:</p>
+
+<p>The intent of the <strong>Builder Pattern</strong> is to separate out the construction of an object from it’s final representation. Doing this makes it easier to enforce preconditions and invariants, and also makes the object construction easier to read in languages without keyword arguments.</p>
+
+<p>The intent of the <strong>Factory Pattern</strong> on the other hand, is to delegate responsibility for creating an object to somebody else. It is commonly used in dependency injection frameworks.</p>
+
+<p>A concrete example should serve to illustrate the differences.</p>
+
+<h3 id="a-builder-example">A Builder Example</h3>
+
+<p>Assume that we have an interface for a simple Pojo:</p>
+
+<p><code>java
+public interface Employee {
+    public Date getHiredAt();
+    public String getId();
+    public String getName();
+    public int getSalary();
+    public String getTitle();
+}
+</code></p>
+
+<p>and a default implementation (shown here as a separae class, but it could also be a static inner class in the interface):</p>
+
+<p>```java
+class EmployeeImpl implements Employee {</p>
+
+<pre><code>private final String _id;
+private final String _name;
+private final String _title;
+private final int _salary;
+private final Date _hiredAt;
+
+EmployeeImpl(String id, String name, String title, int salary, Date hiredAt) {
+    _id = id;
+    _name = name;
+    _title = title;
+    _salary = salary;
+    _hiredAt = hiredAt;
+}
+
+public Date getHiredAt() {
+    return _hiredAt;
+}
+
+public String getId() {
+    return _id;
+}
+
+// ...
+
+@Override
+public String toString() {
+    return Objects.toStringHelper(this).omitNullValues()
+        .add("id", _id)
+        .add("name", _name)
+        .add("title", _title)
+        .add("salary", _salary)
+        .add("hiredAt", _hiredAt)
+        .toString();
+} } ```
+</code></pre>
+
+<p>Even with just a few fields like this invoking the constructor becomes somewhat ugly:</p>
+
+<p><code>java
+Employee e = new EmployeeImpl(
+    "1", "Fred Foobar", "Engineer", 100000, new Date());
+</code></p>
+
+<p>Without referring to the docs or source code how do you know what all of those strings mean? How do you know that you have them in the correct order? And if it seems reasonable clear in this example imaging if your Pojo was mainly non-string data!</p>
+
+<p><code>java
+MyPojo p = new MyPojoImpl(123, true false, false 45.83, "wtf???");
+</code></p>
+
+<p>Clear as mud, right?</p>
+
+<p>Other languages don’t have this problem, in Objective-C we can write</p>
+
+<p><code>objc
+id obj = [EGEmployee employeeWithId:@"1" name:@"Fred Foobar"
+        title:@"Apple Engineer" salary:200000 hiredAt:@"2001-03-24"];
+</code></p>
+
+<p>which is much clearer. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here’s a typical implementation and an example of calling it:</p>
+
+<p>```java
+public class Builder {</p>
+
+<pre><code>private static final AtomicInteger _ids = new AtomicInteger();
+
+private static String checkString(String value, String name) {
+    value = nullToEmpty(value).trim();
+    checkArgument(!value.isEmpty(), "%s cannot be null or empty", name);
+    return value;
+}
+
+private String _id;
+private String _name;
+private String _title;
+private Integer _salary;
+private Date _hiredAt;
+
+public Builder hiredAt(Date hiredAt) {
+    _hiredAt = hiredAt;
+    return this;
+}
+
+public Builder id(String id) {
+    _id = id;
+    return this;
+}
+
+public Builder name(String name) {
+    _name = name;
+    return this;
+}
+
+public Builder salary(int salary) {
+    checkArgument(salary &gt;= 0, "salary cannot be negative");
+    _salary = salary;
+    return this;
+}
+
+public Builder title(String title) {
+    _title = title;
+    return this;
+}
+
+public Employee build() {
+    return new Impl(
+            _id != null ? _id : String.format("emp:%06d", _ids.incrementAndGet()),
+            checkString(_name, "name"),
+            checkString(_title, "title"),
+            checkNotNull(_salary, "salary"),
+            _hiredAt != null ? _hiredAt : new Date());
+} }
+</code></pre>
+
+<p>// elsewhere …
+public Employee findEmployeeById(String id) {
+    if (“1”.equals(id)) {
+        return new Builder().id(id)
+            .name(“Fred Foobar”)
+            .title(“Engineer”)
+            .salary(100000)
+            .hiredAt(“2001-03-24”).build();
+    }
+    return null;
+}
+```</p>
+
+<p>Again, all pretty clear now, and HotSpot will inline all of those method calls no there should be no additional overhead once the JVM is up and running. </p>
+
+<h3 id="a-factory-example">A Factory Example</h3>
+
+<p>Factories are different, but it would be common for a factory to <em>use</em> a builder to create the objects that it vends. For example, here is a factory for employee objects (it doesn’t need to have the word Factory in it’s name):</p>
+
+<p><code>java
+public interface Employees {
+    Iterable&lt;Employee&gt; all();
+    Employee findbyId(String id);
+}
+</code></p>
+
+<p>We can then have different implementations of this, maybe one that loads data from a CSV or JSON file for testing purposes, and one that loads data via JDBC for production use.</p>
+
+<p><strong>Aside:</strong> if you’re familiar with <em>domain-driven design</em> you’ll be forgiven for noticing a lot of overlap between the factory pattern and DDD’s concept of <em>repositories,</em> they’re very similar concepts. One difference being that factories are often able to create new objects <em>ex nihilo</em> while repositories usually retreive objects from external sources. Compare the <code>findById()</code> method with the <code>newInstance()</code> methods employed by many of the factory classes in the JDK.</p>
+
+<p>Hopefully you can see from tis post that the two patterns have different, if complementary, aims.</p>
+
+<p>A complete example project with all of this code, as well as test cases and a CSV based implementation the the factory are available <a href="https://github.com/ianp/builder-example">on Github</a>.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
@@ -179,75 +363,6 @@ myConcert.book(richCustomer, TicketType.PREMIUM);
 
 <p>This is easier to implement, and works for multi valued (e.g. integer) flags as well.</p>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Working with Java Arrays]]></title>
-    <link href="http://ianp.org/2010/01/02/working-with-java-arrays"/>
-    <updated>2010-01-02T14:23:44+01:00</updated>
-    <id>http://ianp.org/2010/01/02/working-with-java-arrays</id>
-    <content type="html"><![CDATA[<p>One improvement that I’d like to see in Clojure is more examples in the doc strings (or maybe in a separate <code>:example</code> metadata item). Still, nothing to stop me building up a set of my own. So, here are some simple examples of working with Java arrays in Clojure… Given some sample data:</p>
-
-<p><code>clj
-(def my-list '(1 2 3 4 5))
-(def my-vector [1 2 3 4 5])
-(def my-map {:a "apple" :b "banana" :c "chopped liver"})
-</code></p>
-
-<p>To convert to Java arrays:</p>
-
-<p><code>clj
-(to-array my-list)
-#
-(to-array my-vector)
-#
-(to-array my-map)
-#
-</code></p>
-
-<p>Note that this always returns <code>Object[]</code> regardless of the contents of the collection. Note also that the map isn’t flattened (the <code>pp</code> function used here is in <code>clojure.contrib.pprint</code>):</p>
-
-<p><code>clj
-user=&gt; (pp)
-[[:a "apple"], [:b "banana"], [:c "chopped liver"]]
-</code></p>
-
-<p>If the array is 2-dimensional there is a corresponding function:</p>
-
-<p><code>clj
-user=&gt; (def my-vec-2d [[1 2 3] [4 5 6] [7 8 9]])
-#'user/my-vec-2d
-user=&gt; (to-array-2d my-vec-2d)
-#
-user=&gt; (pp)
-[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-nil
-</code></p>
-
-<p>If you need to use a specific type of array (e.g. to pass a <code>String[]</code> into a Java method) or need to use an array with more than 3 dimensions it’s a little trickier:</p>
-
-<p><code>clj
-user=&gt; (into-array my-list)
-#
-user=&gt; (pp)
-[1, 2, 3, 4, 5]
-nil
-user=&gt; (into-array my-vector)
-#
-user=&gt; (pp)
-[1, 2, 3, 4, 5]
-nil
-user=&gt; (into-array my-map)
-#
-user=&gt; (into-array (vals my-map))
-#
-user=&gt; (pp)
-["apple", "banana", "chopped liver"]
-nil
-</code></p>
-
-<p>There, that should serve as a handy reference for myself for when I’m feeling forgetful…</p>
 ]]></content>
   </entry>
   

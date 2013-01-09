@@ -9,8 +9,8 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="There are a number of cases in Java where I find myself wanting to use a
-variant of the factory method pattern. For example: To control the number of &hellip;">
+  <meta name="description" content="Now that the 1.6 release of RvSnoop is out of the door (OK, 1.6.1 ‘cause of a wart inthe original release), there are certain
+features that I’d like &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +95,93 @@ variant of the factory method pattern. For example: To control the number of &he
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/12/19/oh-such-a-good-infrastructure">Oh, Such a Good Infrastructure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-12-19T21:40:23+01:00" pubdate data-updated="true">Dec 19<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Now that <a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-1.6.1-bin.tgz">the 1.6 release</a> of <a href="http://rvsnoop.org/">RvSnoop</a> is out of the door (OK, 1.6.1 ‘cause of a wart inthe original release), there are certain
+features that I’d like to see added, and for the 2.0 release I want to
+have in place a foundation that will make it easier to add these. A full
+list of features can be found in the <a href="http://svn.sourceforge.net/viewvc/*checkout*/rvsn00p/trunk/rvsn00p/doc/plans.txt">plan file</a> in the <a href="http://sourceforge.net/svn/?group_id=63447">RvSnoop Subversion repository</a>, but some of the big ones that will impact
+the overall architecture of RvSnoop are:</p>
+
+<h3 id="pluggable-persistence">Pluggable Persistence</h3>
+
+<p>Mechanism I’m going to migrate the record ledger to being persistent,
+there are a couple of options here as to how this will be handled: flat
+files, a combination of flat files and <a href="http://lucene.apache.org/java/">Lucene</a> based indexes, or
+some kind of JDBC backed store.</p>
+
+<p>One option would be to make the
+persistence mechanism plug-able, this would also ease the use of an
+all-in-memory storage system, like the one that is currently used (which
+is useful when you just want to use RvSnoop as a graphical replacement
+for <code>tibrvlisten</code>).</p>
+
+<h3 id="able-to-run-headless">Able to Run Headless</h3>
+
+<p>I’d like to add the
+ability to run RvSnoop without the UI, this would be based on loading a
+pre-configured project. Combining this feature with a JDBC backed store
+this could be really useful for auditing and logging messages.</p>
+
+<h3 id="ems-support">EMS Support</h3>
+
+<p>I registered the <a href="http://emssnoop.org/">emssnoop.org</a> domain at the same time
+as <a href="http://rvsnoop.org/">rvsnoop.org</a>, and there has been a project on SourceForge for a
+while, even if it hasn’t had anything checked in to it yet! An open
+question is whether to try for generic JMS support or just work with EMS
+directly.</p>
+
+<h3 id="user-written-plug-ins">User Written Plug-ins</h3>
+
+<p>It would be nice to be able to
+cleanly extend RvSnoop if required, without going back and modifying the
+main code base.</p>
+
+<h3 id="so-what-about-20">So, What About 2.0?</h3>
+
+<p>All (well, most) of these
+features point to a need for an extensible plug-in system,
+<a href="http://www.eclipse.org/">Eclipse</a> has shown that a good way of architecting a desktop
+application (or any application, for that matter) is to build it
+entirely from plug-ins wrapped around a small core. So, the upshot of
+this is that I’m planning on migrating to a managed runtime, probably
+<a href="http://www.osgi.org/">OSGi</a>, for the 2.0 release. I’ll talk about this more in another
+post. In particular, what’s the cost/benefit ratio of using this type of
+runtime; and which runtimes are good?</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -628,47 +715,6 @@ but more are planned) and clean up whatever they reveal.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/10/04/another-java-logging-api">Another Java Logging API</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-04T17:29:23+02:00" pubdate data-updated="true">Oct 4<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Why the fuck does <a href="https://jlog.dev.java.net/">this</a> exist exactly? It seems to be like some
-twisted rite of passage that Java developers need to write their own
-logging API. I confess that I’ve even suffered from this although, in my
-defence, I kept <a href="http://rvsnoop.org/">mine</a> to a single class and plan to throw it away
-in the very near future.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/10/">&larr; Older</a>
@@ -686,6 +732,10 @@ in the very near future.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
       </li>
     
@@ -699,10 +749,6 @@ in the very near future.</p>
     
       <li class="post">
         <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
       </li>
     
   </ul>

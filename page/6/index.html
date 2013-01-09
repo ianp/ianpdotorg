@@ -9,7 +9,8 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="GameSetWatch is reporting about a new ‘motion-based erotic game’ for the Nokia N95: Players have to move and tilt their phone along with the game’s &hellip;">
+  <meta name="description" content="This looks like a mistake: Rip: A Next Generation Ruby Packaging System. One of the things that Ruby does really well is library
+packaging, RubyGems &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +95,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/06/14/ripping-open-ruby-packages">Ripping Open Ruby Packages</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-14T02:30:06+02:00" pubdate data-updated="true">Jun 14<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This looks like a mistake: <a href="http://www.rubyinside.com/rip-ruby-packaging-system-1837.html">Rip: A Next Generation Ruby Packaging System</a>. One of the things that Ruby does really well is library
+packaging, <a href="http://rubygems.org/">RubyGems</a> may have some flaws but it basically works
+really well. Contrast this with the situation in Python where there are
+a number of different packaging systems (see, e.g. <a href="http://blog.ianbicking.org/packaging-python.html">this discussion</a>
+by Ian Bicking), and it’s just a mess—this stands out all the more as
+Python normally follows a ‘one way to do it’ approach. Hopefully this
+attempt to fork the Ruby packaging world will be dead on arrival.</p>
+
+<p>Tip o’
+the hat to <a href="http://tomayko.com/">Ryan Tomayko</a> for pointing this out.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -823,106 +870,6 @@ Your mileage may vary.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/27/embedding-clojure-in-an-existing-application">Embedding Clojure in an Existing Application</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-27T10:57:37+02:00" pubdate data-updated="true">Apr 27<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve been taking a look at <a href="http://www.clojure.org/">Clojure</a> lately, as a JVM friendly
-flavour of Lisp I’ve got to say it looks pretty interesting. One problem
-that I’ve had though is that all of the documentation out there (of
-which there’s very little, to be honest) seems to assume that you’ll be
-writing/running a pure Clojure program as you main application. There’s
-plenty of information about calling Java code from Clojure programs, and
-<em>some</em> information about extending Java classes and interfaces with
-Clojure code, but nothing about getting the two talking together at
-runtime. So here’s how it’s done.</p>
-
-<p>First off you need to set up the
-symbols and namespaces that you are going to need to start up a clojure
-environment.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Symbol</span> <span class="n">main</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;main&quot;</span><span class="o">);</span>
-</span><span class="line"><span class="n">Symbol</span> <span class="n">clojureMain</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;clojure.main&quot;</span><span class="o">);</span>
-</span><span class="line"><span class="n">Symbol</span> <span class="n">user</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;user&quot;</span><span class="o">);</span>
-</span><span class="line"><span class="n">Symbol</span> <span class="n">require</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;require&quot;</span><span class="o">);</span>
-</span><span class="line"><span class="n">Namespace</span> <span class="n">userNS</span> <span class="o">=</span> <span class="n">Namespace</span><span class="o">.</span><span class="na">findOrCreate</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-</span><span class="line"><span class="n">Namespace</span> <span class="n">clojureMainNS</span> <span class="o">=</span> <span class="n">Namespace</span><span class="o">.</span><span class="na">findOrCreate</span><span class="o">(</span><span class="n">clojureMain</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Once you have these you can <em>require</em> the clojure main namespace, this
-is the same one that is used to run scripts or start a REPL from the
-comand line.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">RT</span><span class="o">.</span><span class="na">CLOJURE_NS</span><span class="o">,</span> <span class="n">require</span><span class="o">).</span><span class="na">invoke</span><span class="o">(</span><span class="n">clojureMain</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then, and this is the bit that I had trouble working out, you need to
-bind your application’s domain model (or at least those bits of it that
-you want to expose) into the <em>user</em> namespace in Clojure.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">global</span> <span class="o">:</span> <span class="n">globals</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">String</span> <span class="n">key</span> <span class="o">=</span> <span class="n">global</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
-</span><span class="line">    <span class="n">Object</span> <span class="n">value</span> <span class="o">=</span> <span class="n">global</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
-</span><span class="line">    <span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">userNS</span><span class="o">,</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">key</span><span class="o">),</span> <span class="n">value</span><span class="o">);</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Finally you’re ready to grab the <code>main</code> method and run it.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">clojureMainNS</span><span class="o">,</span> <span class="n">main</span><span class="o">).</span><span class="na">applyTo</span><span class="o">(</span><span class="n">RT</span><span class="o">.</span><span class="na">seq</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]));</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The emtpy string array here is emulating an emty sargument list at the
-command line. Some things to note here: you need to <em>intern</em> vars
-before you can use them, even for core library features like
-<em>require</em>, this surprised me at first but when you remember that most
-Lisps are built around a very small core of special forms with
-everything else defined in Lisp, it makes some sense.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/7/">&larr; Older</a>
@@ -940,6 +887,10 @@ everything else defined in Lisp, it makes some sense.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
       </li>
     
@@ -953,10 +904,6 @@ everything else defined in Lisp, it makes some sense.</p>
     
       <li class="post">
         <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
       </li>
     
   </ul>

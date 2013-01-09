@@ -9,7 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="I’ve been following Tim Bray’s excellent Concur.next article series covering approaches to concurrency in various languages, and currently (no pun &hellip;">
+  <meta name="description" content="I’ve been working on adding paredit.el like structural editing to
+the next version of the La Clojure plugin for Intellij IDEA.
+IDEA already does most &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +96,56 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/12/25/paredit-el-comes-to-intellij">Paredit.el Comes to IntelliJ</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-25T20:21:47+01:00" pubdate data-updated="true">Dec 25<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve been working on adding <a href="http://mumble.net/~campbell/emacs/paredit.el">paredit.el</a> like structural editing to
+the next version of the <a href="http://plugins.intellij.net/plugin/?id=4050">La Clojure</a> plugin for <a href="http://www.jetbrains.com/idea/index.html">Intellij IDEA</a>.
+IDEA already does most of the paren matching stuff (automatically
+inserting a closing paren when you type an opening paren and so on). So
+far I’ve got the basic barf and slurp commands working, and splicing, as
+you can see in the screenshot below:</p>
+
+<p><img src="/images/2009/12/idea-slurp-and-barf.png" /></p>
+
+<p>The next step is
+probably to make IDEA’s expand selection code be a little smarter in the
+face of s-expressions. In related news: I found a good <a href="http://www.slideshare.net/mudphone/paredit-preso">introduction to paredit.el</a> on <a href="http://www.slideshare.net/">SlideShare</a> which may be of interest. I’ll try
+to get the guys at IntelliJ to push out a new version of the plugin
+after the 9.0.1 release is out (it’s in beta now).</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -731,52 +783,6 @@ http://bishophill.squarespace.com/blog/2009/6/14/need-a-new-policy-idea.html</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/14/ripping-open-ruby-packages">Ripping Open Ruby Packages</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-14T02:30:06+02:00" pubdate data-updated="true">Jun 14<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This looks like a mistake: <a href="http://www.rubyinside.com/rip-ruby-packaging-system-1837.html">Rip: A Next Generation Ruby Packaging System</a>. One of the things that Ruby does really well is library
-packaging, <a href="http://rubygems.org/">RubyGems</a> may have some flaws but it basically works
-really well. Contrast this with the situation in Python where there are
-a number of different packaging systems (see, e.g. <a href="http://blog.ianbicking.org/packaging-python.html">this discussion</a>
-by Ian Bicking), and it’s just a mess—this stands out all the more as
-Python normally follows a ‘one way to do it’ approach. Hopefully this
-attempt to fork the Ruby packaging world will be dead on arrival.</p>
-
-<p>Tip o’
-the hat to <a href="http://tomayko.com/">Ryan Tomayko</a> for pointing this out.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/6/">&larr; Older</a>
@@ -794,6 +800,10 @@ the hat to <a href="http://tomayko.com/">Ryan Tomayko</a> for pointing this out.
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
       </li>
     
@@ -807,10 +817,6 @@ the hat to <a href="http://tomayko.com/">Ryan Tomayko</a> for pointing this out.
     
       <li class="post">
         <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/30/vlc-versions">VLC Versions</a>
       </li>
     
   </ul>

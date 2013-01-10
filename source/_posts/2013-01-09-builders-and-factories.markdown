@@ -181,7 +181,7 @@ We can then have different implementations of this, maybe one that loads data fr
 
 **Aside:** if you're familiar with *domain-driven design* you'll be forgiven for noticing a lot of overlap between the factory pattern and DDD's concept of *repositories,* they're very similar concepts. One difference being that factories are often able to create new objects *ex nihilo* while repositories usually retreive objects from external sources. Compare the `findById()` method with the `newInstance()` methods employed by many of the factory classes in the JDK.
 
-Hopefully you can see from tis post that the two patterns have different, if complementary, aims.
+Hopefully you can see from this post that the two patterns have different---if complementary---aims.
 
 A complete example project with all of this code, as well as test cases and a CSV based implementation the the factory are available [on Github][GH].
 

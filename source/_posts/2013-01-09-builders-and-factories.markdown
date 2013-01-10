@@ -89,14 +89,14 @@ MyPojo p = new MyPojoImpl(123, true false, false 45.83, "wtf???");
 
 Clear as mud, right?
 
-Other languages don't have this problem, in Objective-C we can write
+Other languages don't have this problem, for example in Objective-C we would write something like:
 
 ```objc
 id obj = [EGEmployee employeeWithId:@"1" name:@"Fred Foobar"
         title:@"Apple Engineer" salary:200000 hiredAt:@"2001-03-24"];
 ```
 
-which is much clearer. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here's a typical implementation and an example of calling it:
+which is much clearer. Ruby, Python, and other languages all have similar constructs. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here's a typical implementation and an example of calling it:
 
 ```java
 public class Builder {

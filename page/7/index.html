@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="I’ve been taking a look at Clojure lately, as a JVM friendly
-flavour of Lisp I’ve got to say it looks pretty interesting. One problem
-that I’ve had &hellip;">
+  <meta name="description" content="It’s easy using pdftops, part of the Poppler suite of programs. First make sure it’s installed, or install it (using Homebrew on OS X): 1
+2
+$ brew &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,7 +102,7 @@ that I’ve had &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/04/27/embedding-clojure-in-an-existing-application">Embedding Clojure in an Existing Application</a></h1>
+      <h1 class="entry-title"><a href="/2011/04/19/how-to-convert-pdfs-to-postscript">How to Convert PDFs to Postscript</a></h1>
     
     
       <p class="meta">
@@ -118,77 +118,35 @@ that I’ve had &hellip;">
   
 
 
-<time datetime="2009-04-27T10:57:37+02:00" pubdate data-updated="true">Apr 27<span>th</span>, 2009</time>
+<time datetime="2011-04-19T09:43:14+02:00" pubdate data-updated="true">Apr 19<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve been taking a look at <a href="http://www.clojure.org/">Clojure</a> lately, as a JVM friendly
-flavour of Lisp I’ve got to say it looks pretty interesting. One problem
-that I’ve had though is that all of the documentation out there (of
-which there’s very little, to be honest) seems to assume that you’ll be
-writing/running a pure Clojure program as you main application. There’s
-plenty of information about calling Java code from Clojure programs, and
-<em>some</em> information about extending Java classes and interfaces with
-Clojure code, but nothing about getting the two talking together at
-runtime. So here’s how it’s done.</p>
+  <div class="entry-content"><p>It’s easy using <em>pdftops</em>, part of the <a href="http://poppler.freedesktop.org/">Poppler</a> suite of programs. First make sure it’s installed, or install it (using <a href="http://mxcl.github.com/homebrew/">Homebrew</a> on OS X):</p>
 
-<p>First off you need to set up the
-symbols and namespaces that you are going to need to start up a clojure
-environment.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="console"><span class="line"><span class="gp">$</span> brew update
+</span><span class="line"><span class="gp">$</span> brew install poppler
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then the command <code>pdftops infile.pdf outfile.ps</code> can be scripted as per
+usual, something like this:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Symbol</span> <span class="n">main</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;main&quot;</span><span class="o">);</span>
-</span><span class="line"><span class="n">Symbol</span> <span class="n">clojureMain</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;clojure.main&quot;</span><span class="o">);</span>
-</span><span class="line"><span class="n">Symbol</span> <span class="n">user</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;user&quot;</span><span class="o">);</span>
-</span><span class="line"><span class="n">Symbol</span> <span class="n">require</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;require&quot;</span><span class="o">);</span>
-</span><span class="line"><span class="n">Namespace</span> <span class="n">userNS</span> <span class="o">=</span> <span class="n">Namespace</span><span class="o">.</span><span class="na">findOrCreate</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
-</span><span class="line"><span class="n">Namespace</span> <span class="n">clojureMainNS</span> <span class="o">=</span> <span class="n">Namespace</span><span class="o">.</span><span class="na">findOrCreate</span><span class="o">(</span><span class="n">clojureMain</span><span class="o">);</span>
+</pre></td><td class="code"><pre><code class="console"><span class="line"><span class="go">for page in pages/*.pdf</span>
+</span><span class="line"><span class="go">do</span>
+</span><span class="line"><span class="go">  pdftops $page postscript/`basename -s .pdf $page`.ps</span>
+</span><span class="line"><span class="go">done</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Once you have these you can <em>require</em> the clojure main namespace, this
-is the same one that is used to run scripts or start a REPL from the
-comand line.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">RT</span><span class="o">.</span><span class="na">CLOJURE_NS</span><span class="o">,</span> <span class="n">require</span><span class="o">).</span><span class="na">invoke</span><span class="o">(</span><span class="n">clojureMain</span><span class="o">);</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Then, and this is the bit that I had trouble working out, you need to
-bind your application’s domain model (or at least those bits of it that
-you want to expose) into the <em>user</em> namespace in Clojure.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">global</span> <span class="o">:</span> <span class="n">globals</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">String</span> <span class="n">key</span> <span class="o">=</span> <span class="n">global</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
-</span><span class="line">    <span class="n">Object</span> <span class="n">value</span> <span class="o">=</span> <span class="n">global</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
-</span><span class="line">    <span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">userNS</span><span class="o">,</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">key</span><span class="o">),</span> <span class="n">value</span><span class="o">);</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Finally you’re ready to grab the <code>main</code> method and run it.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">clojureMainNS</span><span class="o">,</span> <span class="n">main</span><span class="o">).</span><span class="na">applyTo</span><span class="o">(</span><span class="n">RT</span><span class="o">.</span><span class="na">seq</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]));</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The emtpy string array here is emulating an emty sargument list at the
-command line. Some things to note here: you need to <em>intern</em> vars
-before you can use them, even for core library features like
-<em>require</em>, this surprised me at first but when you remember that most
-Lisps are built around a very small core of special forms with
-everything else defined in Lisp, it makes some sense.</p>
+<p>Recorded in the interest of helping Google organise my brain.</p>
 
 </div>
   
@@ -202,7 +160,7 @@ everything else defined in Lisp, it makes some sense.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/04/23/guice-development-stages">Guice Development Stages</a></h1>
+      <h1 class="entry-title"><a href="/2010/03/25/quote-of-the-day-2">Quote of the Day</a></h1>
     
     
       <p class="meta">
@@ -218,47 +176,14 @@ everything else defined in Lisp, it makes some sense.</p>
   
 
 
-<time datetime="2009-04-23T17:51:24+02:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2009</time>
+<time datetime="2010-03-25T09:41:48+01:00" pubdate data-updated="true">Mar 25<span>th</span>, 2010</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://google-guice.googlecode.com/">Guice</a> has a concept called <em>develpment stages</em> which affect how
-the library works. Guice is written with server-side applications in
-mind (it is from Google, after all) so the behaviour for production mode
-is to do a bunch of work up front so that it can catch errors as soon as
-possible.</p>
-
-<p>The development mode defers work (i.e. object creation) until
-the last moment; Here’s how the Javadoc notes describe them:</p>
-
-<ul>
-  <li>
-    <p><strong>Development</strong>
-we want fast startup times at the expense of runtime performance and some up front error checking.</p>
-  </li>
-  <li>
-    <p><strong>Production</strong>
-we want to catch errors as early as possible and take performance hits up front.</p>
-  </li>
-  <li>
-    <p><strong>Tool</strong>
-we’re running in a tool (an IDE plugin for example).</p>
-  </li>
-</ul>
-
-<p>Ignoring tool mode, this is exactly the opposite of the behaviour that
-you want to see for client-side development. For client applications you
-want to have an much error checking as possible during development but
-for production use (i.e. use by a real user) you want to go for faster
-start-up times.</p>
-
-<p>Note that for production use it is also advantageous to
-defer error checking until later as well; after all, there is no point
-in refusing to start an app because feature ‘foo’ isn’t working, if the
-user doesn’t use or care about ‘foo’!</p>
+  <div class="entry-content"><blockquote><p>Q: What’s the difference between Ant and Maven? <br /><br />A: The creator of Ant has apologised.</p><footer><strong>James Duncan Davidson</strong> <cite><a href="http://journal.duncandavidson.com/post/470882637/q-whats-the-difference-between-ant-and-maven-a">journal.duncandavidson.com/post/&hellip;</a></cite></footer></blockquote>
 
 </div>
   
@@ -272,7 +197,7 @@ user doesn’t use or care about ‘foo’!</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/04/21/understanding-event-propagation-in-ardor3d">Understanding Event Propagation in Ardor3D</a></h1>
+      <h1 class="entry-title"><a href="/2010/03/15/building-clojure-with-maven">Building Clojure With Maven</a></h1>
     
     
       <p class="meta">
@@ -288,47 +213,24 @@ user doesn’t use or care about ‘foo’!</p>
   
 
 
-<time datetime="2009-04-21T14:07:50+02:00" pubdate data-updated="true">Apr 21<span>st</span>, 2009</time>
+<time datetime="2010-03-15T18:48:51+01:00" pubdate data-updated="true">Mar 15<span>th</span>, 2010</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.ardor3d.com/">Ardor3D</a> adds a mechanism for subscribing to events in the scene
-graph; things like when a node is added or removed, or has one of it’s
-render states or it’s bounding volume altered. The way notifications are
-handled is a little confusing at first, as the listener interface
-(<code>DirtyEventListener</code>) has a method which takes a <code>Spatial</code> as it’s
-first argument; hoever, the spatial is the node in the scene graph on
-which the event occurred, it is <em>not</em> the node that the event is fired
-from.</p>
-
-<p>By way of example: if there are 2 scene nodes, a <code>Spatial</code> named
-‘child’ and a <code>Node</code> named ‘parent’, and the child is attached to the
-parent via a call to <code>Node#attachChild(Spatial)</code> then the following
-events will be fired (assuming that the child was not already attached
-to another node):</p>
+  <div class="entry-content"><p>Just a quick reminder on the steps I needed to take to build <a href="http://clojure.org/">Clojure</a> and install it in my local repository:</p>
 
 <ol>
-  <li>from the child: <code>spatialDirty(child, Attached)</code></li>
-  <li>
-    <p>from the parent: <code>spatialDirty(child, Attached)</code>
-if the parent was attached to another node (for example, ‘grandparent’) then this pattern would continue, like so:</p>
-  </li>
-  <li>from the grandparent: spatialDirty(child, Attached) also, if at any point in this one of the <code>spatialDirty</code> calls returns true, then the event is assumed to have been handled and propagation will stop at that point.</li>
+  <li>download the <a href="http://maven.apache.org/ant-tasks/download.html">Maven Ant tasks</a>, version 2.1.0 at the time of writing;</li>
+  <li>move them to <code>$ANT_HOME/lib</code> (this is <code>/usr/share/ant/lib</code> on Mac OS X);</li>
+  <li><code>cd</code> to my Clojure download folder, run <code>git pull</code> if needed;</li>
+  <li>run <code>ant -Dsnapshot.repo.dir=~/.m2/repository clean nightly-build</code>, this will perform a clean build and install it into the supplied repo; this can be anywhere, the default though is <code>/var/www/maven-snapshot-repository</code> which is probably no good;</li>
+  <li>to also install <code>clojure-contrib</code> just change to it’s download directory and run <code>mvn install</code>.</li>
 </ol>
 
-<p>What this means in practice is that
-if you need to know which node an event is being fired from you cannot
-reuse listeners on multiple nodes. For detaching nodes the situation is
-a little different: the event propagation starts at the parent node,
-with the detached child passed as as the method argument.</p>
-
-<p>Be aware that
-the parent will already have been set to <code>null</code> when the event is
-fired though, so if you need to be able to do something with the parent
-you will need to add distinct listeners to each node of interest.</p>
+<p>Is simples!</p>
 
 </div>
   
@@ -342,7 +244,7 @@ you will need to add distinct listeners to each node of interest.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/04/10/cool-glass">Cool Glass</a></h1>
+      <h1 class="entry-title"><a href="/2010/01/12/vote-now">Vote Now!</a></h1>
     
     
       <p class="meta">
@@ -358,15 +260,15 @@ you will need to add distinct listeners to each node of interest.</p>
   
 
 
-<time datetime="2009-04-10T12:07:27+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2009</time>
+<time datetime="2010-01-12T19:00:22+01:00" pubdate data-updated="true">Jan 12<span>th</span>, 2010</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>And not the camera kind for a change… but [this][01] is pretty neat.
-[01]: http://sirtified.com/products/hopsidedown/</p>
+  <div class="entry-content"><p>Fed up with all of the pre-election coverage in the (UK) media right now? Instead of listening to call-me-Dave drone on and on, or hearing how the one-eyed Gobblin’ King has once again saved the world, go cast your <a href="http://www.barbie.com/vote/">vote</a> for Computer Engineer Barbie!</p>
+
 </div>
   
   
@@ -379,7 +281,7 @@ you will need to add distinct listeners to each node of interest.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/01/17/object-pooling-performance">Object Pooling Performance</a></h1>
+      <h1 class="entry-title"><a href="/2010/01/08/sql-just-say-no">SQL: Just Say No!</a></h1>
     
     
       <p class="meta">
@@ -395,355 +297,17 @@ you will need to add distinct listeners to each node of interest.</p>
   
 
 
-<time datetime="2009-01-17T16:21:13+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2009</time>
+<time datetime="2010-01-08T16:29:30+01:00" pubdate data-updated="true">Jan 8<span>th</span>, 2010</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>This is an attempt to compare the performance of various object reuse
-strategies for <a href="http://www.jmonkeyengine.com/">JMonkeyEngine</a> (and, indirectly, <a href="http://www.ardor3d.com/">Ardor3D</a>). See
-<a href="http://www.jmonkeyengine.com/jmeforum/index.php?topic=10146.0">this JME forum topic</a> for background info. Also, it’s worth bearing
-in mind that the main driver for this is to reduce GC pauses, not to
-improve throughput (this is mentioned in the forum topic).</p>
+  <div class="entry-content"><p>Just in time for the weekend, the SF <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> community have put up a <a href="http://blog.oskarsson.nu/2009/06/nosql-debrief.html">collection of talks and slides</a> from their recent get together. I’ll have more to say after I’ve had a chance to look these over…</p>
 
-<p>This is
-timings from my initial object pooling implementation using 1 thread
-(all timings throughout this article are in milliseconds):</p>
+<p><em>Update:</em> not actually a new set of talks, these have been online for about 6 months now, but it’s the first time that I’ve seen them…</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">1793, 2109, 1485, 1418, 1414, 1592, 1675, 2206, 1768, 1685</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>An interesting
-(although unrelated to the topic at hand) thing to note here is that
-it’s pretty easy to spot when hotspot kicked in, although the jump in
-timings between runs 4 and 5 bears investigating further and the slow
-run (run 7) is certainly a worry. Run 7 seems to be consistently slow
-and turning on <code>-verbose:gc</code> doesn’t reveal anything here. This is
-timings from my object pooling implementation using 2 threads, note here
-that this is each thread doing a fixed chunk of work, not a fixed amount
-of work shared between threads (i.e. 2x number of threads = 2x amount of
-work):</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">2234, 2965, 1796, 1830, 2029, 2145, 2105, 2242, 2214, 2247</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>So the timings are higher although not twice as high as might be expected,
-this is probably due to that fact that my laptop has a 2-core CPU. Now
-let’s look at the timings from the same with 10 threads:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">8869, 9814, 9203, 8966, 9182, 8973, 9176, 9166, 9358, 9182</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>Yep, about 5x the time as
-the 2 thread runs. Now let’s see how the existing implementation
-compares to these. OK, so now we have an idea how the thread local and
-pooling based implementation performs, let’s have a look at the existing
-implementation to give us a baseline to compare to. This is timings from
-the existing implementation using 1 thread:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">1501, 1469, 1379, 1374, 1471, 1553, 1553, 1589, 1652, 1547</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Well, that’s quite a bit faster for a
-single thread, although not an order magnitude type difference, and it
-didn’t use any locking as it’s running from a single thread, a more
-realistic implementation would need to have the locks in place in case
-future code tried to use multiple threads. Let’s have a look at 2
-threads now:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">3038, 2906, 2797, 3140, 3120, 3124, 3143, 3179, 3340, 3352</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Oops! This is about what we’d expect to see, a doubling of the
-amount of work doubles the amount of time needed (as the quaternion
-class is now a shared resource). And 10 threads:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">15538, 16145</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>OK, I got bored of waiting after 2 runs! But it’s clear to see that it’s much
-slower. Finally, based on suggestions from vear and also looking at the
-code used in the <a href="http://www.javolution.com/">Javolution</a> library (a set of real-time Java
-classes), I decided to try a version that reduced the number of thread
-local look-ups needed, this comes at the cost of not providing a single
-reusable <code>ObjectPool</code> class, but as that class is pretty trivial
-anyway it’s no great loss leaving it out of the framework.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class=""><span class="line"> 1 thread : 1189, 1149, 1096, 1229, 1261, 1506, 1352, 1415, 1295, 1424
-</span><span class="line"> 2 threads: 1644, 1582, 1799, 1640, 1584, 1587, 1766, 1658, 1624, 1806
-</span><span class="line">10 threads: 6853, 7037, 7469, 7549, 7438, 7851, 7748, 7769, 7661, 7703</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Wow! it’s pretty clear that the pooled approach is much
-faster and that the cost of performing the thread local look-up is
-fairly significant. Interestingly I also tried this using raw arrays
-instead of <code>ArrayList</code>s and it was much slower, I can only surmise
-that because <code>ArrayList</code> is so heavily used throughout Java it gets
-insanely optimised by hotspot. As a side note, here’s my Java
-environment:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line">~/tmp/perftests<span class="nv">$ </span>uname -a
-</span><span class="line">Darwin Kernel Version 9.6.0: Mon Nov 24 17:37:00 PST 2008;
-</span><span class="line">root:xnu-1228.9.59~1/RELEASE_I386
-</span><span class="line">~/tmp/perftests<span class="nv">$ </span>java -version
-</span><span class="line">java version <span class="s2">&quot;1.6.0_07&quot;</span>
-</span><span class="line">Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.6.0_07-b06-153<span class="o">)</span>
-</span><span class="line">Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 1.6.0_07-b06-57, mixed mode<span class="o">)</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And the code used for these tests is available <a href="http://ianp.org/2009/01/jme-thread-local-performance.tgz">here</a>. I also tried
-this using 1.5 with both the server and client VMs, the 1.5 server VM is
-noticeably slower and the 1.5 client VM is frankly a dog, it was 5-6
-times slower than the 1.6 times given here.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/12/19/two-articles-about-online-games">Two Articles About Online Games</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-12-19T14:25:40+01:00" pubdate data-updated="true">Dec 19<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The <a href="http://www.infoq.com/presentations/Second-Life-Ian-Wilkes">first</a>, over at <a href="http://www.infoq.com/">InfoQ</a>, is a talk given by one of the
-<a href="http://lindenlab.com/">Linden Labs</a> guys about the architecture of <a href="http://secondlife.com/">Second Life</a>. The
-<a href="http://arstechnica.com/news.ars/post/20081219-online-buzz-key-to-creating-long-term-game-revenue.html">other</a> is at <a href="http://arstechnica.com/">Ars Technica</a> and looks at some of the numbers
-surrounding the business of gaming.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/07/31/infoq-presentations">InfoQ Presentations</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-07-31T08:19:56+02:00" pubdate data-updated="true">Jul 31<span>st</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.infoq.com/">InfoQ</a> are one of my favourite tech information sites anyway and the
-signal to noise ratio there is normally pretty high, they’ve got 3 great
-new presentations out today:</p>
-
-<ul>
-  <li>
-    <p>in <a href="http://www.infoq.com/news/2008/07/Developing-Expertise-Dave-Thomas">Herding Racehorses, Racing Sheep</a>, Dave Thomas talks about the problems of treating developers
-as interchangeable cogs (or <em>fungible resources</em>, as the project
-management crowd would say). Some great ideas for bringing new team
-members up to speed quickly (about 18 minutes in);</p>
-  </li>
-  <li>
-    <p>in <a href="http://www.infoq.com/news/2008/07/presentation-botch-scalability">The Top 10 Ways to Botch Enterprise Java Scalability and Reliability</a>, Cameron
-Purdy of Oracle talks about scaling Java. Obviously it’s not an
-impartial view but his points are good ones and it’s an interesting
-talk;</p>
-  </li>
-  <li>
-    <p>in <a href="http://www.infoq.com/articles/ddd-evolving-architecture">Domain-Driven Design in an Evolving Architecture</a>, Mat
-Wall and Nik Silver talk about their experiences applying DDD at the
-<a href="http://guardian.co.uk/">Guardian’s web site</a>, it covers why they selected DDD as a method as
-well as the benefits that they feel it brought. I’ve heard them talk
-about this before, on <a href="http://se-radio.net/">SE Radio</a>, and to be honest, it worked better
-in that format I thought - the written version here needs to be edited
-down to about half it’s current length;</p>
-  </li>
-  <li>
-    <p>finally, <a href="http://www.infoq.com/news/2008/07/Architecture-Reviews-Brock">Rebecca Wirfs-Brock talks about</a> the benefits of, and problems of conducting,
-architectural reviews. I’ve listened to some of this before as Rebecca
-did an <a href="http://www.se-radio.net/podcast/2008-04/episode-93-lessons-learned-architecture-reviews-rebecca-wirfsbrock">interview</a> with <a href="http://se-radio.net/">SE Radio</a> a while back, but this is good
-for people who haven’t heard her talk before.</p>
-  </li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/07/30/turning-off-apple-data-detectors-in-mail">Turning Off Apple Data Detectors in Mail</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-07-30T03:48:51+02:00" pubdate data-updated="true">Jul 30<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Apparently <a href="http://mjtsai.com/blog/2008/07/29/turning-off-apple-data-detectors-in-mail/">Michael Tsai doesn’t like</a> the data detectors feature in
-Leopard. Personally I <em>love</em> it. For those of you who don’t know, data
-detectors is a feature that adds smart links to chunks of text based on
-what it thinks the text describes. For example, one feature that I use
-all the time in Mail is the detector that turns any date or time into a
-link allowing you to add it to iCal as an event.</p>
-
-<p>The really neat thing
-about it is how it can scan the entire post to come up with information
-to fill in about the event – even looking at different regions of text
-scattered throughout a mail. It’s pretty neat and is exactly the type of
-thing that <a href="http://wilshipley.com/">Wil Shipley</a> is talking about <a href="http://www.viddler.com/explore/rentzsch/videos/4/">here</a> when he mentions
-adding features to your apps that constantly surprise users in a good
-way (I’ve seen designers from BMW talk about the same thing in the
-context of styling their car interiors).</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/05/25/sourceforge-annoyances">Sourceforge Annoyances</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-05-25T20:28:23+02:00" pubdate data-updated="true">May 25<span>th</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.sourceforge.net/">That site</a> gets worse and worse. I can live with the fact that
-corporate IT departments can behave like petit-Hilters with their
-ridiculous password policies, but now SF has started to do the same. For
-fuck’s sake, just let me pick a password and keep it, it’s not like the
-world is going to end if somebody gets my SF login details.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2008/05/21/layout">Layout</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-05-21T19:09:02+02:00" pubdate data-updated="true">May 21<span>st</span>, 2008</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Hmmm, I need to something about the site layout if I’m going to include
-images like that.</p>
 </div>
   
   
@@ -768,6 +332,10 @@ images like that.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
       </li>
     
@@ -781,10 +349,6 @@ images like that.</p>
     
       <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
       </li>
     
   </ul>

@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Q: What’s the difference between Ant and Maven? A: The creator of Ant has apologised.James Duncan Davidson journal.duncandavidson.com/post/&hellip; ">
+  <meta name="description" content="…sitting in a tree, K-I-S-S-I-N-G… So, all of the cool kids have been talking about Laurent Sansonetti’s next project: RubyMotion, a port of MacRuby &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,7 +100,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2010/03/25/quote-of-the-day-2">Quote of the Day</a></h1>
+      <h1 class="entry-title"><a href="/2012/05/07/rubymotion-and-interface-builder">RubyMotion and Interface Builder…</a></h1>
     
     
       <p class="meta">
@@ -116,245 +116,72 @@
   
 
 
-<time datetime="2010-03-25T09:41:48+01:00" pubdate data-updated="true">Mar 25<span>th</span>, 2010</time>
+<time datetime="2012-05-07T19:24:00+02:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><blockquote><p>Q: What’s the difference between Ant and Maven? <br /><br />A: The creator of Ant has apologised.</p><footer><strong>James Duncan Davidson</strong> <cite><a href="http://journal.duncandavidson.com/post/470882637/q-whats-the-difference-between-ant-and-maven-a">journal.duncandavidson.com/post/&hellip;</a></cite></footer></blockquote>
+  <div class="entry-content"><p>…sitting in a tree, K-I-S-S-I-N-G…</p>
 
-</div>
-  
-  
+<p>So, all of the cool kids have been talking about <a href="http://chopine.be/">Laurent Sansonetti</a>’s next project: <a href="http://www.rubymotion.com/">RubyMotion</a>, a port of MacRuby targeted at iOS. On the whole I’m pretty impressed with what you can already do with it. One of the issues that people having been mentioning though, is that you lose the ability to use Interface Builder with it, but this isn’t actually true!</p>
 
+<p>Here I’m going to show you how to work with Interface Builder, I’ll base the project off the one used in the Pragmatic Studio <a href="http://pragmaticstudio.com/screencasts/rubymotion">screencast</a> (the icon and background images come from there as well, by the way).</p>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/03/15/building-clojure-with-maven">Building Clojure With Maven</a></h1>
-    
-    
-      <p class="meta">
-        
+<p><strong>Update:</strong> the images don’t dome from there any more! The images used in the screencast are from iStockPhoto, so I’ve replaced the background image with a different one. Needless to say this doesn;t affect any of the code.</p>
 
+<p>All of the code for this project can be found on <a href="https://github.com/ianp/MagicBallDemo">GitHub</a>. </p>
 
+<h2 id="setting-up-a-project">Setting up a Project</h2>
 
+<p>Start off as normal: <code>motion create MagicBallDemo</code>. In the project folder create a new subfolder called <em>interfaces</em>, this is where all of the <code>.xib</code> files will be saved.</p>
 
-
-
-
-
-  
-
-
-<time datetime="2010-03-15T18:48:51+01:00" pubdate data-updated="true">Mar 15<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just a quick reminder on the steps I needed to take to build <a href="http://clojure.org/">Clojure</a> and install it in my local repository:</p>
-
-<ol>
-  <li>download the <a href="http://maven.apache.org/ant-tasks/download.html">Maven Ant tasks</a>, version 2.1.0 at the time of writing;</li>
-  <li>move them to <code>$ANT_HOME/lib</code> (this is <code>/usr/share/ant/lib</code> on Mac OS X);</li>
-  <li><code>cd</code> to my Clojure download folder, run <code>git pull</code> if needed;</li>
-  <li>run <code>ant -Dsnapshot.repo.dir=~/.m2/repository clean nightly-build</code>, this will perform a clean build and install it into the supplied repo; this can be anywhere, the default though is <code>/var/www/maven-snapshot-repository</code> which is probably no good;</li>
-  <li>to also install <code>clojure-contrib</code> just change to it’s download directory and run <code>mvn install</code>.</li>
-</ol>
-
-<p>Is simples!</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/01/12/vote-now">Vote Now!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-12T19:00:22+01:00" pubdate data-updated="true">Jan 12<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Fed up with all of the pre-election coverage in the (UK) media right now? Instead of listening to call-me-Dave drone on and on, or hearing how the one-eyed Gobblin’ King has once again saved the world, go cast your <a href="http://www.barbie.com/vote/">vote</a> for Computer Engineer Barbie!</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/01/08/sql-just-say-no">SQL: Just Say No!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-08T16:29:30+01:00" pubdate data-updated="true">Jan 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Just in time for the weekend, the SF <a href="http://en.wikipedia.org/wiki/NoSQL">NoSQL</a> community have put up a <a href="http://blog.oskarsson.nu/2009/06/nosql-debrief.html">collection of talks and slides</a> from their recent get together. I’ll have more to say after I’ve had a chance to look these over…</p>
-
-<p><em>Update:</em> not actually a new set of talks, these have been online for about 6 months now, but it’s the first time that I’ve seen them…</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/01/07/prevalent-synchronicity">Prevalent Synchronicity</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-07T13:23:33+01:00" pubdate data-updated="true">Jan 7<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Maybe it’s just an idea whose time has come, but in the past few days there’ve been 2 prevalent database systems announced for <a href="http://clojure.org/">Clojure</a>: <a href="http://fleetdb.org/">FleetDB</a> and <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Persister</a>.</p>
-
-<h4 id="prevalent-databases">Prevalent Databases</h4>
-
-<p>The idea behind prevalent databases has been around for a while being, if not ‘popularised’ exactly, at least pushed by the guys behind <a href="http://www.prevayler.org/">Prevayler</a>. Here’s how they describe them:</p>
-
-<blockquote>
-  <p>Prevayler is an open source object persistence library for Java. It is an implementation of the Prevalent System design pattern, in which business objects are kept live in memory and transactions are journaled for system recovery.</p>
-</blockquote>
-
-<h4 id="fleet-db">Fleet DB</h4>
-
-<p>While <a href="http://twitter.com/mmcgrana">Mark McGranaghan</a>’s Fleet DB doesn’t use the term prevalent database, but right now that’s basically what it is. The core of Fleet DB is a Clojure based append-only log based database; it provides a native clojure query language (with built in query optimiser), schema-less records, indexes, and a server with a JSON based network protocol.</p>
-
-<p>For a new new project Fleet DB also has a good set of documentation and it sounds like Mark has some big plans for it in the future. As an added benefit there are also clients for the network protocol in languages other than Clojure (Ruby officially, and a set of Python bindings in development).</p>
-
-<h4 id="persister">Persister</h4>
-
-<p>Sergey Didenko’s <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Simple Persistence for Clojure</a> project is a much less ambitious offering, but with the really cool feature of being a single (255 line, ~11KB) file that you could just drop into your project and start using - that’s pretty lightweight! From the read me file:</p>
-
-<blockquote>
-  <p>Simple Persistence for Clojure is a journal-based persistence library for Clojure programs. It follows “Prevalent system” design pattern.</p>
-</blockquote>
-
-<p>The intended usage is assist you in making a prevalent system. Thus you work with your in-memory data and wrap every writing call into one of <code>(apply-transaction*)</code> macros. A nice feature is that the log files are just Clojure code: transactions are logged as a valid Clojure code, so they are easy to read and run separately.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/01/06/squeeze">Squeeze!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-06T18:38:16+01:00" pubdate data-updated="true">Jan 6<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>One of the neat features of <a href="http://clojure.org/">Clojure</a> is the <a href="http://clojure.org/sequences">sequence</a> abstraction — it makes solving a whole host of data processing tasks much easier, simply get you data into a sequence and you’ve got a huge toolbox available to work on it. Of course being a guy I’m firmly of the belief that more tools are better, with that in mind let’s add another one to our toolbox. Given a sequence the squeeze function returns another sequence with any adjacent items which match a supplied predicate merged together using a supplied function. It’s probably easier to illustrate by example, suppose I have a sequence of strings and I want to merge them together when the trailing string starts with whitespace, I can squeeze them like this:</p>
+<p>Next create a model class called <code>MagicBall</code> and a view controller called <code>MagicViewController</code> which extends <code>UIViewController</code>, also create a file to store some small helper methods called <code>helpers.rb</code>. Don’t worry about the contents of these files for now, I’ll come back to them, but you should have the following:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nf">squeeze</span> <span class="o">#</span><span class="p">(</span><span class="nv">and</span> <span class="nv">%2</span> <span class="p">(</span><span class="nb">re-matches </span><span class="o">#</span><span class="s">&quot;\A\s.*&quot;</span> <span class="nv">%2</span><span class="p">))</span>
-</span><span class="line">         <span class="o">#</span><span class="p">(</span><span class="nv">apply</span> <span class="nv">str</span> <span class="p">(</span><span class="nb">apply </span><span class="nv">concat</span> <span class="nv">%&amp;</span><span class="p">))</span>
-</span><span class="line">         <span class="p">[</span><span class="s">&quot;hello&quot;</span> <span class="s">&quot; world.&quot;</span> <span class="s">&quot;foo&quot;</span> <span class="s">&quot; bar&quot;</span><span class="p">])</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span>ls app
+</span><span class="line">app_delegate.rb          magic_ball.rb
+</span><span class="line">helpers.rb               magic_view_controller.rb
+</span><span class="line"><span class="nv">$ </span>cat app/magic_view_controller.rb
+</span><span class="line">class MagicViewController &lt; UIViewController
+</span><span class="line">end
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Another example, given a sequence of characters (read from an <code>InputStream</code> for example), I could group them into words by squeezing then thusly (the first line is just to remind you that calling <code>seq</code> on a string produces a sequence of characters):</p>
+<p>The next thing to do is create the UI using interface builder.</p>
+
+<h2 id="creating-the-user-interface">Creating the User Interface</h2>
+
+<p>Open Xcode and hit <em>⌘-N</em> to create a new file, select the <em>Empty</em> template and save the file into the folder you just created. Now add a <code>View Controller</code> from the object library and set the custom class to <code>MagicViewController</code>; you can’t edit this field directly but you <em>can</em> paste into it, so select the class name from <code>app/magic_view_controller.rb</code>. </p>
+
+<p>The next step is to add the view to it’s controller, normally this would just mean dragging a <code>UIImageView</code> on top of the controller but that won’t work here. There is a problem with interface builder in that you can’t add subviews to <code>UIImageView</code>s, which is a pain in the ass. A simple workaround is described in <a href="http://stackoverflow.com/questions/2415561/apple-interface-builder-adding-subview-to-uiimageview">this</a> Stack Overflow question, and that’s what we’ll do here. So, add a <code>UIView</code> to the view controller and set it’s custom class to be <code>UIImageView</code> (which should be available in the pick-list). You can’t set the image here, that will need to be done in code.</p>
+
+<p>Finally add the label and configure it as desired. Save your changes and close XCode.</p>
+
+<p>You can compile this into a <code>.nib</code> using <code>ibtool</code>, this script will compile all of the interfaces in your project (just one in this case):</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="k">for </span>i in interfaces/*.xib
+</span><span class="line"><span class="k">do</span>
+</span><span class="line"><span class="k">  </span><span class="nb">echo</span> <span class="s2">&quot;compiling `basename $i`...&quot;</span>
+</span><span class="line">  ibtool --compile resources/<span class="sb">`</span>basename -s .xib <span class="nv">$i</span><span class="sb">`</span>.nib <span class="nv">$i</span>
+</span><span class="line"><span class="k">done</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Update:</strong> as of RubyMotion 1.3 this happens automatically, no need to compile your nibs by hand and more!</p>
+
+<h2 id="connecting-up-the-code">Connecting up the Code</h2>
+
+<p>The first thing we need to do is make sure our app delegate loads the interface from the nib that we’ve created, and we set our <code>@window</code> ivar from the loaded nib.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -363,149 +190,16 @@
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">seq </span><span class="s">&quot;Cheers, chars!&quot;</span><span class="p">)</span>
-</span><span class="line"><span class="p">(</span><span class="sc">\C</span> <span class="sc">\h</span> <span class="sc">\e</span> <span class="sc">\e</span> <span class="sc">\r</span> <span class="sc">\s</span> <span class="err">\</span><span class="o">,</span> <span class="sc">\space</span> <span class="sc">\c</span> <span class="sc">\h</span> <span class="sc">\a</span> <span class="sc">\r</span> <span class="sc">\s</span> <span class="sc">\!</span><span class="p">)</span>
-</span><span class="line">
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">map </span><span class="nv">str/trim</span>
-</span><span class="line">         <span class="p">(</span><span class="nf">squeeze</span> <span class="o">#</span><span class="p">(</span><span class="nv">and</span> <span class="nv">%2</span> <span class="p">(</span><span class="nb">not= </span><span class="sc">\space</span> <span class="nv">%2</span><span class="p">))</span>
-</span><span class="line">                  <span class="o">#</span><span class="p">(</span><span class="nv">apply</span> <span class="nv">str</span> <span class="p">(</span><span class="nb">apply </span><span class="nv">concat</span> <span class="nv">%&amp;</span><span class="p">))</span>
-</span><span class="line">                   <span class="p">(</span><span class="nb">seq </span><span class="s">&quot;I&#39;m sorry Dave, I can&#39;t let you do that.&quot;</span><span class="p">)))</span>
-</span><span class="line"><span class="p">(</span><span class="s">&quot;I&#39;m&quot;</span> <span class="s">&quot;sorry&quot;</span> <span class="s">&quot;Dave,&quot;</span> <span class="s">&quot;I&quot;</span> <span class="s">&quot;can&#39;t&quot;</span> <span class="s">&quot;let&quot;</span> <span class="s">&quot;you&quot;</span> <span class="s">&quot;do&quot;</span> <span class="s">&quot;that.&quot;</span><span class="p">)</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">def</span> <span class="n">application</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="nl">didFinishLaunchingWithOptions:</span><span class="n">options</span><span class="p">)</span>
+</span><span class="line">  <span class="err">@</span><span class="n">window</span> <span class="o">=</span> <span class="n">UIWindow</span><span class="p">.</span><span class="n">alloc</span><span class="p">.</span><span class="n">initWithFrame</span><span class="p">(</span><span class="n">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">.</span><span class="n">bounds</span><span class="p">)</span>
+</span><span class="line">  <span class="err">@</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span> <span class="o">=</span> <span class="n">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">.</span><span class="n">loadNibNamed</span><span class="p">(</span><span class="err">&#39;</span><span class="n">MagicBallView</span><span class="err">&#39;</span><span class="p">,</span> <span class="nl">owner:</span><span class="n">self</span><span class="p">,</span> <span class="nl">options:</span><span class="nb">nil</span><span class="p">).</span><span class="n">first</span>
+</span><span class="line">  <span class="err">@</span><span class="n">window</span><span class="p">.</span><span class="n">rootViewController</span><span class="p">.</span><span class="n">wantsFullScreenLayout</span> <span class="o">=</span> <span class="n">true</span>
+</span><span class="line">  <span class="err">@</span><span class="n">window</span><span class="p">.</span><span class="n">makeKeyAndVisible</span>
+</span><span class="line">  <span class="n">true</span>
+</span><span class="line"><span class="n">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>So how does it work? Well, here’s the interface:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="k">defn </span><span class="nv">squeeze</span>
-</span><span class="line">  <span class="p">[</span><span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">coll</span><span class="p">]</span>
-</span><span class="line">  <span class="p">(</span><span class="nf">squeeze-</span> <span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">coll</span> <span class="nv">nil</span><span class="p">))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>And here’s the actual function that does the work, it’s declared private
-because I don’t want to expose the matched parameter to the outside
-world.</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="k">defn- </span><span class="nv">squeeze-</span>
-</span><span class="line">  <span class="p">([</span><span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">coll</span> <span class="nv">matched</span><span class="p">]</span>
-</span><span class="line">    <span class="p">(</span><span class="nf">lazy-seq</span>
-</span><span class="line">      <span class="p">(</span><span class="nb">when-let </span><span class="p">[</span><span class="nv">s</span> <span class="p">(</span><span class="nb">seq </span><span class="nv">coll</span><span class="p">)]</span>
-</span><span class="line">        <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">f</span> <span class="p">(</span><span class="nb">first </span><span class="nv">s</span><span class="p">)</span>
-</span><span class="line">              <span class="nv">s</span> <span class="p">(</span><span class="nb">second </span><span class="nv">s</span><span class="p">)</span>
-</span><span class="line">              <span class="nv">rest</span> <span class="p">(</span><span class="nb">rest </span><span class="nv">coll</span><span class="p">)]</span>
-</span><span class="line">          <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">pred</span> <span class="nv">f</span> <span class="nv">s</span><span class="p">)</span>
-</span><span class="line">            <span class="p">(</span><span class="nf">squeeze-</span> <span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">rest</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">f</span> <span class="nv">matched</span><span class="p">))</span>
-</span><span class="line">            <span class="p">(</span><span class="k">let </span><span class="p">[</span><span class="nv">next</span> <span class="p">(</span><span class="k">if </span><span class="nv">matched</span> <span class="p">(</span><span class="nf">merge-fn</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">f</span> <span class="p">(</span><span class="nb">reverse </span><span class="nv">matched</span><span class="p">)))</span> <span class="nv">f</span><span class="p">)]</span>
-</span><span class="line">              <span class="p">(</span><span class="nb">cons </span><span class="nv">next</span> <span class="p">(</span><span class="nf">squeeze-</span> <span class="nv">pred</span> <span class="nv">merge-fn</span> <span class="nv">rest</span> <span class="nv">nil</span><span class="p">)))))))))</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>I should probably point out that all of this playing around with
-sequences was inspired by <a href="http://fulldisclojure.blogspot.com/">Sean Devlin</a>’s <a href="http://fulldisclojure.blogspot.com/2010/01/12-fn-proposal-same-multisame.html">excellent proposal</a>
-for some new sequence functions for Clojure 1.2. The full code for this
-is available <a href="/code/2010/01/squeeze.clj">here</a> (it’s just the above, but with an added doc
-comment on the <code>squeeze</code> function definition).</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2010/01/02/working-with-java-arrays">Working With Java Arrays</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-01-02T14:23:44+01:00" pubdate data-updated="true">Jan 2<span>nd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>One improvement that I’d like to see in Clojure is more examples in the doc strings (or maybe in a separate <code>:example</code> metadata item). Still, nothing to stop me building up a set of my own. So, here are some simple examples of working with Java arrays in Clojure… Given some sample data:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="k">def </span><span class="nv">my-list</span> <span class="o">&#39;</span><span class="p">(</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">))</span>
-</span><span class="line"><span class="p">(</span><span class="k">def </span><span class="nv">my-vector</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span><span class="p">])</span>
-</span><span class="line"><span class="p">(</span><span class="k">def </span><span class="nv">my-map</span> <span class="p">{</span><span class="nv">:a</span> <span class="s">&quot;apple&quot;</span> <span class="nv">:b</span> <span class="s">&quot;banana&quot;</span> <span class="nv">:c</span> <span class="s">&quot;chopped liver&quot;</span><span class="p">})</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>To convert to Java arrays:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nb">to-array </span><span class="nv">my-list</span><span class="p">)</span>
-</span><span class="line"><span class="o">#</span>
-</span><span class="line"><span class="p">(</span><span class="nb">to-array </span><span class="nv">my-vector</span><span class="p">)</span>
-</span><span class="line"><span class="o">#</span>
-</span><span class="line"><span class="p">(</span><span class="nb">to-array </span><span class="nv">my-map</span><span class="p">)</span>
-</span><span class="line"><span class="o">#</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Note that this always returns <code>Object[]</code> regardless of the contents of the collection. Note also that the map isn’t flattened (the <code>pp</code> function used here is in <code>clojure.contrib.pprint</code>):</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">pp</span><span class="p">)</span>
-</span><span class="line"><span class="p">[[</span><span class="nv">:a</span> <span class="s">&quot;apple&quot;</span><span class="p">]</span><span class="o">,</span> <span class="p">[</span><span class="nv">:b</span> <span class="s">&quot;banana&quot;</span><span class="p">]</span><span class="o">,</span> <span class="p">[</span><span class="nv">:c</span> <span class="s">&quot;chopped liver&quot;</span><span class="p">]]</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If the array is 2-dimensional there is a corresponding function:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="k">def </span><span class="nv">my-vec-2d</span> <span class="p">[[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">]</span> <span class="p">[</span><span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span><span class="p">]])</span>
-</span><span class="line"><span class="o">#</span><span class="ss">&#39;user/my-vec-2d</span>
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">to-array-2d </span><span class="nv">my-vec-2d</span><span class="p">)</span>
-</span><span class="line"><span class="o">#</span>
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">pp</span><span class="p">)</span>
-</span><span class="line"><span class="p">[[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">,</span> <span class="p">[</span><span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">6</span><span class="p">]</span><span class="o">,</span> <span class="p">[</span><span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="p">]]</span>
-</span><span class="line"><span class="nv">nil</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>If you need to use a specific type of array (e.g. to pass a <code>String[]</code> into a Java method) or need to use an array with more than 3 dimensions it’s a little trickier:</p>
+<p>The nib loading process will create an instance of our view controllor for us, but we need to wire up a few connections add add some behaviour, here’s a simplified version of the code:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -524,26 +218,39 @@ comment on the <code>squeeze</code> function definition).</p>
 <span class="line-number">15</span>
 <span class="line-number">16</span>
 <span class="line-number">17</span>
-</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">into-array </span><span class="nv">my-list</span><span class="p">)</span>
-</span><span class="line"><span class="o">#</span>
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">pp</span><span class="p">)</span>
-</span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="p">]</span>
-</span><span class="line"><span class="nv">nil</span>
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">into-array </span><span class="nv">my-vector</span><span class="p">)</span>
-</span><span class="line"><span class="o">#</span>
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">pp</span><span class="p">)</span>
-</span><span class="line"><span class="p">[</span><span class="mi">1</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">5</span><span class="p">]</span>
-</span><span class="line"><span class="nv">nil</span>
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">into-array </span><span class="nv">my-map</span><span class="p">)</span>
-</span><span class="line"><span class="o">#</span>
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nb">into-array </span><span class="p">(</span><span class="nb">vals </span><span class="nv">my-map</span><span class="p">))</span>
-</span><span class="line"><span class="o">#</span>
-</span><span class="line"><span class="nv">user=&gt;</span> <span class="p">(</span><span class="nf">pp</span><span class="p">)</span>
-</span><span class="line"><span class="p">[</span><span class="s">&quot;apple&quot;</span><span class="o">,</span> <span class="s">&quot;banana&quot;</span><span class="o">,</span> <span class="s">&quot;chopped liver&quot;</span><span class="p">]</span>
-</span><span class="line"><span class="nv">nil</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line">  <span class="n">def</span> <span class="n">viewDidLoad</span>
+</span><span class="line">    <span class="err">@</span><span class="n">magicBall</span> <span class="o">=</span> <span class="n">MagicBall</span><span class="p">.</span><span class="n">new</span>
+</span><span class="line">    <span class="err">@</span><span class="n">label</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">subviews</span><span class="p">.</span><span class="n">first</span>
+</span><span class="line">
+</span><span class="line">    <span class="n">view</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">UIImage</span><span class="p">.</span><span class="n">imageNamed</span><span class="p">(</span><span class="err">&#39;</span><span class="n">background</span><span class="p">.</span><span class="n">png</span><span class="err">&#39;</span><span class="p">)</span>
+</span><span class="line">    <span class="n">view</span><span class="p">.</span><span class="n">whenTapped</span> <span class="k">do</span>
+</span><span class="line">      <span class="n">UIView</span><span class="p">.</span><span class="n">animateWithDuration</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span>
+</span><span class="line">        <span class="nl">animations:</span><span class="n">lambda</span> <span class="p">{</span>
+</span><span class="line">          <span class="err">@</span><span class="n">label</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span class="line">          <span class="err">@</span><span class="n">label</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">createTransform</span>
+</span><span class="line">        <span class="p">},</span>
+</span><span class="line">        <span class="nl">completion:</span><span class="n">lambda</span> <span class="p">{</span> <span class="o">|</span><span class="n">finished</span><span class="o">|</span>
+</span><span class="line">          <span class="err">@</span><span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="err">@</span><span class="n">magicBall</span><span class="p">.</span><span class="n">answer</span>
+</span><span class="line">          <span class="err">@</span><span class="n">label</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformIdentity</span>
+</span><span class="line">        <span class="p">})</span>
+</span><span class="line">    <span class="n">end</span>
+</span><span class="line">  <span class="n">end</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>There, that should serve as a handy reference for myself for when I’m feeling forgetful…</p>
+<p>I know that there is only 1 subview so it’s easy to grab a reference to the label and store it in an ivar, a more realisic example could <code>select</code> the label based on a tag.</p>
+
+<p>As mentioned above, I need to explicitly set the image and this happens here as well.</p>
+
+<p>Finally, set up the gesture recognizer. This is one place that Ruby shines, it’s trivial for us to add helper methods like this, have a look in <code>app/helpers.rb</code> for the code that enabled this.</p>
+
+<h2 id="wrapping-up">Wrapping Up</h2>
+
+<p>It’s a good idea to add <code>resources/*.nib</code> to the <code>.gitignore</code> file as compiled resources don;t need to be committed to Git. I also add <code>doc/app</code> then I can use <em>rocco</em> to generate some documentation.</p>
+
+<p>Take a look at the full <a href="https://github.com/ianp/MagicBallDemo">project on GitHub</a> and let me know what you think!</p>
+
+<p><strong>Update:</strong> clarified the wording around adding the <code>UIImageView</code>.</p>
+
 </div>
   
   
@@ -556,7 +263,7 @@ comment on the <code>squeeze</code> function definition).</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/12/29/nexus-one-launch-even-on-jan-5">Nexus One Launch Even on Jan 5?</a></h1>
+      <h1 class="entry-title"><a href="/2012/05/07/apple-security-cock-up">Apple Security Cock-Up</a></h1>
     
     
       <p class="meta">
@@ -572,23 +279,16 @@ comment on the <code>squeeze</code> function definition).</p>
   
 
 
-<time datetime="2009-12-29T19:13:26+01:00" pubdate data-updated="true">Dec 29<span>th</span>, 2009</time>
+<time datetime="2012-05-07T16:04:00+02:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><blockquote>
-  <p>This just in: <a href="http://www.google.com/">Google</a> will host an <a href="http://www.android.com/">Android</a> press gathering
-at its global HQ on Jan. 5 ….</p>
-</blockquote>
+  <div class="entry-content"><p><a href="http://www.zdnet.com/blog/security/apple-security-blunder-exposes-lion-login-passwords-in-clear-text/11963">This</a> doesn’t look good.</p>
 
-<p>Presumably, the event will have something
-to do with the company’s Nexus One, an Android phone that Google plans
-to sell on its own Web site and perhaps through T-Mobile as well.</p>
-
-<p>Via <a href="http://digitaldaily.allthingsd.com/20091229/google-announces-jan-5-android-event/">Digital Daily</a></p>
+<p>Apple’s approach to security in general is a bit worrying: one the one hand they seem to have the right approach to securing the OS with App Store entitlements (although these aren’t without <a href="http://www.robpeck.com/2012/01/app-store-entitlements-and-the-crippling-of-an-app/">issues</a>) and <a href="http://www.apple.com/macosx/mountain-lion/security.html">Gatekeeper</a>, but their timeliness in shipping security fixes leaves a lot to be desired. Note from the article that this flaw was pointed out to them <em>3 months</em> ago!</p>
 
 </div>
   
@@ -602,7 +302,7 @@ to sell on its own Web site and perhaps through T-Mobile as well.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/12/28/why-everything-is-a-file">Why Everything Is a File</a></h1>
+      <h1 class="entry-title"><a href="/2012/04/18/category-counts-in-octopress">Category Counts in Octopress</a></h1>
     
     
       <p class="meta">
@@ -618,29 +318,231 @@ to sell on its own Web site and perhaps through T-Mobile as well.</p>
   
 
 
-<time datetime="2009-12-28T17:54:29+01:00" pubdate data-updated="true">Dec 28<span>th</span>, 2009</time>
+<time datetime="2012-04-18T10:36:00+02:00" pubdate data-updated="true">Apr 18<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>One of the <a href="http://en.wikipedia.org/wiki/Unix_architecture">distinguishing characteristics of Unix</a> is the
-philosophy that “everything is a file” (taken even further in
-<a href="http://en.wikipedia.org/wiki/Linux">Linux</a> and <a href="http://plan9.bell-labs.com/plan9/">Plan 9</a>). Reading the interview with <a href="http://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> in <a href="http://www.codersatwork.com/">Coders at Work</a> (page 465) sheds some light on why
-this is the case:</p>
+  <div class="entry-content"><p>Here’s a quick shell script to get the number of posts in each category for an <a href="http://octopress.org/">Octopress</a> blog, just cat your <code>source/_posts</code> folder through the following one-liner:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">sed -n <span class="s1">&#39;/^---/,/^---/p&#39;</span> |<span class="se">\</span>
+</span><span class="line">grep <span class="s1">&#39;^- &#39;</span> |<span class="se">\</span>
+</span><span class="line">sort |<span class="se">\</span>
+</span><span class="line">uniq -s 2 -c - |<span class="se">\</span>
+</span><span class="line">sort -n
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here’s what each line does:</p>
+
+<ol>
+  <li>extracts the Yaml front-matter from each file;</li>
+  <li>extracts each top-level list entry, this assumes that the only top-level list is the category list, which is the default for Octopress posts;</li>
+  <li>sort the lines;</li>
+  <li>collapse identical lines, prepending a count of the number of lines collapsed; and finally</li>
+  <li>sort numerically.</li>
+</ol>
+
+<p>Maybe this will be useful to somebody out there…</p>
+
+<p><strong>Update:</strong> I’ve <a href="/2012/10/30/category-counts-in-octopress-revisited/">written a version</a> that’s integrated with rake as well.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/04/17/what-is-text-normalization">What Is Text Normalization?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-17T09:33:00+02:00" pubdate data-updated="true">Apr 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In my <a href="/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
 
 <blockquote>
-  <p><strong>Seibel:</strong> So you basically wrote an OS so you’d
-have a better environment to test your file system.
-<strong>Thompson:</strong> Yes. Halfway through there that I realized it was a real time-sharing
-system. I was writing the shell to drive the file system. And then I was
-writing a couple other programs that drove the file system. And right
-about there I said, “All I need is an editor and I’ve got an operating
-system.”</p>
+  <p>Text normalization is a process by which text is transformed in some way to make it consistent in a way which it might not have been before.</p>
 </blockquote>
 
-<p>So Unix started life as a glorified test harness for Ken’s file system! Amusing…</p>
+<p>The article also gives some examples of the kind of transformations that are commonly performed. Of necessity, any normalization process is going to be application specific, but let’s assume for the sake of example that the word count is intended to be used in a writing application of some sort (a text editor or word processor). Given that we probably don’t care about <a href="http://www.unicode.org/reports/tr15/">Unicode normalization</a>, and definitely don’t care about anything which would change the words such as stemming or canonicalization. But maybe we could normalize all runs of whitespace into single spaces? Our original test string then changes from “Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!” to “Peter piper picked a peck of pickled pepper . No — really — he did!”. The difference is probably hard to spot, but all of the doubled spaces in the first string have been replaces with single spaces, and the hair-spaces have been replaced with regular spaces.</p>
+
+<p>How do the different word counting functions work now?</p>
+
+<table class="tabular">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th style="text-align: right">Raw</th>
+      <th style="text-align: right">Normalized</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Original Scanner</td>
+      <td style="text-align: right">15</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Regular Expression</td>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td>String Components</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Char Components</td>
+      <td style="text-align: right">22</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Linguistic tagger</td>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">12</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Better, but it still only leaves the same two functions returning the correct result (assuming of course that you <em>don’t</em> want to count strings of puncuation, this may or may not be the case in a code editor for example).</p>
+
+<p>I can’t speak for the inner working of the linguistic tagger, but the reason that the regex based function works is that it is basing it’s approach on a <em>whitelist</em> rather than a <em>blacklist</em>. The regex basically says “these are valid word characters, everything else can be ignored” whereas all of the other functions take the stance “these are whitespace, eveything else must be part of a word”. Anybody who has done any web development or input validation generally will tell you that whitelists are almost always the correct approach to take. It’s just easier to enumerate all of the valid values for a given set than to try to list all of the exceptions.</p>
+
+<h2 id="linguistic-tagger">Linguistic Tagger</h2>
+
+<p>There are quite a few more options available for analysing text here, let’s start by counting sentences as well as words, this can be done by adding a count for sentences and keeping track of the current sentence based on it’s starting location. The interesting code is on lines 9 and 10:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">current_sentence</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="p">[</span><span class="n">tagger</span> <span class="nl">enumerateTagsInRange:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])</span>
+</span><span class="line">                      <span class="nl">scheme:</span><span class="n">NSLinguisticTagSchemeTokenType</span>
+</span><span class="line">                     <span class="nl">options:</span><span class="mi">0</span>
+</span><span class="line">                  <span class="nl">usingBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">tag</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">token</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">sentence</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">([</span><span class="n">tag</span> <span class="nl">isEqual:</span><span class="n">NSLinguisticTagWord</span><span class="p">])</span> <span class="o">++</span><span class="n">words</span><span class="p">;</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sentences</span> <span class="o">||</span> <span class="n">current_sentence</span> <span class="o">!=</span> <span class="n">sentence</span><span class="p">.</span><span class="n">location</span><span class="p">)</span> <span class="o">++</span><span class="n">sentences</span><span class="p">;</span>
+</span><span class="line">  <span class="n">current_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="n">location</span><span class="p">;</span>
+</span><span class="line"><span class="p">}];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Updating the <code>taggerWordCount</code> function with this code tells us that we still have 12 words, and that they are spread over 2 sentences, cool!</p>
+
+<p>But what about that <code>schemes</code> parameter that we used to set up the tagger and run the enumeration? That allows the tagger to provide different types of information to the enumeration, we can tell the tagger to tag as much as it can by initializing the <code>schemes</code> variable with all available schemes. The <code>en-GB</code> string, by the way, is a <a href="http://tools.ietf.org/html/bcp47">BCP-47</a> code. The list of available schemes for this language is shown as a comment:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSArray</span><span class="o">*</span> <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSLinguisticTagger</span> <span class="nl">availableTagSchemesForLanguage:</span><span class="s">@&quot;en-GB&quot;</span><span class="p">];</span>
+</span><span class="line"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">schemes</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// 2012-04-17 13:08:16.947 wordcounters[54440:707] (</span>
+</span><span class="line"><span class="c1">//    TokenType,</span>
+</span><span class="line"><span class="c1">//    Language,</span>
+</span><span class="line"><span class="c1">//    Script</span>
+</span><span class="line"><span class="c1">// )</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>According to Apple’s docs there are several different schemes available. One warning: if you use BCP-47 codes with more information in (such as <code>en-US</code> or <code>pt-BR</code>) then you will just get the basic 3 schemes shown above, using <code>en</code> gets the full list and other languages have varying levels of support.</p>
+
+<p>Let’s alter the test string and see what the different <code>en</code> schemes give us. For a new test string I’m going to use <a href="http://www.mudcat.org/@displaysong.cfm?SongID=1242">this little ditty</a>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSString</span><span class="o">*</span> <span class="n">coffee</span> <span class="o">=</span> <span class="s">@&quot;What I want - is a proper cup ’o coffee,&quot;</span>
+</span><span class="line">                   <span class="s">@&quot; Made in a proper copper coffee pot.&quot;</span>
+</span><span class="line">                   <span class="s">@&quot; Ik kan van mijn punt,&quot;</span>
+</span><span class="line">                   <span class="s">@&quot; Ach ba mhaith liom cupán caife o ó pota caife cuí.&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The 3rd and 4th lines have been replaced with Dutch and Irish translations of the English words in order to test the language detection. Interesting to note here is the syntaxused for multi-line strings in Objective-C, and also that I’ve indented the following lines so that there is a space after the punctuation at the end of the preceeding line.</p>
+
+<p>Let’s take a look at each scheme and what it gives us in this example.</p>
+
+<ul>
+  <li>
+    <p><strong>Token Type</strong>
+We can tell the words apart from the whitespace and punctuation by the tag. I could see this being useful for implementing smart punctuation in a word processor (like <a href="http://daringfireball.net/projects/smartypants/">SmartyPants</a>).</p>
+  </li>
+  <li>
+    <p><strong>Lexical Class</strong>
+Instead of just words this gives us nouns, adjectives, and so on; it also classifies some of the puntuation more precisely, for example <code>OpenQuote</code>. Possibly useful in a word processing application, or to provide input to a higher-level analyser.</p>
+  </li>
+  <li>
+    <p><strong>Name Type</strong>
+This attempts to detect people and place names in the text. In this example it identified “Made” as a place name, so it’s probably guessing at this based on the word capitalization.</p>
+  </li>
+  <li>
+    <p><strong>Name Type or Lexical Class</strong>
+As it suggests, a combination of the previous two schemes.</p>
+  </li>
+  <li>
+    <p><strong>Lemma</strong>
+This scheme performs word stemming, returning the stemmed word in the <code>tag</code> block parameter.</p>
+  </li>
+  <li>
+    <p><strong>Language</strong>
+This supposedly analysis each sentence to try to guess which language it is written in. I found that it worked fairly poorly when the language used the same script but did OK when they were different. In the example above it guesses that all of the text is in English, but if you change the 3rd line to “Аз не мога да ми.” (the same in Bulgarian) then it guesses this correctly.</p>
+  </li>
+  <li>
+    <p><strong>Script</strong>
+This is the script used in the token, for us it is always “Latn” for Latin, unless you make the substitution mentioned above in which case it correctly picks up “Cyrl” for the Bulgarian Cyrillic script.</p>
+  </li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>For a simple word count it seems that the regular expression wins out, but the linguistic tagger provides some interesting additional information. One downside to the tagger is that it doesn’t seem to be extensible in any way, so you’re limited to those schemes and tags that Apple ship with the OS. There is no way to, for example, use this mechanism to tag keywords and operators in a code editor, which may be useful.</p>
+
+<p>The code used for this post can be found in <a href="https://gist.github.com/2413356">this gist</a>.</p>
 
 </div>
   
@@ -654,7 +556,7 @@ system.”</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/12/26/the-c-programming-language">The C Programming Language</a></h1>
+      <h1 class="entry-title"><a href="/2012/04/16/how-many-words-make-a-string">How Many Words Make a String?</a></h1>
     
     
       <p class="meta">
@@ -670,21 +572,185 @@ system.”</p>
   
 
 
-<time datetime="2009-12-26T19:07:09+01:00" pubdate data-updated="true">Dec 26<span>th</span>, 2009</time>
+<time datetime="2012-04-16T15:16:00+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><blockquote>
-  <p>C functions may be used recursively; that is, a function may call
-itself either directly or indirectly. Uninquiring souls may take this as
-just another peculiarity of those C folk, of whose ways their neighbours
-speak little to outsiders but much among themselves.</p>
-</blockquote>
+  <div class="entry-content"><p>A recent post on the <a href="http://iphonedevelopertips.com/data-file-management/count-the-number-of-words-in-an-string.html">iOS Developer Tips</a> blog provided a handy way to get the the word count for a string by using <code>NSScanner</code>, and asked for comments on alternative approaches. Pretty quickly there were a few different suggestions so I thought that I’d take a look at them to see how they compare. It turns out that the different approaches give pretty different results when run over the same test string! To be honest this isn’t much of a surprise, but what was surprising is just how different the results were.</p>
 
-<p>By <a href="http://www.bobhobbs.com/files/kr_lovecraft.html">Kernighan, Ritchie, and Lovecraft</a></p>
+<p>I tested the original scanner based approach and also the first four alternatives from the comments. For the test string I used this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span> <span class="o">=</span> <span class="s">@&quot;Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!&quot;</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>there are a couple of things to note here: some of the spaces are doubled up, the period is spaced French-style (i.e. with a space before and after) and the em-dashes have hair-space at either side of them. It’s easier to see some of these features when you look at the same string in a proportional font: “Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!”</p>
+
+<p>Anyway, the various approaches gave very different word counts for that example:</p>
+
+<table class="tabular">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th style="text-align: right">Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Original Scanner</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Regular Expression</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td>String Components</td>
+      <td style="text-align: right">18</td>
+    </tr>
+    <tr>
+      <td>Char Components</td>
+      <td style="text-align: right">22</td>
+    </tr>
+    <tr>
+      <td>Linguistic tagger</td>
+      <td style="text-align: right">12</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Anywhere from 12 to 22 words! Let’s take a look at the different approaches in turn.</p>
+
+<h2 id="original-scanner">Original Scanner</h2>
+
+<p>This is the original <code>NSScanner</code> based version from John’s post, here’s the code for it:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">scannerWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">NSScanner</span><span class="o">*</span> <span class="n">scanner</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSScanner</span> <span class="nl">scannerWithString:</span><span class="n">string</span><span class="p">];</span>
+</span><span class="line">  <span class="n">NSCharacterSet</span><span class="o">*</span> <span class="n">ws</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">];</span>
+</span><span class="line">  <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">while</span> <span class="p">([</span><span class="n">scanner</span> <span class="nl">scanUpToCharactersFromSet:</span><span class="n">ws</span> <span class="nl">intoString:</span><span class="nb">nil</span><span class="p">])</span>
+</span><span class="line">    <span class="o">++</span><span class="n">words</span><span class="p">;</span>
+</span><span class="line">  <span class="k">return</span> <span class="n">words</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This version correctly handles runs of whitespace, but it treats any non-space character as a valid word, so the French-spaced period get’s counted, as do the two em-dashes. Note however that this version <em>does</em> correctly pick up the four hair-spaces.</p>
+
+<h2 id="regular-expression">Regular Expression</h2>
+
+<p>This is my contribution:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">regexWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">NSRegularExpression</span><span class="o">*</span> <span class="n">regex</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSRegularExpression</span> <span class="nl">regularExpressionWithPattern:</span><span class="s">@&quot;</span><span class="se">\\</span><span class="s">w+&quot;</span> <span class="nl">options:</span><span class="mi">0</span> <span class="nl">error:</span><span class="nb">nil</span><span class="p">];</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">[</span><span class="n">regex</span> <span class="nl">numberOfMatchesInString:</span><span class="n">string</span> <span class="nl">options:</span><span class="mi">0</span> <span class="nl">range:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])];</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Obviously this isn’t production code as there is no error handling (or caching of the compiled regex, which may or may not make sense here). But I’d say that this version gives the correct result, both ignoring the French-stop and em-dashes, and handling all of the spaces correctly.</p>
+
+<h2 id="string-components">String Components</h2>
+
+<p>This is by far the simplest solution, provided by Frank in the comments:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">componentsByStringWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">componentsSeparatedByString:</span><span class="s">@&quot; &quot;</span><span class="p">]</span> <span class="n">count</span><span class="p">];</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Unfortunately it doesn’t work at all for this string. Just looking at an actual space character means that the double spaces get counted twice, and the entire substring “No — really — he” gets treated as a single word!</p>
+
+<p>Note though, that this approach is <em>really</em> easy to understand, and would be good if the input text had already been heavily normalized.</p>
+
+<h2 id="char-components">Char Components</h2>
+
+<p>Almost the same as the previous version, except that this uses an <code>NSCharacterSet</code> instead of a string:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">componentsByCharsWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">NSCharacterSet</span><span class="o">*</span> <span class="n">ws</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">];</span>
+</span><span class="line">  <span class="k">return</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">componentsSeparatedByCharactersInSet:</span><span class="n">ws</span><span class="p">]</span> <span class="n">count</span><span class="p">];</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Compared to the previous version this one still double counts the 2-space wide spaces, but it correctly detects the hair-spaces surrounding the em-dashes. Useful I guess if your text has been partially normalized by collapsing runs of spaces.</p>
+
+<h2 id="linguistic-tagger">Linguistic Tagger</h2>
+
+<p>This one was interesting as it’s an API that I haven’t seen before:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">taggerWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
+</span><span class="line"><span class="p">{</span>
+</span><span class="line">  <span class="n">NSArray</span><span class="o">*</span> <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObject:</span><span class="n">NSLinguisticTagSchemeTokenType</span><span class="p">];</span>
+</span><span class="line">  <span class="n">NSLinguisticTagger</span><span class="o">*</span> <span class="n">tagger</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSLinguisticTagger</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTagSchemes:</span><span class="n">schemes</span>
+</span><span class="line">                                                                      <span class="nl">options:</span><span class="mi">0</span><span class="p">];</span>
+</span><span class="line">  <span class="p">[</span><span class="n">tagger</span> <span class="nl">setString:</span><span class="n">string</span><span class="p">];</span>
+</span><span class="line">  <span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="p">[</span><span class="n">tagger</span> <span class="nl">enumerateTagsInRange:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])</span>
+</span><span class="line">                        <span class="nl">scheme:</span><span class="n">NSLinguisticTagSchemeTokenType</span>
+</span><span class="line">                       <span class="nl">options:</span><span class="mi">0</span>
+</span><span class="line">                    <span class="nl">usingBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">tag</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">token</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">sentence</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">([</span><span class="n">tag</span> <span class="nl">isEqualTo:</span> <span class="n">NSLinguisticTagWord</span><span class="p">])</span> <span class="o">++</span><span class="n">words</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}];</span>
+</span><span class="line">  <span class="k">return</span> <span class="n">words</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This code returns the correct number of words, so we have another winner here! Although the code is definitely more complicated than the regex based version above. Also, the originally posted code gave a result of 30, as it also calls the block for whitespace and punctuation, you need to use the <code>tag</code> block parameter to disambiguate these.</p>
+
+<p>The linguistic tagger provides a number of advanced features which may be useful if you need more than just a simple word count though. Note, for example, the <code>sentence</code> block parameter which could be used to give a sentence count as well as a word count.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>For most text the simplest solution is to use a regular expression here. If your input text has already been normalized then the <code>componentsSeparatedByString:</code> based approach is probably the easiest to use. The linguistic tagger allows for more advanced analysis of the text.</p>
+
+<p><strong>Update:</strong> all of the code here, plus a <code>main</code> function to call it, is available as a <a href="https://gist.github.com/2401251">gist</a>.</p>
+
+<p><strong>Update:</strong> I talk a little more about normalization and linguistic tagging in <a href="/2012/04/17/what-is-text-normalization">this post</a>.</p>
 
 </div>
   
@@ -710,6 +776,10 @@ speak little to outsiders but much among themselves.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
       </li>
     
@@ -723,10 +793,6 @@ speak little to outsiders but much among themselves.</p>
     
       <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
       </li>
     
   </ul>

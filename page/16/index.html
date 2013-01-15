@@ -9,7 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Again. Something I said that I’d never do again. Again… although at the moment I’ve not really got too much to do other than be here. Probably spend &hellip;">
+  <meta name="description" content="Or so it seems. According to Tibco support,
+when validating Java custom functions in Designer one of the things it
+checks is the access_flags in the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,7 +102,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2003/09/20/working-at-the-weekend">Working at the Weekend</a></h1>
+      <h1 class="entry-title"><a href="/2007/12/31/custom-functions-in-bw-cannot-be-in-final-classes">Custom Functions in BW Cannot Be in Final Classes</a></h1>
     
     
       <p class="meta">
@@ -116,16 +118,104 @@
   
 
 
-<time datetime="2003-09-20T16:09:15+02:00" pubdate data-updated="true">Sep 20<span>th</span>, 2003</time>
+<time datetime="2007-12-31T16:45:29+01:00" pubdate data-updated="true">Dec 31<span>st</span>, 2007</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Again. Something I said that I’d never do again. Again… although at the moment I’ve not really got too much to do other than be here. Probably spend the rest of the evening coding on my current personal project, Message Explorer.</p>
+  <div class="entry-content"><p>Or so it seems. According to <a href="http://support.tibco.com">Tibco support</a>,
+when validating Java custom functions in Designer one of the things it
+checks is the <em>access_flags</em> in the class file (to ensure that the
+method is accessible).</p>
 
-<p><em>Update:</em> A bunch of the code that I started writing for Message Explorer has been incorporated into <a href="http://rvsnoop.org/">RvSnoop</a>.</p>
+<p>Based on <a href="http://java.sun.com/docs/books/jvms/second\_edition/html/ClassFile.doc.html">JVM class file spec</a>
+the access flags should be either 0x21 (public) or 0x31 (public final);
+both of these values are fine but the validator rejects the latter. The
+good news however is that running the class in either the tester or in a
+deployed process engine works fine.</p>
+
+<p><strong>Update:</strong> I forgot to mention
+this, but the error message in the validator is “MISSING: Invalid java
+custom function..message”. Should help out searching via the Goog.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/10/21/rebooted">Rebooted</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-10-21T20:08:11+02:00" pubdate data-updated="true">Oct 21<span>st</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve been away for a while, and now I’m back. In other news, I’ve moved
+back to the UK, to London again. More to follow…</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2007/02/09/jython-22b1-released">Jython 2.2b1 Released</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2007-02-09T15:44:35+01:00" pubdate data-updated="true">Feb 9<span>th</span>, 2007</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The first beta of Jython 2.2 has <a href="http://sourceforge.net/project/showfiles.php?group_id=12867&amp;package_id=12218&amp;release_id=485053">been released</a>! Jyhon scripting is
+something that I’m planning to add to <a href="http://rvsnoop.org/">RvSnoop</a> so I’m quite
+interested in this, especially given the current focus of development is
+making the codebase easier to understand for new developers, I’ve looked
+at it fairly recently and at the moment it’s quite a tangle!</p>
 
 </div>
   
@@ -139,7 +229,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/2003/09/17/binary-xml-encoding">Binary XML Encoding</a></h1>
+      <h1 class="entry-title"><a href="/2007/01/11/python-does-destructuring-bind">Python Does Destructuring Bind</a></h1>
     
     
       <p class="meta">
@@ -155,23 +245,15 @@
   
 
 
-<time datetime="2003-09-17T13:09:23+02:00" pubdate data-updated="true">Sep 17<span>th</span>, 2003</time>
+<time datetime="2007-01-11T13:51:49+01:00" pubdate data-updated="true">Jan 11<span>th</span>, 2007</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://primates.ximian.com/~miguel/archive/2003/Sep-16.html">Miguel de Icaza</a> writes about binary encoding for XML (Omri’s page was unavailable, so I can’t comment on that). This is already in widespread usage, a la <a href="http://www.wapforum.org/what/technical.htm">WBXML</a>. It’s a pretty successful standard, given that it targets low bandwidth mobile phones they’ve obviously encoded for size, a fact made easier that it also targets a specific schema. I.e. it’s not a generic XML encoding.</p>
-
-<blockquote>
-  <p>Omri’s thesis is that there are multiple things that you might want to
-optimize for: size, parsing speed and overhead for generating the data and
-that it is not possible to define a file format that satisfies all of those
-different needs.</p>
-</blockquote>
-
-<p>Well, I thought we had already done this with XML. The fact is, you can already use your own favourite encoding. If I want to make it easy to parse then I can use UTF32, if I want to be ‘more standard’ I can use UTF8. I’m not sure about this (I need to check the spec) but in theory you should be able to use any encoding that you want to, as long as all parties agree on it.</p>
+  <div class="entry-content"><p>According to <a href="http://www.nedbatchelder.com/blog/200701.html#e20070110T070106">this article</a> by <a href="http://www.nedbatchelder.com/blog">Ned Batcheleder</a> python does
+destructuring bind by default. Well, I did not know that.</p>
 
 </div>
   
@@ -185,7 +267,7 @@ different needs.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2003/09/17/dot-net">Dot Net</a></h1>
+      <h1 class="entry-title"><a href="/2006/12/26/rvsnoop-161">RvSnoop 1.6.1</a></h1>
     
     
       <p class="meta">
@@ -201,100 +283,39 @@ different needs.</p>
   
 
 
-<time datetime="2003-09-17T12:09:14+02:00" pubdate data-updated="true">Sep 17<span>th</span>, 2003</time>
+<time datetime="2006-12-26T04:38:10+01:00" pubdate data-updated="true">Dec 26<span>th</span>, 2006</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve just written my first <em>.net</em> program! (Using <a href="http://www.go-mono.com">mono</a>) It seems <em>very</em> similar to Java, I’m going to grab a book and have a play with it some more over the next few days. Of course, I’m really trying to learn Lisp, but since the books I bought have been stranded in Vienna it seems like I may have to wait a few weeks for that.</p>
-</div>
-  
-  
+  <div class="entry-content"><p>A new stable build of <a href="http://rvsnoop.org/">RvSnoop</a> is available for <a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-1.6.1.tgz?download">downloading</a>
+(it was actually released back on the 12th, but I forgot to post about
+it here and have been away from the internet for a few days). New in
+this release:</p>
 
+<ul>
+  <li>
+    <p>Added an option to republish records to different connections.</p>
+  </li>
+  <li>
+    <p>Added actions to export and import records to a binary file format (the records are stored in a ZIP based file, they are stored as wire format messages with some additional metadata).</p>
+  </li>
+  <li>
+    <p>Added an action to remove connections from the list; also, added some options to the connection list context menu to access the recent connections list.</p>
+  </li>
+  <li>
+    <p>Added a dialog to allow the user to configure different record types. The underlying code to support this was present in the 1.5 release, but there was no way to access it short of editing the saved project file by hand.</p>
+  </li>
+  <li>
+    <p>The build system no longer strips out unused classes from the included libraries. This increases the size of the download but in some cases the licenses of included libraries require this, and it simplifies the build process, which is a Good Thing.</p>
+  </li>
+  <li>
+    <p>Started to use the <a href="http://jakarta.apache.org/commons/lang/">Commons Lang</a> and <a href="http://jakarta.apache.org/commons/io/">Commons IO</a> libraries from Apache instead of the utility classes that I had written myself. The next step is to start using <a href="http://jakarta.apache.org/commons/logging/">Commons Logging</a> instead of my own custom logger.</p>
+  </li>
+</ul>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2003/09/13/just-plain-wrong">Just Plain Wrong</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2003-09-13T06:09:29+02:00" pubdate data-updated="true">Sep 13<span>th</span>, 2003</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>From an <a href="http://www.nytimes.com/2003/09/29/technology/29SOFT.html?pagewanted=1&amp;ei=5007&amp;en=e2282d3463a0f485&amp;ex=1380168000">article</a> in the New York Times:</p>
-
-<blockquote>
-  <p>The security flaws Mr. Kean’s team is scrambling to catch and patch are
-part of the larger problem with software today. The programs that people
-rely on for all manner of tasks — from writing reports and sending
-e-mail, to monitoring factory floors and managing electric power grids
-— are becoming increasingly large, complex and, all but inevitably,
-filled with bugs.</p>
-</blockquote>
-
-<p>I just don’t agree about the inevitability of it, software is filled with bugs because people like it that way. I’m serious. If people wanted software that was virtually bug free they could have it. Right now. It’s a matter of cost though. In <em>real</em> mission critical systems (e.g. flight computers, life support systems, the controls for nuclear reactors, etc.) I would expect to find a very low level of bugs. I’d also expect to have to pay somewhat more than $500 for it.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2003/04/10/computer-language-evolution">Computer Language Evolution</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2003-04-10T11:04:20+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2003</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There’s a fascinating <a href="http://www.paulgraham.com/hundred.html" title="The Hundred-Year Language">article</a> by <a href="http://www.paulgraham.com">Paul Graham</a>
-about how computer languages evolve, and what a language would look like
-one hundred years from now. Interesting stuff.</p>
 </div>
   
   
@@ -303,6 +324,8 @@ one hundred years from now. Interesting stuff.</p>
     </article>
   
   <div class="pagination">
+    
+      <a class="prev" href="/page/17/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -315,6 +338,10 @@ one hundred years from now. Interesting stuff.</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
     
       <li class="post">
         <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
@@ -330,10 +357,6 @@ one hundred years from now. Interesting stuff.</p>
     
       <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
       </li>
     
   </ul>

@@ -9,9 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="I’ve been working on adding paredit.el like structural editing to
-the next version of the La Clojure plugin for Intellij IDEA.
-IDEA already does most &hellip;">
+  <meta name="description" content="Some alternative menu / control styles with a radial theme, linked from here so that I don’t lose them: Quad Curve Menu, a ready made control; and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,7 +100,7 @@ IDEA already does most &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/12/25/paredit-el-comes-to-intellij">Paredit.el Comes to IntelliJ</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/30/radial-menus">Radial Menus</a></h1>
     
     
       <p class="meta">
@@ -118,27 +116,21 @@ IDEA already does most &hellip;">
   
 
 
-<time datetime="2009-12-25T20:21:47+01:00" pubdate data-updated="true">Dec 25<span>th</span>, 2009</time>
+<time datetime="2012-03-30T16:38:00+02:00" pubdate data-updated="true">Mar 30<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve been working on adding <a href="http://mumble.net/~campbell/emacs/paredit.el">paredit.el</a> like structural editing to
-the next version of the <a href="http://plugins.intellij.net/plugin/?id=4050">La Clojure</a> plugin for <a href="http://www.jetbrains.com/idea/index.html">Intellij IDEA</a>.
-IDEA already does most of the paren matching stuff (automatically
-inserting a closing paren when you type an opening paren and so on). So
-far I’ve got the basic barf and slurp commands working, and splicing, as
-you can see in the screenshot below:</p>
+  <div class="entry-content"><p>Some alternative menu / control styles with a radial theme, linked from here so that I don’t lose them:</p>
 
-<p><img src="/images/2009/12/idea-slurp-and-barf.png" /></p>
+<ul>
+  <li><a href="https://github.com/levey/QuadCurveMenu">Quad Curve Menu</a>, a ready made control; and</li>
+  <li><a href="http://www.raywenderlich.com/9864/how-to-create-a-rotating-wheel-control-with-uikit">Rotating Wheel Control</a>, a Ray Wenderlich tutorial.</li>
+</ul>
 
-<p>The next step is
-probably to make IDEA’s expand selection code be a little smarter in the
-face of s-expressions. In related news: I found a good <a href="http://www.slideshare.net/mudphone/paredit-preso">introduction to paredit.el</a> on <a href="http://www.slideshare.net/">SlideShare</a> which may be of interest. I’ll try
-to get the guys at IntelliJ to push out a new version of the plugin
-after the 9.0.1 release is out (it’s in beta now).</p>
+<p>(I should probably just use <a href="http://pinboard.in/">Pinboard</a> or somethig like that…)</p>
 
 </div>
   
@@ -152,7 +144,7 @@ after the 9.0.1 release is out (it’s in beta now).</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/12/17/clojure-purists">Clojure Purists?</a></h1>
+      <h1 class="entry-title"><a href="/2012/03/29/developing-for-the-blackberry">Developing for the BlackBerry</a></h1>
     
     
       <p class="meta">
@@ -168,26 +160,48 @@ after the 9.0.1 release is out (it’s in beta now).</p>
   
 
 
-<time datetime="2009-12-17T14:39:25+01:00" pubdate data-updated="true">Dec 17<span>th</span>, 2009</time>
+<time datetime="2012-03-29T15:12:00+02:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve been following <a href="http://www.tbray.org/ongoing/">Tim Bray</a>’s excellent <a href="http://www.tbray.org/ongoing/When/200x/2009/09/27/Concur-dot-next">Concur.next</a> article series covering approaches to concurrency in various languages, and currently (no pun intended!) covering Clojure. The <a href="http://www.tbray.org/ongoing/When/200x/2009/12/15/Osborne-WF2-Clojure">latest article</a> talks about a super efficient log parsing <a href="http://meshy.org/2009/12/13/widefinder-2-with-clojure.html">implementation</a> done by <a href="http://meshy.org/">Alex Osborne</a> an includes the following comment:</p>
+  <div class="entry-content"><p>For a change from the day job I’ve been doing some mobile development, all iOS up to now, and I’ve got to say it’s a pretty nice development experience - especially with the new features (e.g. ARC, new literals) that are being added to Objective-C. But then earlier this week I was asked to look into writing a BlackBerry app at work, so that led me to looking into the different options that are available for that platform, here’s what I looked into:</p>
 
-<blockquote>
-  <p>Lots of the performance wins come from dipping into Java-land (AtomicLongs, LinkedBlockingQueue), which is perfectly OK, but a Clojure purist would probably see those occasions as maybe highlighting gaps in that language’s coverage.</p>
-</blockquote>
+<ul>
+  <li>the <a href="http://developer.blackberry.com/java">BlackBerry Java SDK</a>;</li>
+  <li><a href="http://developer.appcelerator.com/">Appcelerator Titanium</a>; and</li>
+  <li><a href="http://phonegap.com/">PhoneGap</a> (or <a href="http://incubator.apache.org/cordova/">Cordova</a> as it is becoming).</li>
+</ul>
 
-<p>I’d take issue with that, one of the real strengths of Clojure it that it has easy and fast access to the whole Java ecosystem. As <a href="http://clojure.org/jvm\_hosted">Rich says</a>:</p>
+<p>After working with the iPhone SDK all three of these options left a lot be desired! Herewith, a summary of their shortcomings…</p>
 
-<blockquote>
-  <p>Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java.</p>
-</blockquote>
+<h3 id="blackberry-java-sdk">BlackBerry Java SDK</h3>
 
-<p>That seems pretty clear to me. I wonder if the people claiming to be Clojure purists are all coming from a Lisp background rather than the Java world?</p>
+<p>First off let me say that there are too many development options for the BlackBerry platform, even an Android emulation layer if you’re targetting their tablet. It’s a bit of a joke really.</p>
+
+<p>Given their enterprise strengths, RIM should concentrate on getting one good Java based SDK and drop the Android layer. And rather than push their own WebWorks SDK they should concentrate on providing good support for Appcelerator and PhoneGap which will at least provide them with a growing stable of cross-platform apps written using these toolkits.</p>
+
+<p>A final gripe: their simulator is killingly slow to launch, when running in debug mode (which is required to get full console output) it takes 5 minutes to launch on a reasonably modern Windows laptop.</p>
+
+<h3 id="appcelerator-titanium">Appcelerator Titanium</h3>
+
+<p>I like the idea behind Titanium: native components driven by a JavaScript (or CoffeeScript!) engine, but the current implementation didn’t inspire confidence. The installers for both Mac and Windows were buggy. I encountered several errors during installation and the Eclipse based IDE failed to install the BlackBerry components.</p>
+
+<p>I expect that if you are just targetting iPhone and Android then Titanium is probably a viable option, although the problems that I had just getting it installed would give me pause before selecting it.</p>
+
+<h3 id="phonegap--cordova">PhoneGap / Cordova</h3>
+
+<p>The installation process was much smoother, and on the Mac it works with Xcode rather than installing an Eclipse based IDE. That said, the BlackBerry support again seemed to be quite poor, and only available on Windows.</p>
+
+<p>One advantage of PhoneGap is that it’s just HTML5, so you have access to the growing number of excellent frameworks for mobile development (e.g. <a href="http://jquerymobile.com/">jQuery Mobile</a> or <a href="http://spinejs.com/mobile">Spine.mobile</a>) and there is also the opportunity to reuse some code between your mobile app and a web based version.</p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>For the internal app that I’m working on I’m sticking with the BB Java SDK for now, although if I were going to be doing more than a single small app I would probably invest the time to get comfortable with PhoneGap and use that (of course, at the same time I’m trying to persuade the client that iOS is a better choice).</p>
+
+<p>I’d definitely use PhoneGap if I needed to write a cross-platform app as it seems to be the more mature option.</p>
 
 </div>
   
@@ -201,7 +215,7 @@ after the 9.0.1 release is out (it’s in beta now).</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/12/07/clojure-evaluation">Clojure Evaluation</a></h1>
+      <h1 class="entry-title"><a href="/2011/11/04/installing-to-the-local-maven-repo-with-gradle">Installing to the Local Maven Repo With Gradle</a></h1>
     
     
       <p class="meta">
@@ -217,314 +231,16 @@ after the 9.0.1 release is out (it’s in beta now).</p>
   
 
 
-<time datetime="2009-12-07T17:44:50+01:00" pubdate data-updated="true">Dec 7<span>th</span>, 2009</time>
+<time datetime="2011-11-04T11:34:00+01:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve been loking at the early-access version of <a href="http://www.manning.com/">Manning</a>’s
-forthcoming <a href="http://www.manning.com/rathore/">Clojure in Action</a> book as well as some of the
-<a href="http://www.manning-sandbox.com/thread.jspa?threadID=35150&amp;tstart=0">criticism</a> of it. One of the complaints is that the current drafts
-describe macros as a run-time concept and that this is wrong. The
-confusion arises from the fact that <a href="http://clojure.org/">Clojure</a> (and Lisps in general)
-don’t follow the same path from source to execution as a more
-conventional programming languages like C and Java. I’ll compare four
-different languages to see how they differ: C, Java, a traditional Lisp
-compiler, and Clojure.</p>
+  <div class="entry-content"><p>I’ve been playing around with different build tools for my Java projects recently, having never been very happy with <a href="http://maven.apache.org/" title="Apache Maven">Maven</a>. Probably the best that I’ve found is <a href="http://www.gradle.org/" title="Gradle">Gradle</a>: it has an easy to use build file format, and seems pretty flexible if you need to do something a little differently.</p>
 
-<h3 id="c-like-languages">C Like Languages</h3>
-
-<p><img src="/images/2009/12/c-compilation-stages.png" /></p>
-
-<p>This is what most people
-are used to, the traditional compiled language. Here, source code is
-read in and then parsed (this is normally broken out into multiple
-stages, e.g. a separate lexing stage, but for our purposes we can gloss
-over these details). The parser emits some form of intermediate
-representation, usually an abstract syntax tree (AST), this is then used
-by the compiler to generate executable code.</p>
-
-<p>Again, this
-potentially glosses over some details: optimizers can world on the
-intermediate representation for example, or the compiler could require a
-separate linking stage to generate an executable. For our purposes
-though this is sufficient: we go from source to AST to executable. Also,
-it could be argued that the C pre-processor operates on the source code
-before the parser sees it, but in practice the C macros system is so
-primitive it doesn’t really warrant being called out as a separate
-stage.</p>
-
-<h3 id="java-like-languages">Java Like Languages</h3>
-
-<p><img src="/images/2009/12/java-compilation-stages.png" /></p>
-
-<p>The Java like
-languages differ from C in that they run on top of a virtual machine
-rather than being executed directly by the OS; as a reult their compiler
-emits ‘bytecode’ rather than a finished executable. This bytecode is
-then executed by the virtual machine. In all modern desktop and server
-virtual machines this is means just in time compiling the bytecode down
-to native machine code.</p>
-
-<h3 id="traditional-lisps">Traditional Lisps</h3>
-
-<p><img src="/images/2009/12/lisp-compilation-stages.png" /></p>
-
-<p>The Lisp view of things
-is a little different; it’s more complicated but also more powerful. The
-first thing to note is that Lisp code is already basically in the form
-of an AST - there is no (or not much) syntax getting in the way. Next,
-there are 2 types of macros which are applied to Lisp code: macros and
-reader macros. I’ll duscuss them in the opposite order to the way they
-are applied…</p>
-
-<p>The standard
-type of Lisp macros are what most people rave about when extolling the
-virtues of the language: these are chunks of code that are executed
-after the source has been loaded into an AST (remember, Lisp source code
-is basically in this form already, so this just involves moving from a
-textual representation to something that the Lisp runtime can work
-with). If a node in the AST is a macro then it is evaluated as the code
-is loaded and the result of the evaluation is used to <em>replace the
-macro node in the AST</em>.</p>
-
-<p>Stop and think about that for a minute - this
-happens <em>before</em> the code is evaluated by the regular Lisp runtime,
-but yet at this point you already have access to the full Lisp
-programming language. All of this means that you can do some
-<a href="http://weitz.de/macros.lisp">pretty</a> <a href="http://brierwooddesign.com/2009/2/12/fun-with-lisp-macros">cool</a> <a href="http://www.paulgraham.com/avg.html">tricks</a>: how about writing your own control
-constructs? Writing a DSL compiler? Logging constructs that have
-<em>zero</em> runtime overhead when not used (but that can be switched on and
-off by users of the program, unlike <code>#define DEBUG 0</code> in C)?</p>
-
-<p>The
-second, and much less common, type of macro is the <em>reader macro</em>.
-Reader macros operate on the character stream as it is read in, before
-the AST is constructed. Basically, when the reader sees a specific
-character (usually <code>#</code>) it then looks at the next character and uses that
-as a key into a table of functions (the read table) that tell it how to
-handle future input. Using reader macros it’s possible to create DSLs
-that don’t use s-expression syntax (s-expressions are the paren enclosed
-lists that Lisp is (in)famous for); or do something as simple as
-allowing the use of brackets to <a href="http://www.psg.com/~dlamkins/sl/chapter03-12.html">write quoted lists</a> without needing
-an explicit quote (i.e. writing <code>[1 2 3]</code> instead of <code>'(1 2 3)</code>).</p>
-
-<p>Only once all of this has finished is a traditional lisp ready to let
-it’s compiler go to work turning the (now macro-free) AST into
-executable code.</p>
-
-<h3 id="clojure">Clojure</h3>
-
-<p>Clojure is very similar to the
-traditional Lisp model, with two main differences. The first difference
-is the fact that, like Java, the output is bytecode which is then loaded
-and executed by a standard Java virtual machine.</p>
-
-<p>The second difference
-is that while Clojure does have <a href="http://clojure.org/reader#toc1">reader macros</a>, the read table
-isn’t exposed to user programs; that is, while it operates in the same
-way as a traditional Lisp there is no way for user code to alter the
-behaviour of the reader. This is probably good thing as Clojure includes
-a relatively large number of predefined reader macros including a
-literal syntax for lists, sets, and maps, as well as lambda-expressions
-(anonymous functions) and metadata.</p>
-
-<h3 id="summary">Summary</h3>
-
-<p>C and Java like
-languages have a huge amount of syntax baked in, but don’r provide any
-way to modify this or to manipulate the program before it is compiled.
-Lisp has almost no syntax but provides a mechanism for users to add
-their own, and provides a mechanism to manipulate programs before they
-are compiled.</p>
-
-<p>Clojure has some syntax (more than other Lisps, but way
-less than C/Java/&amp;c.) and provides the same mechanism for program
-manipulation as other Lisps. The OmniGraffle file for the images in this
-post is <a href="http://ianp.org/images/2009/12/compilation-stages.graffle.gz">available here</a> if anybody is interested.</p>
-
-<p><strong>Update:</strong> this
-post is intended to compare traditional C-style languages with Lisps, it
-doesn’t cover, for examples, so-called scripting languages such as Perl,
-Python, and Ruby.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/11/26/how-to-work-with-git-github">How to Work With Git & GitHub</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-26T15:33:36+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
-shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
-posting it here then it’ll be easy for me to refer back to in future…</p>
-
-<h3 id="installing-the-tools">Installing the Tools</h3>
-
-<ol>
-  <li>install <a href="http://macports.org/">MacPorts</a> if you don’t already have it;</li>
-  <li>get an up-to-date version of ruby and rubygems with <code>sudo port install rb-rubygems</code>;</li>
-  <li>install the <code>github</code> tool with <code>sudo port install json github</code>; and</li>
-  <li>upload your public key to your <a href="http://github.com/account">GitHub account</a>.</li>
-</ol>
-
-<h3 id="creating-a-new-project">Creating a New Project</h3>
-
-<p>Run <code>github create project_name</code> to create a public project, append <code>--private</code>
-to create a private project (you will need a paid account at GitHub for
-this).</p>
-
-<h3 id="forking">Forking</h3>
-
-<p>Run <code>github fork project_owner project_name</code>, for example to create a fork of the Cucumber testing
-framework run <code>github fork aslakhellesoy cucumber</code>.</p>
-
-<h3 id="making-changes">Making Changes</h3>
-
-<p>Make your changes in a branch, this took me a little while to
-get used to at first as it’s different from the normal way of working
-with version control systems like CVS:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd </span>project_dir
-</span><span class="line"><span class="nv">$ </span>git checkout -b feature_name
-</span><span class="line">... edit edit edit ...
-</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Witty comment.&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>From time to time push the branch to github
-so others can see what I’m working on <code>git push origin feature_name</code>.
-If the work is in a fork then you’ll also want to send a pull-request
-back to the original project with <code>github pull-request project_owner feature_name</code>. All from the command line, neat huh? For more tricks,
-you can also browse issues with <code>github issues {open|closed}</code>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/11/12/choose-your-own-visual-adventure">Choose Your Own Visual Adventure</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-12T10:20:19+01:00" pubdate data-updated="true">Nov 12<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A <a href="http://samizdat.cc/cyoa/">really nice set</a> of visualisations of the old Choose Your Own
-Adventure books, I was a big fan of the <a href="http://en.wikipedia.org/wiki/The_Warlock_of_Firetop_Mountain">English equivalents</a> when I
-was a kid.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/11/09/strawman-arguments-and-coding-styles">Strawman Arguments and Coding Styles</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-09T12:11:09+01:00" pubdate data-updated="true">Nov 9<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>So there’s <a href="http://blog.bestinclass.dk/index.php/2009/09/java-vs-clojure-lets-talk-ceremony/">this blog post</a> over on the <a href="http://blog.bestinclass.dk/">Best in Class</a> blog
-that talks about ceremony in programming languages and compares
-<a href="http://clojure.org/">Clojure</a> with <a href="http://java.sun.com/">Java</a> on this basis. While I’d agree with the
-basic premise of the article (that there is less ceremony in Clojure),
-I’m less keen on the way it’s presented: by way of a needlessly verbose
-strawman example.</p>
-
-<p>To be fair the article does kind of admit that this is
-what is being done, but it’s still annoying. With this in mind let’s see
-how well we can do with the Java version of the code, relying on a
-better coding style and a couple of freely available libraries (one of
-the platforms much touted strengths).</p>
-
-<p>For the original — 28 line —
-version of the code I’ll refer you to the <a href="http://blog.bestinclass.dk/index.php/2009/09/java-vs-clojure-lets-talk-ceremony/">original post</a> (but warn
-you that it’s presented in that well known code storage format, PNG!).
-The same code rewritten in a smarter manner, but still using only the
-core Java libraries. This gets it down to 10 lines of code and also
-makes the intent of the code clearer. There’s still a fair amount of
-ceremony about this however: the multiple imports, and all of the class
-and static main method boilerplate.</p>
+<p>Unfortunately the documentation isn’t as comprehensive as it could be, and one of the areas where it’s not too great is in it’s interaction with the Maven repository system. So, here’s the magic incantation that you have to add to your build file in order to have <em>gradle install</em> install things correctly to your local repository:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -537,27 +253,30 @@ and static main method boilerplate.</p>
 <span class="line-number">9</span>
 <span class="line-number">10</span>
 <span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">java.util.HashSet</span><span class="o">;</span>
-</span><span class="line">
-</span><span class="line"><span class="kd">class</span> <span class="nc">Distinct</span> <span class="o">{</span>
-</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">Set</span> <span class="n">distinct</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[]</span> <span class="o">{</span>
-</span><span class="line">        <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span>
-</span><span class="line">    <span class="o">}));</span>
-</span><span class="line">  <span class="o">}</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">&#39;maven&#39;</span>
+</span><span class="line"><span class="n">configure</span><span class="o">(</span><span class="n">install</span><span class="o">.</span><span class="na">repositories</span><span class="o">.</span><span class="na">mavenInstaller</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">pom</span><span class="o">.</span><span class="na">project</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">groupId</span> <span class="s1">&#39;com.example&#39;</span>
+</span><span class="line">        <span class="n">artifactId</span> <span class="s1">&#39;project-name&#39;</span>
+</span><span class="line">        <span class="n">inceptionYear</span> <span class="s1">&#39;2011&#39;</span>
+</span><span class="line">        <span class="n">packaging</span> <span class="s1">&#39;jar&#39;</span>
+</span><span class="line">        <span class="n">licenses</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">license</span> <span class="o">{</span>
+</span><span class="line">                <span class="n">name</span> <span class="s1">&#39;Eclipse Public License (Version 1.0)&#39;</span>
+</span><span class="line">                <span class="n">url</span> <span class="s1">&#39;http://www.eclipse.org/legal/epl-v10.html&#39;</span>
+</span><span class="line">                <span class="n">distribution</span> <span class="s1">&#39;repo&#39;</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
 </span><span class="line"><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>Let’s see if we can’t do a little better with the addition of some open
-source libraries. Enter <a href="http://code.google.com/p/google-collections/">Google Collections</a>, a really neat library
-that improves the collections API from the JDK. We’re now down to 7
-lines of code, and 2 of those are just closing braces! In any reasonably
-size program the class and main statements disappear into the noise, so
-we’re really saying that we have 2 import statements and a single line
-of code. That’s not too different from the Clojure version all things
-considered.</p>
+<p>this will install the project binaries, to also install source and JavaDocs (which <em>every</em> project should really do) then you’ll also need to add:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -567,21 +286,29 @@ considered.</p>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
 <span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.util.Set</span><span class="o">;</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">static</span> <span class="n">com</span><span class="o">.</span><span class="na">google</span><span class="o">.</span><span class="na">common</span><span class="o">.</span><span class="na">collect</span><span class="o">.</span><span class="na">Sets</span><span class="o">.</span><span class="na">newHashSet</span><span class="o">;</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="groovy"><span class="line"><span class="n">task</span> <span class="nf">sourcesJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">classes</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;sources&#39;</span>
+</span><span class="line">    <span class="n">from</span> <span class="n">sourceSets</span><span class="o">.</span><span class="na">main</span><span class="o">.</span><span class="na">allSource</span>
+</span><span class="line"><span class="o">}</span>
 </span><span class="line">
-</span><span class="line"><span class="kd">class</span> <span class="nc">Distinct</span> <span class="o">{</span>
-</span><span class="line">  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">...</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">    <span class="n">Set</span> <span class="n">distinct</span> <span class="o">=</span> <span class="n">newHashSet</span><span class="o">(</span><span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
-</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="n">task</span> <span class="nf">javadocJar</span><span class="o">(</span><span class="nl">type:</span> <span class="n">Jar</span><span class="o">,</span> <span class="nl">dependsOn:</span><span class="n">javadoc</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">classifier</span> <span class="o">=</span> <span class="s1">&#39;javadoc&#39;</span>
+</span><span class="line">    <span class="n">from</span> <span class="n">javadoc</span><span class="o">.</span><span class="na">destinationDir</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="n">artifacts</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">archives</span> <span class="n">sourcesJar</span>
+</span><span class="line">    <span class="n">archives</span> <span class="n">javadocJar</span>
 </span><span class="line"><span class="o">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>It’s interesting to note that the second Java version weighs in at 10
-lines of code, versus 8 for the equivalent clojure version; not much of
-a difference really. I think that the benefits of Clojure come from it’s
-<a href="http://clojure.org/functional_programming">functional style</a>, <a href="http://clojure.org/macros">macro system</a>, and excellent <a href="http://clojure.org/concurrent_programming">concurrency support</a> — not from the fact that you can save a few lines of code
-here and there.</p>
+<p><strong>Update:</strong> <a href="/2011/11/04/demo.zip">here</a> is a demo project with a complete build file and a ‘hello, world’ sample class, you should be able to just unzip this and then run <em>gradle install</em> to install it into your local repo (tested with Gradle 1.3).</p>
 
 </div>
   
@@ -595,7 +322,7 @@ here and there.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/07/09/further-discord-around-jsr-294">Further Discord Around JSR-294</a></h1>
+      <h1 class="entry-title"><a href="/2011/07/28/how-to-enter-straight-quotes-in-word">How to Enter Straight Quotes in Word</a></h1>
     
     
       <p class="meta">
@@ -611,37 +338,14 @@ here and there.</p>
   
 
 
-<time datetime="2009-07-09T23:54:21+02:00" pubdate data-updated="true">Jul 9<span>th</span>, 2009</time>
+<time datetime="2011-07-28T15:35:43+02:00" pubdate data-updated="true">Jul 28<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.osgi.org/blog/">Peter Kriens</a> of <a href="http://www.osgi.org/">OSGi</a> fame has posted some comments about the
-current EDR from <a href="http://jcp.org/en/jsr/summary?id=294">JSR-294</a>, the proposed Java language changes in
-support of module systems:</p>
-
-<blockquote>
-  <p>In Java 1..6 the language offered a pretty
-pure model that was mapped to reality in the VM. With class loader
-tricks we could tweak the perspective each JAR had of this pure world,
-solving many real world problems. In JSR 294, we will for the first time
-introduce this messy and complex runtime world in the language. Untold
-millions have been spent to make Java run on hundreds of platforms, and
-with one simple JSR we bring back the need for <code>#ifdef ...</code></p>
-</blockquote>
-
-<p>Read the
-<a href="http://altair.cs.oswego.edu/pipermail/jsr294-modularity-observer/2009-July/thread.html">relevant posts</a> on the mailing list, especially <a href="http://altair.cs.oswego.edu/pipermail/jsr294-modularity-observer/2009-July/000225.html">this one</a>. I
-generally agree with the OSGi camp here, this is a giant case of ‘not
-invented here’ syndrome from the Sun people. It’ll be interesting to see
-if the acquisition by Oracle has any effect on this (or the JCP in
-general) but I guess we’ll only find out about that after the deal goes
-through (i.e. months away yet).</p>
-
-<p>Hat tip to <a href="http://aniszczyk.org/2009/07/09/jsr-294-and-meta-module-systems/">Chris Aniszczyk</a>.</p>
-
+  <div class="entry-content"><p>When I’m writing technical docs in MS Word (an unfortunate day-job-related requirement) one of the things that can be annoying it the fact that it ‘helpfully’ converts straight quotes into curly quotes, even in code samples and other places that it shouldn’t. The easy way to get rid of this is to hit undo (⌘-z) immediately after typing the quote, this will undo the auto-correction but leave the actual quote character in place.</p>
 </div>
   
   
@@ -654,7 +358,7 @@ through (i.e. months away yet).</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2009/07/09/best-method-name-ever">Best. Method. Name. Ever</a></h1>
+      <h1 class="entry-title"><a href="/2011/07/08/how-to-end-the-deficit">How to End the Deficit</a></h1>
     
     
       <p class="meta">
@@ -670,112 +374,17 @@ through (i.e. months away yet).</p>
   
 
 
-<time datetime="2009-07-09T18:01:27+02:00" pubdate data-updated="true">Jul 9<span>th</span>, 2009</time>
+<time datetime="2011-07-08T17:52:17+02:00" pubdate data-updated="true">Jul 8<span>th</span>, 2011</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>In the iPhone SDK (with camel case broken out into separate words):</p>
+  <div class="entry-content"><blockquote><p>&gt; I could end the deficit in 5 minutes. You just pass a law that says<br />that anytime there is a deficit of more than 3% of GDP all sitting<br />members of congress are ineligible for reelection.</p><footer><strong>Warren Buffet, CNBC</strong> <cite><a href="http://www.ritholtz.com/blog/2011/07/warren-buffett-i-could-end-the-deficit-in-5-minutes/">www.ritholtz.com/blog/2011/07/&hellip;</a></cite></footer></blockquote>
 
-<blockquote>
-  <p><code>attention class dump user yes its us again although swizzling and
-overriding private methods is fun it wasnt much fun when your app
-stopped working please refrain from doing so in the future okay thanks
-bye</code></p>
-</blockquote>
+<p>He&rsquo;s talking about the US Congress, but it would work here as well.</p>
 
-<p>Via <a href="http://ericasadun.com/iPhoneDocs300/_u_i_view_controller-_u_i_view_controller_class_dump_warning_8h-source.html">Erica Sadun</a>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/18/adobe-releases-rtmp-specification">Adobe Releases RTMP Specification</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-18T06:56:52+02:00" pubdate data-updated="true">Jun 18<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is a few days old now, but on Monday <a href="http://www.adobe.com/">Adobe</a> finally got around
-to releasing <a href="http://www.adobe.com/devnet/rtmp/">the specification</a> for their real-time messaging
-protocol. This should make it much easier for open source efforts like
-<a href="http://rtmpy.org/">RTMPy</a> to polish their implementations. Interesting times…</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/14/quote-of-the-day">Quote of the Day</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-14T20:37:09+02:00" pubdate data-updated="true">Jun 14<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Tip o’ the hat to [Bishop Hill][01]…</p>
-
-<blockquote>
-  <p>In the US Congress, it looks as though they look across the Atlantic to our own Galumphin’ Gordon Brown
-for inspiration. This might look a bit like getting your chat-up lines
-from Benny Hill</p>
-</blockquote>
-
-<p>Note: this post is only tagged as humour funny because if you
-don’t laugh then your only remaining options are to cry or take up arms…</p>
-
-<p>[01]:
-http://bishophill.squarespace.com/blog/2009/6/14/need-a-new-policy-idea.html</p>
 </div>
   
   
@@ -800,6 +409,10 @@ http://bishophill.squarespace.com/blog/2009/6/14/need-a-new-policy-idea.html</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
       </li>
     
@@ -813,10 +426,6 @@ http://bishophill.squarespace.com/blog/2009/6/14/need-a-new-policy-idea.html</p>
     
       <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
       </li>
     
   </ul>

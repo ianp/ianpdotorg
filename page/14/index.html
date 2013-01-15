@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="A minor annonyance with peoples CSS: having an onMouseOver effect
-that causes the enclosing paragraph to reflow when you move the mouse
-over it. The &hellip;">
+  <meta name="description" content="This is an attempt to compare the performance of various object reuse
+strategies for JMonkeyEngine (and, indirectly, Ardor3D). See
+this JME forum &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,7 +102,7 @@ over it. The &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/2004/02/12/links-that-reflow">Links That Reflow</a></h1>
+      <h1 class="entry-title"><a href="/2009/01/17/object-pooling-performance">Object Pooling Performance</a></h1>
     
     
       <p class="meta">
@@ -118,141 +118,95 @@ over it. The &hellip;">
   
 
 
-<time datetime="2004-02-12T10:02:32+01:00" pubdate data-updated="true">Feb 12<span>th</span>, 2004</time>
+<time datetime="2009-01-17T16:21:13+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>A minor annonyance with peoples CSS: having an <code>onMouseOver</code> effect
-that causes the enclosing paragraph to reflow when you move the mouse
-over it. The common culprit is changing the background colour of the
-surrounding box and, I assume, failing to take into account insets and
-borders correctly.</p>
-</div>
-  
-  
+  <div class="entry-content"><p>This is an attempt to compare the performance of various object reuse
+strategies for <a href="http://www.jmonkeyengine.com/">JMonkeyEngine</a> (and, indirectly, <a href="http://www.ardor3d.com/">Ardor3D</a>). See
+<a href="http://www.jmonkeyengine.com/jmeforum/index.php?topic=10146.0">this JME forum topic</a> for background info. Also, it’s worth bearing
+in mind that the main driver for this is to reduce GC pauses, not to
+improve throughput (this is mentioned in the forum topic).</p>
 
+<p>This is
+timings from my initial object pooling implementation using 1 thread
+(all timings throughout this article are in milliseconds):</p>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/01/23/new-design-10">New Design 1.0</a></h1>
-    
-    
-      <p class="meta">
-        
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1793, 2109, 1485, 1418, 1414, 1592, 1675, 2206, 1768, 1685</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>An interesting
+(although unrelated to the topic at hand) thing to note here is that
+it’s pretty easy to spot when hotspot kicked in, although the jump in
+timings between runs 4 and 5 bears investigating further and the slow
+run (run 7) is certainly a worry. Run 7 seems to be consistently slow
+and turning on <code>-verbose:gc</code> doesn’t reveal anything here. This is
+timings from my object pooling implementation using 2 threads, note here
+that this is each thread doing a fixed chunk of work, not a fixed amount
+of work shared between threads (i.e. 2x number of threads = 2x amount of
+work):</p>
 
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">2234, 2965, 1796, 1830, 2029, 2145, 2105, 2242, 2214, 2247</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>So the timings are higher although not twice as high as might be expected,
+this is probably due to that fact that my laptop has a 2-core CPU. Now
+let’s look at the timings from the same with 10 threads:</p>
 
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">8869, 9814, 9203, 8966, 9182, 8973, 9176, 9166, 9358, 9182</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>Yep, about 5x the time as
+the 2 thread runs. Now let’s see how the existing implementation
+compares to these. OK, so now we have an idea how the thread local and
+pooling based implementation performs, let’s have a look at the existing
+implementation to give us a baseline to compare to. This is timings from
+the existing implementation using 1 thread:</p>
 
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">1501, 1469, 1379, 1374, 1471, 1553, 1553, 1589, 1652, 1547</span></code></pre></td></tr></table></div></figure></notextile></div>
 
+<p>Well, that’s quite a bit faster for a
+single thread, although not an order magnitude type difference, and it
+didn’t use any locking as it’s running from a single thread, a more
+realistic implementation would need to have the locks in place in case
+future code tried to use multiple threads. Let’s have a look at 2
+threads now:</p>
 
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">3038, 2906, 2797, 3140, 3120, 3124, 3143, 3179, 3340, 3352</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-  
+<p>Oops! This is about what we’d expect to see, a doubling of the
+amount of work doubles the amount of time needed (as the quaternion
+class is now a shared resource). And 10 threads:</p>
 
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">15538, 16145</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<time datetime="2004-01-23T18:03:42+01:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2004</time>
-        
-      </p>
-    
-  </header>
+<p>OK, I got bored of waiting after 2 runs! But it’s clear to see that it’s much
+slower. Finally, based on suggestions from vear and also looking at the
+code used in the <a href="http://www.javolution.com/">Javolution</a> library (a set of real-time Java
+classes), I decided to try a version that reduced the number of thread
+local look-ups needed, this comes at the cost of not providing a single
+reusable <code>ObjectPool</code> class, but as that class is pretty trivial
+anyway it’s no great loss leaving it out of the framework.</p>
 
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class=""><span class="line"> 1 thread : 1189, 1149, 1096, 1229, 1261, 1506, 1352, 1415, 1295, 1424
+</span><span class="line"> 2 threads: 1644, 1582, 1799, 1640, 1584, 1587, 1766, 1658, 1624, 1806
+</span><span class="line">10 threads: 6853, 7037, 7469, 7549, 7438, 7851, 7748, 7769, 7661, 7703</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-  <div class="entry-content"><p>I’ve spent a bit of time trying to come up with a new design for this
-site, all using nice, clean, XHTML and CSS, and as part of this I’ve
-been trying to make the site look less blocky and have more rounded
-edges and stuff in the design. I’ve come to the conclusion that this
-really sucks. The suppport for CSS, especially layer 3, is still way too
-weak for this to work. So, back to the drawing board, but at least I
-produced a couple of reasonable icons that I can reause, ho hum.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/01/16/swing-font-defaults">Swing Font Defaults</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-01-16T08:01:12+01:00" pubdate data-updated="true">Jan 16<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Fonts in Java look as ugly as sin, we all know this. Now, if you’re
-writing your own app or have the source code then you can get around
-this by setting the rendering hints on your <code>JComponent</code>s. But if you
-don’t have the code, or can’t alter it because, for example, it would
-invalidate a support contract, is there any way of telling swing to use
-antialiasing on fonts by default? I’m hoping that there is some magic
-value that I can just add to my <code>swing.properties</code> file and be done
-with it, but an hour of searching on the net hasn’t found out what it
-is.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/01/16/java-multiple-inheritance">Java Multiple Inheritance</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-01-16T08:01:12+01:00" pubdate data-updated="true">Jan 16<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Can somebody answer this question for me please: why does this code not
-work?</p>
+<p>Wow! it’s pretty clear that the pooled approach is much
+faster and that the cost of performing the thread local look-up is
+fairly significant. Interestingly I also tried this using raw arrays
+instead of <code>ArrayList</code>s and it was much slower, I can only surmise
+that because <code>ArrayList</code> is so heavily used throughout Java it gets
+insanely optimised by hotspot. As a side note, here’s my Java
+environment:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -261,40 +215,20 @@ work?</p>
 <span class="line-number">5</span>
 <span class="line-number">6</span>
 <span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">interface</span> <span class="nc">FooNode</span> <span class="o">{</span>
-</span><span class="line">  <span class="kd">public</span> <span class="n">FooNode</span> <span class="nf">getSelf</span><span class="o">();</span>
-</span><span class="line"><span class="o">}</span>
-</span><span class="line"><span class="kd">class</span> <span class="nc">BarNode</span> <span class="o">{</span>
-</span><span class="line">  <span class="kd">public</span> <span class="n">BarNode</span> <span class="nf">getSelf</span><span class="o">()</span> <span class="o">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-</span><span class="line">  <span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span><span class="line"><span class="kd">class</span> <span class="nc">FooBarNode</span> <span class="kd">extends</span> <span class="n">BarNode</span> <span class="kd">implements</span> <span class="n">FooNode</span> <span class="o">{</span>
-</span><span class="line">  <span class="kd">public</span> <span class="n">FooBarNode</span> <span class="nf">getSelf</span><span class="o">()</span> <span class="o">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-</span><span class="line">  <span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line">~/tmp/perftests<span class="nv">$ </span>uname -a
+</span><span class="line">Darwin Kernel Version 9.6.0: Mon Nov 24 17:37:00 PST 2008;
+</span><span class="line">root:xnu-1228.9.59~1/RELEASE_I386
+</span><span class="line">~/tmp/perftests<span class="nv">$ </span>java -version
+</span><span class="line">java version <span class="s2">&quot;1.6.0_07&quot;</span>
+</span><span class="line">Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.6.0_07-b06-153<span class="o">)</span>
+</span><span class="line">Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 1.6.0_07-b06-57, mixed mode<span class="o">)</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>As far as I can see it should be fine, since <code>FooBarNode</code> <em>is a</em>
-<code>FooNode</code> and also <em>is a</em> <code>BarNode</code> the compiler should have
-nothing to complain about. Of course it doesn’t work, and I can see that
-this is so from the language specification; but the question remains:
-why? My complaint is really that this breaks the semantic model
-completely. What, in essence, is being said by the <code>FooNode.getSelf()</code>
-interface method is that it returns an object which conforms to the
-<code>FooNode</code> interface. Given that <code>FooBarNode</code> does conform to this
-interface it should be fine as a return type from this method. I assume
-that there is some deep reason, probably to do with efficiency of the
-virtual machine, why the language behaves like this; but having seen
-some of the design decisions to come out of Sun’s Java group I wouldn’t
-be too surprised if it was just an accidental fuck up.</p>
+<p>And the code used for these tests is available <a href="http://ianp.org/2009/01/jme-thread-local-performance.tgz">here</a>. I also tried
+this using 1.5 with both the server and client VMs, the 1.5 server VM is
+noticeably slower and the 1.5 client VM is frankly a dog, it was 5-6
+times slower than the 1.6 times given here.</p>
+
 </div>
   
   
@@ -307,7 +241,7 @@ be too surprised if it was just an accidental fuck up.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2004/01/13/irrational-opinions">Irrational Opinions</a></h1>
+      <h1 class="entry-title"><a href="/2008/12/19/two-articles-about-online-games">Two Articles About Online Games</a></h1>
     
     
       <p class="meta">
@@ -323,14 +257,17 @@ be too surprised if it was just an accidental fuck up.</p>
   
 
 
-<time datetime="2004-01-13T08:01:11+01:00" pubdate data-updated="true">Jan 13<span>th</span>, 2004</time>
+<time datetime="2008-12-19T14:25:40+01:00" pubdate data-updated="true">Dec 19<span>th</span>, 2008</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>What <a href="http://fishbowl.pastiche.org">Charles Miller</a> is that the ability to hold irrational opinions is taught at an early age by a large number of schools in the states. That whole <a href="http://www.holysmoke.org/cretins/cre.htm">Creationism</a> thing just cracks me up every time I hear somebody mention it (God given right Charles? What <em>were</em> you thinking when you wrote that!). To answer Lonita in the comments who mentions the right to bear arms, that’s an irrational belief as well. My understanding is that you get to keep and bear arms in order to be able to defend yourself from the tyranny of the government; now, is that really a practical attitude to take in an age where arms capable of doing this must, of necessity, include tanks, aircraft, chemical and biological agents and so on?</p>
+  <div class="entry-content"><p>The <a href="http://www.infoq.com/presentations/Second-Life-Ian-Wilkes">first</a>, over at <a href="http://www.infoq.com/">InfoQ</a>, is a talk given by one of the
+<a href="http://lindenlab.com/">Linden Labs</a> guys about the architecture of <a href="http://secondlife.com/">Second Life</a>. The
+<a href="http://arstechnica.com/news.ars/post/20081219-online-buzz-key-to-creating-long-term-game-revenue.html">other</a> is at <a href="http://arstechnica.com/">Ars Technica</a> and looks at some of the numbers
+surrounding the business of gaming.</p>
 
 </div>
   
@@ -344,7 +281,7 @@ be too surprised if it was just an accidental fuck up.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2003/12/18/eclipse-netbeans">Eclipse & Netbeans</a></h1>
+      <h1 class="entry-title"><a href="/2008/07/31/infoq-presentations">InfoQ Presentations</a></h1>
     
     
       <p class="meta">
@@ -360,95 +297,47 @@ be too surprised if it was just an accidental fuck up.</p>
   
 
 
-<time datetime="2003-12-18T13:12:50+01:00" pubdate data-updated="true">Dec 18<span>th</span>, 2003</time>
+<time datetime="2008-07-31T08:19:56+02:00" pubdate data-updated="true">Jul 31<span>st</span>, 2008</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Talk of merging <a href="http://www.eclipse.org">Eclipse</a> and
-<a href="http://www.netbeans.org">NetBeans</a> is off then, according to
-<a href="http://weblogs.java.net/pub/wlg/751" title="Partial Eclipse">this</a> recent
-post. I can’t say that I’m surprised, since many of the differences
-between the two ‘platforms’ have become religious issues. What I’d like
-to see, however, is soome commonality and code sharing between the two
-where it makes sense. For example in the resource management / virtual
-file system APIs, or their action API. This kind of thing would make
-writing plugins that work with multiple IDEs much easier, and would
-avoid duplication of effort, allowing the developers to enhance the two
-products in new ways.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2003/12/10/gnome-wish-list">Gnome Wish List</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2003-12-10T15:12:33+01:00" pubdate data-updated="true">Dec 10<span>th</span>, 2003</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My thoughts on the <a href="http://www.osnews.com">OS News</a> Gnome wish list,
-<a href="http://www.burtonini.com/cgi/pyblosxom.cgi/computers/gnome-wishlist-pah-20031210">others</a> have already commented. Now I haven’t been following too closely the new features in 2.6, but here’s my thoughts anyway: </p>
+  <div class="entry-content"><p><a href="http://www.infoq.com/">InfoQ</a> are one of my favourite tech information sites anyway and the
+signal to noise ratio there is normally pretty high, they’ve got 3 great
+new presentations out today:</p>
 
 <ul>
   <li>
-    <p><strong>Nautilus Scripting</strong>
-a new plugin API and smart menu merging would go a long way to making Nautilus cooler, assuming of course that developers step up to the base and write plugins for it! And by the way, we really need to change the (legally incredibly dodgy) icon for this app!</p>
+    <p>in <a href="http://www.infoq.com/news/2008/07/Developing-Expertise-Dave-Thomas">Herding Racehorses, Racing Sheep</a>, Dave Thomas talks about the problems of treating developers
+as interchangeable cogs (or <em>fungible resources</em>, as the project
+management crowd would say). Some great ideas for bringing new team
+members up to speed quickly (about 18 minutes in);</p>
   </li>
   <li>
-    <p><strong>Spatial Mode</strong>
-I can’t wait for this, assuming the implementation doesn’t totally suck it will be way cool.</p>
+    <p>in <a href="http://www.infoq.com/news/2008/07/presentation-botch-scalability">The Top 10 Ways to Botch Enterprise Java Scalability and Reliability</a>, Cameron
+Purdy of Oracle talks about scaling Java. Obviously it’s not an
+impartial view but his points are good ones and it’s an interesting
+talk;</p>
   </li>
   <li>
-    <p><strong>Metacity Features</strong>
-Viewports == Crack. But the magnetic windows feature in metacity is broken, so it’s fair game for criticism as far as I’m concerned.</p>
+    <p>in <a href="http://www.infoq.com/articles/ddd-evolving-architecture">Domain-Driven Design in an Evolving Architecture</a>, Mat
+Wall and Nik Silver talk about their experiences applying DDD at the
+<a href="http://guardian.co.uk/">Guardian’s web site</a>, it covers why they selected DDD as a method as
+well as the benefits that they feel it brought. I’ve heard them talk
+about this before, on <a href="http://se-radio.net/">SE Radio</a>, and to be honest, it worked better
+in that format I thought - the written version here needs to be edited
+down to about half it’s current length;</p>
   </li>
   <li>
-    <p><strong>File Selector</strong>
-The new file selector <em>does</em> suck. As far as I can see the two
-problems with the current file selector are that it looks ugly as fuck,
-and that it lacks even basic features. The proposed new design solves
-the fugly problem but doesn’t appear to add any features. I’d like to
-see, at least, improved filtering, and more details of files being
-displayed.</p>
-  </li>
-  <li>
-    <p><strong>Development Tools</strong>
-I don’t use Glade so I don’t know whether it sucks or not. I suspect the same is true of Eugenia so these comments don’t really seem fair. That said, what I’d really like to see is a GUI builder integrated with Eclipse, maybe as a new back end for the <a href="http://www.eclipse.org/vep" title="Visual Editor">VE</a> project.</p>
-  </li>
-  <li>
-    <p><strong>Drag and drop, copy and paste</strong>
-Yeah, this sucks, but now that there are Free Desktop specs for this the situation should improve.</p>
+    <p>finally, <a href="http://www.infoq.com/news/2008/07/Architecture-Reviews-Brock">Rebecca Wirfs-Brock talks about</a> the benefits of, and problems of conducting,
+architectural reviews. I’ve listened to some of this before as Rebecca
+did an <a href="http://www.se-radio.net/podcast/2008-04/episode-93-lessons-learned-architecture-reviews-rebecca-wirfsbrock">interview</a> with <a href="http://se-radio.net/">SE Radio</a> a while back, but this is good
+for people who haven’t heard her talk before.</p>
   </li>
 </ul>
 
-<p>I’ll update this as I get time over the next couple of days.</p>
 </div>
   
   
@@ -461,7 +350,7 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
       
   <header>
     
-      <h1 class="entry-title"><a href="/2003/11/18/mac-annoyances">Mac Annoyances</a></h1>
+      <h1 class="entry-title"><a href="/2008/07/30/turning-off-apple-data-detectors-in-mail">Turning Off Apple Data Detectors in Mail</a></h1>
     
     
       <p class="meta">
@@ -477,16 +366,28 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
   
 
 
-<time datetime="2003-11-18T21:11:11+01:00" pubdate data-updated="true">Nov 18<span>th</span>, 2003</time>
+<time datetime="2008-07-30T03:48:51+02:00" pubdate data-updated="true">Jul 30<span>th</span>, 2008</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://daringfireball.net">John Gruber</a> takes issue with external editor support in apples new XCode application. I’m wondering what the Mac is like as a development platform? I love the hardware, and there are lots of neat things about the Mac, but is it a viable platform to switch to?</p>
+  <div class="entry-content"><p>Apparently <a href="http://mjtsai.com/blog/2008/07/29/turning-off-apple-data-detectors-in-mail/">Michael Tsai doesn’t like</a> the data detectors feature in
+Leopard. Personally I <em>love</em> it. For those of you who don’t know, data
+detectors is a feature that adds smart links to chunks of text based on
+what it thinks the text describes. For example, one feature that I use
+all the time in Mail is the detector that turns any date or time into a
+link allowing you to add it to iCal as an event.</p>
 
-<p><em>Update:</em> Yes, it is. I switched a few months after this was written and haven’t looked back.</p>
+<p>The really neat thing
+about it is how it can scan the entire post to come up with information
+to fill in about the event – even looking at different regions of text
+scattered throughout a mail. It’s pretty neat and is exactly the type of
+thing that <a href="http://wilshipley.com/">Wil Shipley</a> is talking about <a href="http://www.viddler.com/explore/rentzsch/videos/4/">here</a> when he mentions
+adding features to your apps that constantly surprise users in a good
+way (I’ve seen designers from BMW talk about the same thing in the
+context of styling their car interiors).</p>
 
 </div>
   
@@ -500,7 +401,7 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
       
   <header>
     
-      <h1 class="entry-title"><a href="/2003/11/18/jsr-173-reference-implementation">JSR-173 Reference Implementation</a></h1>
+      <h1 class="entry-title"><a href="/2008/05/25/sourceforge-annoyances">Sourceforge Annoyances</a></h1>
     
     
       <p class="meta">
@@ -516,197 +417,18 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
   
 
 
-<time datetime="2003-11-18T19:11:04+01:00" pubdate data-updated="true">Nov 18<span>th</span>, 2003</time>
+<time datetime="2008-05-25T20:28:23+02:00" pubdate data-updated="true">May 25<span>th</span>, 2008</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve been looking at the new streaming API for XML (<a href="http;//www.jcp.org/en/jsr/detail?id=173">JSR-173</a>), I’ve been generally impressed but have found a bug in the reference implementation, here’s the details, using this test program:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">javax.xml.stream.*</span><span class="o">;</span>
-</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaxWriterTest</span> <span class="o">{</span>
-</span><span class="line">    <span class="kd">static</span> <span class="n">String</span> <span class="n">nsURI</span> <span class="o">=</span> <span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="o">;</span>
-</span><span class="line">    <span class="kd">static</span> <span class="n">String</span> <span class="n">nsPrefix</span> <span class="o">=</span> <span class="s">&quot;a&quot;</span><span class="o">;</span>
-</span><span class="line">    <span class="kd">static</span> <span class="kt">int</span> <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// Used to pretty print the output.</span>
-</span><span class="line">    <span class="kd">static</span> <span class="n">XMLStreamWriter</span> <span class="n">w</span><span class="o">;</span>
-</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">        <span class="k">try</span> <span class="o">{</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartDocument</span><span class="o">();</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;root&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeNamespace</span><span class="o">(</span><span class="n">nsPrefix</span><span class="o">,</span> <span class="n">nsURI</span><span class="o">);</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEmptyElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeAttribute</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEmptyElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelTwo&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeAttribute</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(-</span><span class="mi">2</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(-</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span><span class="line">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-</span><span class="line">            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">        <span class="o">}</span>
-</span><span class="line">    <span class="o">}</span>
-</span><span class="line">    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">indent</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">        <span class="k">try</span> <span class="o">{</span>
-</span><span class="line">            <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="n">depth</span> <span class="o">+=</span> <span class="n">d</span><span class="o">;</span> <span class="o">}</span>
-</span><span class="line">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">depth</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeCharacters</span><span class="o">(</span><span class="s">&quot;  &quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="n">depth</span> <span class="o">+=</span> <span class="n">d</span><span class="o">;</span> <span class="o">}</span>
-</span><span class="line">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">XMLStreamException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-</span><span class="line">        <span class="o">}</span>
-</span><span class="line">    <span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is using version 7 of the reference implementation, by the way. The program should produce this output:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;</span>
-</span><span class="line"><span class="nt">&lt;a:root</span> <span class="na">xmlns:a=</span><span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne&gt;</span>
-</span><span class="line">        <span class="nt">&lt;a:levelTwo</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/a:levelOne&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
-</span><span class="line"><span class="nt">&lt;/a:root&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>But actually produces this:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;</span>
-</span><span class="line"><span class="nt">&lt;a:root</span> <span class="na">xmlns:a=</span><span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;</span>
-</span><span class="line">        <span class="nt">&lt;a:levelTwo</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/a:levelOne&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
-</span><span class="line"><span class="nt">&lt;/a:root&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Line 5 is generated as an empty element instead of a start element. I’ve pointed this out the to JCP committee, we’ll see if they repsond.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2003/11/16/fedora">Fedora</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2003-11-16T11:11:07+01:00" pubdate data-updated="true">Nov 16<span>th</span>, 2003</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>By coincidence I just finished reading up on the <a href="http://fedora.redhat.com">Fedora Project</a> before I read <a href="http://www.dynamicobjects.com/d2r">this</a> post from Diego. As I see it Redhat are going to push the Fedora project as their replacement for the Professional edition (i.e. Red Hat 9). This probably makes sense since they can free up a lot of resources whilst hopefullty maintaining market visibility. If they can increase the speed of the release cycle for this it may even help them gain some more converts (and it sure does look pretty!).</p>
+  <div class="entry-content"><p><a href="http://www.sourceforge.net/">That site</a> gets worse and worse. I can live with the fact that
+corporate IT departments can behave like petit-Hilters with their
+ridiculous password policies, but now SF has started to do the same. For
+fuck’s sake, just let me pick a password and keep it, it’s not like the
+world is going to end if somebody gets my SF login details.</p>
 
 </div>
   
@@ -732,6 +454,10 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
       </li>
     
@@ -745,10 +471,6 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
     
       <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
       </li>
     
   </ul>

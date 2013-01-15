@@ -244,7 +244,7 @@
 
 <p>Clear as mud, right?</p>
 
-<p>Other languages don’t have this problem, in Objective-C we can write</p>
+<p>Other languages don’t have this problem, for example in Objective-C we would write something like:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -252,7 +252,7 @@
 </span><span class="line">        <span class="nl">title:</span><span class="s">@&quot;Apple Engineer&quot;</span> <span class="nl">salary:</span><span class="mi">200000</span> <span class="nl">hiredAt:</span><span class="s">@&quot;2001-03-24&quot;</span><span class="p">];</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>which is much clearer. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here’s a typical implementation and an example of calling it:</p>
+<p>which is much clearer. Ruby, Python, and other languages all have similar constructs. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here’s a typical implementation and an example of calling it:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -402,7 +402,7 @@
 
 <p><strong>Aside:</strong> if you’re familiar with <em>domain-driven design</em> you’ll be forgiven for noticing a lot of overlap between the factory pattern and DDD’s concept of <em>repositories,</em> they’re very similar concepts. One difference being that factories are often able to create new objects <em>ex nihilo</em> while repositories usually retreive objects from external sources. Compare the <code>findById()</code> method with the <code>newInstance()</code> methods employed by many of the factory classes in the JDK.</p>
 
-<p>Hopefully you can see from tis post that the two patterns have different, if complementary, aims.</p>
+<p>Hopefully you can see from this post that the two patterns have different—if complementary—aims.</p>
 
 <p>A complete example project with all of this code, as well as test cases and a CSV based implementation the the factory are available <a href="https://github.com/ianp/builder-example">on Github</a>.</p>
 
@@ -452,6 +452,8 @@
         <a class="basic-alignment left" href="/2013/01/08/for-some-definition-of-easily" title="Previous Post: For Some Definition of Easily">&laquo; For Some Definition of Easily</a>
       
       
+        <a class="basic-alignment right" href="/2013/01/15/programming-praxis" title="Next Post: Programming Praxis">Programming Praxis &raquo;</a>
+      
     </p>
   </footer>
 </article>
@@ -471,6 +473,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
       </li>
     
@@ -484,10 +490,6 @@
     
       <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
       </li>
     
   </ul>

@@ -9,8 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Now that the 1.6 release of RvSnoop is out of the door (OK, 1.6.1 ‘cause of a wart inthe original release), there are certain
-features that I’d like &hellip;">
+  <meta name="description" content="C functions may be used recursively; that is, a function may call
+itself either directly or indirectly. Uninquiring souls may take this as
+just &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,7 +102,7 @@ features that I’d like &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/12/19/oh-such-a-good-infrastructure">Oh, Such a Good Infrastructure</a></h1>
+      <h1 class="entry-title"><a href="/2009/12/26/the-c-programming-language">The C Programming Language</a></h1>
     
     
       <p class="meta">
@@ -117,64 +118,21 @@ features that I’d like &hellip;">
   
 
 
-<time datetime="2006-12-19T21:40:23+01:00" pubdate data-updated="true">Dec 19<span>th</span>, 2006</time>
+<time datetime="2009-12-26T19:07:09+01:00" pubdate data-updated="true">Dec 26<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Now that <a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-1.6.1-bin.tgz">the 1.6 release</a> of <a href="http://rvsnoop.org/">RvSnoop</a> is out of the door (OK, 1.6.1 ‘cause of a wart inthe original release), there are certain
-features that I’d like to see added, and for the 2.0 release I want to
-have in place a foundation that will make it easier to add these. A full
-list of features can be found in the <a href="http://svn.sourceforge.net/viewvc/*checkout*/rvsn00p/trunk/rvsn00p/doc/plans.txt">plan file</a> in the <a href="http://sourceforge.net/svn/?group_id=63447">RvSnoop Subversion repository</a>, but some of the big ones that will impact
-the overall architecture of RvSnoop are:</p>
+  <div class="entry-content"><blockquote>
+  <p>C functions may be used recursively; that is, a function may call
+itself either directly or indirectly. Uninquiring souls may take this as
+just another peculiarity of those C folk, of whose ways their neighbours
+speak little to outsiders but much among themselves.</p>
+</blockquote>
 
-<h3 id="pluggable-persistence">Pluggable Persistence</h3>
-
-<p>Mechanism I’m going to migrate the record ledger to being persistent,
-there are a couple of options here as to how this will be handled: flat
-files, a combination of flat files and <a href="http://lucene.apache.org/java/">Lucene</a> based indexes, or
-some kind of JDBC backed store.</p>
-
-<p>One option would be to make the
-persistence mechanism plug-able, this would also ease the use of an
-all-in-memory storage system, like the one that is currently used (which
-is useful when you just want to use RvSnoop as a graphical replacement
-for <code>tibrvlisten</code>).</p>
-
-<h3 id="able-to-run-headless">Able to Run Headless</h3>
-
-<p>I’d like to add the
-ability to run RvSnoop without the UI, this would be based on loading a
-pre-configured project. Combining this feature with a JDBC backed store
-this could be really useful for auditing and logging messages.</p>
-
-<h3 id="ems-support">EMS Support</h3>
-
-<p>I registered the <a href="http://emssnoop.org/">emssnoop.org</a> domain at the same time
-as <a href="http://rvsnoop.org/">rvsnoop.org</a>, and there has been a project on SourceForge for a
-while, even if it hasn’t had anything checked in to it yet! An open
-question is whether to try for generic JMS support or just work with EMS
-directly.</p>
-
-<h3 id="user-written-plug-ins">User Written Plug-ins</h3>
-
-<p>It would be nice to be able to
-cleanly extend RvSnoop if required, without going back and modifying the
-main code base.</p>
-
-<h3 id="so-what-about-20">So, What About 2.0?</h3>
-
-<p>All (well, most) of these
-features point to a need for an extensible plug-in system,
-<a href="http://www.eclipse.org/">Eclipse</a> has shown that a good way of architecting a desktop
-application (or any application, for that matter) is to build it
-entirely from plug-ins wrapped around a small core. So, the upshot of
-this is that I’m planning on migrating to a managed runtime, probably
-<a href="http://www.osgi.org/">OSGi</a>, for the 2.0 release. I’ll talk about this more in another
-post. In particular, what’s the cost/benefit ratio of using this type of
-runtime; and which runtimes are good?</p>
+<p>By <a href="http://www.bobhobbs.com/files/kr_lovecraft.html">Kernighan, Ritchie, and Lovecraft</a></p>
 
 </div>
   
@@ -188,7 +146,7 @@ runtime; and which runtimes are good?</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/12/08/factory-methods-vs-factory-classes-in-java">Factory Methods vs. Factory Classes in Java</a></h1>
+      <h1 class="entry-title"><a href="/2009/12/25/paredit-el-comes-to-intellij">Paredit.el Comes to IntelliJ</a></h1>
     
     
       <p class="meta">
@@ -204,47 +162,27 @@ runtime; and which runtimes are good?</p>
   
 
 
-<time datetime="2006-12-08T00:07:33+01:00" pubdate data-updated="true">Dec 8<span>th</span>, 2006</time>
+<time datetime="2009-12-25T20:21:47+01:00" pubdate data-updated="true">Dec 25<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>There are a number of cases in Java where I find myself wanting to use a
-variant of the <a href="http://en.wikipedia.org/wiki/Factory\_method\_pattern">factory method pattern</a>. For example:</p>
+  <div class="entry-content"><p>I’ve been working on adding <a href="http://mumble.net/~campbell/emacs/paredit.el">paredit.el</a> like structural editing to
+the next version of the <a href="http://plugins.intellij.net/plugin/?id=4050">La Clojure</a> plugin for <a href="http://www.jetbrains.com/idea/index.html">Intellij IDEA</a>.
+IDEA already does most of the paren matching stuff (automatically
+inserting a closing paren when you type an opening paren and so on). So
+far I’ve got the basic barf and slurp commands working, and splicing, as
+you can see in the screenshot below:</p>
 
-<ul>
-  <li>
-    <p>To control the number of objects created, or to create a limited set of objects (one per value of an <a href="http://java.sun.com/j2se/1.5.0/docs/relnotes/features.html#enums">enumeration</a> for example, this could use an backed <a href="http://java.sun.com/j2se/1.5.0/docs/api/java/util/EnumMap.html">map</a> in J2SE 5);</p>
-  </li>
-  <li>
-    <p>To perform some checks before creating object. Like <code>init()</code> called before instantiating instead of after.</p>
-  </li>
-</ul>
+<p><img src="/images/2009/12/idea-slurp-and-barf.png" /></p>
 
-<p><img class="right" src="/images/2006/12/factory-method.png" title="Factory Method" /></p>
-
-<p>Often my instinct here is to add some static methods to the class and
-make the constructors private. I think that in part this comes from the
-pattern name: factory <em>method</em>, I think a better name would have been
-factory <em>class</em>, or maybe just factory. Anyway, doing this has some
-advantages in that it reduces the number of classes that need writing
-and keeps all of the code in one place. Like the image to the right.</p>
-
-<p><img class="left" src="/images/2006/12/factory-class.png" title="Factory Class" /></p>
-
-<p>But there are drawbacks as
-well. The main one being that I cannot then treat the factory like a
-bean, this makes it more difficult to display in UI (by preventing the
-use of common binding frameworks for example). So a better approach is
-more like the image to the left.</p>
-
-<p>Note
-that this is still one class short of the pattern described in the
-<a href="http://en.wikipedia.org/wiki/Factory\_method\_pattern">Wikipedia article</a>. The <em>Creator</em> interface is just unnecessary
-as far as I’m concerned (although there is a case for it’s existence in
-scenarios like the various Java SPI-style interfaces).</p>
+<p>The next step is
+probably to make IDEA’s expand selection code be a little smarter in the
+face of s-expressions. In related news: I found a good <a href="http://www.slideshare.net/mudphone/paredit-preso">introduction to paredit.el</a> on <a href="http://www.slideshare.net/">SlideShare</a> which may be of interest. I’ll try
+to get the guys at IntelliJ to push out a new version of the plugin
+after the 9.0.1 release is out (it’s in beta now).</p>
 
 </div>
   
@@ -258,7 +196,7 @@ scenarios like the various Java SPI-style interfaces).</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/12/07/rvsnoop-356">RvSnoop 356</a></h1>
+      <h1 class="entry-title"><a href="/2009/12/17/clojure-purists">Clojure Purists?</a></h1>
     
     
       <p class="meta">
@@ -274,41 +212,26 @@ scenarios like the various Java SPI-style interfaces).</p>
   
 
 
-<time datetime="2006-12-07T18:59:37+01:00" pubdate data-updated="true">Dec 7<span>th</span>, 2006</time>
+<time datetime="2009-12-17T14:39:25+01:00" pubdate data-updated="true">Dec 17<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>A new development build of <a href="http://rvsnoop.org/">RvSnoop</a> is available for
-<a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-356-bin.tgz">downloading</a>. This release contains all of the features that will
-be in the finished 1.6 release, due out sometime next week. Changes from
-the last development build include:</p>
+  <div class="entry-content"><p>I’ve been following <a href="http://www.tbray.org/ongoing/">Tim Bray</a>’s excellent <a href="http://www.tbray.org/ongoing/When/200x/2009/09/27/Concur-dot-next">Concur.next</a> article series covering approaches to concurrency in various languages, and currently (no pun intended!) covering Clojure. The <a href="http://www.tbray.org/ongoing/When/200x/2009/12/15/Osborne-WF2-Clojure">latest article</a> talks about a super efficient log parsing <a href="http://meshy.org/2009/12/13/widefinder-2-with-clojure.html">implementation</a> done by <a href="http://meshy.org/">Alex Osborne</a> an includes the following comment:</p>
 
-<ul>
-  <li>
-    <p>Added support for republishing on different connections.</p>
-  </li>
-  <li>
-    <p>Added column to ledger to display wire size of messages.</p>
-  </li>
-  <li>
-    <p>Fixed bug that caused republished messages to be filtered incorrectly from the subject hierarchy.</p>
-  </li>
-  <li>
-    <p>Fixed bug with ledger renderer which caused striping to break when columns were added/removed from the view.</p>
-  </li>
-  <li>
-    <p>Minor code clean-ups and removal of a couple of unused methods.</p>
-  </li>
-  <li>
-    <p>Updated the FAQs page with correct details of timestamp formatting in ledger (this hasn’t been pushed out to the public site yet).</p>
-  </li>
-</ul>
+<blockquote>
+  <p>Lots of the performance wins come from dipping into Java-land (AtomicLongs, LinkedBlockingQueue), which is perfectly OK, but a Clojure purist would probably see those occasions as maybe highlighting gaps in that language’s coverage.</p>
+</blockquote>
 
-<p>The only things left to do now (assuming no new bugs are found)
-are some additional testing and documentation updates.</p>
+<p>I’d take issue with that, one of the real strengths of Clojure it that it has easy and fast access to the whole Java ecosystem. As <a href="http://clojure.org/jvm\_hosted">Rich says</a>:</p>
+
+<blockquote>
+  <p>Clojure is designed to be a hosted language, sharing the JVM type system, GC, threads etc. It compiles all functions to JVM bytecode. Clojure is a great Java library consumer, offering the dot-target-member notation for calls to Java.</p>
+</blockquote>
+
+<p>That seems pretty clear to me. I wonder if the people claiming to be Clojure purists are all coming from a Lisp background rather than the Java world?</p>
 
 </div>
   
@@ -322,7 +245,7 @@ are some additional testing and documentation updates.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/12/06/rvsnoop-353">RvSnoop 353</a></h1>
+      <h1 class="entry-title"><a href="/2009/12/07/clojure-evaluation">Clojure Evaluation</a></h1>
     
     
       <p class="meta">
@@ -338,35 +261,138 @@ are some additional testing and documentation updates.</p>
   
 
 
-<time datetime="2006-12-06T00:42:35+01:00" pubdate data-updated="true">Dec 6<span>th</span>, 2006</time>
+<time datetime="2009-12-07T17:44:50+01:00" pubdate data-updated="true">Dec 7<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>A new development version of <a href="http://rvsnoop.org/">RvSnoop</a> is now available for
-<a href="http://downloads.sourceforge.net/rvsn00p/rvsnoop-353-bin.tgz">download</a>. This version adds:</p>
+  <div class="entry-content"><p>I’ve been loking at the early-access version of <a href="http://www.manning.com/">Manning</a>’s
+forthcoming <a href="http://www.manning.com/rathore/">Clojure in Action</a> book as well as some of the
+<a href="http://www.manning-sandbox.com/thread.jspa?threadID=35150&amp;tstart=0">criticism</a> of it. One of the complaints is that the current drafts
+describe macros as a run-time concept and that this is wrong. The
+confusion arises from the fact that <a href="http://clojure.org/">Clojure</a> (and Lisps in general)
+don’t follow the same path from source to execution as a more
+conventional programming languages like C and Java. I’ll compare four
+different languages to see how they differ: C, Java, a traditional Lisp
+compiler, and Clojure.</p>
 
-<ul>
-  <li>
-    <p>Saving and restoring messages between sessions.</p>
-  </li>
-  <li>
-    <p>Remove Connection as a context sensitive menu option.</p>
-  </li>
-  <li>
-    <p>Improved drag and drop support.</p>
-  </li>
-</ul>
+<h3 id="c-like-languages">C Like Languages</h3>
 
-<p>And also fixes some bugs
-involving the screen menu on Mac OS X. The save and restore messages
-option writes the selected records from the ledger to a ZIP based binary
-file format (it’s the same format that is used internally by the copy
-and paste mechanism). The format has also been enhanced to include
-subject information for the messages, as this is stripped out by the raw
-Rendezvous library calls.</p>
+<p><img src="/images/2009/12/c-compilation-stages.png" /></p>
+
+<p>This is what most people
+are used to, the traditional compiled language. Here, source code is
+read in and then parsed (this is normally broken out into multiple
+stages, e.g. a separate lexing stage, but for our purposes we can gloss
+over these details). The parser emits some form of intermediate
+representation, usually an abstract syntax tree (AST), this is then used
+by the compiler to generate executable code.</p>
+
+<p>Again, this
+potentially glosses over some details: optimizers can world on the
+intermediate representation for example, or the compiler could require a
+separate linking stage to generate an executable. For our purposes
+though this is sufficient: we go from source to AST to executable. Also,
+it could be argued that the C pre-processor operates on the source code
+before the parser sees it, but in practice the C macros system is so
+primitive it doesn’t really warrant being called out as a separate
+stage.</p>
+
+<h3 id="java-like-languages">Java Like Languages</h3>
+
+<p><img src="/images/2009/12/java-compilation-stages.png" /></p>
+
+<p>The Java like
+languages differ from C in that they run on top of a virtual machine
+rather than being executed directly by the OS; as a reult their compiler
+emits ‘bytecode’ rather than a finished executable. This bytecode is
+then executed by the virtual machine. In all modern desktop and server
+virtual machines this is means just in time compiling the bytecode down
+to native machine code.</p>
+
+<h3 id="traditional-lisps">Traditional Lisps</h3>
+
+<p><img src="/images/2009/12/lisp-compilation-stages.png" /></p>
+
+<p>The Lisp view of things
+is a little different; it’s more complicated but also more powerful. The
+first thing to note is that Lisp code is already basically in the form
+of an AST - there is no (or not much) syntax getting in the way. Next,
+there are 2 types of macros which are applied to Lisp code: macros and
+reader macros. I’ll duscuss them in the opposite order to the way they
+are applied…</p>
+
+<p>The standard
+type of Lisp macros are what most people rave about when extolling the
+virtues of the language: these are chunks of code that are executed
+after the source has been loaded into an AST (remember, Lisp source code
+is basically in this form already, so this just involves moving from a
+textual representation to something that the Lisp runtime can work
+with). If a node in the AST is a macro then it is evaluated as the code
+is loaded and the result of the evaluation is used to <em>replace the
+macro node in the AST</em>.</p>
+
+<p>Stop and think about that for a minute - this
+happens <em>before</em> the code is evaluated by the regular Lisp runtime,
+but yet at this point you already have access to the full Lisp
+programming language. All of this means that you can do some
+<a href="http://weitz.de/macros.lisp">pretty</a> <a href="http://brierwooddesign.com/2009/2/12/fun-with-lisp-macros">cool</a> <a href="http://www.paulgraham.com/avg.html">tricks</a>: how about writing your own control
+constructs? Writing a DSL compiler? Logging constructs that have
+<em>zero</em> runtime overhead when not used (but that can be switched on and
+off by users of the program, unlike <code>#define DEBUG 0</code> in C)?</p>
+
+<p>The
+second, and much less common, type of macro is the <em>reader macro</em>.
+Reader macros operate on the character stream as it is read in, before
+the AST is constructed. Basically, when the reader sees a specific
+character (usually <code>#</code>) it then looks at the next character and uses that
+as a key into a table of functions (the read table) that tell it how to
+handle future input. Using reader macros it’s possible to create DSLs
+that don’t use s-expression syntax (s-expressions are the paren enclosed
+lists that Lisp is (in)famous for); or do something as simple as
+allowing the use of brackets to <a href="http://www.psg.com/~dlamkins/sl/chapter03-12.html">write quoted lists</a> without needing
+an explicit quote (i.e. writing <code>[1 2 3]</code> instead of <code>'(1 2 3)</code>).</p>
+
+<p>Only once all of this has finished is a traditional lisp ready to let
+it’s compiler go to work turning the (now macro-free) AST into
+executable code.</p>
+
+<h3 id="clojure">Clojure</h3>
+
+<p>Clojure is very similar to the
+traditional Lisp model, with two main differences. The first difference
+is the fact that, like Java, the output is bytecode which is then loaded
+and executed by a standard Java virtual machine.</p>
+
+<p>The second difference
+is that while Clojure does have <a href="http://clojure.org/reader#toc1">reader macros</a>, the read table
+isn’t exposed to user programs; that is, while it operates in the same
+way as a traditional Lisp there is no way for user code to alter the
+behaviour of the reader. This is probably good thing as Clojure includes
+a relatively large number of predefined reader macros including a
+literal syntax for lists, sets, and maps, as well as lambda-expressions
+(anonymous functions) and metadata.</p>
+
+<h3 id="summary">Summary</h3>
+
+<p>C and Java like
+languages have a huge amount of syntax baked in, but don’r provide any
+way to modify this or to manipulate the program before it is compiled.
+Lisp has almost no syntax but provides a mechanism for users to add
+their own, and provides a mechanism to manipulate programs before they
+are compiled.</p>
+
+<p>Clojure has some syntax (more than other Lisps, but way
+less than C/Java/&amp;c.) and provides the same mechanism for program
+manipulation as other Lisps. The OmniGraffle file for the images in this
+post is <a href="http://ianp.org/images/2009/12/compilation-stages.graffle.gz">available here</a> if anybody is interested.</p>
+
+<p><strong>Update:</strong> this
+post is intended to compare traditional C-style languages with Lisps, it
+doesn’t cover, for examples, so-called scripting languages such as Perl,
+Python, and Ruby.</p>
 
 </div>
   
@@ -380,7 +406,7 @@ Rendezvous library calls.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2006/11/04/30000000-lines-of-code-wtf">30,000,000 Lines of Code? WTF?</a></h1>
+      <h1 class="entry-title"><a href="/2009/11/26/how-to-work-with-git-github">How to Work With Git & GitHub</a></h1>
     
     
       <p class="meta">
@@ -396,317 +422,57 @@ Rendezvous library calls.</p>
   
 
 
-<time datetime="2006-11-04T21:08:26+01:00" pubdate data-updated="true">Nov 4<span>th</span>, 2006</time>
+<time datetime="2009-11-26T15:33:36+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Apparently (according to <a href="http://blogs.msdn.com/macmojo/archive/2006/11/03/it-s-all-in-the-numbers.aspx">this</a>) Mac Office is 30,000,000 lines of
-code, that’s a lot of code to try to keep bug free! Out of curiosity, I
-downloaded <a href="http://www.kclee.de/clemens/java/javancss/">a utility to count lines of code</a> and found that
-<a href="http://rvsnoop.org/">RvSnoop</a> is only ~7,000 lines of code. That’s only counting
-non-comment lines, I don’t know how well commented the MS codebase is.
-Not that there’s any real comparison in functionality between the two of
-course!</p>
+  <div class="entry-content"><p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
+shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
+posting it here then it’ll be easy for me to refer back to in future…</p>
 
-</div>
-  
-  
+<h3 id="installing-the-tools">Installing the Tools</h3>
 
+<ol>
+  <li>install <a href="http://macports.org/">MacPorts</a> if you don’t already have it;</li>
+  <li>get an up-to-date version of ruby and rubygems with <code>sudo port install rb-rubygems</code>;</li>
+  <li>install the <code>github</code> tool with <code>sudo port install json github</code>; and</li>
+  <li>upload your public key to your <a href="http://github.com/account">GitHub account</a>.</li>
+</ol>
 
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/11/01/killing-capitals-in-itunes">Killing Capitals in iTunes</a></h1>
-    
-    
-      <p class="meta">
-        
+<h3 id="creating-a-new-project">Creating a New Project</h3>
 
+<p>Run <code>github create project_name</code> to create a public project, append <code>--private</code>
+to create a private project (you will need a paid account at GitHub for
+this).</p>
 
+<h3 id="forking">Forking</h3>
 
+<p>Run <code>github fork project_owner project_name</code>, for example to create a fork of the Cucumber testing
+framework run <code>github fork aslakhellesoy cucumber</code>.</p>
 
+<h3 id="making-changes">Making Changes</h3>
 
-
-
-
-  
-
-
-<time datetime="2006-11-01T17:21:17+01:00" pubdate data-updated="true">Nov 1<span>st</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The latest version of <a href="http://www.apple.com/itunes/">iTunes</a> has made several changes to the UI
-(again), most of them not for the better as can be read about
-<a href="http://dsandler.org/wp/archives/2006/09/12/itunes-7-dissection">here</a>. Still, at least one of the annoyances, the use of all
-capitals for section headings in the source list, can be easily
-corrected. The section headings are stored as localizable strings in a
-resource file; so first shut down iTunes, then just open the
-<code>/Applications/iTunes.app/Contents/Resources/English.lproj/Localizable.strings</code>
-in a text editor (e.g. <a href="http://www.macromates.com/">TextMate</a>) and search for the following
-lines:</p>
+<p>Make your changes in a branch, this took me a little while to
+get used to at first as it’s different from the normal way of working
+with version control systems like CVS:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 <span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ini"><span class="line"><span class="na">&quot;135.011&quot;</span> <span class="o">=</span> <span class="s">&quot;LIBRARY&quot;;</span>
-</span><span class="line"><span class="na">&quot;135.012&quot;</span> <span class="o">=</span> <span class="s">&quot;DEVICES&quot;;</span>
-</span><span class="line"><span class="na">&quot;135.013&quot;</span> <span class="o">=</span> <span class="s">&quot;STORE&quot;;</span>
-</span><span class="line"><span class="na">&quot;135.014&quot;</span> <span class="o">=</span> <span class="s">&quot;PLAYLISTS&quot;;</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd </span>project_dir
+</span><span class="line"><span class="nv">$ </span>git checkout -b feature_name
+</span><span class="line">... edit edit edit ...
+</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Witty comment.&quot;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>these need changing to:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="ini"><span class="line"><span class="na">&quot;135.011&quot;</span> <span class="o">=</span> <span class="s">&quot;Library&quot;;</span>
-</span><span class="line"><span class="na">&quot;135.012&quot;</span> <span class="o">=</span> <span class="s">&quot;Devices&quot;;</span>
-</span><span class="line"><span class="na">&quot;135.013&quot;</span> <span class="o">=</span> <span class="s">&quot;Store&quot;;</span>
-</span><span class="line"><span class="na">&quot;135.014&quot;</span> <span class="o">=</span> <span class="s">&quot;Playlists&quot;;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>or anything else that you like. Now when you restart iTunes it should
-all look better.</p>
-
-<p><strong>Update:</strong> You also want to change this line: <code>"135.006" = "SHARED";</code> to this: <code>"135.006" = "Shared";</code></p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/10/19/1060-comes-of-age">1060 Comes of Age</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-19T20:30:58+02:00" pubdate data-updated="true">Oct 19<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>A new version of <a href="http://www.1060.org/">1060 NetKernel</a> was released today, version 3.1. I
-had a brief play around with the previous release but never really had
-the time to dig into it too deeply. It always looked pretty neat though,
-a possible good solution to base adapter (in the Tibco sense) style
-components on. One of the <a href="http://www.1060.org/blogxter/entry?publicid=50D78082263C424820791B1886C6C971">advertised</a> features of the new release
-is a newly written ‘Getting Started Guide’, so this may be a good
-opportunity to have another look.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/10/17/adding-namespace-support-to-rvsnoop">Adding Namespace Support to RvSnoop</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-17T09:58:15+02:00" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>For <a href="http://rvsnoop.prg/">RvSnoop</a> I’m currently working on adding namespaces to all of
-the files that are used to save the application preferences and also the
-project files. This is a Good Thing in and of itself, as it allows me to
-use <a href="http://www.w3.org/XML/Schema">XML Schema</a> to validate and document the files formats. But,
-more importantly, it gives me the opportunity to refactor as I go alond,
-the general plan is to make the projects in the next release be based on
-directories rather than a single XML file, this will allow me to use a
-disk based storage mechanism for messages so that they will be
-persistent across sessions.</p>
-
-<h3 id="playing-well-with-others">Playing Well With Others</h3>
-
-<p>At the same
-time, I’ve taken the opportunity to include some of the <a href="http://www.apache.org/">Apache</a>
-<a href="http://jakarta.apache.org/commons/index.html">Commons</a> libraries in the build. There were (well, still are) a
-number of small utility classes scattered around which I’m planning on
-replacing with the versions from Apache. One side effect of this is that
-the build is increasing in size, to help control this I’m going to
-remove the <a href="http://www.oracle.com/database/berkeley-db/je/index.html">Berkeley DB</a> dependency from the build. I was
-origiannly planning to use this for the on disk message store but I’ve
-changed my mind here. My current thinking is to just write the messages
-out to files but to have a set of indexes (probably built using
-<a href="http://lucene.apache.org/java/docs/index.html">Lucene</a>) as well for searching and sorting. There should be
-another (alpha) release out later this week with the Commons and
-Berkeley DB changes complete, and a release next week with the new
-project structure.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/10/12/why-i-do-not-like-skype">Why I Do Not Like Skype</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-12T10:20:29+02:00" pubdate data-updated="true">Oct 12<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>There is nothing more annoying than people who insist on standing up and
-talking loudly on their mobile phones in the middle of an open plan
-office (just one more reason why open plan offices suck arse). At least
-in the past it was just a few ignorant tossers who did this, but now
-with <a href="http://www.skype.com/">Skype</a> a whole bunch of otherwise considerate people seem to
-think it’s fine to yammer away at high volume while sat at their PCs.
-Bastards.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/10/06/more-transparent-development-for-rvsnoop">More Transparent Development for RvSnoop</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-10-06T14:59:13+02:00" pubdate data-updated="true">Oct 6<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Although it’s an open source project that anybody can help out with, in
-practice <a href="http://rvsnoop.org/">RvSnoop</a> is developed by me at present. However, a couple
-of people have asked — either in the forums or by email — what the
-current development status is. Well, in a word, it’s going slower than I
-had planned! However, I’ll start posting to this blog a little about
-what I’m working on and what my current plans are, and also try to start
-making more frequent releases. I’ll rearrange the distributables
-slightly as well, given the speed of most connections these days I no
-longer see the point of keeping a <em>binary only</em> download so I’m just
-goint to include the compressed source and API docs will all of the
-releases, this will be labelled as the <em>RvSnoop Stable</em> release. I’ll
-make more frequent releases of the code that I am working on as a
-<em>RvSnoop Development</em> release. But first, a little explanation of what
-you can expect from these unstable releases. I’ll post later about my
-plans for the upcoming releases.</p>
-
-<h3 id="its-all-greek-to-me">It’s All Greek To Me</h3>
-
-<p>Projects use diffferent terminology for there release schedules, here’s how I’m
-using the terms.</p>
-
-<h4 id="alpha">Alpha</h4>
-
-<p>If a release is labelled <em>alpha</em> then
-it means that I am still adding new features and working on major known
-bugs. Once the release is feature complete and all of the major bugs
-have been squashed I’ll go through and clean up all of the strings,
-finally I’ll spend some time cleaning up any glaring UI problems. Once
-this is complete I’ll relabel the release <em>beta</em>.</p>
-
-<h4 id="beta">Beta</h4>
-
-<p>Moving
-forward one of the main points about the <em>beta</em> release is that it
-will be considered to be a <em>string freeze</em> release. I’m aiming for
-release 1.7 to be fully prepared for internationalization and hopefully
-some of the people who have been using RvSnoop will help out with
-translations. Also at this point the UI will be basically finished, so
-the beta releases are for testing and minor bug fixing. Also during this
-phase I will run all of the analysis tasks (currently only <a href="http://pmd.sourceforge.net/">PMD</a>,
-but more are planned) and clean up whatever they reveal.</p>
+<p>From time to time push the branch to github
+so others can see what I’m working on <code>git push origin feature_name</code>.
+If the work is in a fork then you’ll also want to send a pull-request
+back to the original project with <code>github pull-request project_owner feature_name</code>. All from the command line, neat huh? For more tricks,
+you can also browse issues with <code>github issues {open|closed}</code>.</p>
 
 </div>
   
@@ -732,6 +498,10 @@ but more are planned) and clean up whatever they reveal.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
       </li>
     
@@ -745,10 +515,6 @@ but more are planned) and clean up whatever they reveal.</p>
     
       <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
       </li>
     
   </ul>

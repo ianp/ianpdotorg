@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/java/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-09T20:31:31+01:00</updated>
+  <updated>2013-01-15T14:48:48+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -12,6 +12,89 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Programming Praxis]]></title>
+    <link href="http://ianp.org/2013/01/15/programming-praxis"/>
+    <updated>2013-01-15T14:03:00+01:00</updated>
+    <id>http://ianp.org/2013/01/15/programming-praxis</id>
+    <content type="html"><![CDATA[<p>Over the weekend I stumbled across the <a href="http://programmingpraxis.com">Programming Praxis</a> web site, a blog that aims to “publishes new programming exercises weekly, at least, so that savvy programmers can maintain their skills by working the exercises and thinking outside their normal skill set”. It’s been running for about three years now and at the time of writing there are almost 400 problems there. I thought that I’d like to have a go at solving a few of them, I’m going to try solving them in Java initially, and then maybe revisit them in other languages to compare the solutions.</p>
+
+<p>I’ve got solutions to the first couple of problems ready to go, and all of my solutions can be found in <a href="http://github.com/ianp/praxis-java">this project</a> on GitHub.</p>
+
+<h3 id="reverse-polish-notation-calculator">Reverse Polish Notation Calculator</h3>
+
+<p>This is trivial to implement in Java using the built in <code>Console</code> class, the complete implementation (sans class boilerplace and imports) is:</p>
+
+<p>```java
+private static final Console console = System.console();
+private static final Deque<bigdecimal> stack = new ArrayDeque&lt;&gt;();</bigdecimal></p>
+
+<p>private static void processLine(String line) {
+    for (String s : line.split(“\s+”)) {
+        if (“+”.equals(s)) {
+            stack.push(stack.pop().add(stack.pop()));
+        } else if (“-“.equals(s)) {
+            stack.push(stack.pop().subtract(stack.pop()));
+        } else if (“*“.equals(s)) {
+            stack.push(stack.pop().multiply(stack.pop()));
+        } else if (“/”.equals(s)) {
+            stack.push(stack.pop().divide(stack.pop()));
+        } else if (“exit”.equalsIgnoreCase(s) || “quit”.equalsIgnoreCase(s)) {
+            System.exit(0);
+        } else {
+            stack.push(new BigDecimal(s));
+        }
+    }
+    console.format(“%s%n”, stack.peek()).flush();
+}</p>
+
+<p>public static void main(String[] args) {
+    try {
+        String line;
+        while ((line = console.readLine(“&gt; “)) != null) {
+            processLine(line);
+        }
+    } catch (Exception e) {
+        console.format(“%s: %s%n”, e.getClass().getSimpleName(), e.getMessage());
+    }
+}
+```</p>
+
+<p>Compared with other solutions the only interesting things are the use of <code>BigDecimal</code> instead of primitive types, this means that the calculator supports a wider range of numbers and input formats, and the use of a <code>Deque</code> as the stack, this is a more modern class than the old Java 1.0 vintage <code>Stack</code> class.</p>
+
+<p>The full class is <a href="https://github.com/ianp/praxis-java/blob/master/src/main/java/org/ianp/praxis/RPNCalculator.java">here</a>.</p>
+
+<h3 id="sieve-of-eratosthenes">Sieve of Eratosthenes</h3>
+
+<p>This classic algotrithm is a bit more interesting: my first thought was to lazily create the list of primes using modulo checks to filter out non-prime numbers. Technically this isn’t the Sieve of Eratosthenes, but it’s logically the same. Well, it performed terribly taking several seconds to compute the first million primes.</p>
+
+<p>It turns out that one of the reasons the actual sieve is so fast is that it only uses addition rather than the more expensive modulo operations. This, plus the memory saving gained from using a <code>BitSet</code> instead of a list of <code>Integer</code>s gave me a nice, zippy, implementation. The relevant method is:</p>
+
+<p><code>java
+public static BitSet sieve(int target) {
+    BitSet primes = new BitSet(target);
+    if (target &lt; 2) { return primes; }
+    primes.set(2);
+    if (target &lt; 3) { return primes; }
+    for (int i = 3; i &lt;= target; i += 2) {
+        primes.set(i);
+    }
+    for (int prime = 3; prime * prime &lt; target; prime = primes.nextSetBit(prime + 1)) {
+        for (int i = prime + prime; i &lt;= target; i += prime) {
+            primes.clear(i);
+        }
+    }
+    return primes;
+}
+</code></p>
+
+<p>And of course in a real implementation this would be a good candidate for memoization giving you <em>O(1)</em> performance in the common case.</p>
+
+<p>The full class is <a href="https://github.com/ianp/praxis-java/blob/master/src/main/java/org/ianp/praxis/SieveOfEratosthenes.java">here</a>.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Builders and Factories]]></title>
@@ -98,14 +181,14 @@ MyPojo p = new MyPojoImpl(123, true false, false 45.83, "wtf???");
 
 <p>Clear as mud, right?</p>
 
-<p>Other languages don’t have this problem, in Objective-C we can write</p>
+<p>Other languages don’t have this problem, for example in Objective-C we would write something like:</p>
 
 <p><code>objc
 id obj = [EGEmployee employeeWithId:@"1" name:@"Fred Foobar"
         title:@"Apple Engineer" salary:200000 hiredAt:@"2001-03-24"];
 </code></p>
 
-<p>which is much clearer. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here’s a typical implementation and an example of calling it:</p>
+<p>which is much clearer. Ruby, Python, and other languages all have similar constructs. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here’s a typical implementation and an example of calling it:</p>
 
 <p>```java
 public class Builder {</p>
@@ -190,7 +273,7 @@ public interface Employees {
 
 <p><strong>Aside:</strong> if you’re familiar with <em>domain-driven design</em> you’ll be forgiven for noticing a lot of overlap between the factory pattern and DDD’s concept of <em>repositories,</em> they’re very similar concepts. One difference being that factories are often able to create new objects <em>ex nihilo</em> while repositories usually retreive objects from external sources. Compare the <code>findById()</code> method with the <code>newInstance()</code> methods employed by many of the factory classes in the JDK.</p>
 
-<p>Hopefully you can see from tis post that the two patterns have different, if complementary, aims.</p>
+<p>Hopefully you can see from this post that the two patterns have different—if complementary—aims.</p>
 
 <p>A complete example project with all of this code, as well as test cases and a CSV based implementation the the factory are available <a href="https://github.com/ianp/builder-example">on Github</a>.</p>
 
@@ -296,72 +379,6 @@ task sourcesJar(type: Jar, dependsOn:classes) {
 ```</p>
 
 <p><strong>Update:</strong> <a href="/2011/11/04/demo.zip">here</a> is a demo project with a complete build file and a ‘hello, world’ sample class, you should be able to just unzip this and then run <em>gradle install</em> to install it into your local repo (tested with Gradle 1.3).</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Handling Flag Arguments]]></title>
-    <link href="http://ianp.org/2011/06/23/handling-flag-arguments"/>
-    <updated>2011-06-23T14:42:28+02:00</updated>
-    <id>http://ianp.org/2011/06/23/handling-flag-arguments</id>
-    <content type="html"><![CDATA[<p><a href="http://martinfowler.com/">Martin Fowler</a> has a <a href="http://martinfowler.com/bliki/FlagArgument.html">new bliki entry talking about flag arguments</a>, defined as:</p>
-
-<blockquote>
-  <p>A flag argument is a kind of function argument that tells the
-function to carry out a different operation depending on its value.</p>
-</blockquote>
-
-<p>And, as an example of this API style:</p>
-
-<p><code>java
-Class Concert {
-  public Booking book(Customer aCustomer, boolean isPremium);
-}
-</code></p>
-
-<p>And his preferred API design:</p>
-
-<p><code>java
-Class Concert {
-  public Booking bookRegular(Customer aCustomer);
-  public Booking bookPremium(Customer aCustomer);
-}
-</code></p>
-
-<p>The problem with this, as Mr. Fowler points out, is that it can lead to problems with the implementation. His preferred solution is to have a private implementation method exactly like the original problematic API:</p>
-
-<p><code>java
-private Booking bookImpl(Customer aCustomer, boolean isPremium)
-</code></p>
-
-<p>But if we think about the problem for a little longer we can see that there is a better option available to us. The real problem with flag arguments is that they lose information at the call site, so the original example method would be called like this:</p>
-
-<p><code>java
-. . .
-myConcert.book(poorCustomer, false);
-myConcert.book(richCustomer, true);
-. . .
-</code></p>
-
-<p>There’s nothing to say what those true and false arguments actually mean. We can just define a type-safe enum to use instead of the boolean, that way the information is still present at the call site. This was our API becomes:</p>
-
-<p><code>java
-Class Concert public {
-  enum TicketType { REGULAR, PREMIUM }
-  public Booking book(Customer aCustomer, TicketType ticketType)
-</code></p>
-
-<p>And at the call site:</p>
-
-<p><code>java
-. . .
-myConcert.book(poorCustomer, TicketType.REGULAR);
-myConcert.book(richCustomer, TicketType.PREMIUM);
-. . .
-</code></p>
-
-<p>This is easier to implement, and works for multi valued (e.g. integer) flags as well.</p>
 
 ]]></content>
   </entry>

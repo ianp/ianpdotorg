@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Recently in the Eclipse news group
-there&rsquo;s been a lot of complaints about the new widget style that is now
-the default in mlilestone 8. Many &hellip;">
+  <meta name="description" content="Following on from the last post, it actually turns out to be much easier
+to do most of the work in Clojure itself — no need for all of that
+tiresome &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,7 +102,7 @@ the default in mlilestone 8. Many &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/2004/04/11/swt-look-feel">SWT Look & Feel</a></h1>
+      <h1 class="entry-title"><a href="/2009/04/28/embedding-clojure-part-2">Embedding Clojure (Part 2)</a></h1>
     
     
       <p class="meta">
@@ -118,32 +118,176 @@ the default in mlilestone 8. Many &hellip;">
   
 
 
-<time datetime="2004-04-11T07:04:14+02:00" pubdate data-updated="true">Apr 11<span>th</span>, 2004</time>
+<time datetime="2009-04-28T08:20:08+02:00" pubdate data-updated="true">Apr 28<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><img src="/images/2004/04/emulated-vs-native.png" title="New Eclipse Widgets" /></p>
+  <div class="entry-content"><p>Following on from the last post, it actually turns out to be much easier
+to do most of the work in Clojure itself — no need for all of that
+tiresome messing around with <code>Var</code>s and <code>Symbols</code>s on the Java side
+of things! The trick is to define an abstract class in Java to set a few
+things up and use as a hook, than implement this in Clojure. I’ll go
+through both sides of this, starting with the Java stuff.</p>
 
-<p>Recently in the <a href="news://news.eclipse.org/eclipse.platform">Eclipse news group</a>
-there&rsquo;s been a lot of complaints about the new widget style that is now
-the default in mlilestone 8.</p>
+<h3 id="the-abstract-class-in-java">The Abstract Class in Java</h3>
 
-<p>Many people are saying that the new widgets are bad because they are emulated in Java, and not real native widgets
-at all. This seems really odd to me in some ways, since the widgets have
-always been emulated in Java, it&rsquo;s not like this is some new thing
-that&rsquo;s been sprung upon us by the developers. But then in other ways I&rsquo;m
-not surprised, because for all Eclipse&rsquo;s touted native look and feel
-it&rsquo;s always really been a Windows application.</p>
+<p>Basically, I’m using the Java side of things to
+set up my text pane with a standard stylesheet (I’d like it to use a
+proportional font, with different colours for input, output, and error
+text) and to install a key listener to send commands to the Clojure repl
+whenever the user hits enter or return. The basic class then, is</p>
 
-<p>Compare the new Eclipse widgets with those of a native Gnome application (GEdit in this case)
-and you&rsquo;ll see at once that they look out of place. But this has always
-been the case. The real solution surely, is to use genuine native
-widgets here. The only reason the Windows crowd are screaming now is
-that Eclipse is becoming more cross platform in it&rsquo;s look and feel, not
-less.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">InteractiveConsole</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Document</span> <span class="n">_document</span> <span class="o">=</span> <span class="n">createStyledDocument</span><span class="o">():</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">JTextPane</span> <span class="n">_textpane</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">PipedWriter</span> <span class="n">_inWriter</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PipedWriter</span><span class="o">();</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Reader</span> <span class="n">_in</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Writer</span> <span class="n">_out</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="o">(</span><span class="k">new</span> <span class="n">DocWriter</span><span class="o">(</span><span class="s">&quot;output&quot;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Writer</span> <span class="n">_err</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="o">(</span><span class="k">new</span> <span class="n">DocWriter</span><span class="o">(</span><span class="s">&quot;error&quot;</span><span class="o">),</span> <span class="kc">true</span><span class="o">);</span>
+</span><span class="line">    <span class="kd">protected</span> <span class="nf">InteractiveConsole</span><span class="o">(</span><span class="n">JTextPane</span> <span class="n">textpane</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">_textpane</span> <span class="o">=</span> <span class="n">textpane</span><span class="o">;</span>
+</span><span class="line">        <span class="n">_in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PipedReader</span><span class="o">(</span><span class="n">_inWriter</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>createStyledDocument</code> method, which I won’t include here, just
+sets up the style context and my colour scheme. The <code>DocWriter</code> class
+that is references is an trivial writer subclass that just calls
+<code>insertString</code> on the document with the named style. The other class
+that I’ll be wanting to use is a runnable so that I can launch the
+Clojure REPL on it’s own thread. It’s about as trivial as it gets, it
+just calls back into the two abstract methods that I’m going to provide
+to provide my Clojure code somewhere to hook onto.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">private</span> <span class="kd">class</span> <span class="nc">ConsoleRunner</span> <span class="kd">implements</span> <span class="n">Runnable</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">_context</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">public</span> <span class="nf">ConsoleRunner</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">      <span class="n">_context</span> <span class="o">=</span> <span class="n">context</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="nd">@Override</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">var</span> <span class="o">:</span> <span class="n">_context</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">bindVariable</span><span class="o">(</span><span class="n">var</span><span class="o">.</span><span class="na">getKey</span><span class="o">(),</span> <span class="n">var</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">        <span class="n">doStart</span><span class="o">(</span><span class="n">_in</span><span class="o">,</span> <span class="n">_out</span><span class="o">,</span> <span class="n">_err</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>With this I can provide a start method that installs my key listener and
+then launches a new thread with an instance of this runnable. The two
+hook methods that I’m providing are:</p>
+
+<ul>
+  <li>
+    <p><code>abstract void bindVariable(String,Object)</code>
+to allow me to set up some domain objects on the clojure side of things; and</p>
+  </li>
+  <li>
+    <p><code>abstract void doStart(Reader,Writer,Writer)</code>
+to actually start the REPL, using the provided input, output, and error streams.</p>
+  </li>
+</ul>
+
+<h3 id="the-clojure-implementation">The Clojure Implementation</h3>
+
+<p>Turns out to be trivial as well, the implementation of <code>bindVariable</code> just interns the object passed in into the user
+namespace, it’s a one liner in Clojure.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nf">defn</span><span class="w"> </span><span class="nv">-bindVariable</span><span class="w"> </span><span class="p">[</span><span class="nv">this</span><span class="w"> </span><span class="nv">name</span><span class="w"> </span><span class="nv">value</span><span class="p">]</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="nf">intern</span><span class="w"> </span><span class="ss">&#39;user</span><span class="w"> </span><span class="p">(</span><span class="nf">symbol</span><span class="w"> </span><span class="nv">name</span><span class="p">)</span><span class="w"> </span><span class="nv">value</span><span class="p">))</span><span class="w"></span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The <code>doStart</code> method isn’t much more involved either, it just sets up
+the bindings and then launches the REPL.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nf">defn</span><span class="w"> </span><span class="nv">-doStart</span><span class="w"> </span><span class="p">[</span><span class="nv">this</span><span class="w"> </span><span class="o">#^</span><span class="nv">Reader</span><span class="w"> </span><span class="nv">in</span><span class="w"> </span><span class="o">#^</span><span class="nv">Writer</span><span class="w"> </span><span class="nv">out</span><span class="w"> </span><span class="o">#^</span><span class="nv">Writer</span><span class="w"> </span><span class="nv">err</span><span class="p">]</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="nf">binding</span><span class="w"> </span><span class="p">[</span><span class="nv">*in*</span><span class="w">  </span><span class="p">(</span><span class="nf">LineNumberingPushbackReader.</span><span class="w"> </span><span class="nv">in</span><span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">              </span><span class="nv">*out*</span><span class="w"> </span><span class="nv">out</span><span class="w"></span>
+</span><span class="line"><span class="w">              </span><span class="nv">*err*</span><span class="w"> </span><span class="nv">err</span><span class="p">]</span><span class="w"></span>
+</span><span class="line"><span class="w">        </span><span class="p">(</span><span class="nf">clojure.main/repl</span><span class="p">)))</span><span class="w"></span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Notice that here I have added type annotations so that the correct
+method gets implemented, without these the Clojure code compiled but
+then I got abstract method errors at runtime. Check out the docstring
+for the <code>repl</code> function as well, there are a few useful options (for
+example in my actual code I have an <code>:init</code> function to switch to the
+user namespace, and a custom prompt). For completeness, here’s the rest
+of the Clojure file with the code required to inherit from the Java base
+class.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="clj"><span class="line"><span class="p">(</span><span class="nf">ns</span><span class="w"> </span><span class="nv">com.example.ClojureConsole</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="no">:import</span><span class="w"> </span><span class="p">(</span><span class="nf">clojure.lang</span><span class="w"> </span><span class="nv">LineNumberingPushbackReader</span><span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">             </span><span class="p">(</span><span class="nf">java.io</span><span class="w"> </span><span class="nv">Reader</span><span class="w"> </span><span class="nv">Writer</span><span class="p">)</span><span class="w"></span>
+</span><span class="line"><span class="w">             </span><span class="p">(</span><span class="nf">java.util</span><span class="w"> </span><span class="nv">Map</span><span class="p">))</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="no">:require</span><span class="w"> </span><span class="p">(</span><span class="nf">clojure</span><span class="w"> </span><span class="nv">main</span><span class="p">))</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">(</span><span class="no">:gen-class</span><span class="w"></span>
+</span><span class="line"><span class="w">     </span><span class="no">:extends</span><span class="w"> </span><span class="nv">bg.beer.editor.InteractiveConsole</span><span class="w"></span>
+</span><span class="line"><span class="w">     </span><span class="no">:init</span><span class="w"> </span><span class="nv">init</span><span class="w"></span>
+</span><span class="line"><span class="w">     </span><span class="no">:constructors</span><span class="w"> </span><span class="p">{[</span><span class="nv">javax.swing.JTextPane</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="nv">String</span><span class="w"> </span><span class="nv">javax.swing.JTextPane</span><span class="p">]}))</span><span class="w"></span>
+</span><span class="line"><span class="p">(</span><span class="nf">defn</span><span class="w"> </span><span class="nv">-init</span><span class="w"> </span><span class="p">[</span><span class="nv">textpane</span><span class="p">]</span><span class="w"></span>
+</span><span class="line"><span class="w">    </span><span class="p">[[</span><span class="nv">textpane</span><span class="p">]])</span><span class="w"></span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="summary">Summary</h3>
+
+<p>This approach has the advantage that any additional
+configuration can happen in the clojure code. It would also be easy, for
+example, to have an additional script that was always run at start up,
+to allow the user to customize the console further (similar to the
+.emacs file in Emacs). You could also move most of the work that I’m
+doing in Java into the Clojure code. I haven’t done this as I may want
+to support multiple languages in my console and it’s nice to have a
+common stylesheet and keybindings (e.g. for history) across languages.
+Your mileage may vary.</p>
 </div>
   
   
@@ -156,7 +300,7 @@ less.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2004/04/10/gmail">Gmail</a></h1>
+      <h1 class="entry-title"><a href="/2009/04/27/embedding-clojure-in-an-existing-application">Embedding Clojure in an Existing Application</a></h1>
     
     
       <p class="meta">
@@ -172,24 +316,78 @@ less.</p>
   
 
 
-<time datetime="2004-04-10T16:04:47+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2004</time>
+<time datetime="2009-04-27T10:57:37+02:00" pubdate data-updated="true">Apr 27<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.diveintomark.org" title="Dive into Mark">Mark Pilgrim</a> writes:</p>
+  <div class="entry-content"><p>I’ve been taking a look at <a href="http://www.clojure.org/">Clojure</a> lately, as a JVM friendly
+flavour of Lisp I’ve got to say it looks pretty interesting. One problem
+that I’ve had though is that all of the documentation out there (of
+which there’s very little, to be honest) seems to assume that you’ll be
+writing/running a pure Clojure program as you main application. There’s
+plenty of information about calling Java code from Clojure programs, and
+<em>some</em> information about extending Java classes and interfaces with
+Clojure code, but nothing about getting the two talking together at
+runtime. So here’s how it’s done.</p>
 
-<blockquote>
-  <p>In short, the only way to use <a href="http://gmail.google.com">Gmail</a> is the way
-that the Gmail designers use Gmail. The only way Gmail could be less
-accessible is if the entire site were built in Flash.</p>
-</blockquote>
+<p>First off you need to set up the
+symbols and namespaces that you are going to need to start up a clojure
+environment.</p>
 
-<p>So with this and the associated privacy concerns, it looks like this could turn into a bit of a turkey.</p>
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Symbol</span> <span class="n">main</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;main&quot;</span><span class="o">);</span>
+</span><span class="line"><span class="n">Symbol</span> <span class="n">clojureMain</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;clojure.main&quot;</span><span class="o">);</span>
+</span><span class="line"><span class="n">Symbol</span> <span class="n">user</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;user&quot;</span><span class="o">);</span>
+</span><span class="line"><span class="n">Symbol</span> <span class="n">require</span> <span class="o">=</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;require&quot;</span><span class="o">);</span>
+</span><span class="line"><span class="n">Namespace</span> <span class="n">userNS</span> <span class="o">=</span> <span class="n">Namespace</span><span class="o">.</span><span class="na">findOrCreate</span><span class="o">(</span><span class="n">user</span><span class="o">);</span>
+</span><span class="line"><span class="n">Namespace</span> <span class="n">clojureMainNS</span> <span class="o">=</span> <span class="n">Namespace</span><span class="o">.</span><span class="na">findOrCreate</span><span class="o">(</span><span class="n">clojureMain</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p><em>Update:</em> Boy, was I wrong on this!</p>
+<p>Once you have these you can <em>require</em> the clojure main namespace, this
+is the same one that is used to run scripts or start a REPL from the
+comand line.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">RT</span><span class="o">.</span><span class="na">CLOJURE_NS</span><span class="o">,</span> <span class="n">require</span><span class="o">).</span><span class="na">invoke</span><span class="o">(</span><span class="n">clojureMain</span><span class="o">);</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then, and this is the bit that I had trouble working out, you need to
+bind your application’s domain model (or at least those bits of it that
+you want to expose) into the <em>user</em> namespace in Clojure.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="k">for</span> <span class="o">(</span><span class="n">Map</span><span class="o">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">global</span> <span class="o">:</span> <span class="n">globals</span><span class="o">.</span><span class="na">entrySet</span><span class="o">())</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">String</span> <span class="n">key</span> <span class="o">=</span> <span class="n">global</span><span class="o">.</span><span class="na">getKey</span><span class="o">();</span>
+</span><span class="line">    <span class="n">Object</span> <span class="n">value</span> <span class="o">=</span> <span class="n">global</span><span class="o">.</span><span class="na">getValue</span><span class="o">();</span>
+</span><span class="line">    <span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">userNS</span><span class="o">,</span> <span class="n">Symbol</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">key</span><span class="o">),</span> <span class="n">value</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Finally you’re ready to grab the <code>main</code> method and run it.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Var</span><span class="o">.</span><span class="na">intern</span><span class="o">(</span><span class="n">clojureMainNS</span><span class="o">,</span> <span class="n">main</span><span class="o">).</span><span class="na">applyTo</span><span class="o">(</span><span class="n">RT</span><span class="o">.</span><span class="na">seq</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">0</span><span class="o">]));</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The emtpy string array here is emulating an emty sargument list at the
+command line. Some things to note here: you need to <em>intern</em> vars
+before you can use them, even for core library features like
+<em>require</em>, this surprised me at first but when you remember that most
+Lisps are built around a very small core of special forms with
+everything else defined in Lisp, it makes some sense.</p>
+
 </div>
   
   
@@ -202,7 +400,7 @@ accessible is if the entire site were built in Flash.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2004/03/28/eclipse-3-milestone-8">Eclipse 3 Milestone 8</a></h1>
+      <h1 class="entry-title"><a href="/2009/04/23/guice-development-stages">Guice Development Stages</a></h1>
     
     
       <p class="meta">
@@ -218,17 +416,48 @@ accessible is if the entire site were built in Flash.</p>
   
 
 
-<time datetime="2004-03-28T08:03:14+02:00" pubdate data-updated="true">Mar 28<span>th</span>, 2004</time>
+<time datetime="2009-04-23T17:51:24+02:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Has been released, get it from the usual place. Initial impressions are
-that the new look and feel has been cleaned up and much improved. I
-found the last release a little buggy (under Linux GTK) so hopefully
-this will be more stable.</p>
+  <div class="entry-content"><p><a href="http://google-guice.googlecode.com/">Guice</a> has a concept called <em>develpment stages</em> which affect how
+the library works. Guice is written with server-side applications in
+mind (it is from Google, after all) so the behaviour for production mode
+is to do a bunch of work up front so that it can catch errors as soon as
+possible.</p>
+
+<p>The development mode defers work (i.e. object creation) until
+the last moment; Here’s how the Javadoc notes describe them:</p>
+
+<ul>
+  <li>
+    <p><strong>Development</strong>
+we want fast startup times at the expense of runtime performance and some up front error checking.</p>
+  </li>
+  <li>
+    <p><strong>Production</strong>
+we want to catch errors as early as possible and take performance hits up front.</p>
+  </li>
+  <li>
+    <p><strong>Tool</strong>
+we’re running in a tool (an IDE plugin for example).</p>
+  </li>
+</ul>
+
+<p>Ignoring tool mode, this is exactly the opposite of the behaviour that
+you want to see for client-side development. For client applications you
+want to have an much error checking as possible during development but
+for production use (i.e. use by a real user) you want to go for faster
+start-up times.</p>
+
+<p>Note that for production use it is also advantageous to
+defer error checking until later as well; after all, there is no point
+in refusing to start an app because feature ‘foo’ isn’t working, if the
+user doesn’t use or care about ‘foo’!</p>
+
 </div>
   
   
@@ -241,7 +470,7 @@ this will be more stable.</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2004/03/23/moron">Moron</a></h1>
+      <h1 class="entry-title"><a href="/2009/04/21/understanding-event-propagation-in-ardor3d">Understanding Event Propagation in Ardor3D</a></h1>
     
     
       <p class="meta">
@@ -257,17 +486,48 @@ this will be more stable.</p>
   
 
 
-<time datetime="2004-03-23T20:03:17+01:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2004</time>
+<time datetime="2009-04-21T14:07:50+02:00" pubdate data-updated="true">Apr 21<span>st</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p><a href="http://www.nypost.com/news/nationalnews/21043.htm">New York Post</a>. All
-I can say is: what… a… fucking… idiot. Next!</p>
+  <div class="entry-content"><p><a href="http://www.ardor3d.com/">Ardor3D</a> adds a mechanism for subscribing to events in the scene
+graph; things like when a node is added or removed, or has one of it’s
+render states or it’s bounding volume altered. The way notifications are
+handled is a little confusing at first, as the listener interface
+(<code>DirtyEventListener</code>) has a method which takes a <code>Spatial</code> as it’s
+first argument; hoever, the spatial is the node in the scene graph on
+which the event occurred, it is <em>not</em> the node that the event is fired
+from.</p>
 
-<p><strong>Update:</strong> The NY Post page has been moved so the link above no longer works. Sorry.</p>
+<p>By way of example: if there are 2 scene nodes, a <code>Spatial</code> named
+‘child’ and a <code>Node</code> named ‘parent’, and the child is attached to the
+parent via a call to <code>Node#attachChild(Spatial)</code> then the following
+events will be fired (assuming that the child was not already attached
+to another node):</p>
+
+<ol>
+  <li>from the child: <code>spatialDirty(child, Attached)</code></li>
+  <li>
+    <p>from the parent: <code>spatialDirty(child, Attached)</code>
+if the parent was attached to another node (for example, ‘grandparent’) then this pattern would continue, like so:</p>
+  </li>
+  <li>from the grandparent: spatialDirty(child, Attached) also, if at any point in this one of the <code>spatialDirty</code> calls returns true, then the event is assumed to have been handled and propagation will stop at that point.</li>
+</ol>
+
+<p>What this means in practice is that
+if you need to know which node an event is being fired from you cannot
+reuse listeners on multiple nodes. For detaching nodes the situation is
+a little different: the event propagation starts at the parent node,
+with the detached child passed as as the method argument.</p>
+
+<p>Be aware that
+the parent will already have been set to <code>null</code> when the event is
+fired though, so if you need to be able to do something with the parent
+you will need to add distinct listeners to each node of interest.</p>
+
 </div>
   
   
@@ -280,7 +540,7 @@ I can say is: what… a… fucking… idiot. Next!</p>
       
   <header>
     
-      <h1 class="entry-title"><a href="/2004/03/23/travelling-power">Travelling Power</a></h1>
+      <h1 class="entry-title"><a href="/2009/04/10/cool-glass">Cool Glass</a></h1>
     
     
       <p class="meta">
@@ -296,238 +556,15 @@ I can say is: what… a… fucking… idiot. Next!</p>
   
 
 
-<time datetime="2004-03-23T19:03:16+01:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2004</time>
+<time datetime="2009-04-10T12:07:27+02:00" pubdate data-updated="true">Apr 10<span>th</span>, 2009</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>I’ve been looking at ways to reduce the number of power adapters I need
-to carry around wqith me. My first thought was to get a USB charger for
-my phone, but <a href="http://www.igo.com">this</a> seems like a good idea as well.
-I’m hoping that they have an adapter for the Apple
-<a href="http://www.apple.com/ipod">iPod</a> as well, then I can go from three
-adapters to one in a single step, and get DC charging as well (for in
-flight power on planes mostly).</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/03/09/powerpoint">Powerpoint</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-03-09T16:03:44+01:00" pubdate data-updated="true">Mar 9<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Now, I like David Byrne’s stuff quite a bit, but we obviously have
-different definitions of the word professional: ‘PowerPoint can make
-almost anything appear good and look professional. Quite frankly, I find
-that a little bit frightening.’ (from
-<a href="http://www.wired.com/wired/archive/12.04/rave.html?pg=4&amp;topic=&amp;topic\_set=">Wired</a>)
-For an opinion closer to my own, compare
-<a href="http://www.edwardtufte.com/tufte/powerpoint" title="The Cognitive Style
-Of PowerPoint">this</a>.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/02/23/adsl">ADSL</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-02-23T18:02:42+01:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Welcome to the 21st century! Got my 1 meg. ADSL connection up and
-running today. Sweet!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/02/18/retargetable-user-interfaces">Retargetable User Interfaces</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-02-18T17:02:20+01:00" pubdate data-updated="true">Feb 18<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This via <a href="http://www.cafeaulait.org">Cafe au Lait</a>: the <a href="http://www.alphaworks.ibm.com/tech/auiml">Abstract User Interface Markup Language</a>
-which, according to IBM, lets you design a UI once and then deploy it as
-either a thin client via a servlet based rendering engine, or as a thick
-client via a Swing based UI (why not SWT one may ask). This sounds a lot
-like the functionality that Next/Apple have had for years with <a href="http://www.apple.com">Web Objects</a>. Personally, I’m not too sure about the
-whole idea, I think that if you’re designing an essentially forms-based
-application then thin clients are fine, anything else really needs a
-real user interface (read: thick client). Any tool which tries to build
-both from a single description is going to either create a way too
-complicated and slow web experience or a dismally poor client
-application.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/02/17/vodafone-3g">Vodafone 3G</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-02-17T14:02:22+01:00" pubdate data-updated="true">Feb 17<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Well, I mentioned this many a time whilst I was consulting at
-<a href="http://www.three.com">Three</a> as being something that they should
-definitely offer, but it seems like <a href="http://www.vodafone.com">Vodafone</a>
-have beaten them to it. They
-<a href="http://www.vodafone.com/article\_with\_thumbnail/0,3038,CATEGORY\_ID%253D102%2526LANGUAGE\_ID%253D0%2526CONTENT\_ID%253D214962,00.html">announced</a>
-a few days ago that they’d soon be offering 3G data services throughout
-pretty much most of Europe. Looks like 3 could soon be a thing of the
-past, I really don’t fancy their chances in the marketplace now the big
-V is moving in.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/02/15/why-test-driven-devlopment-works">Why Test Driven Devlopment Works</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-02-15T07:02:10+01:00" pubdate data-updated="true">Feb 15<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>From a Salon
-<a href="http://archive.salon.com/21st/feature/1997/10/09interview.html">interview</a>
-with Ellen Ullman:</p>
-
-<blockquote>
-  <p>When you’re around really serious professional programmers, this
-code jockey stuff really falls away, and there is a recognition
-that the best programmers spend a lot of time thinking first, and
-working out the algorithms on paper or in their heads, at a white
-board, walking.</p>
-</blockquote>
-
-<p>Is this one of the reasons why test driven development is successful? It forces you to take a step back and consider the problem in a greater level of detail before you start writing code. If it’s not the main reason then I think it’s a large influencing factor. Several of the XP practices exhibit this behaviour (more thinking, less typing) in fact, despite it’s name. Take pair programming, if you’re forced to work with somebody and explain what you are doing then you are forced to think about your work at least to the level of articulating your thoughts to another.</p>
+  <div class="entry-content"><p>And not the camera kind for a change… but [this][01] is pretty neat.
+[01]: http://sirtified.com/products/hopsidedown/</p>
 </div>
   
   
@@ -552,6 +589,10 @@ board, walking.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
       </li>
     
@@ -565,10 +606,6 @@ board, walking.</p>
     
       <li class="post">
         <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/10/31/rearranging-the-apples">Rearranging the Apples</a>
       </li>
     
   </ul>

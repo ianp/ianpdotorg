@@ -4,7 +4,7 @@
   <title><![CDATA[Digital Magpie]]></title>
   <link href="http://ianp.org/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-09T20:31:31+01:00</updated>
+  <updated>2013-01-15T14:48:48+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -12,6 +12,134 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Programming Praxis]]></title>
+    <link href="http://ianp.org/2013/01/15/programming-praxis"/>
+    <updated>2013-01-15T14:03:00+01:00</updated>
+    <id>http://ianp.org/2013/01/15/programming-praxis</id>
+    <content type="html"><![CDATA[<p>Over the weekend I stumbled across the <a href="http://programmingpraxis.com">Programming Praxis</a> web site, a blog that aims to “publishes new programming exercises weekly, at least, so that savvy programmers can maintain their skills by working the exercises and thinking outside their normal skill set”. It’s been running for about three years now and at the time of writing there are almost 400 problems there. I thought that I’d like to have a go at solving a few of them, I’m going to try solving them in Java initially, and then maybe revisit them in other languages to compare the solutions.</p>
+
+<p>I’ve got solutions to the first couple of problems ready to go, and all of my solutions can be found in <a href="http://github.com/ianp/praxis-java">this project</a> on GitHub.</p>
+
+<h3 id="reverse-polish-notation-calculator">Reverse Polish Notation Calculator</h3>
+
+<p>This is trivial to implement in Java using the built in <code>Console</code> class, the complete implementation (sans class boilerplace and imports) is:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Console</span> <span class="n">console</span> <span class="o">=</span> <span class="n">System</span><span class="o">.</span><span class="na">console</span><span class="o">();</span>
+</span><span class="line"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">Deque</span><span class="o">&lt;</span><span class="n">BigDecimal</span><span class="o">&gt;</span> <span class="n">stack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayDeque</span><span class="o">&lt;&gt;();</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">processLine</span><span class="o">(</span><span class="n">String</span> <span class="n">line</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="n">s</span> <span class="o">:</span> <span class="n">line</span><span class="o">.</span><span class="na">split</span><span class="o">(</span><span class="s">&quot;\\s+&quot;</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="o">(</span><span class="s">&quot;+&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">().</span><span class="na">add</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()));</span>
+</span><span class="line">        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">().</span><span class="na">subtract</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()));</span>
+</span><span class="line">        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="s">&quot;*&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">().</span><span class="na">multiply</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()));</span>
+</span><span class="line">        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="s">&quot;/&quot;</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">s</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">().</span><span class="na">divide</span><span class="o">(</span><span class="n">stack</span><span class="o">.</span><span class="na">pop</span><span class="o">()));</span>
+</span><span class="line">        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="s">&quot;exit&quot;</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">s</span><span class="o">)</span> <span class="o">||</span> <span class="s">&quot;quit&quot;</span><span class="o">.</span><span class="na">equalsIgnoreCase</span><span class="o">(</span><span class="n">s</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+</span><span class="line">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">stack</span><span class="o">.</span><span class="na">push</span><span class="o">(</span><span class="k">new</span> <span class="n">BigDecimal</span><span class="o">(</span><span class="n">s</span><span class="o">));</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="n">console</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;%s%n&quot;</span><span class="o">,</span> <span class="n">stack</span><span class="o">.</span><span class="na">peek</span><span class="o">()).</span><span class="na">flush</span><span class="o">();</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">try</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">String</span> <span class="n">line</span><span class="o">;</span>
+</span><span class="line">        <span class="k">while</span> <span class="o">((</span><span class="n">line</span> <span class="o">=</span> <span class="n">console</span><span class="o">.</span><span class="na">readLine</span><span class="o">(</span><span class="s">&quot;&gt; &quot;</span><span class="o">))</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">processLine</span><span class="o">(</span><span class="n">line</span><span class="o">);</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">console</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;%s: %s%n&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getSimpleName</span><span class="o">(),</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Compared with other solutions the only interesting things are the use of <code>BigDecimal</code> instead of primitive types, this means that the calculator supports a wider range of numbers and input formats, and the use of a <code>Deque</code> as the stack, this is a more modern class than the old Java 1.0 vintage <code>Stack</code> class.</p>
+
+<p>The full class is <a href="https://github.com/ianp/praxis-java/blob/master/src/main/java/org/ianp/praxis/RPNCalculator.java">here</a>.</p>
+
+<h3 id="sieve-of-eratosthenes">Sieve of Eratosthenes</h3>
+
+<p>This classic algotrithm is a bit more interesting: my first thought was to lazily create the list of primes using modulo checks to filter out non-prime numbers. Technically this isn’t the Sieve of Eratosthenes, but it’s logically the same. Well, it performed terribly taking several seconds to compute the first million primes.</p>
+
+<p>It turns out that one of the reasons the actual sieve is so fast is that it only uses addition rather than the more expensive modulo operations. This, plus the memory saving gained from using a <code>BitSet</code> instead of a list of <code>Integer</code>s gave me a nice, zippy, implementation. The relevant method is:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">static</span> <span class="n">BitSet</span> <span class="nf">sieve</span><span class="o">(</span><span class="kt">int</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">BitSet</span> <span class="n">primes</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BitSet</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">primes</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">    <span class="n">primes</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">target</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">primes</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">target</span><span class="o">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">primes</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">prime</span> <span class="o">&lt;</span> <span class="n">target</span><span class="o">;</span> <span class="n">prime</span> <span class="o">=</span> <span class="n">primes</span><span class="o">.</span><span class="na">nextSetBit</span><span class="o">(</span><span class="n">prime</span> <span class="o">+</span> <span class="mi">1</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">+</span> <span class="n">prime</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">target</span><span class="o">;</span> <span class="n">i</span> <span class="o">+=</span> <span class="n">prime</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">primes</span><span class="o">.</span><span class="na">clear</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">primes</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And of course in a real implementation this would be a good candidate for memoization giving you <em>O(1)</em> performance in the common case.</p>
+
+<p>The full class is <a href="https://github.com/ianp/praxis-java/blob/master/src/main/java/org/ianp/praxis/SieveOfEratosthenes.java">here</a>.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Builders and Factories]]></title>
@@ -142,7 +270,7 @@
 
 <p>Clear as mud, right?</p>
 
-<p>Other languages don’t have this problem, in Objective-C we can write</p>
+<p>Other languages don’t have this problem, for example in Objective-C we would write something like:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -150,7 +278,7 @@
 </span><span class="line">        <span class="nl">title:</span><span class="s">@&quot;Apple Engineer&quot;</span> <span class="nl">salary:</span><span class="mi">200000</span> <span class="nl">hiredAt:</span><span class="s">@&quot;2001-03-24&quot;</span><span class="p">];</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
-<p>which is much clearer. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here’s a typical implementation and an example of calling it:</p>
+<p>which is much clearer. Ruby, Python, and other languages all have similar constructs. Adding a builder allows us to gain the same level of clarity in Java, and it provides a good place for us to perform any additional checks before creating the object. Here’s a typical implementation and an example of calling it:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 <span class="line-number">2</span>
@@ -300,7 +428,7 @@
 
 <p><strong>Aside:</strong> if you’re familiar with <em>domain-driven design</em> you’ll be forgiven for noticing a lot of overlap between the factory pattern and DDD’s concept of <em>repositories,</em> they’re very similar concepts. One difference being that factories are often able to create new objects <em>ex nihilo</em> while repositories usually retreive objects from external sources. Compare the <code>findById()</code> method with the <code>newInstance()</code> methods employed by many of the factory classes in the JDK.</p>
 
-<p>Hopefully you can see from tis post that the two patterns have different, if complementary, aims.</p>
+<p>Hopefully you can see from this post that the two patterns have different—if complementary—aims.</p>
 
 <p>A complete example project with all of this code, as well as test cases and a CSV based implementation the the factory are available <a href="https://github.com/ianp/builder-example">on Github</a>.</p>
 
@@ -1101,23 +1229,6 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
 <p><strong>Update:</strong> all of the code here, plus a <code>main</code> function to call it, is available as a <a href="https://gist.github.com/2401251">gist</a>.</p>
 
 <p><strong>Update:</strong> I talk a little more about normalization and linguistic tagging in <a href="http://ianp.org/2012/04/17/what-is-text-normalization">this post</a>.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Radial Menus]]></title>
-    <link href="http://ianp.org/2012/03/30/radial-menus"/>
-    <updated>2012-03-30T16:38:00+02:00</updated>
-    <id>http://ianp.org/2012/03/30/radial-menus</id>
-    <content type="html"><![CDATA[<p>Some alternative menu / control styles with a radial theme, linked from here so that I don’t lose them:</p>
-
-<ul>
-  <li><a href="https://github.com/levey/QuadCurveMenu">Quad Curve Menu</a>, a ready made control; and</li>
-  <li><a href="http://www.raywenderlich.com/9864/how-to-create-a-rotating-wheel-control-with-uikit">Rotating Wheel Control</a>, a Ray Wenderlich tutorial.</li>
-</ul>
-
-<p>(I should probably just use <a href="http://pinboard.in/">Pinboard</a> or somethig like that…)</p>
 
 ]]></content>
   </entry>

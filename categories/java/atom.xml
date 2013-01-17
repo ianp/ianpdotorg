@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/java/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T20:04:56+01:00</updated>
+  <updated>2013-01-17T21:05:44+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -124,7 +124,57 @@ w(n) = \sum _ {i=4}^n {c(24, i)\space c(51, n - i) \over c(75, n)} p(i)
 
 <p>As I mentioned earlier will use a brute force method of calculating the probability of a Bingo given <em>n</em> hits on the board. To do this we first need to come up with a representation of a board, as it only takes a single bit to represent the state of each square and there are only 24 squares, we can just use an int for this.</p>
 
-<p>Here’s how we do that: number the squares from 0–23 left-to-right and top-to-bottom, then starting from the least significant bit we can use a 1 to represent a hit square and a 0 to represent an empty square. So a Bingo across the top row, with all other squares being empty is represented by <code>0b111110000000000000000000</code>; this and the remaining 11 possible Bingo positions (5 rows, 5 columns, and the 2 diagonals) can be represented like so:</p>
+<p>Here’s how we do that: number the squares from 0–23 left-to-right and top-to-bottom like so (FS represents the free space in the centre):</p>
+
+<table class="gridded">
+  <thead>
+    <tr>
+      <th style="text-align: right">0</th>
+      <th style="text-align: right">1</th>
+      <th style="text-align: right">2</th>
+      <th style="text-align: right">3</th>
+      <th style="text-align: right">4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">8</td>
+      <td style="text-align: right">9</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td style="text-align: right">10</td>
+      <td style="text-align: right">11</td>
+      <td style="text-align: right">FS</td>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">13</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td style="text-align: right">14</td>
+      <td style="text-align: right">15</td>
+      <td style="text-align: right">16</td>
+      <td style="text-align: right">17</td>
+      <td style="text-align: right">18</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td style="text-align: right">19</td>
+      <td style="text-align: right">20</td>
+      <td style="text-align: right">21</td>
+      <td style="text-align: right">22</td>
+      <td style="text-align: right">23</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Then starting from the least significant bit we can use a 1 to represent a hit square and a 0 to represent an empty square. So a Bingo across the top row, with all other squares being empty is represented by <code>0b111110000000000000000000</code>; this and the remaining 11 possible Bingo positions (5 rows, 5 columns, and the 2 diagonals) can be represented like so:</p>
 
 <p><code>java
 static final int[] BINGOS = {

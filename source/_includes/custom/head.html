@@ -10,6 +10,7 @@
 {% if mathjax or page.categories contains 'Maths' %}
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
+    tex2jax: { inlineMath: [["$","$"]] },
     TeX: { equationNumbers: { autoNumber: "AMS" } }
   });
 </script>

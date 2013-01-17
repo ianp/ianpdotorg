@@ -1,7 +1,7 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 
-.tabular {
+.tabular, .gridded {
     line-height: 1.6em;
     margin: 1em auto;
 	padding: 0.5em;
@@ -20,4 +20,7 @@
 .tabular tbody tr:hover td {
 	color: $base0;
 }
-
+.gridded * th, .gridded * td {
+    padding: 0.3em;
+    border: 1px solid $base0;
+}

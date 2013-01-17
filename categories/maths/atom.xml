@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Maths | Digital Magpie]]></title>
+  <link href="http://ianp.org/categories/maths/atom.xml" rel="self"/>
+  <link href="http://ianp.org/"/>
+  <updated>2013-01-17T20:04:56+01:00</updated>
+  <id>http://ianp.org/</id>
+  <author>
+    <name><![CDATA[Ian Phillips]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Praxis: Winning at Bingo]]></title>
+    <link href="http://ianp.org/2013/01/17/praxis-winning-at-bingo"/>
+    <updated>2013-01-17T20:04:00+01:00</updated>
+    <id>http://ianp.org/2013/01/17/praxis-winning-at-bingo</id>
+    <content type="html"><![CDATA[<p>Following on from my <a href="/2013/01/15/programming-praxis/">previous post</a> I’m attempting the next Programming Praxis <a href="http://programmingpraxis.com/2009/02/19/bingo/">excercise</a>: computing the probability of a winning board at Bingo tournaments of various sizes.</p>
+
+<p>Probably the most common means of solving this kind of probability problem is the <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> method, which uses randomization and statistical sampling to estimate probabilities. Luckiy for me, the problem space for Bingo is small enough that it is possible completely analyze the game and present exact numbers.</p>
+
+<p>The individual functions are all pretty short so I’ll walk through the maths and code at the same time.</p>
+
+<h3 id="laying-the-foundations">Laying the Foundations</h3>
+
+<p>Now, some of the numbers are going to get pretty big so primitive math won’t cut it. I’m going to define a few helper functions to make working with arbitrary-precision maths easier. I’m also gong to specify a limited precision context to use for division operations, as I’d rather lose a small amount of precision that get an <code>ArithmeticException</code> if we hit any irrational numbers.</p>
+
+<p>```java
+private static final MathContext DIVISION = new MathContext(128);</p>
+
+<p>static BigDecimal d(long l) {
+    return new BigDecimal(l, MathContext.UNLIMITED);
+}</p>
+
+<p>static BigDecimal add(BigDecimal a, BigDecimal b) {
+    return a.add(b, MathContext.UNLIMITED);
+}</p>
+
+<p>static BigDecimal sub(BigDecimal a, BigDecimal b) {
+    return a.subtract(b);
+}</p>
+
+<p>static BigDecimal mul(BigDecimal a, BigDecimal b) {
+    return a.multiply(b, MathContext.UNLIMITED);
+}</p>
+
+<p>static BigDecimal div(BigDecimal a, BigDecimal b) {
+    return a.divide(b, DIVISION);
+}</p>
+
+<p>static BigDecimal pow(BigDecimal a, int b) {
+    return a.pow(b, MathContext.UNLIMITED);
+}
+```</p>
+
+<p>To show how these work let’s define a factorial function, which is need in a moment anyway.</p>
+
+<p><code>java
+static BigDecimal fact(BigDecimal n) {
+    switch (n.compareTo(ONE)) {
+        case -1: return ZERO;
+        case  0: return ONE;
+        default: return mul(n, fact(sub(n, ONE)));
+    }
+}
+</code></p>
+
+<p>We’re also going to need a <a href="http://en.wikipedia.org/wiki/Combinations">combination</a> function, which will return the number of distinct combinations of <em>k</em> values drawn from a set <em>S</em>. Formally this is known as the binomial coefficient and is described by:</p>
+
+<p>\begin{equation}
+c(S,k) = {S! \over k!\space (S - k)!} 
+\label{combine}
+\end{equation}</p>
+
+<p>The code that implements this is pretty much a literal translation of the equation, with a little data conversion and a shortcut for the case where we want to select no items or the entire set.</p>
+
+<p><code>java
+static BigDecimal combinations(int S, int k) {
+    if (k &lt; 0 || k &gt; S) { return ZERO; }
+    if (k == 0 || k == S) { return ONE; }
+    BigDecimal bS = d(S);
+    BigDecimal bk = d(k);
+    return div(fact(bS), mul(fact(bk), fact(sub(bS, bk))));
+}
+</code></p>
+
+<p>There are faster algorithms than this, but this is easy to understand and sufficient for our needs.</p>
+
+<h3 id="describing-bingo-mathematically">Describing Bingo Mathematically</h3>
+
+<p>A Bingo board is comprised of a set of squares <em>S</em>, each with a number <em>n</em> chosen at random from the set <em>N</em>. Typically <em>S</em> comprises a 5x5 grid and <em>N</em> is the set of integers from 1 to 75. As an added wrinkle the centre square in the grid is a <em>free space</em> which is always assumed to be hit, this means that a 5x5 grid is actually a 24 element set.</p>
+
+<p>To keep things simple I’m going to assume that we are using a typical board and number set, so I’ll just use constants to hold the cardinalities (sizes) of the two sets.</p>
+
+<p><code>java
+static final int NUMBERS = 75;
+static final int SQUARES = 24;
+</code></p>
+
+<p>The first thing we need to figure out is the cumulative probabity of winning after <em>n</em> numbers have been called (i.e. the probability of winning when the 4th number is called, when the 5th number is called, and so on). This can be found by looking at the probability of there being 4 hits and those 4 forming a Bingo, plus the probability of there being 5 hits and those 5 forming a Bingo, and so on up to the number of calls made so far. Note that we start at 4 as this is the minimum number of calls needed for a Bingo.</p>
+
+<p>Assuming that we have a function <em>p(n)</em> which returns the probability of there being a Bingo when there are <em>n</em> hits, the cumulative probability of winning after <em>n</em> calls is given by:</p>
+
+<p>\begin{equation}
+w(n) = \sum _ {i=4}^n {c(|S|, i)\space c(|N| - |S|, n - i) \over c(|N|, n)} p(i)
+\label{cumulative}
+\end{equation}</p>
+
+<p>Substituting in the values for the sizes of the board and number set simplifies this to:</p>
+
+<p>\begin{equation}
+w(n) = \sum _ {i=4}^n {c(24, i)\space c(51, n - i) \over c(75, n)} p(i)
+\label{cumulative-simple}
+\end{equation}</p>
+
+<p>But we still need to define <em>p(n)</em>, this is where the small problem space comes in handy…</p>
+
+<h3 id="assemble-a-brute-squad">Assemble a Brute Squad</h3>
+
+<p>The probability of a Bingo given <em>n</em> hits on the board is the number of possible Bingo positions divided by the total number of positions, so before we can work out the probability we need to get the number of Bingo positions for each hit count.</p>
+
+<p>As I mentioned earlier will use a brute force method of calculating the probability of a Bingo given <em>n</em> hits on the board. To do this we first need to come up with a representation of a board, as it only takes a single bit to represent the state of each square and there are only 24 squares, we can just use an int for this.</p>
+
+<p>Here’s how we do that: number the squares from 0–23 left-to-right and top-to-bottom, then starting from the least significant bit we can use a 1 to represent a hit square and a 0 to represent an empty square. So a Bingo across the top row, with all other squares being empty is represented by <code>0b111110000000000000000000</code>; this and the remaining 11 possible Bingo positions (5 rows, 5 columns, and the 2 diagonals) can be represented like so:</p>
+
+<p><code>java
+static final int[] BINGOS = {
+    0b111110000000000000000000, 0b000001111100000000000000,
+    0b000000000011110000000000, 0b000000000000001111100000,
+    0b000000000000000000011111, 0b100001000010001000010000,
+    0b010000100001000100001000, 0b001000010000000010000100,
+    0b000100001000010001000010, 0b000010000100010000100001,
+    0b100000100000000001000001, 0b000010001000000100010000
+}
+</code></p>
+
+<p>To create the array of Bingo combinations (indexed by number of hits, so a 25 element array) we will just loop through every possible board layout (i.e. the integers 0 through <code>0b11111111111111111111111</code>) and check each of them against the list of Bingo positions, if there is a match we can use the <code>Integer.bitCount()</code> method to count the number of hits on the board and then increment the counter there. The full code for this is:</p>
+
+<p>```java
+final long[] bingoCombinations = createBingoCombinations();</p>
+
+<p>long[] createBingoCombinations() {
+    long[] combinations = new long[SQUARES + 1];
+    for (int i = 0; i &lt;= 0b111111111111111111111111; ++i) {
+        for (int bingo : BINGOS) {
+            if ((i &amp; bingo) == bingo) {
+                combinations[Integer.bitCount(i)]++;
+                break;
+            }
+        }
+    }
+    return combinations;
+}
+```</p>
+
+<p>Given this we can now calculate the probability of a Bingo at each hit count as described above, the code for this is:</p>
+
+<p>```java
+final BigDecimal[] bingoProbabilities = createBingoProbabilities();</p>
+
+<p>BigDecimal[] createBingoProbabilities() {
+    BigDecimal[] probabilities = new BigDecimal[SQUARES + 1];
+    for (int i = 0; i &lt; 4; ++i) {
+        probabilities[i] = ZERO;
+    }
+    for (int i = 4; i &lt;= SQUARES; ++i) {
+        probabilities[i] = div(d(bingoCombinations[i]), combinations(SQUARES, i));
+    }
+    return probabilities;
+}
+```</p>
+
+<p>The last thing we need before moving on to calculate the actual chances of winning is a function to determine the probability of there being <em>k</em> hits hits on the board after <em>n</em> numbers have been called (the bit in equation \eqref{cumulative} that is being multiplied by <em>p(n)</em> and then summed). It’s just a literal translation of the equation:</p>
+
+<p><code>java
+static BigDecimal getHitProbability(int numHits, int numCalls) {
+    return div(mul(combinations(24, numHits), combinations(51, numCalls - numHits)),
+            combinations(75, numCalls));
+}
+</code></p>
+
+<h3 id="chances-of-winning">Chances of Winning?</h3>
+
+<p>We’ve now got everything we need to write the code for equation \eqref{cumulative}, given the previous function and the pre-computed array of proabilities the code to do this is simple:</p>
+
+<p><code>java
+BigDecimal[] createBoardProbabilities() {
+    BigDecimal[] probabilities = new BigDecimal[NUMBERS + 1];
+    for (int n = 0; n &lt; 4; ++n) {
+        probabilities[n] = ZERO;
+    }
+    for (int n = 4; n &lt;= NUMBERS; ++n) {
+        BigDecimal sum = ZERO;
+        for (int s = 4; s &lt;= SQUARES; ++s) {
+            sum = add(sum, mul(getHitProbability(s, n), bingoProbabilities[s]));
+        }
+        probabilities[n] = sum;
+    }
+    return probabilities;
+}
+</code></p>
+
+<p>This is fine for a single board, but what about the odds for a real game, with many players? The odds of finding a winner when there are <em>k</em> boards is given by:</p>
+
+<p>\begin{equation}
+m(n,k) = 1 - (1 - w(n))^k
+\label{many}
+\end{equation}</p>
+
+<p>Armed with this we can implement a function to return the probability of a winning board for any number of boards and numbers called like so:</p>
+
+<p><code>java
+BigDecimal getProbability(int numCalls, int numBoards) {
+    if (numBoards == 1) {
+        return boardProbabilities[numCalls];
+    }
+    return sub(ONE, pow(sub(ONE, boardProbabilities[numCalls]), numBoards));
+}
+</code></p>
+
+<p>And that’s everything! All that’s left to add is a main method to print out some stats and that’s it.</p>
+
+<p><code>java
+public static void main(String[] args) {
+    BingoOdds bingo = new BingoOdds();
+    bingo.printStatistics();
+    bingo.printProbabilities(1, 10, 25, 50);
+}
+</code></p>
+
+<p>If you want to play with this some more, an interesting excercise would be to generalize this for any size of board and token (number) set. To do that you’ll need to get rid of the static <code>BINGOS</code> array and calculate id dynamically, based on the size of the square, other than that and a coupl of constants that need to be replaced by variables everything else should work as is.</p>
+
+<p>The full code, including the implementations of the print methods can be found on <a href="https://github.com/ianp/praxis-java/blob/master/src/main/java/org/ianp/praxis/BingoOdds.java">GitHub</a>.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

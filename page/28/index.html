@@ -9,7 +9,21 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="What Charles Miller is that the ability to hold irrational opinions is taught at an early age by a large number of schools in the states. That whole &hellip;">
+  <meta name="description" content="Can somebody answer this question for me please: why does this code not
+work? 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+interface FooNode { public FooNode &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,7 +43,6 @@
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
-
 <script type="text/javascript">
   var _gauges = _gauges || [];
   (function() {
@@ -44,6 +57,17 @@
   })();
 </script>
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -94,6 +118,85 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2004/01/16/java-multiple-inheritance">Java Multiple Inheritance</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2004-01-16T08:01:12+01:00" pubdate data-updated="true">Jan 16<span>th</span>, 2004</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Can somebody answer this question for me please: why does this code not
+work?</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">interface</span> <span class="nc">FooNode</span> <span class="o">{</span>
+</span><span class="line">  <span class="kd">public</span> <span class="n">FooNode</span> <span class="nf">getSelf</span><span class="o">();</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line"><span class="kd">class</span> <span class="nc">BarNode</span> <span class="o">{</span>
+</span><span class="line">  <span class="kd">public</span> <span class="n">BarNode</span> <span class="nf">getSelf</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line"><span class="kd">class</span> <span class="nc">FooBarNode</span> <span class="kd">extends</span> <span class="n">BarNode</span> <span class="kd">implements</span> <span class="n">FooNode</span> <span class="o">{</span>
+</span><span class="line">  <span class="kd">public</span> <span class="n">FooBarNode</span> <span class="nf">getSelf</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+</span><span class="line">  <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>As far as I can see it should be fine, since <code>FooBarNode</code> <em>is a</em>
+<code>FooNode</code> and also <em>is a</em> <code>BarNode</code> the compiler should have
+nothing to complain about. Of course it doesn’t work, and I can see that
+this is so from the language specification; but the question remains:
+why? My complaint is really that this breaks the semantic model
+completely. What, in essence, is being said by the <code>FooNode.getSelf()</code>
+interface method is that it returns an object which conforms to the
+<code>FooNode</code> interface. Given that <code>FooBarNode</code> does conform to this
+interface it should be fine as a return type from this method. I assume
+that there is some deep reason, probably to do with efficiency of the
+virtual machine, why the language behaves like this; but having seen
+some of the design decisions to come out of Sun’s Java group I wouldn’t
+be too surprised if it was just an accidental fuck up.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -288,189 +391,6 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2003/11/18/jsr-173-reference-implementation">JSR-173 Reference Implementation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2003-11-18T19:11:04+01:00" pubdate data-updated="true">Nov 18<span>th</span>, 2003</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve been looking at the new streaming API for XML (<a href="http;//www.jcp.org/en/jsr/detail?id=173">JSR-173</a>), I’ve been generally impressed but have found a bug in the reference implementation, here’s the details, using this test program:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-<span class="line-number">16</span>
-<span class="line-number">17</span>
-<span class="line-number">18</span>
-<span class="line-number">19</span>
-<span class="line-number">20</span>
-<span class="line-number">21</span>
-<span class="line-number">22</span>
-<span class="line-number">23</span>
-<span class="line-number">24</span>
-<span class="line-number">25</span>
-<span class="line-number">26</span>
-<span class="line-number">27</span>
-<span class="line-number">28</span>
-<span class="line-number">29</span>
-<span class="line-number">30</span>
-<span class="line-number">31</span>
-<span class="line-number">32</span>
-<span class="line-number">33</span>
-<span class="line-number">34</span>
-<span class="line-number">35</span>
-<span class="line-number">36</span>
-<span class="line-number">37</span>
-<span class="line-number">38</span>
-<span class="line-number">39</span>
-<span class="line-number">40</span>
-<span class="line-number">41</span>
-<span class="line-number">42</span>
-<span class="line-number">43</span>
-<span class="line-number">44</span>
-<span class="line-number">45</span>
-<span class="line-number">46</span>
-<span class="line-number">47</span>
-<span class="line-number">48</span>
-<span class="line-number">49</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
-</span><span class="line"><span class="kn">import</span> <span class="nn">javax.xml.stream.*</span><span class="o">;</span>
-</span><span class="line"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaxWriterTest</span> <span class="o">{</span>
-</span><span class="line">    <span class="kd">static</span> <span class="n">String</span> <span class="n">nsURI</span> <span class="o">=</span> <span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="o">;</span>
-</span><span class="line">    <span class="kd">static</span> <span class="n">String</span> <span class="n">nsPrefix</span> <span class="o">=</span> <span class="s">&quot;a&quot;</span><span class="o">;</span>
-</span><span class="line">    <span class="kd">static</span> <span class="kt">int</span> <span class="n">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="c1">// Used to pretty print the output.</span>
-</span><span class="line">    <span class="kd">static</span> <span class="n">XMLStreamWriter</span> <span class="n">w</span><span class="o">;</span>
-</span><span class="line">    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">        <span class="k">try</span> <span class="o">{</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartDocument</span><span class="o">();</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;root&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeNamespace</span><span class="o">(</span><span class="n">nsPrefix</span><span class="o">,</span> <span class="n">nsURI</span><span class="o">);</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEmptyElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeAttribute</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEmptyElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelTwo&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeAttribute</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;foo&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(-</span><span class="mi">2</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeStartElement</span><span class="o">(</span><span class="n">nsURI</span><span class="o">,</span> <span class="s">&quot;levelOne&quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
-</span><span class="line">            <span class="n">indent</span><span class="o">(-</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeEndElement</span><span class="o">();</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
-</span><span class="line">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
-</span><span class="line">            <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
-</span><span class="line">        <span class="o">}</span>
-</span><span class="line">    <span class="o">}</span>
-</span><span class="line">    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">indent</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">        <span class="k">try</span> <span class="o">{</span>
-</span><span class="line">            <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="n">depth</span> <span class="o">+=</span> <span class="n">d</span><span class="o">;</span> <span class="o">}</span>
-</span><span class="line">            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">depth</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span>
-</span><span class="line">            <span class="n">w</span><span class="o">.</span><span class="na">writeCharacters</span><span class="o">(</span><span class="s">&quot;  &quot;</span><span class="o">);</span>
-</span><span class="line">            <span class="k">if</span> <span class="o">(</span><span class="n">d</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span> <span class="n">depth</span> <span class="o">+=</span> <span class="n">d</span><span class="o">;</span> <span class="o">}</span>
-</span><span class="line">        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">XMLStreamException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-</span><span class="line">            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
-</span><span class="line">        <span class="o">}</span>
-</span><span class="line">    <span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This is using version 7 of the reference implementation, by the way. The program should produce this output:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;</span>
-</span><span class="line"><span class="nt">&lt;a:root</span> <span class="na">xmlns:a=</span><span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne&gt;</span>
-</span><span class="line">        <span class="nt">&lt;a:levelTwo</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/a:levelOne&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
-</span><span class="line"><span class="nt">&lt;/a:root&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>But actually produces this:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="xml"><span class="line"><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;?&gt;</span>
-</span><span class="line"><span class="nt">&lt;a:root</span> <span class="na">xmlns:a=</span><span class="s">&quot;http://ianp.org/nsURI&quot;</span><span class="nt">&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;</span>
-</span><span class="line">        <span class="nt">&lt;a:levelTwo</span> <span class="na">a:foo=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
-</span><span class="line">    <span class="nt">&lt;/a:levelOne&gt;</span>
-</span><span class="line">    <span class="nt">&lt;a:levelOne/&gt;&lt;/a:levelOne&gt;</span>
-</span><span class="line"><span class="nt">&lt;/a:root&gt;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Line 5 is generated as an empty element instead of a start element. I’ve pointed this out the to JCP committee, we’ll see if they repsond.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/29/">&larr; Older</a>
@@ -488,6 +408,10 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
       </li>
     
@@ -501,10 +425,6 @@ Yeah, this sucks, but now that there are Free Desktop specs for this the situati
     
       <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
   </ul>

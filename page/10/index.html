@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="A really nice set of visualisations of the old Choose Your Own
-Adventure books, I was a big fan of the English equivalents when I
-was a kid. ">
+  <meta name="description" content="Based on Alex’s comment on the Leiningen group, here’s my
+shiny new setup for working with Git &amp; GitHub on OS X, I’m
+posting it here then it’ll &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,7 +31,6 @@ was a kid. ">
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
-
 <script type="text/javascript">
   var _gauges = _gauges || [];
   (function() {
@@ -46,6 +45,17 @@ was a kid. ">
   })();
 </script>
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -96,6 +106,86 @@ was a kid. ">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/11/26/how-to-work-with-git-github">How to Work With Git & GitHub</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-11-26T15:33:36+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
+shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
+posting it here then it’ll be easy for me to refer back to in future…</p>
+
+<h3 id="installing-the-tools">Installing the Tools</h3>
+
+<ol>
+  <li>install <a href="http://macports.org/">MacPorts</a> if you don’t already have it;</li>
+  <li>get an up-to-date version of ruby and rubygems with <code>sudo port install rb-rubygems</code>;</li>
+  <li>install the <code>github</code> tool with <code>sudo port install json github</code>; and</li>
+  <li>upload your public key to your <a href="http://github.com/account">GitHub account</a>.</li>
+</ol>
+
+<h3 id="creating-a-new-project">Creating a New Project</h3>
+
+<p>Run <code>github create project_name</code> to create a public project, append <code>--private</code>
+to create a private project (you will need a paid account at GitHub for
+this).</p>
+
+<h3 id="forking">Forking</h3>
+
+<p>Run <code>github fork project_owner project_name</code>, for example to create a fork of the Cucumber testing
+framework run <code>github fork aslakhellesoy cucumber</code>.</p>
+
+<h3 id="making-changes">Making Changes</h3>
+
+<p>Make your changes in a branch, this took me a little while to
+get used to at first as it’s different from the normal way of working
+with version control systems like CVS:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd </span>project_dir
+</span><span class="line"><span class="nv">$ </span>git checkout -b feature_name
+</span><span class="line">... edit edit edit ...
+</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Witty comment.&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>From time to time push the branch to github
+so others can see what I’m working on <code>git push origin feature_name</code>.
+If the work is in a fork then you’ll also want to send a pull-request
+back to the original project with <code>github pull-request project_owner feature_name</code>. All from the command line, neat huh? For more tricks,
+you can also browse issues with <code>github issues {open|closed}</code>.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -355,46 +445,6 @@ bye</code></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/06/18/adobe-releases-rtmp-specification">Adobe Releases RTMP Specification</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-18T06:56:52+02:00" pubdate data-updated="true">Jun 18<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is a few days old now, but on Monday <a href="http://www.adobe.com/">Adobe</a> finally got around
-to releasing <a href="http://www.adobe.com/devnet/rtmp/">the specification</a> for their real-time messaging
-protocol. This should make it much easier for open source efforts like
-<a href="http://rtmpy.org/">RTMPy</a> to polish their implementations. Interesting times…</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/11/">&larr; Older</a>
@@ -412,6 +462,10 @@ protocol. This should make it much easier for open source efforts like
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
       </li>
     
@@ -425,10 +479,6 @@ protocol. This should make it much easier for open source efforts like
     
       <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
   </ul>

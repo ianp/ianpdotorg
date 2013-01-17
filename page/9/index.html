@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="C functions may be used recursively; that is, a function may call
-itself either directly or indirectly. Uninquiring souls may take this as
-just &hellip;">
+  <meta name="description" content="One of the distinguishing characteristics of Unix is the
+philosophy that “everything is a file” (taken even further in
+Linux and Plan 9). Reading the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,7 +31,6 @@ just &hellip;">
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
-
 <script type="text/javascript">
   var _gauges = _gauges || [];
   (function() {
@@ -46,6 +45,17 @@ just &hellip;">
   })();
 </script>
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -96,6 +106,58 @@ just &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2009/12/28/why-everything-is-a-file">Why Everything Is a File</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-28T17:54:29+01:00" pubdate data-updated="true">Dec 28<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>One of the <a href="http://en.wikipedia.org/wiki/Unix_architecture">distinguishing characteristics of Unix</a> is the
+philosophy that “everything is a file” (taken even further in
+<a href="http://en.wikipedia.org/wiki/Linux">Linux</a> and <a href="http://plan9.bell-labs.com/plan9/">Plan 9</a>). Reading the interview with <a href="http://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> in <a href="http://www.codersatwork.com/">Coders at Work</a> (page 465) sheds some light on why
+this is the case:</p>
+
+<blockquote>
+  <p><strong>Seibel:</strong> So you basically wrote an OS so you’d
+have a better environment to test your file system.
+<strong>Thompson:</strong> Yes. Halfway through there that I realized it was a real time-sharing
+system. I was writing the shell to drive the file system. And then I was
+writing a couple other programs that drove the file system. And right
+about there I said, “All I need is an editor and I’ve got an operating
+system.”</p>
+</blockquote>
+
+<p>So Unix started life as a glorified test harness for Ken’s file system! Amusing…</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -401,86 +463,6 @@ Python, and Ruby.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/11/26/how-to-work-with-git-github">How to Work With Git & GitHub</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-11-26T15:33:36+01:00" pubdate data-updated="true">Nov 26<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
-shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
-posting it here then it’ll be easy for me to refer back to in future…</p>
-
-<h3 id="installing-the-tools">Installing the Tools</h3>
-
-<ol>
-  <li>install <a href="http://macports.org/">MacPorts</a> if you don’t already have it;</li>
-  <li>get an up-to-date version of ruby and rubygems with <code>sudo port install rb-rubygems</code>;</li>
-  <li>install the <code>github</code> tool with <code>sudo port install json github</code>; and</li>
-  <li>upload your public key to your <a href="http://github.com/account">GitHub account</a>.</li>
-</ol>
-
-<h3 id="creating-a-new-project">Creating a New Project</h3>
-
-<p>Run <code>github create project_name</code> to create a public project, append <code>--private</code>
-to create a private project (you will need a paid account at GitHub for
-this).</p>
-
-<h3 id="forking">Forking</h3>
-
-<p>Run <code>github fork project_owner project_name</code>, for example to create a fork of the Cucumber testing
-framework run <code>github fork aslakhellesoy cucumber</code>.</p>
-
-<h3 id="making-changes">Making Changes</h3>
-
-<p>Make your changes in a branch, this took me a little while to
-get used to at first as it’s different from the normal way of working
-with version control systems like CVS:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="sh"><span class="line"><span class="nv">$ </span><span class="nb">cd </span>project_dir
-</span><span class="line"><span class="nv">$ </span>git checkout -b feature_name
-</span><span class="line">... edit edit edit ...
-</span><span class="line"><span class="nv">$ </span>git commit -a -m <span class="s2">&quot;Witty comment.&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-<p>From time to time push the branch to github
-so others can see what I’m working on <code>git push origin feature_name</code>.
-If the work is in a fork then you’ll also want to send a pull-request
-back to the original project with <code>github pull-request project_owner feature_name</code>. All from the command line, neat huh? For more tricks,
-you can also browse issues with <code>github issues {open|closed}</code>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/10/">&larr; Older</a>
@@ -498,6 +480,10 @@ you can also browse issues with <code>github issues {open|closed}</code>.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
       </li>
     
@@ -511,10 +497,6 @@ you can also browse issues with <code>github issues {open|closed}</code>.</p>
     
       <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
   </ul>

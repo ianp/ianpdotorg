@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="After playing around with Lisp for a few days I’ve diverted myself back
-to a small Java project. Almost immediately I’m missing the Lisp
-environment &hellip;">
+  <meta name="description" content="In Eclipse your plug-ins normally have their classpath’s based upon
+their dependencies. I’m playing around with an RCP based application
+that will &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,7 +31,6 @@ environment &hellip;">
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
-
 <script type="text/javascript">
   var _gauges = _gauges || [];
   (function() {
@@ -46,6 +45,17 @@ environment &hellip;">
   })();
 </script>
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -96,6 +106,132 @@ environment &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2004/10/03/dynamic-classpaths-in-eclipse">Dynamic Classpaths in Eclipse</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2004-10-03T05:10:58+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2004</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In Eclipse your plug-ins normally have their classpath’s based upon
+their dependencies. I’m playing around with an RCP based application
+that will need to reference external libraries to avoid onerous
+licensing requirements. Here’s the somewhat convoluted code required to
+do this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">Context</span> <span class="nf">getContext</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">context</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">context</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">    <span class="kd">final</span> <span class="n">Properties</span> <span class="n">props</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+</span><span class="line">    <span class="n">props</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">INITIAL_CONTEXT_FACTORY</span><span class="o">,</span> <span class="n">getInitialContextFactory</span><span class="o">());</span>
+</span><span class="line">    <span class="n">props</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">PROVIDER_URL</span><span class="o">,</span> <span class="n">getProviderURL</span><span class="o">());</span>
+</span><span class="line">    <span class="n">props</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">SECURITY_PRINCIPAL</span><span class="o">,</span> <span class="n">getDirectoryPrincipal</span><span class="o">());</span>
+</span><span class="line">    <span class="n">props</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">Context</span><span class="o">.</span><span class="na">SECURITY_CREDENTIALS</span><span class="o">,</span> <span class="n">getDirectoryCredentials</span><span class="o">());</span>
+</span><span class="line">    <span class="n">URL</span><span class="o">[]</span> <span class="n">classpath</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class="line">    <span class="n">Plugin</span> <span class="n">plugin</span> <span class="o">=</span> <span class="n">JmsPlugin</span><span class="o">.</span><span class="na">getPlugin</span><span class="o">();</span>
+</span><span class="line">    <span class="k">try</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">String</span> <span class="n">stringList</span> <span class="o">=</span> <span class="n">plugin</span><span class="o">.</span><span class="na">getPluginPreferences</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="n">PreferencesInitializer</span><span class="o">.</span><span class="na">CLASS_PATH</span><span class="o">);</span>
+</span><span class="line">        <span class="n">StringTokenizer</span> <span class="n">st</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringTokenizer</span><span class="o">(</span><span class="n">stringList</span><span class="o">,</span> <span class="n">File</span><span class="o">.</span><span class="na">pathSeparator</span><span class="o">);</span>
+</span><span class="line">        <span class="n">ArrayList</span> <span class="n">v</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+</span><span class="line">        <span class="k">while</span> <span class="o">(</span><span class="n">st</span><span class="o">.</span><span class="na">hasMoreElements</span><span class="o">())</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">v</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">&quot;file://&quot;</span> <span class="o">+</span> <span class="n">st</span><span class="o">.</span><span class="na">nextElement</span><span class="o">()));</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">        <span class="n">classpath</span> <span class="o">=</span> <span class="o">(</span><span class="n">URL</span><span class="o">[])</span> <span class="n">v</span><span class="o">.</span><span class="na">toArray</span><span class="o">(</span><span class="k">new</span> <span class="n">URL</span><span class="o">[</span><span class="n">v</span><span class="o">.</span><span class="na">size</span><span class="o">()]);</span>
+</span><span class="line">    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">MalformedURLException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+</span><span class="line">        <span class="n">Debug</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="n">plugin</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">msg</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">msg</span> <span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+</span><span class="line">        <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="n">ClassLoader</span> <span class="n">oldClassLoader</span> <span class="o">=</span> <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getContextClassLoader</span><span class="o">();</span>
+</span><span class="line">    <span class="n">ClassLoader</span> <span class="n">newClassLoader</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URLClassLoader</span><span class="o">(</span><span class="n">classpath</span><span class="o">,</span> <span class="n">getClass</span><span class="o">().</span><span class="na">getClassLoader</span><span class="o">());</span>
+</span><span class="line">    <span class="k">try</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">setContextClassLoader</span><span class="o">(</span><span class="n">newClassLoader</span><span class="o">);</span>
+</span><span class="line">        <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InitialDirContext</span><span class="o">(</span><span class="n">props</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">NamingException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+</span><span class="line">        <span class="n">Debug</span><span class="o">.</span><span class="na">error</span><span class="o">(</span><span class="n">plugin</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">msg</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="n">msg</span> <span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">,</span> <span class="n">e</span><span class="o">);</span>
+</span><span class="line">        <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">setContextClassLoader</span><span class="o">(</span><span class="n">oldClassLoader</span><span class="o">);</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">context</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The relevant code is in the first <code>try... catch</code> block. Then I can
+have this plug-in rely on a second plug in which includes the JMS
+interfaces only, and have a preference page which allows the user to
+select a third party JMS provider by URL. At the moment it won’t handle
+JMS providers that reply on native methods, but that could be fixed the
+same way if needed. The <code>Debug.error(...)</code> is just a utility class to
+log an Eclipse <code>IStatus.ERROR</code> message. As an added benefit of this
+approach, because I use the latest API version in my JMS plugin, I can
+check for a JMS version at runtime using the metadata returned by
+<code>Connection.getMetaData()</code> and then only call JMS 1.1 supplied methods
+when they are available.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -255,44 +391,6 @@ same as the rest of the pages here, but bear with me.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/06/07/entry-archives-broken">Entry Archives Broken</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-06-07T02:06:34+02:00" pubdate data-updated="true">Jun 7<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The individual entry archives seem to be screwed at the moment, since
-I’m planning to move over to using <a href="http://www.wordpress.org">Word Press</a> in a couple of days I’m not going to
-waste time trying to fix them right now.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/25/">&larr; Older</a>
@@ -310,6 +408,10 @@ waste time trying to fix them right now.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
       </li>
     
@@ -323,10 +425,6 @@ waste time trying to fix them right now.</p>
     
       <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
   </ul>

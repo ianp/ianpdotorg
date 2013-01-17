@@ -9,10 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="From a Salon
-interview
-with Ellen Ullman: When you’re around really serious professional programmers, this
-code jockey stuff really falls away, and &hellip;">
+  <meta name="description" content="Well, I mentioned this many a time whilst I was consulting at
+Three as being something that they should
+definitely offer, but it seems like Vodafone &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -32,7 +31,6 @@ code jockey stuff really falls away, and &hellip;">
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
-
 <script type="text/javascript">
   var _gauges = _gauges || [];
   (function() {
@@ -47,6 +45,17 @@ code jockey stuff really falls away, and &hellip;">
   })();
 </script>
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -97,6 +106,50 @@ code jockey stuff really falls away, and &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2004/02/17/vodafone-3g">Vodafone 3G</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2004-02-17T14:02:22+01:00" pubdate data-updated="true">Feb 17<span>th</span>, 2004</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Well, I mentioned this many a time whilst I was consulting at
+<a href="http://www.three.com">Three</a> as being something that they should
+definitely offer, but it seems like <a href="http://www.vodafone.com">Vodafone</a>
+have beaten them to it. They
+<a href="http://www.vodafone.com/article\_with\_thumbnail/0,3038,CATEGORY\_ID%253D102%2526LANGUAGE\_ID%253D0%2526CONTENT\_ID%253D214962,00.html">announced</a>
+a few days ago that they’d soon be offering 3G data services throughout
+pretty much most of Europe. Looks like 3 could soon be a thing of the
+past, I really don’t fancy their chances in the marketplace now the big
+V is moving in.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -272,85 +325,6 @@ is.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2004/01/16/java-multiple-inheritance">Java Multiple Inheritance</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2004-01-16T08:01:12+01:00" pubdate data-updated="true">Jan 16<span>th</span>, 2004</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Can somebody answer this question for me please: why does this code not
-work?</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">interface</span> <span class="nc">FooNode</span> <span class="o">{</span>
-</span><span class="line">  <span class="kd">public</span> <span class="n">FooNode</span> <span class="nf">getSelf</span><span class="o">();</span>
-</span><span class="line"><span class="o">}</span>
-</span><span class="line"><span class="kd">class</span> <span class="nc">BarNode</span> <span class="o">{</span>
-</span><span class="line">  <span class="kd">public</span> <span class="n">BarNode</span> <span class="nf">getSelf</span><span class="o">()</span> <span class="o">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-</span><span class="line">  <span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span><span class="line"><span class="kd">class</span> <span class="nc">FooBarNode</span> <span class="kd">extends</span> <span class="n">BarNode</span> <span class="kd">implements</span> <span class="n">FooNode</span> <span class="o">{</span>
-</span><span class="line">  <span class="kd">public</span> <span class="n">FooBarNode</span> <span class="nf">getSelf</span><span class="o">()</span> <span class="o">{</span>
-</span><span class="line">    <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
-</span><span class="line">  <span class="o">}</span>
-</span><span class="line"><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>As far as I can see it should be fine, since <code>FooBarNode</code> <em>is a</em>
-<code>FooNode</code> and also <em>is a</em> <code>BarNode</code> the compiler should have
-nothing to complain about. Of course it doesn’t work, and I can see that
-this is so from the language specification; but the question remains:
-why? My complaint is really that this breaks the semantic model
-completely. What, in essence, is being said by the <code>FooNode.getSelf()</code>
-interface method is that it returns an object which conforms to the
-<code>FooNode</code> interface. Given that <code>FooBarNode</code> does conform to this
-interface it should be fine as a return type from this method. I assume
-that there is some deep reason, probably to do with efficiency of the
-virtual machine, why the language behaves like this; but having seen
-some of the design decisions to come out of Sun’s Java group I wouldn’t
-be too surprised if it was just an accidental fuck up.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/28/">&larr; Older</a>
@@ -368,6 +342,10 @@ be too surprised if it was just an accidental fuck up.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
       </li>
     
@@ -381,10 +359,6 @@ be too surprised if it was just an accidental fuck up.</p>
     
       <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
   </ul>

@@ -9,8 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Via the BBC: A life-size replica of a Guantanamo Bay detainee has been placed
-in Disneyland by “guerrilla artist” Banksy. The hooded figure was &hellip;">
+  <meta name="description" content="Some discussion in the comments on Romain’s weblog regarding Java
+applications that install private VMs. People seem to be either arguing
+for or &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -30,7 +31,6 @@ in Disneyland by “guerrilla artist” Banksy. The hooded figure was &hellip;">
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
-
 <script type="text/javascript">
   var _gauges = _gauges || [];
   (function() {
@@ -45,6 +45,17 @@ in Disneyland by “guerrilla artist” Banksy. The hooded figure was &hellip;">
   })();
 </script>
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -95,6 +106,55 @@ in Disneyland by “guerrilla artist” Banksy. The hooded figure was &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2006/09/11/installing-multiple-jvms">Installing Multiple JVMs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-09-11T23:19:25+02:00" pubdate data-updated="true">Sep 11<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Some discussion in <a href="http://jroller.com/page/gfx/?anchor=lightzone_a_fantastic_java_app">the comments on Romain’s weblog</a> regarding Java
+applications that install private VMs. People seem to be either arguing
+for or against including a VM, but there is obviously a better way. What
+the installer should really do is check for a suitable JVM and if it
+can’t find one, offer to download it.</p>
+
+<p>Of course the application launcher
+would also need to perform the same check in case it gets removed at a
+later date. One (commercial) solution which seems to do this is
+<a href="http://www.ej-technologies.com/products/install4j/overview.html">Install4J</a> although I can’t verify how successful the approach is
+as I haven’t used it personally.</p>
+
+<p><strong>Update:</strong> There is a new version of Install4J out now and the entry level price point is into 4 figures, so I won’t be using it any time soon.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -304,45 +364,6 @@ more readable).</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/04/17/play-pumps">Play Pumps</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-04-17T21:47:51+02:00" pubdate data-updated="true">Apr 17<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is a really cool idea (and not at all what you’d expect to find on
-a website called <a href="http://www.playpumps.org/">Play Pumps</a>)! It’s a kid’s
-roundabout that also acts as a pump for a fresh water well. They’re
-definitely getting some cash from me.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/21/">&larr; Older</a>
@@ -360,6 +381,10 @@ definitely getting some cash from me.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
       </li>
     
@@ -373,10 +398,6 @@ definitely getting some cash from me.</p>
     
       <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
   </ul>

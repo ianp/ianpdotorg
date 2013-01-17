@@ -4,7 +4,7 @@
   <title><![CDATA[Digital Magpie]]></title>
   <link href="http://ianp.org/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-15T14:48:48+01:00</updated>
+  <updated>2013-01-17T20:04:56+01:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -12,6 +12,324 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Praxis: Winning at Bingo]]></title>
+    <link href="http://ianp.org/2013/01/17/praxis-winning-at-bingo"/>
+    <updated>2013-01-17T20:04:00+01:00</updated>
+    <id>http://ianp.org/2013/01/17/praxis-winning-at-bingo</id>
+    <content type="html"><![CDATA[<p>Following on from my <a href="http://ianp.org/2013/01/15/programming-praxis/">previous post</a> I’m attempting the next Programming Praxis <a href="http://programmingpraxis.com/2009/02/19/bingo/">excercise</a>: computing the probability of a winning board at Bingo tournaments of various sizes.</p>
+
+<p>Probably the most common means of solving this kind of probability problem is the <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> method, which uses randomization and statistical sampling to estimate probabilities. Luckiy for me, the problem space for Bingo is small enough that it is possible completely analyze the game and present exact numbers.</p>
+
+<p>The individual functions are all pretty short so I’ll walk through the maths and code at the same time.</p>
+
+<h3 id="laying-the-foundations">Laying the Foundations</h3>
+
+<p>Now, some of the numbers are going to get pretty big so primitive math won’t cut it. I’m going to define a few helper functions to make working with arbitrary-precision maths easier. I’m also gong to specify a limited precision context to use for division operations, as I’d rather lose a small amount of precision that get an <code>ArithmeticException</code> if we hit any irrational numbers.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">MathContext</span> <span class="n">DIVISION</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MathContext</span><span class="o">(</span><span class="mi">128</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">d</span><span class="o">(</span><span class="kt">long</span> <span class="n">l</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">new</span> <span class="nf">BigDecimal</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">MathContext</span><span class="o">.</span><span class="na">UNLIMITED</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">add</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="n">BigDecimal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">MathContext</span><span class="o">.</span><span class="na">UNLIMITED</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">sub</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="n">BigDecimal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">mul</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="n">BigDecimal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">multiply</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">MathContext</span><span class="o">.</span><span class="na">UNLIMITED</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">div</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="n">BigDecimal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">DIVISION</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">pow</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">MathContext</span><span class="o">.</span><span class="na">UNLIMITED</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To show how these work let’s define a factorial function, which is need in a moment anyway.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">fact</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">switch</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">ONE</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">case</span> <span class="o">-</span><span class="mi">1</span><span class="o">:</span> <span class="k">return</span> <span class="n">ZERO</span><span class="o">;</span>
+</span><span class="line">        <span class="k">case</span>  <span class="mi">0</span><span class="o">:</span> <span class="k">return</span> <span class="n">ONE</span><span class="o">;</span>
+</span><span class="line">        <span class="k">default</span><span class="o">:</span> <span class="k">return</span> <span class="n">mul</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">fact</span><span class="o">(</span><span class="n">sub</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">ONE</span><span class="o">)));</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>We’re also going to need a <a href="http://en.wikipedia.org/wiki/Combinations">combination</a> function, which will return the number of distinct combinations of <em>k</em> values drawn from a set <em>S</em>. Formally this is known as the binomial coefficient and is described by:</p>
+
+<p>\begin{equation}
+c(S,k) = {S! \over k!\space (S - k)!} 
+\label{combine}
+\end{equation}</p>
+
+<p>The code that implements this is pretty much a literal translation of the equation, with a little data conversion and a shortcut for the case where we want to select no items or the entire set.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">combinations</span><span class="o">(</span><span class="kt">int</span> <span class="n">S</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">S</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">ZERO</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">==</span> <span class="n">S</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">ONE</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">    <span class="n">BigDecimal</span> <span class="n">bS</span> <span class="o">=</span> <span class="n">d</span><span class="o">(</span><span class="n">S</span><span class="o">);</span>
+</span><span class="line">    <span class="n">BigDecimal</span> <span class="n">bk</span> <span class="o">=</span> <span class="n">d</span><span class="o">(</span><span class="n">k</span><span class="o">);</span>
+</span><span class="line">    <span class="k">return</span> <span class="nf">div</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">bS</span><span class="o">),</span> <span class="n">mul</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">bk</span><span class="o">),</span> <span class="n">fact</span><span class="o">(</span><span class="n">sub</span><span class="o">(</span><span class="n">bS</span><span class="o">,</span> <span class="n">bk</span><span class="o">))));</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>There are faster algorithms than this, but this is easy to understand and sufficient for our needs.</p>
+
+<h3 id="describing-bingo-mathematically">Describing Bingo Mathematically</h3>
+
+<p>A Bingo board is comprised of a set of squares <em>S</em>, each with a number <em>n</em> chosen at random from the set <em>N</em>. Typically <em>S</em> comprises a 5x5 grid and <em>N</em> is the set of integers from 1 to 75. As an added wrinkle the centre square in the grid is a <em>free space</em> which is always assumed to be hit, this means that a 5x5 grid is actually a 24 element set.</p>
+
+<p>To keep things simple I’m going to assume that we are using a typical board and number set, so I’ll just use constants to hold the cardinalities (sizes) of the two sets.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">NUMBERS</span> <span class="o">=</span> <span class="mi">75</span><span class="o">;</span>
+</span><span class="line"><span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">SQUARES</span> <span class="o">=</span> <span class="mi">24</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The first thing we need to figure out is the cumulative probabity of winning after <em>n</em> numbers have been called (i.e. the probability of winning when the 4th number is called, when the 5th number is called, and so on). This can be found by looking at the probability of there being 4 hits and those 4 forming a Bingo, plus the probability of there being 5 hits and those 5 forming a Bingo, and so on up to the number of calls made so far. Note that we start at 4 as this is the minimum number of calls needed for a Bingo.</p>
+
+<p>Assuming that we have a function <em>p(n)</em> which returns the probability of there being a Bingo when there are <em>n</em> hits, the cumulative probability of winning after <em>n</em> calls is given by:</p>
+
+<p>\begin{equation}
+w(n) = \sum _ {i=4}^n {c(|S|, i)\space c(|N| - |S|, n - i) \over c(|N|, n)} p(i)
+\label{cumulative}
+\end{equation}</p>
+
+<p>Substituting in the values for the sizes of the board and number set simplifies this to:</p>
+
+<p>\begin{equation}
+w(n) = \sum _ {i=4}^n {c(24, i)\space c(51, n - i) \over c(75, n)} p(i)
+\label{cumulative-simple}
+\end{equation}</p>
+
+<p>But we still need to define <em>p(n)</em>, this is where the small problem space comes in handy…</p>
+
+<h3 id="assemble-a-brute-squad">Assemble a Brute Squad</h3>
+
+<p>The probability of a Bingo given <em>n</em> hits on the board is the number of possible Bingo positions divided by the total number of positions, so before we can work out the probability we need to get the number of Bingo positions for each hit count.</p>
+
+<p>As I mentioned earlier will use a brute force method of calculating the probability of a Bingo given <em>n</em> hits on the board. To do this we first need to come up with a representation of a board, as it only takes a single bit to represent the state of each square and there are only 24 squares, we can just use an int for this.</p>
+
+<p>Here’s how we do that: number the squares from 0–23 left-to-right and top-to-bottom, then starting from the least significant bit we can use a 1 to represent a hit square and a 0 to represent an empty square. So a Bingo across the top row, with all other squares being empty is represented by <code>0b111110000000000000000000</code>; this and the remaining 11 possible Bingo positions (5 rows, 5 columns, and the 2 diagonals) can be represented like so:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">BINGOS</span> <span class="o">=</span> <span class="o">{</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b111110000000000000000000</span><span class="o">,</span> <span class="mi">0</span><span class="n">b000001111100000000000000</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b000000000011110000000000</span><span class="o">,</span> <span class="mi">0</span><span class="n">b000000000000001111100000</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b000000000000000000011111</span><span class="o">,</span> <span class="mi">0</span><span class="n">b100001000010001000010000</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b010000100001000100001000</span><span class="o">,</span> <span class="mi">0</span><span class="n">b001000010000000010000100</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b000100001000010001000010</span><span class="o">,</span> <span class="mi">0</span><span class="n">b000010000100010000100001</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b100000100000000001000001</span><span class="o">,</span> <span class="mi">0</span><span class="n">b000010001000000100010000</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To create the array of Bingo combinations (indexed by number of hits, so a 25 element array) we will just loop through every possible board layout (i.e. the integers 0 through <code>0b11111111111111111111111</code>) and check each of them against the list of Bingo positions, if there is a match we can use the <code>Integer.bitCount()</code> method to count the number of hits on the board and then increment the counter there. The full code for this is:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="kt">long</span><span class="o">[]</span> <span class="n">bingoCombinations</span> <span class="o">=</span> <span class="n">createBingoCombinations</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line"><span class="kt">long</span><span class="o">[]</span> <span class="nf">createBingoCombinations</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="kt">long</span><span class="o">[]</span> <span class="n">combinations</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">SQUARES</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="n">b111111111111111111111111</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">bingo</span> <span class="o">:</span> <span class="n">BINGOS</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="k">if</span> <span class="o">((</span><span class="n">i</span> <span class="o">&amp;</span> <span class="n">bingo</span><span class="o">)</span> <span class="o">==</span> <span class="n">bingo</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">                <span class="n">combinations</span><span class="o">[</span><span class="n">Integer</span><span class="o">.</span><span class="na">bitCount</span><span class="o">(</span><span class="n">i</span><span class="o">)]++;</span>
+</span><span class="line">                <span class="k">break</span><span class="o">;</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">combinations</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Given this we can now calculate the probability of a Bingo at each hit count as described above, the code for this is:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">BigDecimal</span><span class="o">[]</span> <span class="n">bingoProbabilities</span> <span class="o">=</span> <span class="n">createBingoProbabilities</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line"><span class="n">BigDecimal</span><span class="o">[]</span> <span class="nf">createBingoProbabilities</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">BigDecimal</span><span class="o">[]</span> <span class="n">probabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">[</span><span class="n">SQUARES</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">probabilities</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">ZERO</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">SQUARES</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">probabilities</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">div</span><span class="o">(</span><span class="n">d</span><span class="o">(</span><span class="n">bingoCombinations</span><span class="o">[</span><span class="n">i</span><span class="o">]),</span> <span class="n">combinations</span><span class="o">(</span><span class="n">SQUARES</span><span class="o">,</span> <span class="n">i</span><span class="o">));</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">probabilities</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The last thing we need before moving on to calculate the actual chances of winning is a function to determine the probability of there being <em>k</em> hits hits on the board after <em>n</em> numbers have been called (the bit in equation \eqref{cumulative} that is being multiplied by <em>p(n)</em> and then summed). It’s just a literal translation of the equation:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">getHitProbability</span><span class="o">(</span><span class="kt">int</span> <span class="n">numHits</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numCalls</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nf">div</span><span class="o">(</span><span class="n">mul</span><span class="o">(</span><span class="n">combinations</span><span class="o">(</span><span class="mi">24</span><span class="o">,</span> <span class="n">numHits</span><span class="o">),</span> <span class="n">combinations</span><span class="o">(</span><span class="mi">51</span><span class="o">,</span> <span class="n">numCalls</span> <span class="o">-</span> <span class="n">numHits</span><span class="o">)),</span>
+</span><span class="line">            <span class="n">combinations</span><span class="o">(</span><span class="mi">75</span><span class="o">,</span> <span class="n">numCalls</span><span class="o">));</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="chances-of-winning">Chances of Winning?</h3>
+
+<p>We’ve now got everything we need to write the code for equation \eqref{cumulative}, given the previous function and the pre-computed array of proabilities the code to do this is simple:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">BigDecimal</span><span class="o">[]</span> <span class="nf">createBoardProbabilities</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">BigDecimal</span><span class="o">[]</span> <span class="n">probabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">[</span><span class="n">NUMBERS</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="o">++</span><span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">probabilities</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">ZERO</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">NUMBERS</span><span class="o">;</span> <span class="o">++</span><span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">BigDecimal</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">ZERO</span><span class="o">;</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="n">SQUARES</span><span class="o">;</span> <span class="o">++</span><span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">sum</span> <span class="o">=</span> <span class="n">add</span><span class="o">(</span><span class="n">sum</span><span class="o">,</span> <span class="n">mul</span><span class="o">(</span><span class="n">getHitProbability</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">n</span><span class="o">),</span> <span class="n">bingoProbabilities</span><span class="o">[</span><span class="n">s</span><span class="o">]));</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">        <span class="n">probabilities</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">probabilities</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is fine for a single board, but what about the odds for a real game, with many players? The odds of finding a winner when there are <em>k</em> boards is given by:</p>
+
+<p>\begin{equation}
+m(n,k) = 1 - (1 - w(n))^k
+\label{many}
+\end{equation}</p>
+
+<p>Armed with this we can implement a function to return the probability of a winning board for any number of boards and numbers called like so:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">BigDecimal</span> <span class="nf">getProbability</span><span class="o">(</span><span class="kt">int</span> <span class="n">numCalls</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numBoards</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">numBoards</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">boardProbabilities</span><span class="o">[</span><span class="n">numCalls</span><span class="o">];</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nf">sub</span><span class="o">(</span><span class="n">ONE</span><span class="o">,</span> <span class="n">pow</span><span class="o">(</span><span class="n">sub</span><span class="o">(</span><span class="n">ONE</span><span class="o">,</span> <span class="n">boardProbabilities</span><span class="o">[</span><span class="n">numCalls</span><span class="o">]),</span> <span class="n">numBoards</span><span class="o">));</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And that’s everything! All that’s left to add is a main method to print out some stats and that’s it.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">BingoOdds</span> <span class="n">bingo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BingoOdds</span><span class="o">();</span>
+</span><span class="line">    <span class="n">bingo</span><span class="o">.</span><span class="na">printStatistics</span><span class="o">();</span>
+</span><span class="line">    <span class="n">bingo</span><span class="o">.</span><span class="na">printProbabilities</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you want to play with this some more, an interesting excercise would be to generalize this for any size of board and token (number) set. To do that you’ll need to get rid of the static <code>BINGOS</code> array and calculate id dynamically, based on the size of the square, other than that and a coupl of constants that need to be replaced by variables everything else should work as is.</p>
+
+<p>The full code, including the implementations of the print methods can be found on <a href="https://github.com/ianp/praxis-java/blob/master/src/main/java/org/ianp/praxis/BingoOdds.java">GitHub</a>.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Programming Praxis]]></title>
@@ -1048,187 +1366,6 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
 <p>For a simple word count it seems that the regular expression wins out, but the linguistic tagger provides some interesting additional information. One downside to the tagger is that it doesn’t seem to be extensible in any way, so you’re limited to those schemes and tags that Apple ship with the OS. There is no way to, for example, use this mechanism to tag keywords and operators in a code editor, which may be useful.</p>
 
 <p>The code used for this post can be found in <a href="https://gist.github.com/2413356">this gist</a>.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How Many Words Make a String?]]></title>
-    <link href="http://ianp.org/2012/04/16/how-many-words-make-a-string"/>
-    <updated>2012-04-16T15:16:00+02:00</updated>
-    <id>http://ianp.org/2012/04/16/how-many-words-make-a-string</id>
-    <content type="html"><![CDATA[<p>A recent post on the <a href="http://iphonedevelopertips.com/data-file-management/count-the-number-of-words-in-an-string.html">iOS Developer Tips</a> blog provided a handy way to get the the word count for a string by using <code>NSScanner</code>, and asked for comments on alternative approaches. Pretty quickly there were a few different suggestions so I thought that I’d take a look at them to see how they compare. It turns out that the different approaches give pretty different results when run over the same test string! To be honest this isn’t much of a surprise, but what was surprising is just how different the results were.</p>
-
-<p>I tested the original scanner based approach and also the first four alternatives from the comments. For the test string I used this:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span> <span class="o">=</span> <span class="s">@&quot;Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!&quot;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>there are a couple of things to note here: some of the spaces are doubled up, the period is spaced French-style (i.e. with a space before and after) and the em-dashes have hair-space at either side of them. It’s easier to see some of these features when you look at the same string in a proportional font: “Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!”</p>
-
-<p>Anyway, the various approaches gave very different word counts for that example:</p>
-
-<table class="tabular">
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th style="text-align: right">Count</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Original Scanner</td>
-      <td style="text-align: right">15</td>
-    </tr>
-    <tr>
-      <td>Regular Expression</td>
-      <td style="text-align: right">12</td>
-    </tr>
-    <tr>
-      <td>String Components</td>
-      <td style="text-align: right">18</td>
-    </tr>
-    <tr>
-      <td>Char Components</td>
-      <td style="text-align: right">22</td>
-    </tr>
-    <tr>
-      <td>Linguistic tagger</td>
-      <td style="text-align: right">12</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Anywhere from 12 to 22 words! Let’s take a look at the different approaches in turn.</p>
-
-<h2 id="original-scanner">Original Scanner</h2>
-
-<p>This is the original <code>NSScanner</code> based version from John’s post, here’s the code for it:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">scannerWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
-</span><span class="line"><span class="p">{</span>
-</span><span class="line">  <span class="n">NSScanner</span><span class="o">*</span> <span class="n">scanner</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSScanner</span> <span class="nl">scannerWithString:</span><span class="n">string</span><span class="p">];</span>
-</span><span class="line">  <span class="n">NSCharacterSet</span><span class="o">*</span> <span class="n">ws</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">];</span>
-</span><span class="line">  <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line">  <span class="k">while</span> <span class="p">([</span><span class="n">scanner</span> <span class="nl">scanUpToCharactersFromSet:</span><span class="n">ws</span> <span class="nl">intoString:</span><span class="nb">nil</span><span class="p">])</span>
-</span><span class="line">    <span class="o">++</span><span class="n">words</span><span class="p">;</span>
-</span><span class="line">  <span class="k">return</span> <span class="n">words</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This version correctly handles runs of whitespace, but it treats any non-space character as a valid word, so the French-spaced period get’s counted, as do the two em-dashes. Note however that this version <em>does</em> correctly pick up the four hair-spaces.</p>
-
-<h2 id="regular-expression">Regular Expression</h2>
-
-<p>This is my contribution:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">regexWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
-</span><span class="line"><span class="p">{</span>
-</span><span class="line">  <span class="n">NSRegularExpression</span><span class="o">*</span> <span class="n">regex</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSRegularExpression</span> <span class="nl">regularExpressionWithPattern:</span><span class="s">@&quot;</span><span class="se">\\</span><span class="s">w+&quot;</span> <span class="nl">options:</span><span class="mi">0</span> <span class="nl">error:</span><span class="nb">nil</span><span class="p">];</span>
-</span><span class="line">  <span class="k">return</span> <span class="p">[</span><span class="n">regex</span> <span class="nl">numberOfMatchesInString:</span><span class="n">string</span> <span class="nl">options:</span><span class="mi">0</span> <span class="nl">range:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])];</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Obviously this isn’t production code as there is no error handling (or caching of the compiled regex, which may or may not make sense here). But I’d say that this version gives the correct result, both ignoring the French-stop and em-dashes, and handling all of the spaces correctly.</p>
-
-<h2 id="string-components">String Components</h2>
-
-<p>This is by far the simplest solution, provided by Frank in the comments:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">componentsByStringWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
-</span><span class="line"><span class="p">{</span>
-</span><span class="line">  <span class="k">return</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">componentsSeparatedByString:</span><span class="s">@&quot; &quot;</span><span class="p">]</span> <span class="n">count</span><span class="p">];</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Unfortunately it doesn’t work at all for this string. Just looking at an actual space character means that the double spaces get counted twice, and the entire substring “No — really — he” gets treated as a single word!</p>
-
-<p>Note though, that this approach is <em>really</em> easy to understand, and would be good if the input text had already been heavily normalized.</p>
-
-<h2 id="char-components">Char Components</h2>
-
-<p>Almost the same as the previous version, except that this uses an <code>NSCharacterSet</code> instead of a string:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">componentsByCharsWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
-</span><span class="line"><span class="p">{</span>
-</span><span class="line">  <span class="n">NSCharacterSet</span><span class="o">*</span> <span class="n">ws</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSCharacterSet</span> <span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">];</span>
-</span><span class="line">  <span class="k">return</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">componentsSeparatedByCharactersInSet:</span><span class="n">ws</span><span class="p">]</span> <span class="n">count</span><span class="p">];</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Compared to the previous version this one still double counts the 2-space wide spaces, but it correctly detects the hair-spaces surrounding the em-dashes. Useful I guess if your text has been partially normalized by collapsing runs of spaces.</p>
-
-<h2 id="linguistic-tagger">Linguistic Tagger</h2>
-
-<p>This one was interesting as it’s an API that I haven’t seen before:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-<span class="line-number">12</span>
-<span class="line-number">13</span>
-<span class="line-number">14</span>
-<span class="line-number">15</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSUInteger</span> <span class="nf">taggerWordCount</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">string</span><span class="p">)</span>
-</span><span class="line"><span class="p">{</span>
-</span><span class="line">  <span class="n">NSArray</span><span class="o">*</span> <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSArray</span> <span class="nl">arrayWithObject:</span><span class="n">NSLinguisticTagSchemeTokenType</span><span class="p">];</span>
-</span><span class="line">  <span class="n">NSLinguisticTagger</span><span class="o">*</span> <span class="n">tagger</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSLinguisticTagger</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTagSchemes:</span><span class="n">schemes</span>
-</span><span class="line">                                                                      <span class="nl">options:</span><span class="mi">0</span><span class="p">];</span>
-</span><span class="line">  <span class="p">[</span><span class="n">tagger</span> <span class="nl">setString:</span><span class="n">string</span><span class="p">];</span>
-</span><span class="line">  <span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line">  <span class="p">[</span><span class="n">tagger</span> <span class="nl">enumerateTagsInRange:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])</span>
-</span><span class="line">                        <span class="nl">scheme:</span><span class="n">NSLinguisticTagSchemeTokenType</span>
-</span><span class="line">                       <span class="nl">options:</span><span class="mi">0</span>
-</span><span class="line">                    <span class="nl">usingBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">tag</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">token</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">sentence</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">if</span> <span class="p">([</span><span class="n">tag</span> <span class="nl">isEqualTo:</span> <span class="n">NSLinguisticTagWord</span><span class="p">])</span> <span class="o">++</span><span class="n">words</span><span class="p">;</span>
-</span><span class="line">  <span class="p">}];</span>
-</span><span class="line">  <span class="k">return</span> <span class="n">words</span><span class="p">;</span>
-</span><span class="line"><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>This code returns the correct number of words, so we have another winner here! Although the code is definitely more complicated than the regex based version above. Also, the originally posted code gave a result of 30, as it also calls the block for whitespace and punctuation, you need to use the <code>tag</code> block parameter to disambiguate these.</p>
-
-<p>The linguistic tagger provides a number of advanced features which may be useful if you need more than just a simple word count though. Note, for example, the <code>sentence</code> block parameter which could be used to give a sentence count as well as a word count.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>For most text the simplest solution is to use a regular expression here. If your input text has already been normalized then the <code>componentsSeparatedByString:</code> based approach is probably the easiest to use. The linguistic tagger allows for more advanced analysis of the text.</p>
-
-<p><strong>Update:</strong> all of the code here, plus a <code>main</code> function to call it, is available as a <a href="https://gist.github.com/2401251">gist</a>.</p>
-
-<p><strong>Update:</strong> I talk a little more about normalization and linguistic tagging in <a href="http://ianp.org/2012/04/17/what-is-text-normalization">this post</a>.</p>
 
 ]]></content>
   </entry>

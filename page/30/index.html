@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="I was walking past St. Pauls cathedral yesterday and it is currently wrapped in scaffolding. Rather than leave this in plain view, some bright spark &hellip;">
+  <meta name="description" content="I’ve been playing a little with learning Lisp (not that I’ve much free time, but hey, what the hell). This example, taken from Dave Lamkins’ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,7 +29,6 @@
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
 
-
 <script type="text/javascript">
   var _gauges = _gauges || [];
   (function() {
@@ -44,6 +43,17 @@
   })();
 </script>
 
+
+
+  
+
+  
+
+  
+
+  
+
+  
 
 
 
@@ -94,6 +104,107 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/2003/10/30/on-lisp">On Lisp&#8230;</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2003-10-30T07:00:35+01:00" pubdate data-updated="true">Oct 30<span>th</span>, 2003</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve been playing a little with learning Lisp (not that I’ve much free time, but hey, what the hell). This example, taken from Dave Lamkins’ <a href="http://www.psg.com/~dlamkins">Successful Lisp</a>), more than any other that I’ve seen so far, expresses the power of the language.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="common-lisp"><span class="line"><span class="p">(</span><span class="nb">defun</span> <span class="nv">open-bracket</span> <span class="p">(</span><span class="nc">stream</span> <span class="nb">char</span><span class="p">)</span>
+</span><span class="line">  <span class="o">`,</span><span class="p">(</span><span class="nb">read-delimited-list</span> <span class="err">#</span><span class="nv">]</span> <span class="nc">stream</span> <span class="no">t</span><span class="p">))</span>
+</span><span class="line"><span class="p">(</span><span class="nb">set-macro-character</span> <span class="err">#</span><span class="nv">[#</span><span class="ss">&#39;open-bracket</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nb">set-macro-character</span> <span class="err">#</span><span class="nv">]</span> <span class="p">(</span><span class="nb">get-macro-character</span> <span class="err">#</span><span class="p">)))</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Here’s what’s happening: we’re redefining the syntax of the language dynamically! Normally, if I type <code>[1 2 3]</code> into a Lisp interpreter it will raise an error, something along the lines of <em>variable <code>[1</code> has no value</em>, but after running that little code snippet I can now type <code>[1 2 3]</code> and it will create a three element list populated with the numbers 1, 2, and 3. Here’s the equivalent in a Java like syntax.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">class</span> <span class="nc">OpenBracket</span> <span class="kd">implements</span> <span class="n">JavaLanguageParser</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">static</span> <span class="n">List</span> <span class="n">list</span><span class="o">;</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextToken</span><span class="o">(</span><span class="n">RuntimeEnv</span> <span class="n">env</span><span class="o">,</span> <span class="n">StreamTokenizer</span> <span class="n">stok</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="o">(</span><span class="n">list</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+</span><span class="line">            <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">();</span>
+</span><span class="line">        <span class="kt">int</span> <span class="n">tok</span> <span class="o">=</span> <span class="n">stok</span><span class="o">.</span><span class="na">nextToken</span><span class="o">();</span>
+</span><span class="line">        <span class="k">if</span> <span class="o">(</span><span class="n">tok</span> <span class="o">==</span> <span class="n">TT_WORD</span><span class="o">)</span>
+</span><span class="line">            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">stok</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">stok</span><span class="o">.</span><span class="na">sval</span><span class="o">));</span>
+</span><span class="line">        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">tok</span> <span class="o">==</span> <span class="n">TT_NUMBER</span><span class="o">)</span>
+</span><span class="line">            <span class="n">list</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="n">Double</span><span class="o">(</span><span class="n">stok</span><span class="o">.</span><span class="na">nval</span><span class="o">));</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line"><span class="kd">class</span> <span class="nc">CloseBracket</span> <span class="kd">extends</span> <span class="n">JavaLanguageParser</span> <span class="o">{</span>
+</span><span class="line">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextToken</span><span class="o">(</span><span class="n">RuntimeEnv</span> <span class="n">env</span><span class="o">,</span> <span class="n">StreamTokenizer</span> <span class="n">stok</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">if</span> <span class="o">(</span><span class="n">OpenBracket</span><span class="o">.</span><span class="na">list</span> <span class="o">==</span><span class="kc">null</span><span class="o">)</span>
+</span><span class="line">            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ParseException</span><span class="o">(</span><span class="s">&quot;mismatched brackets&quot;</span><span class="o">);</span>
+</span><span class="line">        <span class="n">env</span><span class="o">.</span><span class="na">pushObjectOntoStack</span><span class="o">(</span><span class="n">OpenBracket</span><span class="o">.</span><span class="na">list</span><span class="o">);</span>
+</span><span class="line">        <span class="n">OpenBracket</span><span class="o">.</span><span class="na">list</span><span class="o">.</span><span class="na">clear</span><span class="o">();</span>
+</span><span class="line">        <span class="n">OpenBracket</span><span class="o">.</span><span class="na">list</span> <span class="o">==</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line"><span class="n">Lang</span><span class="o">.</span><span class="na">defineNewKeyword</span><span class="o">(</span><span class="s">&quot;[&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">OpenBracket</span><span class="o">());</span>
+</span><span class="line"><span class="n">Lang</span><span class="o">.</span><span class="na">defineNewKeyworkd</span><span class="o">(</span><span class="s">&quot;]&quot;</span><span class="o">,</span> <span class="k">new</span> <span class="n">CloseBracket</span><span class="o">());</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then writing <code>List foo = [1 2 3 bar]</code> would yield a new <code>ArrayList</code> populated with 3 <code>Double</code> objects and a string. Even with my friendly psuedo-code it’s a lot more work, but to actually do this is impossible.</p>
+
+<p>I assume that this is what folks like <a href="http://www.paulgraham.com">Paul Graham</a> mean when they say things like ‘If you re writing a text-editor, you can turn Lisp into a language for writing text-editors. If you re writing a CAD program, you can turn Lisp into a language for writing CAD programs’ and it strikes me as an amazingly powerful concept. I think I really like this language.</p>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -252,48 +363,6 @@ probably not even a realistic target, what with human nature and all.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2003/09/25/david-blaine">David Blaine</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2003-09-25T11:09:46+02:00" pubdate data-updated="true">Sep 25<span>th</span>, 2003</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I used to read Tom Coates’ weblog regularly, and came back to it after a break today. <a href="http://www.plasticbag.org">This post</a> pretty much sums up my thoughts about David Blaine, and is very funny at the same time. My favourite quote?</p>
-
-<blockquote>
-  <p>…you too could make it if you just ate less mexican food and got your
-teeth fixed.</p>
-</blockquote>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/31/">&larr; Older</a>
@@ -311,6 +380,10 @@ teeth fixed.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
       </li>
     
@@ -324,10 +397,6 @@ teeth fixed.</p>
     
       <li class="post">
         <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a>
       </li>
     
   </ul>

@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Praxis: Winning at Bingo - Digital Magpie</title>
+  <meta name="author" content="Ian Phillips">
+
+  
+  <meta name="description" content="Following on from my previous post I’m attempting the next Programming Praxis excercise: computing the probability of a winning board at Bingo &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://ianp.org/2013/01/17/praxis-winning-at-bingo">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Digital Magpie" type="application/atom+xml">
+  <!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4fa7e376613f5d2014000195');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: { inlineMath: [["$","$"]] },
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-266232-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Digital Magpie</a></h1>
+  
+    <h2>Ooh, ooh, look - shiny things!</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:ianp.org" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul role=main-navigation>
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Praxis: Winning at Bingo</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-17T20:04:00+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Following on from my <a href="/2013/01/15/programming-praxis/">previous post</a> I’m attempting the next Programming Praxis <a href="http://programmingpraxis.com/2009/02/19/bingo/">excercise</a>: computing the probability of a winning board at Bingo tournaments of various sizes.</p>
+
+<p>Probably the most common means of solving this kind of probability problem is the <a href="http://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo</a> method, which uses randomization and statistical sampling to estimate probabilities. Luckiy for me, the problem space for Bingo is small enough that it is possible completely analyze the game and present exact numbers.</p>
+
+<p>The individual functions are all pretty short so I’ll walk through the maths and code at the same time.</p>
+
+<h3 id="laying-the-foundations">Laying the Foundations</h3>
+
+<p>Now, some of the numbers are going to get pretty big so primitive math won’t cut it. I’m going to define a few helper functions to make working with arbitrary-precision maths easier. I’m also gong to specify a limited precision context to use for division operations, as I’d rather lose a small amount of precision that get an <code>ArithmeticException</code> if we hit any irrational numbers.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">MathContext</span> <span class="n">DIVISION</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MathContext</span><span class="o">(</span><span class="mi">128</span><span class="o">);</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">d</span><span class="o">(</span><span class="kt">long</span> <span class="n">l</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="k">new</span> <span class="nf">BigDecimal</span><span class="o">(</span><span class="n">l</span><span class="o">,</span> <span class="n">MathContext</span><span class="o">.</span><span class="na">UNLIMITED</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">add</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="n">BigDecimal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">MathContext</span><span class="o">.</span><span class="na">UNLIMITED</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">sub</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="n">BigDecimal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">subtract</span><span class="o">(</span><span class="n">b</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">mul</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="n">BigDecimal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">multiply</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">MathContext</span><span class="o">.</span><span class="na">UNLIMITED</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">div</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="n">BigDecimal</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">divide</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">DIVISION</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">pow</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="na">pow</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">MathContext</span><span class="o">.</span><span class="na">UNLIMITED</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To show how these work let’s define a factorial function, which is need in a moment anyway.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">fact</span><span class="o">(</span><span class="n">BigDecimal</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">switch</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">compareTo</span><span class="o">(</span><span class="n">ONE</span><span class="o">))</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">case</span> <span class="o">-</span><span class="mi">1</span><span class="o">:</span> <span class="k">return</span> <span class="n">ZERO</span><span class="o">;</span>
+</span><span class="line">        <span class="k">case</span>  <span class="mi">0</span><span class="o">:</span> <span class="k">return</span> <span class="n">ONE</span><span class="o">;</span>
+</span><span class="line">        <span class="k">default</span><span class="o">:</span> <span class="k">return</span> <span class="n">mul</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">fact</span><span class="o">(</span><span class="n">sub</span><span class="o">(</span><span class="n">n</span><span class="o">,</span> <span class="n">ONE</span><span class="o">)));</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>We’re also going to need a <a href="http://en.wikipedia.org/wiki/Combinations">combination</a> function, which will return the number of distinct combinations of <em>k</em> values drawn from a set <em>S</em>. Formally this is known as the binomial coefficient and is described by:</p>
+
+<p>\begin{equation}
+c(S,k) = {S! \over k!\space (S - k)!} 
+\label{combine}
+\end{equation}</p>
+
+<p>The code that implements this is pretty much a literal translation of the equation, with a little data conversion and a shortcut for the case where we want to select no items or the entire set.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">combinations</span><span class="o">(</span><span class="kt">int</span> <span class="n">S</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">k</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">&gt;</span> <span class="n">S</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">ZERO</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">k</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">==</span> <span class="n">S</span><span class="o">)</span> <span class="o">{</span> <span class="k">return</span> <span class="n">ONE</span><span class="o">;</span> <span class="o">}</span>
+</span><span class="line">    <span class="n">BigDecimal</span> <span class="n">bS</span> <span class="o">=</span> <span class="n">d</span><span class="o">(</span><span class="n">S</span><span class="o">);</span>
+</span><span class="line">    <span class="n">BigDecimal</span> <span class="n">bk</span> <span class="o">=</span> <span class="n">d</span><span class="o">(</span><span class="n">k</span><span class="o">);</span>
+</span><span class="line">    <span class="k">return</span> <span class="nf">div</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">bS</span><span class="o">),</span> <span class="n">mul</span><span class="o">(</span><span class="n">fact</span><span class="o">(</span><span class="n">bk</span><span class="o">),</span> <span class="n">fact</span><span class="o">(</span><span class="n">sub</span><span class="o">(</span><span class="n">bS</span><span class="o">,</span> <span class="n">bk</span><span class="o">))));</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>There are faster algorithms than this, but this is easy to understand and sufficient for our needs.</p>
+
+<h3 id="describing-bingo-mathematically">Describing Bingo Mathematically</h3>
+
+<p>A Bingo board is comprised of a set of squares <em>S</em>, each with a number <em>n</em> chosen at random from the set <em>N</em>. Typically <em>S</em> comprises a 5x5 grid and <em>N</em> is the set of integers from 1 to 75. As an added wrinkle the centre square in the grid is a <em>free space</em> which is always assumed to be hit, this means that a 5x5 grid is actually a 24 element set.</p>
+
+<p>To keep things simple I’m going to assume that we are using a typical board and number set, so I’ll just use constants to hold the cardinalities (sizes) of the two sets.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">NUMBERS</span> <span class="o">=</span> <span class="mi">75</span><span class="o">;</span>
+</span><span class="line"><span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">SQUARES</span> <span class="o">=</span> <span class="mi">24</span><span class="o">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The first thing we need to figure out is the cumulative probabity of winning after <em>n</em> numbers have been called (i.e. the probability of winning when the 4th number is called, when the 5th number is called, and so on). This can be found by looking at the probability of there being 4 hits and those 4 forming a Bingo, plus the probability of there being 5 hits and those 5 forming a Bingo, and so on up to the number of calls made so far. Note that we start at 4 as this is the minimum number of calls needed for a Bingo.</p>
+
+<p>Assuming that we have a function <em>p(n)</em> which returns the probability of there being a Bingo when there are <em>n</em> hits, the cumulative probability of winning after <em>n</em> calls is given by:</p>
+
+<p>\begin{equation}
+w(n) = \sum _ {i=4}^n {c(|S|, i)\space c(|N| - |S|, n - i) \over c(|N|, n)} p(i)
+\label{cumulative}
+\end{equation}</p>
+
+<p>Substituting in the values for the sizes of the board and number set simplifies this to:</p>
+
+<p>\begin{equation}
+w(n) = \sum _ {i=4}^n {c(24, i)\space c(51, n - i) \over c(75, n)} p(i)
+\label{cumulative-simple}
+\end{equation}</p>
+
+<p>But we still need to define <em>p(n)</em>, this is where the small problem space comes in handy…</p>
+
+<h3 id="assemble-a-brute-squad">Assemble a Brute Squad</h3>
+
+<p>The probability of a Bingo given <em>n</em> hits on the board is the number of possible Bingo positions divided by the total number of positions, so before we can work out the probability we need to get the number of Bingo positions for each hit count.</p>
+
+<p>As I mentioned earlier will use a brute force method of calculating the probability of a Bingo given <em>n</em> hits on the board. To do this we first need to come up with a representation of a board, as it only takes a single bit to represent the state of each square and there are only 24 squares, we can just use an int for this.</p>
+
+<p>Here’s how we do that: number the squares from 0–23 left-to-right and top-to-bottom, then starting from the least significant bit we can use a 1 to represent a hit square and a 0 to represent an empty square. So a Bingo across the top row, with all other squares being empty is represented by <code>0b111110000000000000000000</code>; this and the remaining 11 possible Bingo positions (5 rows, 5 columns, and the 2 diagonals) can be represented like so:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">BINGOS</span> <span class="o">=</span> <span class="o">{</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b111110000000000000000000</span><span class="o">,</span> <span class="mi">0</span><span class="n">b000001111100000000000000</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b000000000011110000000000</span><span class="o">,</span> <span class="mi">0</span><span class="n">b000000000000001111100000</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b000000000000000000011111</span><span class="o">,</span> <span class="mi">0</span><span class="n">b100001000010001000010000</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b010000100001000100001000</span><span class="o">,</span> <span class="mi">0</span><span class="n">b001000010000000010000100</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b000100001000010001000010</span><span class="o">,</span> <span class="mi">0</span><span class="n">b000010000100010000100001</span><span class="o">,</span>
+</span><span class="line">    <span class="mi">0</span><span class="n">b100000100000000001000001</span><span class="o">,</span> <span class="mi">0</span><span class="n">b000010001000000100010000</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>To create the array of Bingo combinations (indexed by number of hits, so a 25 element array) we will just loop through every possible board layout (i.e. the integers 0 through <code>0b11111111111111111111111</code>) and check each of them against the list of Bingo positions, if there is a match we can use the <code>Integer.bitCount()</code> method to count the number of hits on the board and then increment the counter there. The full code for this is:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="kt">long</span><span class="o">[]</span> <span class="n">bingoCombinations</span> <span class="o">=</span> <span class="n">createBingoCombinations</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line"><span class="kt">long</span><span class="o">[]</span> <span class="nf">createBingoCombinations</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="kt">long</span><span class="o">[]</span> <span class="n">combinations</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">long</span><span class="o">[</span><span class="n">SQUARES</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="n">b111111111111111111111111</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">bingo</span> <span class="o">:</span> <span class="n">BINGOS</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="k">if</span> <span class="o">((</span><span class="n">i</span> <span class="o">&amp;</span> <span class="n">bingo</span><span class="o">)</span> <span class="o">==</span> <span class="n">bingo</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">                <span class="n">combinations</span><span class="o">[</span><span class="n">Integer</span><span class="o">.</span><span class="na">bitCount</span><span class="o">(</span><span class="n">i</span><span class="o">)]++;</span>
+</span><span class="line">                <span class="k">break</span><span class="o">;</span>
+</span><span class="line">            <span class="o">}</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">combinations</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Given this we can now calculate the probability of a Bingo at each hit count as described above, the code for this is:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">final</span> <span class="n">BigDecimal</span><span class="o">[]</span> <span class="n">bingoProbabilities</span> <span class="o">=</span> <span class="n">createBingoProbabilities</span><span class="o">();</span>
+</span><span class="line">
+</span><span class="line"><span class="n">BigDecimal</span><span class="o">[]</span> <span class="nf">createBingoProbabilities</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">BigDecimal</span><span class="o">[]</span> <span class="n">probabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">[</span><span class="n">SQUARES</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">probabilities</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">ZERO</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">SQUARES</span><span class="o">;</span> <span class="o">++</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">probabilities</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">div</span><span class="o">(</span><span class="n">d</span><span class="o">(</span><span class="n">bingoCombinations</span><span class="o">[</span><span class="n">i</span><span class="o">]),</span> <span class="n">combinations</span><span class="o">(</span><span class="n">SQUARES</span><span class="o">,</span> <span class="n">i</span><span class="o">));</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">probabilities</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The last thing we need before moving on to calculate the actual chances of winning is a function to determine the probability of there being <em>k</em> hits hits on the board after <em>n</em> numbers have been called (the bit in equation \eqref{cumulative} that is being multiplied by <em>p(n)</em> and then summed). It’s just a literal translation of the equation:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">static</span> <span class="n">BigDecimal</span> <span class="nf">getHitProbability</span><span class="o">(</span><span class="kt">int</span> <span class="n">numHits</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numCalls</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">return</span> <span class="nf">div</span><span class="o">(</span><span class="n">mul</span><span class="o">(</span><span class="n">combinations</span><span class="o">(</span><span class="mi">24</span><span class="o">,</span> <span class="n">numHits</span><span class="o">),</span> <span class="n">combinations</span><span class="o">(</span><span class="mi">51</span><span class="o">,</span> <span class="n">numCalls</span> <span class="o">-</span> <span class="n">numHits</span><span class="o">)),</span>
+</span><span class="line">            <span class="n">combinations</span><span class="o">(</span><span class="mi">75</span><span class="o">,</span> <span class="n">numCalls</span><span class="o">));</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h3 id="chances-of-winning">Chances of Winning?</h3>
+
+<p>We’ve now got everything we need to write the code for equation \eqref{cumulative}, given the previous function and the pre-computed array of proabilities the code to do this is simple:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">BigDecimal</span><span class="o">[]</span> <span class="nf">createBoardProbabilities</span><span class="o">()</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">BigDecimal</span><span class="o">[]</span> <span class="n">probabilities</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BigDecimal</span><span class="o">[</span><span class="n">NUMBERS</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="o">;</span> <span class="o">++</span><span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">probabilities</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">ZERO</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">NUMBERS</span><span class="o">;</span> <span class="o">++</span><span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="n">BigDecimal</span> <span class="n">sum</span> <span class="o">=</span> <span class="n">ZERO</span><span class="o">;</span>
+</span><span class="line">        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span> <span class="n">s</span> <span class="o">&lt;=</span> <span class="n">SQUARES</span><span class="o">;</span> <span class="o">++</span><span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">            <span class="n">sum</span> <span class="o">=</span> <span class="n">add</span><span class="o">(</span><span class="n">sum</span><span class="o">,</span> <span class="n">mul</span><span class="o">(</span><span class="n">getHitProbability</span><span class="o">(</span><span class="n">s</span><span class="o">,</span> <span class="n">n</span><span class="o">),</span> <span class="n">bingoProbabilities</span><span class="o">[</span><span class="n">s</span><span class="o">]));</span>
+</span><span class="line">        <span class="o">}</span>
+</span><span class="line">        <span class="n">probabilities</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">sum</span><span class="o">;</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="n">probabilities</span><span class="o">;</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This is fine for a single board, but what about the odds for a real game, with many players? The odds of finding a winner when there are <em>k</em> boards is given by:</p>
+
+<p>\begin{equation}
+m(n,k) = 1 - (1 - w(n))^k
+\label{many}
+\end{equation}</p>
+
+<p>Armed with this we can implement a function to return the probability of a winning board for any number of boards and numbers called like so:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="n">BigDecimal</span> <span class="nf">getProbability</span><span class="o">(</span><span class="kt">int</span> <span class="n">numCalls</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numBoards</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="k">if</span> <span class="o">(</span><span class="n">numBoards</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">        <span class="k">return</span> <span class="n">boardProbabilities</span><span class="o">[</span><span class="n">numCalls</span><span class="o">];</span>
+</span><span class="line">    <span class="o">}</span>
+</span><span class="line">    <span class="k">return</span> <span class="nf">sub</span><span class="o">(</span><span class="n">ONE</span><span class="o">,</span> <span class="n">pow</span><span class="o">(</span><span class="n">sub</span><span class="o">(</span><span class="n">ONE</span><span class="o">,</span> <span class="n">boardProbabilities</span><span class="o">[</span><span class="n">numCalls</span><span class="o">]),</span> <span class="n">numBoards</span><span class="o">));</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>And that’s everything! All that’s left to add is a main method to print out some stats and that’s it.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="java"><span class="line"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class="line">    <span class="n">BingoOdds</span> <span class="n">bingo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BingoOdds</span><span class="o">();</span>
+</span><span class="line">    <span class="n">bingo</span><span class="o">.</span><span class="na">printStatistics</span><span class="o">();</span>
+</span><span class="line">    <span class="n">bingo</span><span class="o">.</span><span class="na">printProbabilities</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">10</span><span class="o">,</span> <span class="mi">25</span><span class="o">,</span> <span class="mi">50</span><span class="o">);</span>
+</span><span class="line"><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you want to play with this some more, an interesting excercise would be to generalize this for any size of board and token (number) set. To do that you’ll need to get rid of the static <code>BINGOS</code> array and calculate id dynamically, based on the size of the square, other than that and a coupl of constants that need to be replaced by variables everything else should work as is.</p>
+
+<p>The full code, including the implementations of the print methods can be found on <a href="https://github.com/ianp/praxis-java/blob/master/src/main/java/org/ianp/praxis/BingoOdds.java">GitHub</a>.</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Ian Phillips</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-17T20:04:00+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/java/'>Java</a>, <a class='category' href='/categories/maths/'>Maths</a>, <a class='category' href='/categories/programming/'>Programming</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2013/01/15/programming-praxis" title="Previous Post: Programming Praxis">&laquo; Programming Praxis</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/15/programming-praxis">Programming Praxis</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/09/builders-and-factories">Builders and Factories</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/ianp">@ianp</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'ianp',
+            count: 3,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'ianpdotorg';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ianp.org/2013/01/17/praxis-winning-at-bingo';
+        var disqus_url = 'http://ianp.org/2013/01/17/praxis-winning-at-bingo';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -115,7 +115,22 @@ The probability of a Bingo given *n* hits on the board is the number of possible
 
 As I mentioned earlier will use a brute force method of calculating the probability of a Bingo given *n* hits on the board. To do this we first need to come up with a representation of a board, as it only takes a single bit to represent the state of each square and there are only 24 squares, we can just use an int for this.
 
-Here's how we do that: number the squares from 0--23 left-to-right and top-to-bottom, then starting from the least significant bit we can use a 1 to represent a hit square and a 0 to represent an empty square. So a Bingo across the top row, with all other squares being empty is represented by `0b111110000000000000000000`; this and the remaining 11 possible Bingo positions (5 rows, 5 columns, and the 2 diagonals) can be represented like so:
+Here's how we do that: number the squares from 0--23 left-to-right and top-to-bottom like so (FS represents the free space in the centre):
+
+{:.gridded}
+|--+--+--+--+--|
+| 0| 1| 2| 3| 4|
+|-:|-:|-:|-:|-:|
+| 5| 6| 7| 8| 9|
+|--+--+--+--+--|
+|10|11|FS|12|13|
+|--+--+--+--+--|
+|14|15|16|17|18|
+|--+--+--+--+--|
+|19|20|21|22|23|
+|--+--+--+--+--|
+
+Then starting from the least significant bit we can use a 1 to represent a hit square and a 0 to represent an empty square. So a Bingo across the top row, with all other squares being empty is represented by `0b111110000000000000000000`; this and the remaining 11 possible Bingo positions (5 rows, 5 columns, and the 2 diagonals) can be represented like so:
 
 ```java
 static final int[] BINGOS = {

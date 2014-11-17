@@ -9,7 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="And feel like I had inside baseball knowledge during the D&amp;D scene in E.T. ">
+  <meta name="description" content="I’ve started to work up some standard build files for PBE based
+projects, more information can be had here, and here are the build
+files for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,6 +112,47 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2009/05/22/ant-build-files-for-pushbuttonengine">Ant Build Files for PushButtonEngine</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-05-22T22:40:50+01:00" pubdate data-updated="true">May 22<span>nd</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve started to work up some standard build files for <a href="http://pushbuttonengine.com/">PBE</a> based
+projects, more information can be had <a href="http://pushbuttonengine.com/forum/viewtopic.php?f=5&amp;t=166">here</a>, and here are the build
+files for <a href="http://ianp.org/files/2009/05/pbe-lib-build.xml">libraries (components)</a>, and for <a href="http://ianp.org/files/2009/05/pbe-app-build.xml">applications (both SWF and Air)</a>.</p>
+
+<p><strong>Update:</strong> updated the build files to work better with pure AS3 projects (i.e. with no MXML files).</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2009/05/15/thats-how-i-felt-too">That&#8217;s How I Felt Too!</a></h1>
     
     
@@ -126,7 +169,7 @@
   
 
 
-<time datetime="2009-05-15T13:47:00+02:00" pubdate data-updated="true">May 15<span>th</span>, 2009</time>
+<time datetime="2009-05-15T13:47:00+01:00" pubdate data-updated="true">May 15<span>th</span>, 2009</time>
         
       </p>
     
@@ -163,7 +206,7 @@
   
 
 
-<time datetime="2009-04-28T08:20:08+02:00" pubdate data-updated="true">Apr 28<span>th</span>, 2009</time>
+<time datetime="2009-04-28T08:20:08+01:00" pubdate data-updated="true">Apr 28<span>th</span>, 2009</time>
         
       </p>
     
@@ -361,7 +404,7 @@ Your mileage may vary.</p>
   
 
 
-<time datetime="2009-04-27T10:57:37+02:00" pubdate data-updated="true">Apr 27<span>th</span>, 2009</time>
+<time datetime="2009-04-27T10:57:37+01:00" pubdate data-updated="true">Apr 27<span>th</span>, 2009</time>
         
       </p>
     
@@ -461,7 +504,7 @@ everything else defined in Lisp, it makes some sense.</p>
   
 
 
-<time datetime="2009-04-23T17:51:24+02:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2009</time>
+<time datetime="2009-04-23T17:51:24+01:00" pubdate data-updated="true">Apr 23<span>rd</span>, 2009</time>
         
       </p>
     
@@ -510,76 +553,6 @@ user doesn’t use or care about ‘foo’!</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/04/21/understanding-event-propagation-in-ardor3d">Understanding Event Propagation in Ardor3D</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-04-21T14:07:50+02:00" pubdate data-updated="true">Apr 21<span>st</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="http://www.ardor3d.com/">Ardor3D</a> adds a mechanism for subscribing to events in the scene
-graph; things like when a node is added or removed, or has one of it’s
-render states or it’s bounding volume altered. The way notifications are
-handled is a little confusing at first, as the listener interface
-(<code>DirtyEventListener</code>) has a method which takes a <code>Spatial</code> as it’s
-first argument; hoever, the spatial is the node in the scene graph on
-which the event occurred, it is <em>not</em> the node that the event is fired
-from.</p>
-
-<p>By way of example: if there are 2 scene nodes, a <code>Spatial</code> named
-‘child’ and a <code>Node</code> named ‘parent’, and the child is attached to the
-parent via a call to <code>Node#attachChild(Spatial)</code> then the following
-events will be fired (assuming that the child was not already attached
-to another node):</p>
-
-<ol>
-  <li>from the child: <code>spatialDirty(child, Attached)</code></li>
-  <li>
-    <p>from the parent: <code>spatialDirty(child, Attached)</code>
-if the parent was attached to another node (for example, ‘grandparent’) then this pattern would continue, like so:</p>
-  </li>
-  <li>from the grandparent: spatialDirty(child, Attached) also, if at any point in this one of the <code>spatialDirty</code> calls returns true, then the event is assumed to have been handled and propagation will stop at that point.</li>
-</ol>
-
-<p>What this means in practice is that
-if you need to know which node an event is being fired from you cannot
-reuse listeners on multiple nodes. For detaching nodes the situation is
-a little different: the event propagation starts at the parent node,
-with the detached child passed as as the method argument.</p>
-
-<p>Be aware that
-the parent will already have been set to <code>null</code> when the event is
-fired though, so if you need to be able to do something with the parent
-you will need to add distinct listeners to each node of interest.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/14/">&larr; Older</a>
@@ -597,6 +570,10 @@ you will need to add distinct listeners to each node of interest.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/17/quick-environment-setup">Quick Environment Setup</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
       </li>
     
@@ -610,10 +587,6 @@ you will need to add distinct listeners to each node of interest.</p>
     
       <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
   </ul>
@@ -655,7 +628,7 @@ you will need to add distinct listeners to each node of interest.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
+  Copyright &copy; 2003&ndash;2014 &mdash; Ian Phillips &mdash;
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
 </p>
 

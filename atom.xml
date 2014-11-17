@@ -4,7 +4,7 @@
   <title><![CDATA[Digital Magpie]]></title>
   <link href="http://ianp.org/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -14,9 +14,31 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Quick Environment Setup]]></title>
+    <link href="http://ianp.org/2014/11/17/quick-environment-setup"/>
+    <updated>2014-11-17T14:32:00+00:00</updated>
+    <id>http://ianp.org/2014/11/17/quick-environment-setup</id>
+    <content type="html"><![CDATA[<p>I’ve recently had to set up and manage about a dozen Linux based virtual servers (not a huge number, but still) and it’s handly to have a separate user account on these machines that I can use to connect to for interactive use.  With that in mind here are a couple of quick tips for setting things up for a more pleasant experience with minimal fuss.</p>
+
+<p>I like to use <a href="http://zsh.org">zsh</a> as my shell, but that’s easy enough to install via apt-get and so can be added to an automated build script. The fastest way to get a good configuration installed is via <a href="http://ohmyz.sh">Oh My Zsh!</a>, it uses the fairly horrible <code>curl | sh</code> installation style, so I don’t like to add it to an automated script, but it’s easy enough to check and run manually:</p>
+
+<pre><code>$ curl -L http://install.ohmyz.sh | sh
+</code></pre>
+
+<p>The other thing is to get a decent <a href="http://vim.org">vim</a> setup, for this I use <a href="http://vim.spf13.com">SPF-13</a> which installs in a similar manner:</p>
+
+<pre><code>$ curl http://j.mp/spf13-vim3 -L -o - | sh
+</code></pre>
+
+<p>Then I usually set up a couple of aliases based on what the machine will be used for, and I’m done.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Praxis: Winning at Bingo]]></title>
     <link href="http://ianp.org/2013/01/17/praxis-winning-at-bingo"/>
-    <updated>2013-01-17T20:04:00+01:00</updated>
+    <updated>2013-01-17T20:04:00+00:00</updated>
     <id>http://ianp.org/2013/01/17/praxis-winning-at-bingo</id>
     <content type="html"><![CDATA[<p>Following on from my <a href="http://ianp.org/2013/01/15/programming-praxis/">previous post</a> I’m attempting the next Programming Praxis <a href="http://programmingpraxis.com/2009/02/19/bingo/">excercise</a>: computing the probability of a winning board at Bingo tournaments of various sizes.</p>
 
@@ -384,7 +406,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[Programming Praxis]]></title>
     <link href="http://ianp.org/2013/01/15/programming-praxis"/>
-    <updated>2013-01-15T14:03:00+01:00</updated>
+    <updated>2013-01-15T14:03:00+00:00</updated>
     <id>http://ianp.org/2013/01/15/programming-praxis</id>
     <content type="html"><![CDATA[<p>Over the weekend I stumbled across the <a href="http://programmingpraxis.com">Programming Praxis</a> web site, a blog that aims to “publishes new programming exercises weekly, at least, so that savvy programmers can maintain their skills by working the exercises and thinking outside their normal skill set”. It’s been running for about three years now and at the time of writing there are almost 400 problems there. I thought that I’d like to have a go at solving a few of them, I’m going to try solving them in Java initially, and then maybe revisit them in other languages to compare the solutions.</p>
 
@@ -512,7 +534,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[Builders and Factories]]></title>
     <link href="http://ianp.org/2013/01/09/builders-and-factories"/>
-    <updated>2013-01-09T18:41:00+01:00</updated>
+    <updated>2013-01-09T18:41:00+00:00</updated>
     <id>http://ianp.org/2013/01/09/builders-and-factories</id>
     <content type="html"><![CDATA[<p>I started to write a ‘quick’ response to <a href="http://toomuchcoding.blogspot.ie/2013/01/hamcrest-matchers-guava-predicate-and.html">this post about builders</a> and it kind of got out of hand, so I’m putting it up here instead.</p>
 
@@ -806,7 +828,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[For Some Definition of Easily]]></title>
     <link href="http://ianp.org/2013/01/08/for-some-definition-of-easily"/>
-    <updated>2013-01-08T14:00:00+01:00</updated>
+    <updated>2013-01-08T14:00:00+00:00</updated>
     <id>http://ianp.org/2013/01/08/for-some-definition-of-easily</id>
     <content type="html"><![CDATA[<p><a href="http://www.mobileindustryreview.com/2013/01/lenovos-27-tablet-is-a-smart-idea-costs-1000-and-is-due-this-summer.html">This</a> is a joke, right?</p>
 
@@ -818,7 +840,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[I Remain a Free Man]]></title>
     <link href="http://ianp.org/2012/12/17/i-remain-a-free-man"/>
-    <updated>2012-12-17T17:19:00+01:00</updated>
+    <updated>2012-12-17T17:19:00+00:00</updated>
     <id>http://ianp.org/2012/12/17/i-remain-a-free-man</id>
     <content type="html"><![CDATA[<p>After being <a href="http://www.guardian.co.uk/world/2012/dec/16/gerard-depardieu-french-passport-tax">described</a> as “pathetic and unpatriotic” by the prime minister Jean-Marc Ayrault, actor Gérard Depardieu responded:</p>
 
@@ -834,7 +856,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[Stroke Me Gently]]></title>
     <link href="http://ianp.org/2012/11/05/stroke-me-gently"/>
-    <updated>2012-11-05T22:53:00+01:00</updated>
+    <updated>2012-11-05T22:53:00+00:00</updated>
     <id>http://ianp.org/2012/11/05/stroke-me-gently</id>
     <content type="html"><![CDATA[<p>Excellent <a href="http://www.gizmodo.co.uk/2012/10/search-me/">article</a> over at <a href="http://www.gizmodo.co.uk/">Gizmodo</a> about the whole security theatre dance that we’re forced to do any time we want to fly these days. My favourite quote:</p>
 
@@ -848,7 +870,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[Rearranging the Apples]]></title>
     <link href="http://ianp.org/2012/10/31/rearranging-the-apples"/>
-    <updated>2012-10-31T19:18:00+01:00</updated>
+    <updated>2012-10-31T19:18:00+00:00</updated>
     <id>http://ianp.org/2012/10/31/rearranging-the-apples</id>
     <content type="html"><![CDATA[<p>Some <a href="http://www.appleoutsider.com/2012/10/30/regimechange/">insightful analysis</a> about the recent Apple reorganisation (a.k.a. Scott Forstall getting shit-canned) from <a href="http://www.appleoutsider.com/">Matt Drance</a>:</p>
 
@@ -870,7 +892,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[VLC Versions]]></title>
     <link href="http://ianp.org/2012/10/30/vlc-versions"/>
-    <updated>2012-10-30T18:49:00+01:00</updated>
+    <updated>2012-10-30T18:49:00+00:00</updated>
     <id>http://ianp.org/2012/10/30/vlc-versions</id>
     <content type="html"><![CDATA[<p>So I started up <a href="http://www.videolan.org" title="VLC media player">VLC</a> just now and was greeted with this update notification:</p>
 
@@ -895,7 +917,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[Category Counts in OctoPress Revisited]]></title>
     <link href="http://ianp.org/2012/10/30/category-counts-in-octopress-revisited"/>
-    <updated>2012-10-30T18:41:00+01:00</updated>
+    <updated>2012-10-30T18:41:00+00:00</updated>
     <id>http://ianp.org/2012/10/30/category-counts-in-octopress-revisited</id>
     <content type="html"><![CDATA[<p>As an improvement on an older shell script, here’s a rake task to list all of the categories in your blog, along with post counts for each of them:</p>
 
@@ -952,7 +974,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
     <link href="http://ianp.org/2012/10/03/netbeans-rich-client-platform"/>
-    <updated>2012-10-03T18:32:00+02:00</updated>
+    <updated>2012-10-03T18:32:00+01:00</updated>
     <id>http://ianp.org/2012/10/03/netbeans-rich-client-platform</id>
     <content type="html"><![CDATA[<p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
 
@@ -993,7 +1015,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[Convenient]]></title>
     <link href="http://ianp.org/2012/10/01/convenient"/>
-    <updated>2012-10-01T18:35:00+02:00</updated>
+    <updated>2012-10-01T18:35:00+01:00</updated>
     <id>http://ianp.org/2012/10/01/convenient</id>
     <content type="html"><![CDATA[<p><a href="http://www.lispcast.com/class-abstractsingletonproxyfactorybean">This</a> is what’s wrong with a lot of the Java code out there.</p>
 
@@ -1003,7 +1025,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[Bacon]]></title>
     <link href="http://ianp.org/2012/10/01/bacon"/>
-    <updated>2012-10-01T18:35:00+02:00</updated>
+    <updated>2012-10-01T18:35:00+01:00</updated>
     <id>http://ianp.org/2012/10/01/bacon</id>
     <content type="html"><![CDATA[<p>Mmmm, <a href="http://baconmethod.com">bacon</a>…</p>
 
@@ -1013,7 +1035,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[I Swallowed a Fly]]></title>
     <link href="http://ianp.org/2012/06/20/i-swallowed-a-fly"/>
-    <updated>2012-06-20T17:54:00+02:00</updated>
+    <updated>2012-06-20T17:54:00+01:00</updated>
     <id>http://ianp.org/2012/06/20/i-swallowed-a-fly</id>
     <content type="html"><![CDATA[<p><img src="http://www.onefoottsunami.com/wordpress/wp-content/uploads/20120620magsafeadapter/6-forthesakeofcompleteness.jpg" alt="MagSafe Adapter" /></p>
 
@@ -1025,7 +1047,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[That was Quick]]></title>
     <link href="http://ianp.org/2012/06/20/that-was-quick"/>
-    <updated>2012-06-20T16:58:00+02:00</updated>
+    <updated>2012-06-20T16:58:00+01:00</updated>
     <id>http://ianp.org/2012/06/20/that-was-quick</id>
     <content type="html"><![CDATA[<p>That was quick! The videos from WWDC are <a href="https://developer.apple.com/videos/wwdc/2012/">up already</a>, last year it took Apple about a month to get them posted. Great news for folks like me who didn’t get to attend.</p>
 
@@ -1035,7 +1057,7 @@ m(n,k) = 1 - (1 - w(n))^k
   <entry>
     <title type="html"><![CDATA[Leap into the Future!]]></title>
     <link href="http://ianp.org/2012/05/29/leap-into-the-future"/>
-    <updated>2012-05-29T14:59:00+02:00</updated>
+    <updated>2012-05-29T14:59:00+01:00</updated>
     <id>http://ianp.org/2012/05/29/leap-into-the-future</id>
     <content type="html"><![CDATA[<p><img src="http://ianp.org/2012/05/29/leap-motion.jpg" alt="Leap Motion" /></p>
 
@@ -1059,7 +1081,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[Think about that]]></title>
     <link href="http://ianp.org/2012/05/07/think-about-that"/>
-    <updated>2012-05-07T23:32:00+02:00</updated>
+    <updated>2012-05-07T23:32:00+01:00</updated>
     <id>http://ianp.org/2012/05/07/think-about-that</id>
     <content type="html"><![CDATA[<blockquote>
   <p>Good design. From eBay. Think about that.</p>
@@ -1075,7 +1097,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[RubyMotion and Interface Builder…]]></title>
     <link href="http://ianp.org/2012/05/07/rubymotion-and-interface-builder"/>
-    <updated>2012-05-07T19:24:00+02:00</updated>
+    <updated>2012-05-07T19:24:00+01:00</updated>
     <id>http://ianp.org/2012/05/07/rubymotion-and-interface-builder</id>
     <content type="html"><![CDATA[<p>…sitting in a tree, K-I-S-S-I-N-G…</p>
 
@@ -1211,7 +1233,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[Apple Security Cock-Up]]></title>
     <link href="http://ianp.org/2012/05/07/apple-security-cock-up"/>
-    <updated>2012-05-07T16:04:00+02:00</updated>
+    <updated>2012-05-07T16:04:00+01:00</updated>
     <id>http://ianp.org/2012/05/07/apple-security-cock-up</id>
     <content type="html"><![CDATA[<p><a href="http://www.zdnet.com/blog/security/apple-security-blunder-exposes-lion-login-passwords-in-clear-text/11963">This</a> doesn’t look good.</p>
 
@@ -1223,7 +1245,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <entry>
     <title type="html"><![CDATA[Category Counts in Octopress]]></title>
     <link href="http://ianp.org/2012/04/18/category-counts-in-octopress"/>
-    <updated>2012-04-18T10:36:00+02:00</updated>
+    <updated>2012-04-18T10:36:00+01:00</updated>
     <id>http://ianp.org/2012/04/18/category-counts-in-octopress</id>
     <content type="html"><![CDATA[<p>Here’s a quick shell script to get the number of posts in each category for an <a href="http://octopress.org/">Octopress</a> blog, just cat your <code>source/_posts</code> folder through the following one-liner:</p>
 
@@ -1252,170 +1274,6 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
 <p>Maybe this will be useful to somebody out there…</p>
 
 <p><strong>Update:</strong> I’ve <a href="http://ianp.org/2012/10/30/category-counts-in-octopress-revisited/">written a version</a> that’s integrated with rake as well.</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[What is Text Normalization?]]></title>
-    <link href="http://ianp.org/2012/04/17/what-is-text-normalization"/>
-    <updated>2012-04-17T09:33:00+02:00</updated>
-    <id>http://ianp.org/2012/04/17/what-is-text-normalization</id>
-    <content type="html"><![CDATA[<p>In my <a href="http://ianp.org/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
-
-<blockquote>
-  <p>Text normalization is a process by which text is transformed in some way to make it consistent in a way which it might not have been before.</p>
-</blockquote>
-
-<p>The article also gives some examples of the kind of transformations that are commonly performed. Of necessity, any normalization process is going to be application specific, but let’s assume for the sake of example that the word count is intended to be used in a writing application of some sort (a text editor or word processor). Given that we probably don’t care about <a href="http://www.unicode.org/reports/tr15/">Unicode normalization</a>, and definitely don’t care about anything which would change the words such as stemming or canonicalization. But maybe we could normalize all runs of whitespace into single spaces? Our original test string then changes from “Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!” to “Peter piper picked a peck of pickled pepper . No — really — he did!”. The difference is probably hard to spot, but all of the doubled spaces in the first string have been replaces with single spaces, and the hair-spaces have been replaced with regular spaces.</p>
-
-<p>How do the different word counting functions work now?</p>
-
-<table class="tabular">
-  <thead>
-    <tr>
-      <th>Method</th>
-      <th style="text-align: right">Raw</th>
-      <th style="text-align: right">Normalized</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Original Scanner</td>
-      <td style="text-align: right">15</td>
-      <td style="text-align: right">15</td>
-    </tr>
-    <tr>
-      <td>Regular Expression</td>
-      <td style="text-align: right">12</td>
-      <td style="text-align: right">12</td>
-    </tr>
-    <tr>
-      <td>String Components</td>
-      <td style="text-align: right">18</td>
-      <td style="text-align: right">15</td>
-    </tr>
-    <tr>
-      <td>Char Components</td>
-      <td style="text-align: right">22</td>
-      <td style="text-align: right">15</td>
-    </tr>
-    <tr>
-      <td>Linguistic tagger</td>
-      <td style="text-align: right">12</td>
-      <td style="text-align: right">12</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Better, but it still only leaves the same two functions returning the correct result (assuming of course that you <em>don’t</em> want to count strings of puncuation, this may or may not be the case in a code editor for example).</p>
-
-<p>I can’t speak for the inner working of the linguistic tagger, but the reason that the regex based function works is that it is basing it’s approach on a <em>whitelist</em> rather than a <em>blacklist</em>. The regex basically says “these are valid word characters, everything else can be ignored” whereas all of the other functions take the stance “these are whitespace, eveything else must be part of a word”. Anybody who has done any web development or input validation generally will tell you that whitelists are almost always the correct approach to take. It’s just easier to enumerate all of the valid values for a given set than to try to list all of the exceptions.</p>
-
-<h2 id="linguistic-tagger">Linguistic Tagger</h2>
-
-<p>There are quite a few more options available for analysing text here, let’s start by counting sentences as well as words, this can be done by adding a count for sentences and keeping track of the current sentence based on it’s starting location. The interesting code is on lines 9 and 10:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-<span class="line-number">9</span>
-<span class="line-number">10</span>
-<span class="line-number">11</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">current_sentence</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class="line"><span class="p">[</span><span class="n">tagger</span> <span class="nl">enumerateTagsInRange:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])</span>
-</span><span class="line">                      <span class="nl">scheme:</span><span class="n">NSLinguisticTagSchemeTokenType</span>
-</span><span class="line">                     <span class="nl">options:</span><span class="mi">0</span>
-</span><span class="line">                  <span class="nl">usingBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">tag</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">token</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">sentence</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="line">  <span class="k">if</span> <span class="p">([</span><span class="n">tag</span> <span class="nl">isEqual:</span><span class="n">NSLinguisticTagWord</span><span class="p">])</span> <span class="o">++</span><span class="n">words</span><span class="p">;</span>
-</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sentences</span> <span class="o">||</span> <span class="n">current_sentence</span> <span class="o">!=</span> <span class="n">sentence</span><span class="p">.</span><span class="n">location</span><span class="p">)</span> <span class="o">++</span><span class="n">sentences</span><span class="p">;</span>
-</span><span class="line">  <span class="n">current_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="n">location</span><span class="p">;</span>
-</span><span class="line"><span class="p">}];</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>Updating the <code>taggerWordCount</code> function with this code tells us that we still have 12 words, and that they are spread over 2 sentences, cool!</p>
-
-<p>But what about that <code>schemes</code> parameter that we used to set up the tagger and run the enumeration? That allows the tagger to provide different types of information to the enumeration, we can tell the tagger to tag as much as it can by initializing the <code>schemes</code> variable with all available schemes. The <code>en-GB</code> string, by the way, is a <a href="http://tools.ietf.org/html/bcp47">BCP-47</a> code. The list of available schemes for this language is shown as a comment:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-<span class="line-number">5</span>
-<span class="line-number">6</span>
-<span class="line-number">7</span>
-<span class="line-number">8</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSArray</span><span class="o">*</span> <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSLinguisticTagger</span> <span class="nl">availableTagSchemesForLanguage:</span><span class="s">@&quot;en-GB&quot;</span><span class="p">];</span>
-</span><span class="line"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">schemes</span><span class="p">);</span>
-</span><span class="line">
-</span><span class="line"><span class="c1">// 2012-04-17 13:08:16.947 wordcounters[54440:707] (</span>
-</span><span class="line"><span class="c1">//    TokenType,</span>
-</span><span class="line"><span class="c1">//    Language,</span>
-</span><span class="line"><span class="c1">//    Script</span>
-</span><span class="line"><span class="c1">// )</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>According to Apple’s docs there are several different schemes available. One warning: if you use BCP-47 codes with more information in (such as <code>en-US</code> or <code>pt-BR</code>) then you will just get the basic 3 schemes shown above, using <code>en</code> gets the full list and other languages have varying levels of support.</p>
-
-<p>Let’s alter the test string and see what the different <code>en</code> schemes give us. For a new test string I’m going to use <a href="http://www.mudcat.org/@displaysong.cfm?SongID=1242">this little ditty</a>:</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-<span class="line-number">2</span>
-<span class="line-number">3</span>
-<span class="line-number">4</span>
-</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSString</span><span class="o">*</span> <span class="n">coffee</span> <span class="o">=</span> <span class="s">@&quot;What I want - is a proper cup ’o coffee,&quot;</span>
-</span><span class="line">                   <span class="s">@&quot; Made in a proper copper coffee pot.&quot;</span>
-</span><span class="line">                   <span class="s">@&quot; Ik kan van mijn punt,&quot;</span>
-</span><span class="line">                   <span class="s">@&quot; Ach ba mhaith liom cupán caife o ó pota caife cuí.&quot;</span>
-</span></code></pre></td></tr></table></div></figure></notextile></div>
-
-<p>The 3rd and 4th lines have been replaced with Dutch and Irish translations of the English words in order to test the language detection. Interesting to note here is the syntaxused for multi-line strings in Objective-C, and also that I’ve indented the following lines so that there is a space after the punctuation at the end of the preceeding line.</p>
-
-<p>Let’s take a look at each scheme and what it gives us in this example.</p>
-
-<ul>
-  <li>
-    <p><strong>Token Type</strong>
-We can tell the words apart from the whitespace and punctuation by the tag. I could see this being useful for implementing smart punctuation in a word processor (like <a href="http://daringfireball.net/projects/smartypants/">SmartyPants</a>).</p>
-  </li>
-  <li>
-    <p><strong>Lexical Class</strong>
-Instead of just words this gives us nouns, adjectives, and so on; it also classifies some of the puntuation more precisely, for example <code>OpenQuote</code>. Possibly useful in a word processing application, or to provide input to a higher-level analyser.</p>
-  </li>
-  <li>
-    <p><strong>Name Type</strong>
-This attempts to detect people and place names in the text. In this example it identified “Made” as a place name, so it’s probably guessing at this based on the word capitalization.</p>
-  </li>
-  <li>
-    <p><strong>Name Type or Lexical Class</strong>
-As it suggests, a combination of the previous two schemes.</p>
-  </li>
-  <li>
-    <p><strong>Lemma</strong>
-This scheme performs word stemming, returning the stemmed word in the <code>tag</code> block parameter.</p>
-  </li>
-  <li>
-    <p><strong>Language</strong>
-This supposedly analysis each sentence to try to guess which language it is written in. I found that it worked fairly poorly when the language used the same script but did OK when they were different. In the example above it guesses that all of the text is in English, but if you change the 3rd line to “Аз не мога да ми.” (the same in Bulgarian) then it guesses this correctly.</p>
-  </li>
-  <li>
-    <p><strong>Script</strong>
-This is the script used in the token, for us it is always “Latn” for Latin, unless you make the substitution mentioned above in which case it correctly picks up “Cyrl” for the Bulgarian Cyrillic script.</p>
-  </li>
-</ul>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>For a simple word count it seems that the regular expression wins out, but the linguistic tagger provides some interesting additional information. One downside to the tagger is that it doesn’t seem to be extensible in any way, so you’re limited to those schemes and tags that Apple ship with the OS. There is no way to, for example, use this mechanism to tag keywords and operators in a code editor, which may be useful.</p>
-
-<p>The code used for this post can be found in <a href="https://gist.github.com/2413356">this gist</a>.</p>
 
 ]]></content>
   </entry>

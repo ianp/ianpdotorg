@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Maths | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/maths/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Praxis: Winning at Bingo]]></title>
     <link href="http://ianp.org/2013/01/17/praxis-winning-at-bingo"/>
-    <updated>2013-01-17T20:04:00+01:00</updated>
+    <updated>2013-01-17T20:04:00+00:00</updated>
     <id>http://ianp.org/2013/01/17/praxis-winning-at-bingo</id>
     <content type="html"><![CDATA[<p>Following on from my <a href="/2013/01/15/programming-praxis/">previous post</a> I’m attempting the next Programming Praxis <a href="http://programmingpraxis.com/2009/02/19/bingo/">excercise</a>: computing the probability of a winning board at Bingo tournaments of various sizes.</p>
 

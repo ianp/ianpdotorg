@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ant | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/ant/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Quote of the Day]]></title>
     <link href="http://ianp.org/2010/03/25/quote-of-the-day-2"/>
-    <updated>2010-03-25T09:41:48+01:00</updated>
+    <updated>2010-03-25T09:41:48+00:00</updated>
     <id>http://ianp.org/2010/03/25/quote-of-the-day-2</id>
     <content type="html"><![CDATA[<p><blockquote><p>Q: What’s the difference between Ant and Maven? <br /><br/>A: The creator of Ant has apologised.</p><footer><strong>James Duncan Davidson</strong> <cite><a href='http://journal.duncandavidson.com/post/470882637/q-whats-the-difference-between-ant-and-maven-a'>journal.duncandavidson.com/post/&hellip;</a></cite></footer></blockquote></p>
 
@@ -26,7 +26,7 @@
   <entry>
     <title type="html"><![CDATA[Using JUnit in Eclipse Ant Builds]]></title>
     <link href="http://ianp.org/2004/11/18/using-junit-in-eclipse-ant-builds"/>
-    <updated>2004-11-18T18:11:41+01:00</updated>
+    <updated>2004-11-18T18:11:41+00:00</updated>
     <id>http://ianp.org/2004/11/18/using-junit-in-eclipse-ant-builds</id>
     <content type="html"><![CDATA[<p>Just a quick note so that it gets into the
 <a href="http://www.google.com">Google</a> help engine. By default the copy of

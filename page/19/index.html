@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="There is nothing more annoying than people who insist on standing up and
-talking loudly on their mobile phones in the middle of an open plan
-office ( &hellip;">
+  <meta name="description" content="For RvSnoop I’m currently working on adding namespaces to all of
+the files that are used to save the application preferences and also the
+project &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,6 +112,68 @@ office ( &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/2006/10/17/adding-namespace-support-to-rvsnoop">Adding Namespace Support to RvSnoop</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-10-17T09:58:15+01:00" pubdate data-updated="true">Oct 17<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>For <a href="http://rvsnoop.prg/">RvSnoop</a> I’m currently working on adding namespaces to all of
+the files that are used to save the application preferences and also the
+project files. This is a Good Thing in and of itself, as it allows me to
+use <a href="http://www.w3.org/XML/Schema">XML Schema</a> to validate and document the files formats. But,
+more importantly, it gives me the opportunity to refactor as I go alond,
+the general plan is to make the projects in the next release be based on
+directories rather than a single XML file, this will allow me to use a
+disk based storage mechanism for messages so that they will be
+persistent across sessions.</p>
+
+<h3 id="playing-well-with-others">Playing Well With Others</h3>
+
+<p>At the same
+time, I’ve taken the opportunity to include some of the <a href="http://www.apache.org/">Apache</a>
+<a href="http://jakarta.apache.org/commons/index.html">Commons</a> libraries in the build. There were (well, still are) a
+number of small utility classes scattered around which I’m planning on
+replacing with the versions from Apache. One side effect of this is that
+the build is increasing in size, to help control this I’m going to
+remove the <a href="http://www.oracle.com/database/berkeley-db/je/index.html">Berkeley DB</a> dependency from the build. I was
+origiannly planning to use this for the on disk message store but I’ve
+changed my mind here. My current thinking is to just write the messages
+out to files but to have a set of indexes (probably built using
+<a href="http://lucene.apache.org/java/docs/index.html">Lucene</a>) as well for searching and sorting. There should be
+another (alpha) release out later this week with the Commons and
+Berkeley DB changes complete, and a release next week with the new
+project structure.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2006/10/12/why-i-do-not-like-skype">Why I Do Not Like Skype</a></h1>
     
     
@@ -128,7 +190,7 @@ office ( &hellip;">
   
 
 
-<time datetime="2006-10-12T10:20:29+02:00" pubdate data-updated="true">Oct 12<span>th</span>, 2006</time>
+<time datetime="2006-10-12T10:20:29+01:00" pubdate data-updated="true">Oct 12<span>th</span>, 2006</time>
         
       </p>
     
@@ -171,7 +233,7 @@ Bastards.</p>
   
 
 
-<time datetime="2006-10-06T14:59:13+02:00" pubdate data-updated="true">Oct 6<span>th</span>, 2006</time>
+<time datetime="2006-10-06T14:59:13+01:00" pubdate data-updated="true">Oct 6<span>th</span>, 2006</time>
         
       </p>
     
@@ -248,7 +310,7 @@ but more are planned) and clean up whatever they reveal.</p>
   
 
 
-<time datetime="2006-10-04T17:29:23+02:00" pubdate data-updated="true">Oct 4<span>th</span>, 2006</time>
+<time datetime="2006-10-04T17:29:23+01:00" pubdate data-updated="true">Oct 4<span>th</span>, 2006</time>
         
       </p>
     
@@ -289,7 +351,7 @@ in the very near future.</p>
   
 
 
-<time datetime="2006-09-28T14:45:33+02:00" pubdate data-updated="true">Sep 28<span>th</span>, 2006</time>
+<time datetime="2006-09-28T14:45:33+01:00" pubdate data-updated="true">Sep 28<span>th</span>, 2006</time>
         
       </p>
     
@@ -357,43 +419,6 @@ looong way to go beforfe it’s useable day-to-day.</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2006/09/24/tabblo-sofia-speed-fest-2006">Tabblo: Sofia Speed Fest 2006</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2006-09-24T14:07:27+02:00" pubdate data-updated="true">Sep 24<span>th</span>, 2006</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Not the greatest day out, but we had beers and played dodgems when we got back to town, so it ended well. See <a href="http://www.tabblo.com/studio/stories/shared/6231/fq5pdzue07cngby">some photo’s from the day</a> over at <a href="http://www.tabblo.com/">Tabblo</a>.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/20/">&larr; Older</a>
@@ -411,6 +436,10 @@ looong way to go beforfe it’s useable day-to-day.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/17/quick-environment-setup">Quick Environment Setup</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
       </li>
     
@@ -424,10 +453,6 @@ looong way to go beforfe it’s useable day-to-day.</p>
     
       <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
   </ul>
@@ -469,7 +494,7 @@ looong way to go beforfe it’s useable day-to-day.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
+  Copyright &copy; 2003&ndash;2014 &mdash; Ian Phillips &mdash;
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
 </p>
 

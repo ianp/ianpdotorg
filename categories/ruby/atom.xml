@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ruby | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/ruby/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[RubyMotion and Interface Builder…]]></title>
     <link href="http://ianp.org/2012/05/07/rubymotion-and-interface-builder"/>
-    <updated>2012-05-07T19:24:00+02:00</updated>
+    <updated>2012-05-07T19:24:00+01:00</updated>
     <id>http://ianp.org/2012/05/07/rubymotion-and-interface-builder</id>
     <content type="html"><![CDATA[<p>…sitting in a tree, K-I-S-S-I-N-G…</p>
 
@@ -120,7 +120,7 @@ end   end ```
   <entry>
     <title type="html"><![CDATA[Ripping Open Ruby Packages]]></title>
     <link href="http://ianp.org/2009/06/14/ripping-open-ruby-packages"/>
-    <updated>2009-06-14T02:30:06+02:00</updated>
+    <updated>2009-06-14T02:30:06+01:00</updated>
     <id>http://ianp.org/2009/06/14/ripping-open-ruby-packages</id>
     <content type="html"><![CDATA[<p>This looks like a mistake: <a href="http://www.rubyinside.com/rip-ruby-packaging-system-1837.html">Rip: A Next Generation Ruby Packaging System</a>. One of the things that Ruby does really well is library
 packaging, <a href="http://rubygems.org/">RubyGems</a> may have some flaws but it basically works

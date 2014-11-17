@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/mac/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[I Swallowed a Fly]]></title>
     <link href="http://ianp.org/2012/06/20/i-swallowed-a-fly"/>
-    <updated>2012-06-20T17:54:00+02:00</updated>
+    <updated>2012-06-20T17:54:00+01:00</updated>
     <id>http://ianp.org/2012/06/20/i-swallowed-a-fly</id>
     <content type="html"><![CDATA[<p><img src="http://www.onefoottsunami.com/wordpress/wp-content/uploads/20120620magsafeadapter/6-forthesakeofcompleteness.jpg" alt="MagSafe Adapter" /></p>
 
@@ -28,7 +28,7 @@
   <entry>
     <title type="html"><![CDATA[30,000,000 Lines Of Code? WTF?]]></title>
     <link href="http://ianp.org/2006/11/04/30000000-lines-of-code-wtf"/>
-    <updated>2006-11-04T21:08:26+01:00</updated>
+    <updated>2006-11-04T21:08:26+00:00</updated>
     <id>http://ianp.org/2006/11/04/30000000-lines-of-code-wtf</id>
     <content type="html"><![CDATA[<p>Apparently (according to <a href="http://blogs.msdn.com/macmojo/archive/2006/11/03/it-s-all-in-the-numbers.aspx">this</a>) Mac Office is 30,000,000 lines of
 code, that’s a lot of code to try to keep bug free! Out of curiosity, I
@@ -44,7 +44,7 @@ course!</p>
   <entry>
     <title type="html"><![CDATA[Mac Annoyances]]></title>
     <link href="http://ianp.org/2003/11/18/mac-annoyances"/>
-    <updated>2003-11-18T21:11:11+01:00</updated>
+    <updated>2003-11-18T21:11:11+00:00</updated>
     <id>http://ianp.org/2003/11/18/mac-annoyances</id>
     <content type="html"><![CDATA[<p><a href="http://daringfireball.net">John Gruber</a> takes issue with external editor support in apples new XCode application. I’m wondering what the Mac is like as a development platform? I love the hardware, and there are lots of neat things about the Mac, but is it a viable platform to switch to?</p>
 

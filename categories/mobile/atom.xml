@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mobile | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/mobile/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Radial Menus]]></title>
     <link href="http://ianp.org/2012/03/30/radial-menus"/>
-    <updated>2012-03-30T16:38:00+02:00</updated>
+    <updated>2012-03-30T16:38:00+01:00</updated>
     <id>http://ianp.org/2012/03/30/radial-menus</id>
     <content type="html"><![CDATA[<p>Some alternative menu / control styles with a radial theme, linked from here so that I don’t lose them:</p>
 
@@ -33,7 +33,7 @@
   <entry>
     <title type="html"><![CDATA[Developing for the BlackBerry]]></title>
     <link href="http://ianp.org/2012/03/29/developing-for-the-blackberry"/>
-    <updated>2012-03-29T15:12:00+02:00</updated>
+    <updated>2012-03-29T15:12:00+01:00</updated>
     <id>http://ianp.org/2012/03/29/developing-for-the-blackberry</id>
     <content type="html"><![CDATA[<p>For a change from the day job I’ve been doing some mobile development, all iOS up to now, and I’ve got to say it’s a pretty nice development experience - especially with the new features (e.g. ARC, new literals) that are being added to Objective-C. But then earlier this week I was asked to look into writing a BlackBerry app at work, so that led me to looking into the different options that are available for that platform, here’s what I looked into:</p>
 
@@ -77,7 +77,7 @@
   <entry>
     <title type="html"><![CDATA[Nexus One Launch Even on Jan 5?]]></title>
     <link href="http://ianp.org/2009/12/29/nexus-one-launch-even-on-jan-5"/>
-    <updated>2009-12-29T19:13:26+01:00</updated>
+    <updated>2009-12-29T19:13:26+00:00</updated>
     <id>http://ianp.org/2009/12/29/nexus-one-launch-even-on-jan-5</id>
     <content type="html"><![CDATA[<blockquote>
   <p>This just in: <a href="http://www.google.com/">Google</a> will host an <a href="http://www.android.com/">Android</a> press gathering

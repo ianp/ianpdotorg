@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="This is what’s wrong with a lot of the Java code out there. ">
+  <meta name="description" content="I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,6 +110,74 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-03T18:32:00+01:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
+
+<h4 id="picking-a-platform">Picking a Platform</h4>
+
+<p>There are a number of options out there, including:</p>
+
+<ul>
+  <li><a href="http://www.jcp.org/en/jsr/detail?id=296">JSR-296</a> Swing Application Framework;</li>
+  <li><a href="http://wiki.eclipse.org/index.php/Rich_Client_Platform">Eclipse RCP</a>;</li>
+  <li><a href="http://netbeans.org/features/platform/">NetBeans RCP</a>; and</li>
+  <li><a href="http://jidesoft.com/jdaf/">Jide</a> Desktop Application Framework.</li>
+</ul>
+
+<p>JSR-296 is basically dead in the water at this point, and while there are a <a href="https://en.wikipedia.org/wiki/Swing_Application_Framework">few forks</a> doing the rounds I’m not really confident enough in any of them to want to move a reasonably sized codebase to it.</p>
+
+<p>Eclipse uses a different UI toolkit altogether so it’s really a nonpstarter for this excercise, although it would be a good option if starting a new project from scratch.</p>
+
+<p>Jide is a swing component vendor and a relatively new entrant into the RCP space. JDAF has some things going for it: it has the best platform integration of any framework, with much better native fidelity (e.g. message dialogs look OK on Mac OS X and Gnome) than either Eclipse or NetBeans. It also has some handy built-in support for document-centric apps. The downsides are that unlike the other offerings here it’s a commercial product, and it’s much less ambitious in scope than either Eclipse or NetBeans, presumably as many of the other features that these offer are also Jide products (e.g. their docking framework). I also found myself fighting to work with it’s limited data model support.</p>
+
+<p>NetBeans seems to e a good fit for the apps that I’m converting, and it plays well with standard Swing idioms so it should be quite easy to port the code over. Recent releases have extensive support for annotation based configuration as well, which should ease the learning curve.</p>
+
+<p>One downside is that most of the tutorials and documentation assume that you will also be using NetBeans as an IDE, which I won’t be (I use <a href="http://www.jetbrains.com/idea/">IntelliJ</a>), still, NetBeans RCP has pretty good Maven support so it shouldn’t matter too much.</p>
+
+<h4 id="setting-up-a-project-with-netbeans-rcp">Setting Up a Project with NetBeans RCP</h4>
+
+<p>Here’s how to create a project and add a module to it:</p>
+
+<script src="https://gist.github.com/3828460.js?file=nbproject.sh"></script>
+
+<p>You can then open this up in IntelliJ as a Maven based project and start editing away.</p>
+
+<p>Adding additional modules (e.g. myviews, &amp;c.) is as simple as rerunning the last command and re-importing the maven model (or enabling auto-import in IntelliJ).</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/10/01/convenient">Convenient</a></h1>
     
     
@@ -126,7 +194,7 @@
   
 
 
-<time datetime="2012-10-01T18:35:00+02:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
+<time datetime="2012-10-01T18:35:00+01:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
         
       </p>
     
@@ -163,7 +231,7 @@
   
 
 
-<time datetime="2012-10-01T18:35:00+02:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
+<time datetime="2012-10-01T18:35:00+01:00" pubdate data-updated="true">Oct 1<span>st</span>, 2012</time>
         
       </p>
     
@@ -200,7 +268,7 @@
   
 
 
-<time datetime="2012-06-20T17:54:00+02:00" pubdate data-updated="true">Jun 20<span>th</span>, 2012</time>
+<time datetime="2012-06-20T17:54:00+01:00" pubdate data-updated="true">Jun 20<span>th</span>, 2012</time>
         
       </p>
     
@@ -239,7 +307,7 @@
   
 
 
-<time datetime="2012-06-20T16:58:00+02:00" pubdate data-updated="true">Jun 20<span>th</span>, 2012</time>
+<time datetime="2012-06-20T16:58:00+01:00" pubdate data-updated="true">Jun 20<span>th</span>, 2012</time>
         
       </p>
     
@@ -247,57 +315,6 @@
 
 
   <div class="entry-content"><p>That was quick! The videos from WWDC are <a href="https://developer.apple.com/videos/wwdc/2012/">up already</a>, last year it took Apple about a month to get them posted. Great news for folks like me who didn’t get to attend.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/29/leap-into-the-future">Leap Into the Future!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-29T14:59:00+02:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><img src="/2012/05/29/leap-motion.jpg" alt="Leap Motion" /></p>
-
-<p><a href="http://leapmotion.com/">This</a> looks like a fascinating piece of technology provided it works as advertised. Check out the video on their, it looks pretty slick.</p>
-
-<p>The company behind it make some pretty <a href="http://live.leapmotion.com/about.html">bold claims</a> about the technology:</p>
-
-<blockquote>
-  <p>Just about the size of a flash drive, the Leap can distinguish your individual fingers and track your movements down to a 1/100th of a millimeter.
-…
-Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motion software. Do a quick wave to calibrate. That’s it.</p>
-</blockquote>
-
-<p>Of course if you were to use it as a main input device I expect that you’d get tired pretty quickly, but for short sprints of use in specialist applications it looks neat.</p>
-
-<p>And I’d love to see it paired with one the <a href="http://www.vuzix.com/consumer/products_wrap_1200vr.html">new sets</a> of VR displays that are hitting the market right now.</p>
 
 </div>
   
@@ -323,6 +340,10 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/17/quick-environment-setup">Quick Environment Setup</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
       </li>
     
@@ -336,10 +357,6 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
     
       <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
   </ul>
@@ -381,7 +398,7 @@ Setup is just as intuitive.  Plug the LEAP into a USB port.  Load the Leap Motio
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
+  Copyright &copy; 2003&ndash;2014 &mdash; Ian Phillips &mdash;
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
 </p>
 

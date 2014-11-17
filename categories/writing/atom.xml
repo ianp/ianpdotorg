@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Writing | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/writing/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Category Counts in OctoPress Revisited]]></title>
     <link href="http://ianp.org/2012/10/30/category-counts-in-octopress-revisited"/>
-    <updated>2012-10-30T18:41:00+01:00</updated>
+    <updated>2012-10-30T18:41:00+00:00</updated>
     <id>http://ianp.org/2012/10/30/category-counts-in-octopress-revisited</id>
     <content type="html"><![CDATA[<p>As an improvement on an older shell script, here’s a rake task to list all of the categories in your blog, along with post counts for each of them:</p>
 
@@ -52,7 +52,7 @@ end
   <entry>
     <title type="html"><![CDATA[Think about that]]></title>
     <link href="http://ianp.org/2012/05/07/think-about-that"/>
-    <updated>2012-05-07T23:32:00+02:00</updated>
+    <updated>2012-05-07T23:32:00+01:00</updated>
     <id>http://ianp.org/2012/05/07/think-about-that</id>
     <content type="html"><![CDATA[<blockquote>
   <p>Good design. From eBay. Think about that.</p>
@@ -68,7 +68,7 @@ end
   <entry>
     <title type="html"><![CDATA[Category Counts in Octopress]]></title>
     <link href="http://ianp.org/2012/04/18/category-counts-in-octopress"/>
-    <updated>2012-04-18T10:36:00+02:00</updated>
+    <updated>2012-04-18T10:36:00+01:00</updated>
     <id>http://ianp.org/2012/04/18/category-counts-in-octopress</id>
     <content type="html"><![CDATA[<p>Here’s a quick shell script to get the number of posts in each category for an <a href="http://octopress.org/">Octopress</a> blog, just cat your <code>source/_posts</code> folder through the following one-liner:</p>
 
@@ -101,7 +101,7 @@ sort -n</p>
   <entry>
     <title type="html"><![CDATA[How to Enter Straight Quotes in Word]]></title>
     <link href="http://ianp.org/2011/07/28/how-to-enter-straight-quotes-in-word"/>
-    <updated>2011-07-28T15:35:43+02:00</updated>
+    <updated>2011-07-28T15:35:43+01:00</updated>
     <id>http://ianp.org/2011/07/28/how-to-enter-straight-quotes-in-word</id>
     <content type="html"><![CDATA[<p>When I’m writing technical docs in MS Word (an unfortunate day-job-related requirement) one of the things that can be annoying it the fact that it ‘helpfully’ converts straight quotes into curly quotes, even in code samples and other places that it shouldn’t. The easy way to get rid of this is to hit undo (⌘-z) immediately after typing the quote, this will undo the auto-correction but leave the actual quote character in place.</p>
 ]]></content>
@@ -110,7 +110,7 @@ sort -n</p>
   <entry>
     <title type="html"><![CDATA[TextMate Revisited]]></title>
     <link href="http://ianp.org/2004/10/06/textmate-revisited"/>
-    <updated>2004-10-06T22:10:48+02:00</updated>
+    <updated>2004-10-06T22:10:48+01:00</updated>
     <id>http://ianp.org/2004/10/06/textmate-revisited</id>
     <content type="html"><![CDATA[<p>After a bit more usage, some pros and cons of
 <a href="http://www.macromates.com">TextMate</a>. To evaluate it’s features I’ve

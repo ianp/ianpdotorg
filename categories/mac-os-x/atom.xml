@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Mac OS X | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/mac-os-x/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Apple Security Cock-Up]]></title>
     <link href="http://ianp.org/2012/05/07/apple-security-cock-up"/>
-    <updated>2012-05-07T16:04:00+02:00</updated>
+    <updated>2012-05-07T16:04:00+01:00</updated>
     <id>http://ianp.org/2012/05/07/apple-security-cock-up</id>
     <content type="html"><![CDATA[<p><a href="http://www.zdnet.com/blog/security/apple-security-blunder-exposes-lion-login-passwords-in-clear-text/11963">This</a> doesn’t look good.</p>
 
@@ -28,7 +28,7 @@
   <entry>
     <title type="html"><![CDATA[What is Text Normalization?]]></title>
     <link href="http://ianp.org/2012/04/17/what-is-text-normalization"/>
-    <updated>2012-04-17T09:33:00+02:00</updated>
+    <updated>2012-04-17T09:33:00+01:00</updated>
     <id>http://ianp.org/2012/04/17/what-is-text-normalization</id>
     <content type="html"><![CDATA[<p>In my <a href="/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
 
@@ -172,7 +172,7 @@ This is the script used in the token, for us it is always “Latn” for Latin, 
   <entry>
     <title type="html"><![CDATA[How to Work with Git & GitHub]]></title>
     <link href="http://ianp.org/2009/11/26/how-to-work-with-git-github"/>
-    <updated>2009-11-26T15:33:36+01:00</updated>
+    <updated>2009-11-26T15:33:36+00:00</updated>
     <id>http://ianp.org/2009/11/26/how-to-work-with-git-github</id>
     <content type="html"><![CDATA[<p>Based on <a href="http://groups.google.com/group/leiningen/browse_thread/thread/c4688dfa32557edd?hl=en">Alex’s comment</a> on the <a href="http://groups.google.com/group/leiningen/">Leiningen group</a>, here’s my
 shiny new setup for working with <a href="http://git-scm.com/">Git</a> &amp; <a href="http://github.com/">GitHub</a> on OS X, I’m
@@ -222,7 +222,7 @@ you can also browse issues with <code>github issues {open|closed}</code>.</p>
   <entry>
     <title type="html"><![CDATA[Disabling Airport Agent on Mac OS X]]></title>
     <link href="http://ianp.org/2009/05/27/disabling-airport-agent-on-mac-os-x"/>
-    <updated>2009-05-27T17:46:07+02:00</updated>
+    <updated>2009-05-27T17:46:07+01:00</updated>
     <id>http://ianp.org/2009/05/27/disabling-airport-agent-on-mac-os-x</id>
     <content type="html"><![CDATA[<p>With OS X Leopard the airport base station utility is now started by
 default and will run as a background process occasionally connecting to

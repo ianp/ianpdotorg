@@ -9,9 +9,9 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="One of the distinguishing characteristics of Unix is the
-philosophy that “everything is a file” (taken even further in
-Linux and Plan 9). Reading the &hellip;">
+  <meta name="description" content="This just in: Google will host an Android press gathering
+at its global HQ on Jan. 5 …. Presumably, the event will have something
+to do with the &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -112,6 +112,52 @@ Linux and Plan 9). Reading the &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/2009/12/29/nexus-one-launch-even-on-jan-5">Nexus One Launch Even on Jan 5?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-29T19:13:26+00:00" pubdate data-updated="true">Dec 29<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote>
+  <p>This just in: <a href="http://www.google.com/">Google</a> will host an <a href="http://www.android.com/">Android</a> press gathering
+at its global HQ on Jan. 5 ….</p>
+</blockquote>
+
+<p>Presumably, the event will have something
+to do with the company’s Nexus One, an Android phone that Google plans
+to sell on its own Web site and perhaps through T-Mobile as well.</p>
+
+<p>Via <a href="http://digitaldaily.allthingsd.com/20091229/google-announces-jan-5-android-event/">Digital Daily</a></p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2009/12/28/why-everything-is-a-file">Why Everything Is a File</a></h1>
     
     
@@ -128,7 +174,7 @@ Linux and Plan 9). Reading the &hellip;">
   
 
 
-<time datetime="2009-12-28T17:54:29+01:00" pubdate data-updated="true">Dec 28<span>th</span>, 2009</time>
+<time datetime="2009-12-28T17:54:29+00:00" pubdate data-updated="true">Dec 28<span>th</span>, 2009</time>
         
       </p>
     
@@ -180,7 +226,7 @@ system.”</p>
   
 
 
-<time datetime="2009-12-26T19:07:09+01:00" pubdate data-updated="true">Dec 26<span>th</span>, 2009</time>
+<time datetime="2009-12-26T19:07:09+00:00" pubdate data-updated="true">Dec 26<span>th</span>, 2009</time>
         
       </p>
     
@@ -224,7 +270,7 @@ speak little to outsiders but much among themselves.</p>
   
 
 
-<time datetime="2009-12-25T20:21:47+01:00" pubdate data-updated="true">Dec 25<span>th</span>, 2009</time>
+<time datetime="2009-12-25T20:21:47+00:00" pubdate data-updated="true">Dec 25<span>th</span>, 2009</time>
         
       </p>
     
@@ -274,7 +320,7 @@ after the 9.0.1 release is out (it’s in beta now).</p>
   
 
 
-<time datetime="2009-12-17T14:39:25+01:00" pubdate data-updated="true">Dec 17<span>th</span>, 2009</time>
+<time datetime="2009-12-17T14:39:25+00:00" pubdate data-updated="true">Dec 17<span>th</span>, 2009</time>
         
       </p>
     
@@ -302,167 +348,6 @@ after the 9.0.1 release is out (it’s in beta now).</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2009/12/07/clojure-evaluation">Clojure Evaluation</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-12-07T17:44:50+01:00" pubdate data-updated="true">Dec 7<span>th</span>, 2009</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’ve been loking at the early-access version of <a href="http://www.manning.com/">Manning</a>’s
-forthcoming <a href="http://www.manning.com/rathore/">Clojure in Action</a> book as well as some of the
-<a href="http://www.manning-sandbox.com/thread.jspa?threadID=35150&amp;tstart=0">criticism</a> of it. One of the complaints is that the current drafts
-describe macros as a run-time concept and that this is wrong. The
-confusion arises from the fact that <a href="http://clojure.org/">Clojure</a> (and Lisps in general)
-don’t follow the same path from source to execution as a more
-conventional programming languages like C and Java. I’ll compare four
-different languages to see how they differ: C, Java, a traditional Lisp
-compiler, and Clojure.</p>
-
-<h3 id="c-like-languages">C Like Languages</h3>
-
-<p><img src="/images/2009/12/c-compilation-stages.png" /></p>
-
-<p>This is what most people
-are used to, the traditional compiled language. Here, source code is
-read in and then parsed (this is normally broken out into multiple
-stages, e.g. a separate lexing stage, but for our purposes we can gloss
-over these details). The parser emits some form of intermediate
-representation, usually an abstract syntax tree (AST), this is then used
-by the compiler to generate executable code.</p>
-
-<p>Again, this
-potentially glosses over some details: optimizers can world on the
-intermediate representation for example, or the compiler could require a
-separate linking stage to generate an executable. For our purposes
-though this is sufficient: we go from source to AST to executable. Also,
-it could be argued that the C pre-processor operates on the source code
-before the parser sees it, but in practice the C macros system is so
-primitive it doesn’t really warrant being called out as a separate
-stage.</p>
-
-<h3 id="java-like-languages">Java Like Languages</h3>
-
-<p><img src="/images/2009/12/java-compilation-stages.png" /></p>
-
-<p>The Java like
-languages differ from C in that they run on top of a virtual machine
-rather than being executed directly by the OS; as a reult their compiler
-emits ‘bytecode’ rather than a finished executable. This bytecode is
-then executed by the virtual machine. In all modern desktop and server
-virtual machines this is means just in time compiling the bytecode down
-to native machine code.</p>
-
-<h3 id="traditional-lisps">Traditional Lisps</h3>
-
-<p><img src="/images/2009/12/lisp-compilation-stages.png" /></p>
-
-<p>The Lisp view of things
-is a little different; it’s more complicated but also more powerful. The
-first thing to note is that Lisp code is already basically in the form
-of an AST - there is no (or not much) syntax getting in the way. Next,
-there are 2 types of macros which are applied to Lisp code: macros and
-reader macros. I’ll duscuss them in the opposite order to the way they
-are applied…</p>
-
-<p>The standard
-type of Lisp macros are what most people rave about when extolling the
-virtues of the language: these are chunks of code that are executed
-after the source has been loaded into an AST (remember, Lisp source code
-is basically in this form already, so this just involves moving from a
-textual representation to something that the Lisp runtime can work
-with). If a node in the AST is a macro then it is evaluated as the code
-is loaded and the result of the evaluation is used to <em>replace the
-macro node in the AST</em>.</p>
-
-<p>Stop and think about that for a minute - this
-happens <em>before</em> the code is evaluated by the regular Lisp runtime,
-but yet at this point you already have access to the full Lisp
-programming language. All of this means that you can do some
-<a href="http://weitz.de/macros.lisp">pretty</a> <a href="http://brierwooddesign.com/2009/2/12/fun-with-lisp-macros">cool</a> <a href="http://www.paulgraham.com/avg.html">tricks</a>: how about writing your own control
-constructs? Writing a DSL compiler? Logging constructs that have
-<em>zero</em> runtime overhead when not used (but that can be switched on and
-off by users of the program, unlike <code>#define DEBUG 0</code> in C)?</p>
-
-<p>The
-second, and much less common, type of macro is the <em>reader macro</em>.
-Reader macros operate on the character stream as it is read in, before
-the AST is constructed. Basically, when the reader sees a specific
-character (usually <code>#</code>) it then looks at the next character and uses that
-as a key into a table of functions (the read table) that tell it how to
-handle future input. Using reader macros it’s possible to create DSLs
-that don’t use s-expression syntax (s-expressions are the paren enclosed
-lists that Lisp is (in)famous for); or do something as simple as
-allowing the use of brackets to <a href="http://www.psg.com/~dlamkins/sl/chapter03-12.html">write quoted lists</a> without needing
-an explicit quote (i.e. writing <code>[1 2 3]</code> instead of <code>'(1 2 3)</code>).</p>
-
-<p>Only once all of this has finished is a traditional lisp ready to let
-it’s compiler go to work turning the (now macro-free) AST into
-executable code.</p>
-
-<h3 id="clojure">Clojure</h3>
-
-<p>Clojure is very similar to the
-traditional Lisp model, with two main differences. The first difference
-is the fact that, like Java, the output is bytecode which is then loaded
-and executed by a standard Java virtual machine.</p>
-
-<p>The second difference
-is that while Clojure does have <a href="http://clojure.org/reader#toc1">reader macros</a>, the read table
-isn’t exposed to user programs; that is, while it operates in the same
-way as a traditional Lisp there is no way for user code to alter the
-behaviour of the reader. This is probably good thing as Clojure includes
-a relatively large number of predefined reader macros including a
-literal syntax for lists, sets, and maps, as well as lambda-expressions
-(anonymous functions) and metadata.</p>
-
-<h3 id="summary">Summary</h3>
-
-<p>C and Java like
-languages have a huge amount of syntax baked in, but don’r provide any
-way to modify this or to manipulate the program before it is compiled.
-Lisp has almost no syntax but provides a mechanism for users to add
-their own, and provides a mechanism to manipulate programs before they
-are compiled.</p>
-
-<p>Clojure has some syntax (more than other Lisps, but way
-less than C/Java/&amp;c.) and provides the same mechanism for program
-manipulation as other Lisps. The OmniGraffle file for the images in this
-post is <a href="http://ianp.org/images/2009/12/compilation-stages.graffle.gz">available here</a> if anybody is interested.</p>
-
-<p><strong>Update:</strong> this
-post is intended to compare traditional C-style languages with Lisps, it
-doesn’t cover, for examples, so-called scripting languages such as Perl,
-Python, and Ruby.</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/10/">&larr; Older</a>
@@ -480,6 +365,10 @@ Python, and Ruby.</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/17/quick-environment-setup">Quick Environment Setup</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
       </li>
     
@@ -493,10 +382,6 @@ Python, and Ruby.</p>
     
       <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
   </ul>
@@ -538,7 +423,7 @@ Python, and Ruby.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
+  Copyright &copy; 2003&ndash;2014 &mdash; Ian Phillips &mdash;
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
 </p>
 

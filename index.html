@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Following on from my previous post I’m attempting the next Programming Praxis excercise: computing the probability of a winning board at Bingo &hellip;">
+  <meta name="description" content="I’ve recently had to set up and manage about a dozen Linux based virtual servers (not a huge number, but still) and it’s handly to have a separate &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -46,9 +46,9 @@
 
 
   
-    
-  
 
+  
+    
   
 
   
@@ -121,6 +121,55 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2014/11/17/quick-environment-setup">Quick Environment Setup</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-17T14:32:00+00:00" pubdate data-updated="true">Nov 17<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I’ve recently had to set up and manage about a dozen Linux based virtual servers (not a huge number, but still) and it’s handly to have a separate user account on these machines that I can use to connect to for interactive use.  With that in mind here are a couple of quick tips for setting things up for a more pleasant experience with minimal fuss.</p>
+
+<p>I like to use <a href="http://zsh.org">zsh</a> as my shell, but that’s easy enough to install via apt-get and so can be added to an automated build script. The fastest way to get a good configuration installed is via <a href="http://ohmyz.sh">Oh My Zsh!</a>, it uses the fairly horrible <code>curl | sh</code> installation style, so I don’t like to add it to an automated script, but it’s easy enough to check and run manually:</p>
+
+<pre><code>$ curl -L http://install.ohmyz.sh | sh
+</code></pre>
+
+<p>The other thing is to get a decent <a href="http://vim.org">vim</a> setup, for this I use <a href="http://vim.spf13.com">SPF-13</a> which installs in a similar manner:</p>
+
+<pre><code>$ curl http://j.mp/spf13-vim3 -L -o - | sh
+</code></pre>
+
+<p>Then I usually set up a couple of aliases based on what the machine will be used for, and I’m done.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a></h1>
     
     
@@ -137,7 +186,7 @@
   
 
 
-<time datetime="2013-01-17T20:04:00+01:00" pubdate data-updated="true">Jan 17<span>th</span>, 2013</time>
+<time datetime="2013-01-17T20:04:00+00:00" pubdate data-updated="true">Jan 17<span>th</span>, 2013</time>
         
       </p>
     
@@ -532,7 +581,7 @@ m(n,k) = 1 - (1 - w(n))^k
   
 
 
-<time datetime="2013-01-15T14:03:00+01:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+<time datetime="2013-01-15T14:03:00+00:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
         
       </p>
     
@@ -687,7 +736,7 @@ m(n,k) = 1 - (1 - w(n))^k
   
 
 
-<time datetime="2013-01-09T18:41:00+01:00" pubdate data-updated="true">Jan 9<span>th</span>, 2013</time>
+<time datetime="2013-01-09T18:41:00+00:00" pubdate data-updated="true">Jan 9<span>th</span>, 2013</time>
         
       </p>
     
@@ -1008,7 +1057,7 @@ m(n,k) = 1 - (1 - w(n))^k
   
 
 
-<time datetime="2013-01-08T14:00:00+01:00" pubdate data-updated="true">Jan 8<span>th</span>, 2013</time>
+<time datetime="2013-01-08T14:00:00+00:00" pubdate data-updated="true">Jan 8<span>th</span>, 2013</time>
         
       </p>
     
@@ -1018,49 +1067,6 @@ m(n,k) = 1 - (1 - w(n))^k
   <div class="entry-content"><p><a href="http://www.mobileindustryreview.com/2013/01/lenovos-27-tablet-is-a-smart-idea-costs-1000-and-is-due-this-summer.html">This</a> is a joke, right?</p>
 
 <p><img src="/2013/01/08/easily.jpg" alt="Lenovo Horizon" /></p>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-17T17:19:00+01:00" pubdate data-updated="true">Dec 17<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After being <a href="http://www.guardian.co.uk/world/2012/dec/16/gerard-depardieu-french-passport-tax">described</a> as “pathetic and unpatriotic” by the prime minister Jean-Marc Ayrault, actor Gérard Depardieu responded:</p>
-
-<blockquote>
-  <p>Despite my excesses, my appetite and my love of life, I remain a free man</p>
-</blockquote>
-
-<p>Well said sir, well said indeed!</p>
 
 </div>
   
@@ -1084,6 +1090,10 @@ m(n,k) = 1 - (1 - w(n))^k
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/17/quick-environment-setup">Quick Environment Setup</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
       </li>
     
@@ -1097,10 +1107,6 @@ m(n,k) = 1 - (1 - w(n))^k
     
       <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
   </ul>
@@ -1142,7 +1148,7 @@ m(n,k) = 1 - (1 - w(n))^k
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
+  Copyright &copy; 2003&ndash;2014 &mdash; Ian Phillips &mdash;
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
 </p>
 

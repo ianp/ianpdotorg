@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/java/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Praxis: Winning at Bingo]]></title>
     <link href="http://ianp.org/2013/01/17/praxis-winning-at-bingo"/>
-    <updated>2013-01-17T20:04:00+01:00</updated>
+    <updated>2013-01-17T20:04:00+00:00</updated>
     <id>http://ianp.org/2013/01/17/praxis-winning-at-bingo</id>
     <content type="html"><![CDATA[<p>Following on from my <a href="/2013/01/15/programming-praxis/">previous post</a> I’m attempting the next Programming Praxis <a href="http://programmingpraxis.com/2009/02/19/bingo/">excercise</a>: computing the probability of a winning board at Bingo tournaments of various sizes.</p>
 
@@ -291,7 +291,7 @@ public static void main(String[] args) {
   <entry>
     <title type="html"><![CDATA[Programming Praxis]]></title>
     <link href="http://ianp.org/2013/01/15/programming-praxis"/>
-    <updated>2013-01-15T14:03:00+01:00</updated>
+    <updated>2013-01-15T14:03:00+00:00</updated>
     <id>http://ianp.org/2013/01/15/programming-praxis</id>
     <content type="html"><![CDATA[<p>Over the weekend I stumbled across the <a href="http://programmingpraxis.com">Programming Praxis</a> web site, a blog that aims to “publishes new programming exercises weekly, at least, so that savvy programmers can maintain their skills by working the exercises and thinking outside their normal skill set”. It’s been running for about three years now and at the time of writing there are almost 400 problems there. I thought that I’d like to have a go at solving a few of them, I’m going to try solving them in Java initially, and then maybe revisit them in other languages to compare the solutions.</p>
 
@@ -374,7 +374,7 @@ public static BitSet sieve(int target) {
   <entry>
     <title type="html"><![CDATA[Builders and Factories]]></title>
     <link href="http://ianp.org/2013/01/09/builders-and-factories"/>
-    <updated>2013-01-09T18:41:00+01:00</updated>
+    <updated>2013-01-09T18:41:00+00:00</updated>
     <id>http://ianp.org/2013/01/09/builders-and-factories</id>
     <content type="html"><![CDATA[<p>I started to write a ‘quick’ response to <a href="http://toomuchcoding.blogspot.ie/2013/01/hamcrest-matchers-guava-predicate-and.html">this post about builders</a> and it kind of got out of hand, so I’m putting it up here instead.</p>
 
@@ -558,7 +558,7 @@ public interface Employees {
   <entry>
     <title type="html"><![CDATA[NetBeans Rich Client Platform]]></title>
     <link href="http://ianp.org/2012/10/03/netbeans-rich-client-platform"/>
-    <updated>2012-10-03T18:32:00+02:00</updated>
+    <updated>2012-10-03T18:32:00+01:00</updated>
     <id>http://ianp.org/2012/10/03/netbeans-rich-client-platform</id>
     <content type="html"><![CDATA[<p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
 
@@ -599,7 +599,7 @@ public interface Employees {
   <entry>
     <title type="html"><![CDATA[Convenient]]></title>
     <link href="http://ianp.org/2012/10/01/convenient"/>
-    <updated>2012-10-01T18:35:00+02:00</updated>
+    <updated>2012-10-01T18:35:00+01:00</updated>
     <id>http://ianp.org/2012/10/01/convenient</id>
     <content type="html"><![CDATA[<p><a href="http://www.lispcast.com/class-abstractsingletonproxyfactorybean">This</a> is what’s wrong with a lot of the Java code out there.</p>
 

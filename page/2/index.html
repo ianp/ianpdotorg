@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="Excellent article over at Gizmodo about the whole security theatre dance that we’re forced to do any time we want to fly these days. My favourite &hellip;">
+  <meta name="description" content="After being described as “pathetic and unpatriotic” by the prime minister Jean-Marc Ayrault, actor Gérard Depardieu responded: Despite my excesses, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,6 +110,49 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-17T17:19:00+00:00" pubdate data-updated="true">Dec 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>After being <a href="http://www.guardian.co.uk/world/2012/dec/16/gerard-depardieu-french-passport-tax">described</a> as “pathetic and unpatriotic” by the prime minister Jean-Marc Ayrault, actor Gérard Depardieu responded:</p>
+
+<blockquote>
+  <p>Despite my excesses, my appetite and my love of life, I remain a free man</p>
+</blockquote>
+
+<p>Well said sir, well said indeed!</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/11/05/stroke-me-gently">Stroke Me Gently</a></h1>
     
     
@@ -126,7 +169,7 @@
   
 
 
-<time datetime="2012-11-05T22:53:00+01:00" pubdate data-updated="true">Nov 5<span>th</span>, 2012</time>
+<time datetime="2012-11-05T22:53:00+00:00" pubdate data-updated="true">Nov 5<span>th</span>, 2012</time>
         
       </p>
     
@@ -167,7 +210,7 @@
   
 
 
-<time datetime="2012-10-31T19:18:00+01:00" pubdate data-updated="true">Oct 31<span>st</span>, 2012</time>
+<time datetime="2012-10-31T19:18:00+00:00" pubdate data-updated="true">Oct 31<span>st</span>, 2012</time>
         
       </p>
     
@@ -216,7 +259,7 @@
   
 
 
-<time datetime="2012-10-30T18:49:00+01:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
+<time datetime="2012-10-30T18:49:00+00:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
         
       </p>
     
@@ -268,7 +311,7 @@
   
 
 
-<time datetime="2012-10-30T18:41:00+01:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
+<time datetime="2012-10-30T18:41:00+00:00" pubdate data-updated="true">Oct 30<span>th</span>, 2012</time>
         
       </p>
     
@@ -331,74 +374,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/10/03/netbeans-rich-client-platform">NetBeans Rich Client Platform</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-03T18:32:00+02:00" pubdate data-updated="true">Oct 3<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I’m in the process of dusting off some old Swing based apps to use more modern code, and also add some useful new features to them. At the same time I’m going to move the apps to use a more structured framework, as this should allow me to share more common code between the apps.</p>
-
-<h4 id="picking-a-platform">Picking a Platform</h4>
-
-<p>There are a number of options out there, including:</p>
-
-<ul>
-  <li><a href="http://www.jcp.org/en/jsr/detail?id=296">JSR-296</a> Swing Application Framework;</li>
-  <li><a href="http://wiki.eclipse.org/index.php/Rich_Client_Platform">Eclipse RCP</a>;</li>
-  <li><a href="http://netbeans.org/features/platform/">NetBeans RCP</a>; and</li>
-  <li><a href="http://jidesoft.com/jdaf/">Jide</a> Desktop Application Framework.</li>
-</ul>
-
-<p>JSR-296 is basically dead in the water at this point, and while there are a <a href="https://en.wikipedia.org/wiki/Swing_Application_Framework">few forks</a> doing the rounds I’m not really confident enough in any of them to want to move a reasonably sized codebase to it.</p>
-
-<p>Eclipse uses a different UI toolkit altogether so it’s really a nonpstarter for this excercise, although it would be a good option if starting a new project from scratch.</p>
-
-<p>Jide is a swing component vendor and a relatively new entrant into the RCP space. JDAF has some things going for it: it has the best platform integration of any framework, with much better native fidelity (e.g. message dialogs look OK on Mac OS X and Gnome) than either Eclipse or NetBeans. It also has some handy built-in support for document-centric apps. The downsides are that unlike the other offerings here it’s a commercial product, and it’s much less ambitious in scope than either Eclipse or NetBeans, presumably as many of the other features that these offer are also Jide products (e.g. their docking framework). I also found myself fighting to work with it’s limited data model support.</p>
-
-<p>NetBeans seems to e a good fit for the apps that I’m converting, and it plays well with standard Swing idioms so it should be quite easy to port the code over. Recent releases have extensive support for annotation based configuration as well, which should ease the learning curve.</p>
-
-<p>One downside is that most of the tutorials and documentation assume that you will also be using NetBeans as an IDE, which I won’t be (I use <a href="http://www.jetbrains.com/idea/">IntelliJ</a>), still, NetBeans RCP has pretty good Maven support so it shouldn’t matter too much.</p>
-
-<h4 id="setting-up-a-project-with-netbeans-rcp">Setting Up a Project with NetBeans RCP</h4>
-
-<p>Here’s how to create a project and add a module to it:</p>
-
-<script src="https://gist.github.com/3828460.js?file=nbproject.sh"></script>
-
-<p>You can then open this up in IntelliJ as a Maven based project and start editing away.</p>
-
-<p>Adding additional modules (e.g. myviews, &amp;c.) is as simple as rerunning the last command and re-importing the maven model (or enabling auto-import in IntelliJ).</p>
-
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/3/">&larr; Older</a>
@@ -416,6 +391,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/17/quick-environment-setup">Quick Environment Setup</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
       </li>
     
@@ -429,10 +408,6 @@
     
       <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
   </ul>
@@ -474,7 +449,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
+  Copyright &copy; 2003&ndash;2014 &mdash; Ian Phillips &mdash;
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
 </p>
 

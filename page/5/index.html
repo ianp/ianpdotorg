@@ -9,7 +9,7 @@
   <meta name="author" content="Ian Phillips">
 
   
-  <meta name="description" content="A recent post on the iOS Developer Tips blog provided a handy way to get the the word count for a string by using NSScanner, and asked for comments &hellip;">
+  <meta name="description" content="In my previous post I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -110,6 +110,197 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/2012/04/17/what-is-text-normalization">What Is Text Normalization?</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-17T09:33:00+01:00" pubdate data-updated="true">Apr 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>In my <a href="/2012/04/16/how-many-words-make-a-string">previous post</a> I mentioned that some of the word counting approaches may be suitable if the input text had been normalized, but I didn’t really elaborate on what this means. According to <a href="https://en.wikipedia.org/wiki/Text_normalization">Wikipedia</a>:</p>
+
+<blockquote>
+  <p>Text normalization is a process by which text is transformed in some way to make it consistent in a way which it might not have been before.</p>
+</blockquote>
+
+<p>The article also gives some examples of the kind of transformations that are commonly performed. Of necessity, any normalization process is going to be application specific, but let’s assume for the sake of example that the word count is intended to be used in a writing application of some sort (a text editor or word processor). Given that we probably don’t care about <a href="http://www.unicode.org/reports/tr15/">Unicode normalization</a>, and definitely don’t care about anything which would change the words such as stemming or canonicalization. But maybe we could normalize all runs of whitespace into single spaces? Our original test string then changes from “Peter  piper  picked  a  peck  of  pickled  pepper . No — really — he did!” to “Peter piper picked a peck of pickled pepper . No — really — he did!”. The difference is probably hard to spot, but all of the doubled spaces in the first string have been replaces with single spaces, and the hair-spaces have been replaced with regular spaces.</p>
+
+<p>How do the different word counting functions work now?</p>
+
+<table class="tabular">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th style="text-align: right">Raw</th>
+      <th style="text-align: right">Normalized</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Original Scanner</td>
+      <td style="text-align: right">15</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Regular Expression</td>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">12</td>
+    </tr>
+    <tr>
+      <td>String Components</td>
+      <td style="text-align: right">18</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Char Components</td>
+      <td style="text-align: right">22</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td>Linguistic tagger</td>
+      <td style="text-align: right">12</td>
+      <td style="text-align: right">12</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Better, but it still only leaves the same two functions returning the correct result (assuming of course that you <em>don’t</em> want to count strings of puncuation, this may or may not be the case in a code editor for example).</p>
+
+<p>I can’t speak for the inner working of the linguistic tagger, but the reason that the regex based function works is that it is basing it’s approach on a <em>whitelist</em> rather than a <em>blacklist</em>. The regex basically says “these are valid word characters, everything else can be ignored” whereas all of the other functions take the stance “these are whitespace, eveything else must be part of a word”. Anybody who has done any web development or input validation generally will tell you that whitelists are almost always the correct approach to take. It’s just easier to enumerate all of the valid values for a given set than to try to list all of the exceptions.</p>
+
+<h2 id="linguistic-tagger">Linguistic Tagger</h2>
+
+<p>There are quite a few more options available for analysing text here, let’s start by counting sentences as well as words, this can be done by adding a count for sentences and keeping track of the current sentence based on it’s starting location. The interesting code is on lines 9 and 10:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">words</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="n">__block</span> <span class="n">NSUInteger</span> <span class="n">current_sentence</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="p">[</span><span class="n">tagger</span> <span class="nl">enumerateTagsInRange:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])</span>
+</span><span class="line">                      <span class="nl">scheme:</span><span class="n">NSLinguisticTagSchemeTokenType</span>
+</span><span class="line">                     <span class="nl">options:</span><span class="mi">0</span>
+</span><span class="line">                  <span class="nl">usingBlock:</span><span class="o">^</span><span class="p">(</span><span class="n">NSString</span><span class="o">*</span> <span class="n">tag</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">token</span><span class="p">,</span> <span class="n">NSRange</span> <span class="n">sentence</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">([</span><span class="n">tag</span> <span class="nl">isEqual:</span><span class="n">NSLinguisticTagWord</span><span class="p">])</span> <span class="o">++</span><span class="n">words</span><span class="p">;</span>
+</span><span class="line">  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sentences</span> <span class="o">||</span> <span class="n">current_sentence</span> <span class="o">!=</span> <span class="n">sentence</span><span class="p">.</span><span class="n">location</span><span class="p">)</span> <span class="o">++</span><span class="n">sentences</span><span class="p">;</span>
+</span><span class="line">  <span class="n">current_sentence</span> <span class="o">=</span> <span class="n">sentence</span><span class="p">.</span><span class="n">location</span><span class="p">;</span>
+</span><span class="line"><span class="p">}];</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Updating the <code>taggerWordCount</code> function with this code tells us that we still have 12 words, and that they are spread over 2 sentences, cool!</p>
+
+<p>But what about that <code>schemes</code> parameter that we used to set up the tagger and run the enumeration? That allows the tagger to provide different types of information to the enumeration, we can tell the tagger to tag as much as it can by initializing the <code>schemes</code> variable with all available schemes. The <code>en-GB</code> string, by the way, is a <a href="http://tools.ietf.org/html/bcp47">BCP-47</a> code. The list of available schemes for this language is shown as a comment:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSArray</span><span class="o">*</span> <span class="n">schemes</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSLinguisticTagger</span> <span class="nl">availableTagSchemesForLanguage:</span><span class="s">@&quot;en-GB&quot;</span><span class="p">];</span>
+</span><span class="line"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">schemes</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// 2012-04-17 13:08:16.947 wordcounters[54440:707] (</span>
+</span><span class="line"><span class="c1">//    TokenType,</span>
+</span><span class="line"><span class="c1">//    Language,</span>
+</span><span class="line"><span class="c1">//    Script</span>
+</span><span class="line"><span class="c1">// )</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>According to Apple’s docs there are several different schemes available. One warning: if you use BCP-47 codes with more information in (such as <code>en-US</code> or <code>pt-BR</code>) then you will just get the basic 3 schemes shown above, using <code>en</code> gets the full list and other languages have varying levels of support.</p>
+
+<p>Let’s alter the test string and see what the different <code>en</code> schemes give us. For a new test string I’m going to use <a href="http://www.mudcat.org/@displaysong.cfm?SongID=1242">this little ditty</a>:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="objc"><span class="line"><span class="n">NSString</span><span class="o">*</span> <span class="n">coffee</span> <span class="o">=</span> <span class="s">@&quot;What I want - is a proper cup ’o coffee,&quot;</span>
+</span><span class="line">                   <span class="s">@&quot; Made in a proper copper coffee pot.&quot;</span>
+</span><span class="line">                   <span class="s">@&quot; Ik kan van mijn punt,&quot;</span>
+</span><span class="line">                   <span class="s">@&quot; Ach ba mhaith liom cupán caife o ó pota caife cuí.&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The 3rd and 4th lines have been replaced with Dutch and Irish translations of the English words in order to test the language detection. Interesting to note here is the syntaxused for multi-line strings in Objective-C, and also that I’ve indented the following lines so that there is a space after the punctuation at the end of the preceeding line.</p>
+
+<p>Let’s take a look at each scheme and what it gives us in this example.</p>
+
+<ul>
+  <li>
+    <p><strong>Token Type</strong>
+We can tell the words apart from the whitespace and punctuation by the tag. I could see this being useful for implementing smart punctuation in a word processor (like <a href="http://daringfireball.net/projects/smartypants/">SmartyPants</a>).</p>
+  </li>
+  <li>
+    <p><strong>Lexical Class</strong>
+Instead of just words this gives us nouns, adjectives, and so on; it also classifies some of the puntuation more precisely, for example <code>OpenQuote</code>. Possibly useful in a word processing application, or to provide input to a higher-level analyser.</p>
+  </li>
+  <li>
+    <p><strong>Name Type</strong>
+This attempts to detect people and place names in the text. In this example it identified “Made” as a place name, so it’s probably guessing at this based on the word capitalization.</p>
+  </li>
+  <li>
+    <p><strong>Name Type or Lexical Class</strong>
+As it suggests, a combination of the previous two schemes.</p>
+  </li>
+  <li>
+    <p><strong>Lemma</strong>
+This scheme performs word stemming, returning the stemmed word in the <code>tag</code> block parameter.</p>
+  </li>
+  <li>
+    <p><strong>Language</strong>
+This supposedly analysis each sentence to try to guess which language it is written in. I found that it worked fairly poorly when the language used the same script but did OK when they were different. In the example above it guesses that all of the text is in English, but if you change the 3rd line to “Аз не мога да ми.” (the same in Bulgarian) then it guesses this correctly.</p>
+  </li>
+  <li>
+    <p><strong>Script</strong>
+This is the script used in the token, for us it is always “Latn” for Latin, unless you make the substitution mentioned above in which case it correctly picks up “Cyrl” for the Bulgarian Cyrillic script.</p>
+  </li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>For a simple word count it seems that the regular expression wins out, but the linguistic tagger provides some interesting additional information. One downside to the tagger is that it doesn’t seem to be extensible in any way, so you’re limited to those schemes and tags that Apple ship with the OS. There is no way to, for example, use this mechanism to tag keywords and operators in a code editor, which may be useful.</p>
+
+<p>The code used for this post can be found in <a href="https://gist.github.com/2413356">this gist</a>.</p>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/04/16/how-many-words-make-a-string">How Many Words Make a String?</a></h1>
     
     
@@ -126,7 +317,7 @@
   
 
 
-<time datetime="2012-04-16T15:16:00+02:00" pubdate data-updated="true">Apr 16<span>th</span>, 2012</time>
+<time datetime="2012-04-16T15:16:00+01:00" pubdate data-updated="true">Apr 16<span>th</span>, 2012</time>
         
       </p>
     
@@ -334,7 +525,7 @@
   
 
 
-<time datetime="2012-03-30T16:38:00+02:00" pubdate data-updated="true">Mar 30<span>th</span>, 2012</time>
+<time datetime="2012-03-30T16:38:00+01:00" pubdate data-updated="true">Mar 30<span>th</span>, 2012</time>
         
       </p>
     
@@ -378,7 +569,7 @@
   
 
 
-<time datetime="2012-03-29T15:12:00+02:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
+<time datetime="2012-03-29T15:12:00+01:00" pubdate data-updated="true">Mar 29<span>th</span>, 2012</time>
         
       </p>
     
@@ -449,7 +640,7 @@
   
 
 
-<time datetime="2011-11-04T11:34:00+01:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
+<time datetime="2011-11-04T11:34:00+00:00" pubdate data-updated="true">Nov 4<span>th</span>, 2011</time>
         
       </p>
     
@@ -535,42 +726,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/07/28/how-to-enter-straight-quotes-in-word">How to Enter Straight Quotes in Word</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-28T15:35:43+02:00" pubdate data-updated="true">Jul 28<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When I’m writing technical docs in MS Word (an unfortunate day-job-related requirement) one of the things that can be annoying it the fact that it ‘helpfully’ converts straight quotes into curly quotes, even in code samples and other places that it shouldn’t. The easy way to get rid of this is to hit undo (⌘-z) immediately after typing the quote, this will undo the auto-correction but leave the actual quote character in place.</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/page/6/">&larr; Older</a>
@@ -588,6 +743,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/2014/11/17/quick-environment-setup">Quick Environment Setup</a>
+      </li>
+    
+      <li class="post">
         <a href="/2013/01/17/praxis-winning-at-bingo">Praxis: Winning at Bingo</a>
       </li>
     
@@ -601,10 +760,6 @@
     
       <li class="post">
         <a href="/2013/01/08/for-some-definition-of-easily">For Some Definition of Easily</a>
-      </li>
-    
-      <li class="post">
-        <a href="/2012/12/17/i-remain-a-free-man">I Remain a Free Man</a>
       </li>
     
   </ul>
@@ -646,7 +801,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2003&ndash;2013 &mdash; Ian Phillips &mdash;
+  Copyright &copy; 2003&ndash;2014 &mdash; Ian Phillips &mdash;
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, <a href="http://github.com/">GitHub</a>, and too much coffee.</span>
 </p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Design Patterns | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/design-patterns/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Factory Methods vs. Factory Classes in Java]]></title>
     <link href="http://ianp.org/2006/12/08/factory-methods-vs-factory-classes-in-java"/>
-    <updated>2006-12-08T00:07:33+01:00</updated>
+    <updated>2006-12-08T00:07:33+00:00</updated>
     <id>http://ianp.org/2006/12/08/factory-methods-vs-factory-classes-in-java</id>
     <content type="html"><![CDATA[<p>There are a number of cases in Java where I find myself wanting to use a
 variant of the <a href="http://en.wikipedia.org/wiki/Factory\_method\_pattern">factory method pattern</a>. For example:</p>
@@ -59,7 +59,7 @@ scenarios like the various Java SPI-style interfaces).</p>
   <entry>
     <title type="html"><![CDATA[Objects have Failed]]></title>
     <link href="http://ianp.org/2003/10/16/objects-have-failed"/>
-    <updated>2003-10-16T08:10:01+02:00</updated>
+    <updated>2003-10-16T08:10:01+01:00</updated>
     <id>http://ianp.org/2003/10/16/objects-have-failed</id>
     <content type="html"><![CDATA[<p><a href="http://www.nedbatchelder.com/blog/index.html">Ned Batchelder</a> had a pointer to <a href="http://www.dreamsongs.com/NewFiles/ObjectsHaveFailed.pdf">this article</a> by Richard Gabriel entitled ‘Objects have Failed’. As usual Richard has some excellent points, but there are a couple of things that irk me about the piece.</p>
 

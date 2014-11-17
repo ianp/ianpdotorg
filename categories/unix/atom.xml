@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Unix | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/unix/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -14,9 +14,31 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Quick Environment Setup]]></title>
+    <link href="http://ianp.org/2014/11/17/quick-environment-setup"/>
+    <updated>2014-11-17T14:32:00+00:00</updated>
+    <id>http://ianp.org/2014/11/17/quick-environment-setup</id>
+    <content type="html"><![CDATA[<p>I’ve recently had to set up and manage about a dozen Linux based virtual servers (not a huge number, but still) and it’s handly to have a separate user account on these machines that I can use to connect to for interactive use.  With that in mind here are a couple of quick tips for setting things up for a more pleasant experience with minimal fuss.</p>
+
+<p>I like to use <a href="http://zsh.org">zsh</a> as my shell, but that’s easy enough to install via apt-get and so can be added to an automated build script. The fastest way to get a good configuration installed is via <a href="http://ohmyz.sh">Oh My Zsh!</a>, it uses the fairly horrible <code>curl | sh</code> installation style, so I don’t like to add it to an automated script, but it’s easy enough to check and run manually:</p>
+
+<pre><code>$ curl -L http://install.ohmyz.sh | sh
+</code></pre>
+
+<p>The other thing is to get a decent <a href="http://vim.org">vim</a> setup, for this I use <a href="http://vim.spf13.com">SPF-13</a> which installs in a similar manner:</p>
+
+<pre><code>$ curl http://j.mp/spf13-vim3 -L -o - | sh
+</code></pre>
+
+<p>Then I usually set up a couple of aliases based on what the machine will be used for, and I’m done.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Why Everything is a File]]></title>
     <link href="http://ianp.org/2009/12/28/why-everything-is-a-file"/>
-    <updated>2009-12-28T17:54:29+01:00</updated>
+    <updated>2009-12-28T17:54:29+00:00</updated>
     <id>http://ianp.org/2009/12/28/why-everything-is-a-file</id>
     <content type="html"><![CDATA[<p>One of the <a href="http://en.wikipedia.org/wiki/Unix_architecture">distinguishing characteristics of Unix</a> is the
 philosophy that “everything is a file” (taken even further in

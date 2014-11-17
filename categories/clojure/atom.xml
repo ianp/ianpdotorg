@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Clojure | Digital Magpie]]></title>
   <link href="http://ianp.org/categories/clojure/atom.xml" rel="self"/>
   <link href="http://ianp.org/"/>
-  <updated>2013-01-17T21:05:44+01:00</updated>
+  <updated>2014-11-17T14:32:48+00:00</updated>
   <id>http://ianp.org/</id>
   <author>
     <name><![CDATA[Ian Phillips]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Building Clojure with Maven]]></title>
     <link href="http://ianp.org/2010/03/15/building-clojure-with-maven"/>
-    <updated>2010-03-15T18:48:51+01:00</updated>
+    <updated>2010-03-15T18:48:51+00:00</updated>
     <id>http://ianp.org/2010/03/15/building-clojure-with-maven</id>
     <content type="html"><![CDATA[<p>Just a quick reminder on the steps I needed to take to build <a href="http://clojure.org/">Clojure</a> and install it in my local repository:</p>
 
@@ -36,7 +36,7 @@
   <entry>
     <title type="html"><![CDATA[Prevalent Synchronicity]]></title>
     <link href="http://ianp.org/2010/01/07/prevalent-synchronicity"/>
-    <updated>2010-01-07T13:23:33+01:00</updated>
+    <updated>2010-01-07T13:23:33+00:00</updated>
     <id>http://ianp.org/2010/01/07/prevalent-synchronicity</id>
     <content type="html"><![CDATA[<p>Maybe it’s just an idea whose time has come, but in the past few days there’ve been 2 prevalent database systems announced for <a href="http://clojure.org/">Clojure</a>: <a href="http://fleetdb.org/">FleetDB</a> and <a href="http://github.com/SergeyDidenko/Simple-Persistence-for-Clojure">Persister</a>.</p>
 
@@ -70,7 +70,7 @@
   <entry>
     <title type="html"><![CDATA[Squeeze!]]></title>
     <link href="http://ianp.org/2010/01/06/squeeze"/>
-    <updated>2010-01-06T18:38:16+01:00</updated>
+    <updated>2010-01-06T18:38:16+00:00</updated>
     <id>http://ianp.org/2010/01/06/squeeze</id>
     <content type="html"><![CDATA[<p>One of the neat features of <a href="http://clojure.org/">Clojure</a> is the <a href="http://clojure.org/sequences">sequence</a> abstraction — it makes solving a whole host of data processing tasks much easier, simply get you data into a sequence and you’ve got a huge toolbox available to work on it. Of course being a guy I’m firmly of the belief that more tools are better, with that in mind let’s add another one to our toolbox. Given a sequence the squeeze function returns another sequence with any adjacent items which match a supplied predicate merged together using a supplied function. It’s probably easier to illustrate by example, suppose I have a sequence of strings and I want to merge them together when the trailing string starts with whitespace, I can squeeze them like this:</p>
 
@@ -131,7 +131,7 @@ comment on the <code>squeeze</code> function definition).</p>
   <entry>
     <title type="html"><![CDATA[Working with Java Arrays]]></title>
     <link href="http://ianp.org/2010/01/02/working-with-java-arrays"/>
-    <updated>2010-01-02T14:23:44+01:00</updated>
+    <updated>2010-01-02T14:23:44+00:00</updated>
     <id>http://ianp.org/2010/01/02/working-with-java-arrays</id>
     <content type="html"><![CDATA[<p>One improvement that I’d like to see in Clojure is more examples in the doc strings (or maybe in a separate <code>:example</code> metadata item). Still, nothing to stop me building up a set of my own. So, here are some simple examples of working with Java arrays in Clojure… Given some sample data:</p>
 
@@ -200,7 +200,7 @@ nil
   <entry>
     <title type="html"><![CDATA[Paredit.el Comes to IntelliJ]]></title>
     <link href="http://ianp.org/2009/12/25/paredit-el-comes-to-intellij"/>
-    <updated>2009-12-25T20:21:47+01:00</updated>
+    <updated>2009-12-25T20:21:47+00:00</updated>
     <id>http://ianp.org/2009/12/25/paredit-el-comes-to-intellij</id>
     <content type="html"><![CDATA[<p>I’ve been working on adding <a href="http://mumble.net/~campbell/emacs/paredit.el">paredit.el</a> like structural editing to
 the next version of the <a href="http://plugins.intellij.net/plugin/?id=4050">La Clojure</a> plugin for <a href="http://www.jetbrains.com/idea/index.html">Intellij IDEA</a>.
